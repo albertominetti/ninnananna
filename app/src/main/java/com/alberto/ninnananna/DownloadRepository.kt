@@ -48,8 +48,19 @@ object DownloadRepository {
     private const val USER_AGENT = "Ninnananna/1.0 (Android; audio downloader)"
     private const val DIR_NAME = "lullabies"
     private const val EXTENSION = ".m4a"
-    /** Ninnananna inclusa nell'APK e copiata in filesDir/lullabies al primo avvio. */
-    private const val BUNDLED_FILE_NAME = "brahms_lullaby.mp3"
+
+    /**
+     * Ninnenanne preinstallate nell'APK (res/raw) e copiate in
+     * filesDir/lullabies al primo avvio (se la cartella è vuota):
+     * - Brahms "Wiegenlied" op.49 n.4 (registrazione 1915, pubblico dominio);
+     * - white noise (5 min) per mascherare i rumori;
+     * - battito + rumore uterino (5 min, ~70 bpm).
+     */
+    private val BUNDLED_LULLABIES = listOf(
+        "brahms_lullaby.mp3" to R.raw.brahms_lullaby,
+        "white_noise.mp3" to R.raw.white_noise,
+        "womb_heartbeat.mp3" to R.raw.womb_heartbeat
+    )
 
     private val client: OkHttpClient by lazy {
         OkHttpClient.Builder()
@@ -112,30 +123,33 @@ object DownloadRepository {
         File(context.applicationContext.filesDir, DIR_NAME).apply { mkdirs() }
 
     /**
-     * Copia la ninnananna inclusa nell'APK (res/raw/brahms_lullaby.mp3,
-     * "Wiegenlied" op.49 n.4 di Johannes Brahms, registrazione del 1915
-     * di Ernestine Schumann-Heink, pubblico dominio) in filesDir/lullabies
-     * al primo avvio, ma solo se la cartella è vuota.
+     * Copia le ninnenanne preinstallate nell'APK (res/raw) in
+     * filesDir/lullabies al primo avvio, ma solo se la cartella è vuota.
      *
-     * @return true se la copia è stata eseguita (o il file era già presente).
+     * @return true se almeno un file è stato copiato (o era già presente).
      */
     suspend fun ensureBundledLullabies(context: Context): Boolean = withContext(Dispatchers.IO) {
         val dir = lullabiesDir(context)
         val existing = dir.listFiles { f -> f.isFile } ?: emptyArray()
         if (existing.isNotEmpty()) return@withContext false
 
-        val target = File(dir, BUNDLED_FILE_NAME)
-        if (target.exists()) return@withContext true
-
-        try {
-            context.resources.openRawResource(R.raw.brahms_lullaby).use { input ->
-                target.outputStream().use { output -> input.copyTo(output) }
+        var copied = false
+        for ((fileName, resId) in BUNDLED_LULLABIES) {
+            val target = File(dir, fileName)
+            if (target.exists()) {
+                copied = true
+                continue
             }
-            true
-        } catch (e: Exception) {
-            target.delete()
-            false
+            try {
+                context.resources.openRawResource(resId).use { input ->
+                    target.outputStream().use { output -> input.copyTo(output) }
+                }
+                copied = true
+            } catch (e: Exception) {
+                target.delete()
+            }
         }
+        copied
     }
 
     // ---------------- Elenco ----------------
