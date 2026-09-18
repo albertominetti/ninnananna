@@ -1,0 +1,24 @@
+# Gradle
+*.iml
+.gradle/
+build/
+/local.properties
+.cxx
+.externalNativeBuild
+captures/
+
+# IDE
+.idea/
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+
+# Output build-apk.sh
+dist/
+
+# Keystore / segreti
+*.jks
+*.keystore
+keystore.jks

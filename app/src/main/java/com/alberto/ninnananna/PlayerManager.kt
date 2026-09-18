@@ -1,0 +1,71 @@
+package com.alberto.ninnananna
+
+import android.content.Context
+import android.net.Uri
+import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.exoplayer.ExoPlayer
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import java.io.File
+
+/**
+ * Singleton ExoPlayer: un solo player alla volta in tutta l'app.
+ * Espone flussi StateFlow osservabili dalla UI (mini-bar, pulsanti Play/Stop).
+ */
+object PlayerManager {
+
+    private var player: ExoPlayer? = null
+
+    private val _current = MutableStateFlow<Lullaby?>(null)
+    val current: StateFlow<Lullaby?> = _current.asStateFlow()
+
+    private val _playing = MutableStateFlow(false)
+    val playing: StateFlow<Boolean> = _playing.asStateFlow()
+
+    @Synchronized
+    fun play(context: Context, lullaby: Lullaby) {
+        val p = player ?: createPlayer(context)
+        p.setMediaItem(MediaItem.fromUri(Uri.fromFile(File(lullaby.filePath))))
+        p.prepare()
+        p.playWhenReady = true
+        _current.value = lullaby
+        _playing.value = true
+    }
+
+    @Synchronized
+    fun stop() {
+        player?.run {
+            playWhenReady = false
+            stop()
+            clearMediaItems()
+        }
+        _current.value = null
+        _playing.value = false
+    }
+
+    @Synchronized
+    fun release() {
+        player?.release()
+        player = null
+        _current.value = null
+        _playing.value = false
+    }
+
+    private fun createPlayer(context: Context): ExoPlayer {
+        return ExoPlayer.Builder(context).build().apply {
+            addListener(object : Player.Listener {
+                override fun onPlaybackStateChanged(playbackState: Int) {
+                    if (playbackState == Player.STATE_ENDED) {
+                        _playing.value = false
+                    }
+                }
+
+                override fun onIsPlayingChanged(isPlaying: Boolean) {
+                    _playing.value = isPlaying
+                }
+            })
+        }.also { player = it }
+    }
+}
