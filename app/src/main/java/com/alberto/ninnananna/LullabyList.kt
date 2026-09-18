@@ -12,13 +12,16 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
@@ -93,6 +96,68 @@ private val StopIcon: ImageVector by lazy {
     }.build()
 }
 
+// Icona "Ripeti uno" custom (Material "repeat_one")
+private val RepeatOneIcon: ImageVector by lazy {
+    ImageVector.Builder(
+        name = "RepeatOne",
+        defaultWidth = 24.dp,
+        defaultHeight = 24.dp,
+        viewportWidth = 24f,
+        viewportHeight = 24f
+    ).apply {
+        path(fill = SolidColor(Color.Black)) {
+            moveTo(7f, 7f)
+            horizontalLineTo(17f)
+            verticalLineTo(10f)
+            lineTo(21f, 6f)
+            lineTo(17f, 2f)
+            verticalLineTo(5f)
+            horizontalLineTo(5f)
+            verticalLineTo(11f)
+            horizontalLineTo(7f)
+            close()
+            moveTo(17f, 17f)
+            horizontalLineTo(7f)
+            verticalLineTo(14f)
+            lineTo(3f, 18f)
+            lineTo(7f, 22f)
+            verticalLineTo(19f)
+            horizontalLineTo(19f)
+            verticalLineTo(13f)
+            horizontalLineTo(17f)
+            close()
+            moveTo(13f, 15f)
+            verticalLineTo(9f)
+            horizontalLineTo(12f)
+            lineTo(10f, 10f)
+            verticalLineTo(11f)
+            horizontalLineTo(11.5f)
+            verticalLineTo(15f)
+            close()
+        }
+    }.build()
+}
+
+// Icona "Luna crescente" custom (Material "bedtime"), per il sleep timer
+private val SleepIcon: ImageVector by lazy {
+    ImageVector.Builder(
+        name = "Sleep",
+        defaultWidth = 24.dp,
+        defaultHeight = 24.dp,
+        viewportWidth = 24f,
+        viewportHeight = 24f
+    ).apply {
+        path(fill = SolidColor(Color.Black)) {
+            moveTo(12.34f, 2.02f)
+            curveTo(6.59f, 1.82f, 2f, 6.42f, 2f, 12f)
+            curveTo(2f, 17.52f, 6.48f, 22f, 12f, 22f)
+            curveTo(15.71f, 22f, 18.93f, 19.98f, 20.66f, 16.98f)
+            curveTo(13.15f, 16.73f, 8.57f, 8.55f, 12.34f, 2.02f)
+            close()
+        }
+    }.build()
+}
+
 /**
  * Schermata principale: lista audio scaricati/preinstallati, download in
  * background via WorkManager (notifica foreground), pulsante "Add from YT"
@@ -116,8 +181,13 @@ fun LullabyList(onOpenSettings: () -> Unit) {
     var renameTarget by remember { mutableStateOf<Lullaby?>(null) }
     var renameText by remember { mutableStateOf("") }
 
+    // Sleep timer (UI nel player)
+    var showSleepTimerDialog by rememberSaveable { mutableStateOf(false) }
+
     val current by PlayerManager.current.collectAsState()
     val playing by PlayerManager.playing.collectAsState()
+    val loopEnabled by PlayerManager.loopEnabled.collectAsState()
+    val sleepRemaining by SleepTimerManager.remainingMillis.collectAsState()
 
     val refresh: () -> Unit = {
         scope.launch {
@@ -215,7 +285,11 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                 MiniPlayerBar(
                     lullaby = lullaby,
                     playing = playing,
-                    onStop = { PlayerManager.stop() }
+                    loopEnabled = loopEnabled,
+                    sleepRemaining = sleepRemaining,
+                    onStop = { PlayerManager.stop() },
+                    onToggleLoop = { PlayerManager.toggleLoop() },
+                    onOpenSleepTimer = { showSleepTimerDialog = true }
                 )
             }
         }
@@ -419,6 +493,22 @@ fun LullabyList(onOpenSettings: () -> Unit) {
             }
         )
     }
+
+    // Dialog sleep timer
+    if (showSleepTimerDialog) {
+        SleepTimerDialog(
+            active = sleepRemaining,
+            onSelect = { duration ->
+                if (duration == null) {
+                    SleepTimerManager.cancel()
+                } else {
+                    SleepTimerManager.start(context, duration)
+                }
+                showSleepTimerDialog = false
+            },
+            onDismiss = { showSleepTimerDialog = false }
+        )
+    }
 }
 
 /**
@@ -519,44 +609,151 @@ private fun LullabyRow(
 private fun MiniPlayerBar(
     lullaby: Lullaby,
     playing: Boolean,
-    onStop: () -> Unit
+    loopEnabled: Boolean,
+    sleepRemaining: Long?,
+    onStop: () -> Unit,
+    onToggleLoop: () -> Unit,
+    onOpenSleepTimer: () -> Unit
 ) {
     Surface(tonalElevation = 3.dp) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .padding(horizontal = 12.dp, vertical = 4.dp)
         ) {
-            Icon(
-                imageVector = if (playing) StopIcon else Icons.Default.PlayArrow,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(20.dp)
-            )
-            Spacer(Modifier.width(12.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "In riproduzione",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = if (playing) StopIcon else Icons.Default.PlayArrow,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(20.dp)
                 )
-                Text(
-                    text = lullaby.title,
-                    style = MaterialTheme.typography.titleSmall,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+                Spacer(Modifier.width(12.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = "In riproduzione",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Text(
+                        text = lullaby.title,
+                        style = MaterialTheme.typography.titleSmall,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+
+                // Toggle loop "repeat-one"
+                IconButton(onClick = onToggleLoop) {
+                    Icon(
+                        imageVector = RepeatOneIcon,
+                        contentDescription = if (loopEnabled) "Ripeti uno: attivo" else "Ripeti uno: spento",
+                        tint = if (loopEnabled) {
+                            MaterialTheme.colorScheme.primary
+                        } else {
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                        }
+                    )
+                }
+
+                // Sleep timer
+                IconButton(onClick = onOpenSleepTimer) {
+                    Icon(
+                        imageVector = SleepIcon,
+                        contentDescription = "Sleep timer",
+                        tint = if (sleepRemaining != null) {
+                            MaterialTheme.colorScheme.primary
+                        } else {
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                        }
+                    )
+                }
+
+                OutlinedButton(onClick = onStop) {
+                    Text("Stop")
+                }
             }
-            OutlinedButton(onClick = onStop) {
-                Text("Stop")
+
+            // Riga timer attivo: mostra il tempo rimanente
+            if (sleepRemaining != null) {
+                Text(
+                    text = "Sleep timer: ${formatRemaining(sleepRemaining)}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(start = 32.dp, bottom = 4.dp)
+                )
             }
         }
     }
 }
 
+/**
+ * Dialog di scelta del sleep timer: 15 min, 30 min, 1h, 2h, 3h, 4h oppure Off.
+ * Allo scadere l'audio viene fermato e il keep-screen-on rimosso.
+ */
+@Composable
+private fun SleepTimerDialog(
+    active: Long?,
+    onSelect: (Long?) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val options = listOf(
+        15L * 60 * 1000 to "15 minuti",
+        30L * 60 * 1000 to "30 minuti",
+        60L * 60 * 1000 to "1 ora",
+        120L * 60 * 1000 to "2 ore",
+        180L * 60 * 1000 to "3 ore",
+        240L * 60 * 1000 to "4 ore"
+    )
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text(if (active != null) "Sleep timer attivo" else "Sleep timer")
+        },
+        text = {
+            Column(
+                modifier = Modifier
+                    .heightIn(max = 380.dp)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                options.forEach { (ms, label) ->
+                    TextButton(
+                        onClick = { onSelect(ms) },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(label, modifier = Modifier.fillMaxWidth())
+                    }
+                }
+                TextButton(
+                    onClick = { onSelect(null) },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Off", modifier = Modifier.fillMaxWidth())
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text("Chiudi") }
+        }
+    )
+}
+
 private fun formatDuration(ms: Long): String {
     if (ms <= 0L) return "–"
+    val totalSec = ms / 1000
+    val h = totalSec / 3600
+    val m = (totalSec % 3600) / 60
+    val s = totalSec % 60
+    return if (h > 0) "%d:%02d:%02d".format(h, m, s) else "%d:%02d".format(m, s)
+}
+
+private fun formatRemaining(ms: Long): String {
+    if (ms <= 0L) return "0:00"
     val totalSec = ms / 1000
     val h = totalSec / 3600
     val m = (totalSec % 3600) / 60

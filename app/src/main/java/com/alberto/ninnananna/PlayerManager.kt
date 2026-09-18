@@ -24,14 +24,27 @@ object PlayerManager {
     private val _playing = MutableStateFlow(false)
     val playing: StateFlow<Boolean> = _playing.asStateFlow()
 
+    private val _loopEnabled = MutableStateFlow(false)
+    val loopEnabled: StateFlow<Boolean> = _loopEnabled.asStateFlow()
+
     @Synchronized
     fun play(context: Context, lullaby: Lullaby) {
         val p = player ?: createPlayer(context)
         p.setMediaItem(MediaItem.fromUri(Uri.fromFile(File(lullaby.filePath))))
+        // Loop "repeat-one" se abilitato (persiste tra i brani).
+        p.repeatMode = if (_loopEnabled.value) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
         p.prepare()
         p.playWhenReady = true
         _current.value = lullaby
         _playing.value = true
+    }
+
+    @Synchronized
+    fun toggleLoop() {
+        val p = player ?: return
+        val enabled = p.repeatMode != Player.REPEAT_MODE_ONE
+        p.repeatMode = if (enabled) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
+        _loopEnabled.value = enabled
     }
 
     @Synchronized
@@ -51,6 +64,7 @@ object PlayerManager {
         player = null
         _current.value = null
         _playing.value = false
+        _loopEnabled.value = false
     }
 
     private fun createPlayer(context: Context): ExoPlayer {
