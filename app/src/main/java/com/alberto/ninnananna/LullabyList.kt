@@ -387,7 +387,10 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                             lullaby = lullaby,
                             isCurrent = current?.id == lullaby.id,
                             isPlaying = playing && current?.id == lullaby.id,
-                            onPlay = { PlayerManager.play(context, lullaby) },
+                            onPlay = {
+                                requestNotificationPermissionIfNeeded()
+                                PlayerManager.play(context, lullaby)
+                            },
                             onStop = { PlayerManager.stop() },
                             onRename = {
                                 renameTarget = lullaby
@@ -415,7 +418,10 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                             lullaby = lullaby,
                             isCurrent = current?.id == lullaby.id,
                             isPlaying = playing && current?.id == lullaby.id,
-                            onPlay = { PlayerManager.play(context, lullaby) },
+                            onPlay = {
+                                requestNotificationPermissionIfNeeded()
+                                PlayerManager.play(context, lullaby)
+                            },
                             onStop = { PlayerManager.stop() },
                             onRename = {
                                 renameTarget = lullaby
@@ -674,9 +680,17 @@ private fun LullabyRow(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
+                // Per le preinstallate ("Pre downloaded") non mostrare la data:
+                // solo durata • dimensione. Le scaricate mantengono anche la data.
+                val infoText = if (lullaby.isBundled) {
+                    "${formatDuration(lullaby.durationMs)}  •  " +
+                        formatSize(lullaby.sizeBytes)
+                } else {
+                    "${formatDuration(lullaby.durationMs)}  •  " +
+                        "${formatSize(lullaby.sizeBytes)}  •  ${formatDate(lullaby.lastModified)}"
+                }
                 Text(
-                    text = "${formatDuration(lullaby.durationMs)}  •  " +
-                        "${formatSize(lullaby.sizeBytes)}  •  ${formatDate(lullaby.lastModified)}",
+                    text = infoText,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

@@ -17,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NinnaNanna">
 
+        <!-- Riceve l'azione "Stop" della notifica persistente di riproduzione -->
+        <receiver
+            android:name=".PlaybackStopReceiver"
+            android:exported="false" />
+
         <!-- Foreground service usato da WorkManager per i download:
              deve dichiarare il tipo dataSync (Android 14+) -->
         <service

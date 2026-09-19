@@ -17,6 +17,7 @@ import java.io.File
 object PlayerManager {
 
     private var player: ExoPlayer? = null
+    private var appContext: Context? = null
 
     private val _current = MutableStateFlow<Lullaby?>(null)
     val current: StateFlow<Lullaby?> = _current.asStateFlow()
@@ -29,7 +30,9 @@ object PlayerManager {
 
     @Synchronized
     fun play(context: Context, lullaby: Lullaby) {
-        val p = player ?: createPlayer(context)
+        val appCtx = context.applicationContext
+        appContext = appCtx
+        val p = player ?: createPlayer(appCtx)
         p.setMediaItem(MediaItem.fromUri(Uri.fromFile(File(lullaby.filePath))))
         // Loop "repeat-one" se abilitato (persiste tra i brani).
         p.repeatMode = if (_loopEnabled.value) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
@@ -37,6 +40,8 @@ object PlayerManager {
         p.playWhenReady = true
         _current.value = lullaby
         _playing.value = true
+        // Notifica persistente "In riproduzione" (ongoing, con azione Stop).
+        PlaybackNotification.show(appCtx, formatDisplayName(lullaby.title))
     }
 
     @Synchronized
@@ -56,6 +61,7 @@ object PlayerManager {
         }
         _current.value = null
         _playing.value = false
+        PlaybackNotification.hide(appContext ?: return)
     }
 
     @Synchronized
@@ -65,6 +71,7 @@ object PlayerManager {
         _current.value = null
         _playing.value = false
         _loopEnabled.value = false
+        PlaybackNotification.hide(appContext ?: return)
     }
 
     private fun createPlayer(context: Context): ExoPlayer {
@@ -73,11 +80,17 @@ object PlayerManager {
                 override fun onPlaybackStateChanged(playbackState: Int) {
                     if (playbackState == Player.STATE_ENDED) {
                         _playing.value = false
+                        // Fine naturale del brano: rimuovi la notifica persistente.
+                        PlaybackNotification.hide(appContext ?: return)
                     }
                 }
 
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
                     _playing.value = isPlaying
+                    // Se non c'è più un brano corrente, la notifica va rimossa.
+                    if (!isPlaying && _current.value == null) {
+                        PlaybackNotification.hide(appContext ?: return)
+                    }
                 }
             })
         }.also { player = it }
