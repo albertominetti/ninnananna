@@ -27,6 +27,9 @@ object PlayerManager {
     private val _loopEnabled = MutableStateFlow(false)
     val loopEnabled: StateFlow<Boolean> = _loopEnabled.asStateFlow()
 
+    private val _volumePercent = MutableStateFlow(100)
+    val volumePercent: StateFlow<Int> = _volumePercent.asStateFlow()
+
     @Synchronized
     fun play(context: Context, lullaby: Lullaby) {
         val p = player ?: createPlayer(context)
@@ -45,6 +48,17 @@ object PlayerManager {
         val enabled = p.repeatMode != Player.REPEAT_MODE_ONE
         p.repeatMode = if (enabled) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
         _loopEnabled.value = enabled
+    }
+
+    /**
+     * Imposta il volume del player (0..100). Funziona anche prima che la
+     * riproduzione inizi: il valore viene applicato al primo player creato.
+     */
+    @Synchronized
+    fun setVolumePercent(percent: Int) {
+        val clamped = percent.coerceIn(0, 100)
+        _volumePercent.value = clamped
+        player?.volume = clamped / 100f
     }
 
     @Synchronized
@@ -80,6 +94,8 @@ object PlayerManager {
                     _playing.value = isPlaying
                 }
             })
+            // Applica il volume impostato (default 100%).
+            volume = _volumePercent.value / 100f
         }.also { player = it }
     }
 }

@@ -41,6 +41,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
@@ -153,6 +154,40 @@ private val SleepIcon: ImageVector by lazy {
             curveTo(2f, 17.52f, 6.48f, 22f, 12f, 22f)
             curveTo(15.71f, 22f, 18.93f, 19.98f, 20.66f, 16.98f)
             curveTo(13.15f, 16.73f, 8.57f, 8.55f, 12.34f, 2.02f)
+            close()
+        }
+    }.build()
+}
+
+// Icona "Altoparlante" custom (Material "volume_up"), per la barra volume
+private val VolumeIcon: ImageVector by lazy {
+    ImageVector.Builder(
+        name = "VolumeUp",
+        defaultWidth = 24.dp,
+        defaultHeight = 24.dp,
+        viewportWidth = 24f,
+        viewportHeight = 24f
+    ).apply {
+        path(fill = SolidColor(Color.Black)) {
+            moveTo(3f, 9f)
+            verticalLineTo(15f)
+            horizontalLineTo(7f)
+            lineTo(12f, 20f)
+            verticalLineTo(4f)
+            lineTo(7f, 9f)
+            close()
+            moveTo(16.5f, 12f)
+            curveTo(16.5f, 10.23f, 15.48f, 8.71f, 14f, 7.97f)
+            verticalLineTo(16.03f)
+            curveTo(15.48f, 15.29f, 16.5f, 13.77f, 16.5f, 12f)
+            close()
+            moveTo(14f, 3.23f)
+            verticalLineTo(5.29f)
+            curveTo(16.89f, 6.15f, 19f, 8.83f, 19f, 12f)
+            curveTo(19f, 15.17f, 16.89f, 17.85f, 14f, 18.71f)
+            verticalLineTo(20.77f)
+            curveTo(18.01f, 19.86f, 21f, 16.28f, 21f, 12f)
+            curveTo(21f, 7.72f, 18.01f, 4.14f, 14f, 3.23f)
             close()
         }
     }.build()
@@ -279,16 +314,20 @@ fun LullabyList(onOpenSettings: () -> Unit) {
             }
         },
         bottomBar = {
-            current?.let { lullaby ->
-                MiniPlayerBar(
-                    lullaby = lullaby,
-                    playing = playing,
-                    loopEnabled = loopEnabled,
-                    sleepRemaining = sleepRemaining,
-                    onStop = { PlayerManager.stop() },
-                    onToggleLoop = { PlayerManager.toggleLoop() },
-                    onOpenSleepTimer = { showSleepTimerDialog = true }
-                )
+            Column {
+                // Barra volume sempre visibile, sopra la mini-bar del player.
+                VolumeBar()
+                current?.let { lullaby ->
+                    MiniPlayerBar(
+                        lullaby = lullaby,
+                        playing = playing,
+                        loopEnabled = loopEnabled,
+                        sleepRemaining = sleepRemaining,
+                        onStop = { PlayerManager.stop() },
+                        onToggleLoop = { PlayerManager.toggleLoop() },
+                        onOpenSleepTimer = { showSleepTimerDialog = true }
+                    )
+                }
             }
         }
     ) { padding ->
@@ -333,27 +372,63 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(lullabies, key = { it.id }) { lullaby ->
-                    LullabyRow(
-                        lullaby = lullaby,
-                        isCurrent = current?.id == lullaby.id,
-                        isPlaying = playing && current?.id == lullaby.id,
-                        onPlay = { PlayerManager.play(context, lullaby) },
-                        onStop = { PlayerManager.stop() },
-                        onRename = {
-                            renameTarget = lullaby
-                            renameText = lullaby.title
-                        },
-                        onDelete = {
-                            scope.launch {
-                                if (current?.filePath == lullaby.filePath) {
-                                    PlayerManager.stop()
+                val bundled = lullabies.filter { it.isBundled }
+                val downloaded = lullabies.filterNot { it.isBundled }
+
+                if (bundled.isNotEmpty()) {
+                    item(key = "header-predownloaded") {
+                        SectionHeader("Pre downloaded", count = bundled.size)
+                    }
+                    items(bundled, key = { it.id }) { lullaby ->
+                        LullabyRow(
+                            lullaby = lullaby,
+                            isCurrent = current?.id == lullaby.id,
+                            isPlaying = playing && current?.id == lullaby.id,
+                            onPlay = { PlayerManager.play(context, lullaby) },
+                            onStop = { PlayerManager.stop() },
+                            onRename = {
+                                renameTarget = lullaby
+                                renameText = lullaby.title
+                            },
+                            onDelete = {
+                                scope.launch {
+                                    if (current?.filePath == lullaby.filePath) {
+                                        PlayerManager.stop()
+                                    }
+                                    DownloadRepository.delete(context, lullaby)
+                                    refresh()
                                 }
-                                DownloadRepository.delete(context, lullaby)
-                                refresh()
                             }
-                        }
-                    )
+                        )
+                    }
+                }
+
+                if (downloaded.isNotEmpty()) {
+                    item(key = "header-downloaded") {
+                        SectionHeader("Scaricate", count = downloaded.size)
+                    }
+                    items(downloaded, key = { it.id }) { lullaby ->
+                        LullabyRow(
+                            lullaby = lullaby,
+                            isCurrent = current?.id == lullaby.id,
+                            isPlaying = playing && current?.id == lullaby.id,
+                            onPlay = { PlayerManager.play(context, lullaby) },
+                            onStop = { PlayerManager.stop() },
+                            onRename = {
+                                renameTarget = lullaby
+                                renameText = lullaby.title
+                            },
+                            onDelete = {
+                                scope.launch {
+                                    if (current?.filePath == lullaby.filePath) {
+                                        PlayerManager.stop()
+                                    }
+                                    DownloadRepository.delete(context, lullaby)
+                                    refresh()
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -507,6 +582,56 @@ private fun ActiveDownloadCard(info: WorkInfo) {
     }
 }
 
+/**
+ * Barra volume sempre visibile in fondo alla schermata principale, sopra la
+ * mini-bar del player. Slider 0..100 collegato al volume ExoPlayer via
+ * [PlayerManager.setVolumePercent]; usabile anche senza riproduzione attiva.
+ */
+@Composable
+private fun VolumeBar() {
+    val volume by PlayerManager.volumePercent.collectAsState()
+    Surface(tonalElevation = 3.dp) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 2.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = VolumeIcon,
+                contentDescription = "Volume",
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(22.dp)
+            )
+            Spacer(Modifier.width(8.dp))
+            Slider(
+                value = volume.toFloat(),
+                onValueChange = { PlayerManager.setVolumePercent(it.toInt()) },
+                valueRange = 0f..100f,
+                modifier = Modifier.weight(1f)
+            )
+            Spacer(Modifier.width(8.dp))
+            Text(
+                text = "$volume%",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.width(44.dp)
+            )
+        }
+    }
+}
+
+/** Intestazione di sezione della lista (es. "Pre downloaded", "Scaricate"). */
+@Composable
+private fun SectionHeader(title: String, count: Int) {
+    Text(
+        text = "$title ($count)",
+        style = MaterialTheme.typography.titleMedium,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
+    )
+}
+
 @Composable
 private fun LullabyRow(
     lullaby: Lullaby,
@@ -551,11 +676,14 @@ private fun LullabyRow(
                 )
             }
 
-            IconButton(onClick = onRename) {
-                Icon(Icons.Default.Edit, contentDescription = "Rinomina")
-            }
-            IconButton(onClick = onDelete) {
-                Icon(Icons.Default.Delete, contentDescription = "Elimina")
+            // Le preinstallate (bundled) non sono né rinominabili né eliminabili.
+            if (!lullaby.isBundled) {
+                IconButton(onClick = onRename) {
+                    Icon(Icons.Default.Edit, contentDescription = "Rinomina")
+                }
+                IconButton(onClick = onDelete) {
+                    Icon(Icons.Default.Delete, contentDescription = "Elimina")
+                }
             }
         }
     }

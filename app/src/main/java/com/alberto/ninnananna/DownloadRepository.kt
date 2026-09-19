@@ -29,7 +29,9 @@ data class Lullaby(
     val filePath: String,
     val durationMs: Long,
     val sizeBytes: Long,
-    val lastModified: Long
+    val lastModified: Long,
+    /** true per le ninnenanne preinstallate nell'APK (non cancellabili/rinominabili). */
+    val isBundled: Boolean = false
 ) {
     val file: File get() = File(filePath)
     val fileName: String get() = file.name
@@ -61,6 +63,12 @@ object DownloadRepository {
         "white_noise.mp3" to R.raw.white_noise,
         "womb_heartbeat.mp3" to R.raw.womb_heartbeat
     )
+
+    /** Nomi dei file preinstallati (per identificare gli item bundled). */
+    private val BUNDLED_FILE_NAMES = BUNDLED_LULLABIES.map { it.first }.toSet()
+
+    /** true se il file è una delle ninnenanne preinstallate (protette). */
+    fun isBundledFile(file: File): Boolean = file.name in BUNDLED_FILE_NAMES
 
     private val client: OkHttpClient by lazy {
         OkHttpClient.Builder()
@@ -156,7 +164,7 @@ object DownloadRepository {
 
     suspend fun listLullabies(context: Context): List<Lullaby> = withContext(Dispatchers.IO) {
         val dir = lullabiesDir(context)
-        // Al primo avvio (cartella vuota) copia la ninnananna inclusa nell'APK.
+        // Al primo avvio (cartella vuota) copia le ninnenanne incluse nell'APK.
         ensureBundledLullabies(context)
         dir.listFiles { f -> f.isFile }
             ?.sortedBy { it.name.lowercase() }
@@ -167,7 +175,8 @@ object DownloadRepository {
                     filePath = file.absolutePath,
                     durationMs = readDurationMs(file),
                     sizeBytes = file.length(),
-                    lastModified = file.lastModified()
+                    lastModified = file.lastModified(),
+                    isBundled = isBundledFile(file)
                 )
             }
             ?: emptyList()
@@ -310,6 +319,8 @@ object DownloadRepository {
 
     suspend fun rename(context: Context, lullaby: Lullaby, newTitle: String): Boolean =
         withContext(Dispatchers.IO) {
+            // Le preinstallate (bundled) non si rinominano mai.
+            if (lullaby.isBundled) return@withContext false
             val name = newTitle.trim().ifBlank { return@withContext false }
             val old = File(lullaby.filePath)
             if (!old.exists()) return@withContext false
@@ -322,17 +333,22 @@ object DownloadRepository {
 
     suspend fun delete(context: Context, lullaby: Lullaby): Boolean =
         withContext(Dispatchers.IO) {
+            // Le preinstallate (bundled) non si eliminano mai.
+            if (lullaby.isBundled) return@withContext false
             File(lullaby.filePath).delete()
         }
 
     /**
-     * Elimina tutti i file scaricati; ritorna il numero di file eliminati.
+     * Elimina tutti i file scaricati (le preinstallate bundled sono sempre
+     * conservate); ritorna il numero di file eliminati.
      */
     suspend fun resetAll(context: Context): Int = withContext(Dispatchers.IO) {
         val dir = lullabiesDir(context)
         val files = dir.listFiles { f -> f.isFile } ?: emptyArray()
         var deleted = 0
-        files.forEach { if (it.delete()) deleted++ }
+        files.forEach { file ->
+            if (!isBundledFile(file) && file.delete()) deleted++
+        }
         deleted
     }
 }
