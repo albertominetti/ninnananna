@@ -336,3 +336,35 @@ object DownloadRepository {
         deleted
     }
 }
+
+/**
+ * Formatta il nome di un audio per la **sola visualizzazione** (i file su
+ * disco non vengono rinominati):
+ * - rimuove l'estensione .mp3/.m4a;
+ * - sostituisce `_` e `-` con spazi;
+ * - trim e rimozione di spazi multipli;
+ * - Title Case semplice (prima lettera di ogni parola maiuscola, il resto
+ *   invariato: gli acronimi eventuali non vengono toccati).
+ */
+fun formatDisplayName(fileName: String): String {
+    var name = fileName.trim()
+    for (ext in DISPLAY_EXTENSIONS) {
+        if (name.endsWith(ext, ignoreCase = true)) {
+            name = name.dropLast(ext.length)
+            break
+        }
+    }
+    val words = name
+        .replace('_', ' ')
+        .replace('-', ' ')
+        .trim()
+        .split(Regex("\\s+"))
+        .filter { it.isNotEmpty() }
+    return words.joinToString(" ") { word ->
+        word.replaceFirstChar { first ->
+            if (first.isLowerCase()) first.uppercase() else first.toString()
+        }
+    }
+}
+
+private val DISPLAY_EXTENSIONS = listOf(".mp3", ".m4a")

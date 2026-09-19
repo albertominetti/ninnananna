@@ -160,8 +160,8 @@ private val SleepIcon: ImageVector by lazy {
 
 /**
  * Schermata principale: lista audio scaricati/preinstallati, download in
- * background via WorkManager (notifica foreground), pulsante "Add from YT"
- * e FAB che aprono il bottom sheet per incollare un link YouTube.
+ * background via WorkManager (notifica foreground). Il FAB in basso a
+ * destra "Add from YT" apre il bottom sheet per incollare un link YouTube.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -170,7 +170,6 @@ fun LullabyList(onOpenSettings: () -> Unit) {
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    var urlText by rememberSaveable { mutableStateOf("") }
     var lullabies by remember { mutableStateOf(emptyList<Lullaby>()) }
 
     // Bottom sheet "Add from YT"
@@ -241,7 +240,6 @@ fun LullabyList(onOpenSettings: () -> Unit) {
         if (url.isNotBlank()) {
             requestNotificationPermissionIfNeeded()
             DownloadLullabyWorker.enqueue(context, url)
-            urlText = ""
             sheetUrl = ""
             scope.launch {
                 snackbarHostState.showSnackbar(
@@ -300,48 +298,6 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            Text(
-                text = "Incolla un link YouTube: il download avviene in background.",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(Modifier.height(8.dp))
-
-            TextField(
-                value = urlText,
-                onValueChange = { urlText = it },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("URL YouTube") },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
-                keyboardActions = KeyboardActions(onGo = { enqueueDownload(urlText) })
-            )
-            Spacer(Modifier.height(8.dp))
-
-            Button(
-                onClick = { enqueueDownload(urlText) },
-                enabled = urlText.isNotBlank(),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text("Scarica audio")
-            }
-            Spacer(Modifier.height(8.dp))
-
-            OutlinedButton(
-                onClick = { showAddSheet = true },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Icon(
-                    Icons.Default.Add,
-                    contentDescription = null,
-                    modifier = Modifier.size(18.dp)
-                )
-                Spacer(Modifier.width(8.dp))
-                Text("Add from YT")
-            }
-
-            Spacer(Modifier.height(16.dp))
-
             // Download attivi in cima alla lista (download in secondo piano)
             if (activeDownloads.isNotEmpty()) {
                 Text(
@@ -403,7 +359,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
         }
     }
 
-    // Bottom sheet "Add from YT" (FAB e pulsante)
+    // Bottom sheet "Add from YT" (aperto dal FAB)
     if (showAddSheet) {
         ModalBottomSheet(
             onDismissRequest = { showAddSheet = false },
@@ -582,7 +538,7 @@ private fun LullabyRow(
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = lullaby.title,
+                    text = formatDisplayName(lullaby.title),
                     style = MaterialTheme.typography.titleSmall,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -641,7 +597,7 @@ private fun MiniPlayerBar(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
-                        text = lullaby.title,
+                        text = formatDisplayName(lullaby.title),
                         style = MaterialTheme.typography.titleSmall,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis

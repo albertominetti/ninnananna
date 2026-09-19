@@ -45,6 +45,12 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
                 )
             }
             setForegroundAsync(createForegroundInfo(1f, "Download completato"))
+            val title = lullaby?.title?.let { formatDisplayName(it) }.orEmpty()
+            if (title.isNotBlank()) {
+                setForegroundAsync(
+                    createForegroundInfo(1f, "Download completato: $title")
+                )
+            }
             Result.success(
                 workDataOf(KEY_TITLE to (lullaby?.title ?: ""))
             )
