@@ -61,6 +61,9 @@ fun SettingsScreen(onBack: () -> Unit) {
     var showResetDialog by remember { mutableStateOf(false) }
     var resetFeedback by remember { mutableStateOf<String?>(null) }
 
+    // Numero di audio scaricati dall'utente (le 3 preinstallate sono escluse).
+    val downloadedCount = lullabies.count { !it.isBundled }
+
     LaunchedEffect(Unit) {
         lullabies = DownloadRepository.listLullabies(context)
     }
@@ -147,13 +150,16 @@ fun SettingsScreen(onBack: () -> Unit) {
             Spacer(Modifier.height(16.dp))
             Text(text = "Dati", style = MaterialTheme.typography.titleMedium)
             Text(
-                text = "${lullabies.size} audio scaricati (storage interno dell'app)",
+                text = "$downloadedCount audio scaricati" +
+                    " (le ${lullabies.count { it.isBundled }} preinstallate " +
+                    "sono sempre conservate)",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(Modifier.height(8.dp))
             Button(
                 onClick = { showResetDialog = true },
+                enabled = downloadedCount > 0,
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.error,
@@ -180,23 +186,26 @@ fun SettingsScreen(onBack: () -> Unit) {
             title = { Text("Reset completo") },
             text = {
                 Text(
-                    "Vuoi eliminare tutti i file audio scaricati? " +
-                        "L'operazione non è reversibile."
+                    "Vuoi eliminare i $downloadedCount audio scaricati? " +
+                        "Le preinstallate (Brahms, white noise, battito) " +
+                        "non vengono toccate. L'operazione non è reversibile."
                 )
             },
             confirmButton = {
                 TextButton(onClick = {
                     showResetDialog = false
                     scope.launch {
+                        // resetAll elimina solo i file NON bundled.
                         val deleted = DownloadRepository.resetAll(context)
                         if (deleted > 0) {
                             PlayerManager.stop()
                         }
                         lullabies = DownloadRepository.listLullabies(context)
                         resetFeedback = if (deleted > 0) {
-                            "Eliminati $deleted file."
+                            "Eliminati $deleted audio scaricati " +
+                                "(preinstallate conservate)."
                         } else {
-                            "Nessun file da eliminare."
+                            "Nessun audio scaricato da eliminare."
                         }
                     }
                 }) { Text("Elimina tutto") }

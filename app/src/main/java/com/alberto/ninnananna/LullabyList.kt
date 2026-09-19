@@ -51,6 +51,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -231,6 +232,14 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 
     LaunchedEffect(Unit) { refresh() }
 
+    // Volume di sistema (AudioManager STREAM_MUSIC): registra l'observer dei
+    // cambi volume (tasti fisici) e sincronizza lo Slider della VolumeBar.
+    DisposableEffect(context) {
+        VolumeManager.register(context)
+        VolumeManager.refresh(context)
+        onDispose { VolumeManager.unregister(context) }
+    }
+
     // ---------- Download in background (WorkManager) ----------
     val workManager = remember { WorkManager.getInstance(context) }
     val downloadWorkInfos by workManager
@@ -351,12 +360,6 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                 }
                 Spacer(Modifier.height(16.dp))
             }
-
-            Text(
-                text = "Audio (${lullabies.size})",
-                style = MaterialTheme.typography.titleMedium
-            )
-            Spacer(Modifier.height(4.dp))
 
             if (lullabies.isEmpty() && activeDownloads.isEmpty()) {
                 Text(
@@ -584,12 +587,15 @@ private fun ActiveDownloadCard(info: WorkInfo) {
 
 /**
  * Barra volume sempre visibile in fondo alla schermata principale, sopra la
- * mini-bar del player. Slider 0..100 collegato al volume ExoPlayer via
- * [PlayerManager.setVolumePercent]; usabile anche senza riproduzione attiva.
+ * mini-bar del player. Slider 0..100 sincronizzato col **volume di sistema**
+ * (AudioManager STREAM_MUSIC): mostra il valore corrente e lo modifica via
+ * [VolumeManager]; un observer aggiorna lo Slider se l'utente usa i tasti
+ * fisici del volume.
  */
 @Composable
 private fun VolumeBar() {
-    val volume by PlayerManager.volumePercent.collectAsState()
+    val context = LocalContext.current.applicationContext
+    val volume by VolumeManager.percent.collectAsState()
     Surface(tonalElevation = 3.dp) {
         Row(
             modifier = Modifier
@@ -606,7 +612,7 @@ private fun VolumeBar() {
             Spacer(Modifier.width(8.dp))
             Slider(
                 value = volume.toFloat(),
-                onValueChange = { PlayerManager.setVolumePercent(it.toInt()) },
+                onValueChange = { VolumeManager.setPercent(context, it.toInt()) },
                 valueRange = 0f..100f,
                 modifier = Modifier.weight(1f)
             )
