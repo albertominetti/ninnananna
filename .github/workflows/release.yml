@@ -30,7 +30,7 @@ jobs:
             SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f 2>/dev/null | sort | head -1)
           fi
           echo "sdkmanager: $SDKMANAGER"
-          yes | "$SDKMANAGER" --licenses >/dev/null
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
           "$SDKMANAGER" --install "platform-tools" "platforms;android-34" "build-tools;34.0.0" >/dev/null
 
       - name: Rendi eseguibile gradlew
