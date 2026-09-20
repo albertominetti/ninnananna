@@ -30,7 +30,7 @@ object SettingsStore {
         context.settingsDataStore.data.map { prefs ->
             prefs[KEY_THEME]
                 ?.let { runCatching { ThemeMode.valueOf(it) }.getOrNull() }
-                ?: ThemeMode.AMOLED
+                ?: ThemeMode.DARK
         }
 
     fun keepScreenOn(context: Context): Flow<Boolean> =
@@ -51,7 +51,7 @@ object SettingsStore {
 @Composable
 fun NinnanannaApp() {
     val context = LocalContext.current.applicationContext
-    val themeMode by SettingsStore.themeMode(context).collectAsState(initial = ThemeMode.AMOLED)
+    val themeMode by SettingsStore.themeMode(context).collectAsState(initial = ThemeMode.DARK)
     val navController = rememberNavController()
 
     NinnanannaTheme(mode = themeMode) {

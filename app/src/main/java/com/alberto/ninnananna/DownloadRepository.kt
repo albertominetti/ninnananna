@@ -53,16 +53,24 @@ object DownloadRepository {
 
     /**
      * Ninnenanne preinstallate nell'APK (res/raw) e copiate in
-     * filesDir/lullabies al primo avvio (se la cartella è vuota):
+     * filesDir/lullabies al primo avvio (e a ogni avvio, se mancanti):
      * - Brahms "Wiegenlied" op.49 n.4 (registrazione 1915, pubblico dominio);
-     * - white noise (5 min) per mascherare i rumori;
-     * - battito + rumore uterino (5 min, ~70 bpm).
+     * - rumore bianco (5 min) per mascherare i rumori;
+     * - "cuore arricchito" (5 min): battito + rumore bianco della pancia + whoosh;
+     * - "ecografia vera" (~6 min): registrazione doppler ripulita e ammorbidita;
+     * - "cuore marrone" (5 min): rumore marrone + battito lento e dolce.
      */
     private val BUNDLED_LULLABIES = listOf(
         "brahms_lullaby.mp3" to R.raw.brahms_lullaby,
         "white_noise.mp3" to R.raw.white_noise,
-        "womb_heartbeat.mp3" to R.raw.womb_heartbeat
+        "cuore_arricchito.mp3" to R.raw.cuore_arricchito,
+        "ecografia_vera.mp3" to R.raw.ecografia_vera,
+        "cuore_marrone.mp3" to R.raw.cuore_marrone
     )
+
+    /** Suoni preinstallati in versioni precedenti e non più inclusi: vengono
+     *  rimossi automaticamente (erano protetti, quindi mai modificati). */
+    private val OBSOLETE_BUNDLED_FILE_NAMES = setOf("womb_heartbeat.mp3")
 
     /** Nomi dei file preinstallati (per identificare gli item bundled). */
     private val BUNDLED_FILE_NAMES = BUNDLED_LULLABIES.map { it.first }.toSet()
@@ -131,40 +139,41 @@ object DownloadRepository {
         File(context.applicationContext.filesDir, DIR_NAME).apply { mkdirs() }
 
     /**
-     * Copia le ninnenanne preinstallate nell'APK (res/raw) in
-     * filesDir/lullabies al primo avvio, ma solo se la cartella è vuota.
+     * Allinea i suoni preinstallati nella cartella filesDir/lullabies:
+     * - rimuove quelli non più inclusi (es. il vecchio battito uterino);
+     * - copia quelli mancanti (primo avvio, oppure aggiornamento con nuovi suoni).
      *
-     * @return true se almeno un file è stato copiato (o era già presente).
+     * @return true se qualcosa è stato copiato o rimosso.
      */
     suspend fun ensureBundledLullabies(context: Context): Boolean = withContext(Dispatchers.IO) {
         val dir = lullabiesDir(context)
-        val existing = dir.listFiles { f -> f.isFile } ?: emptyArray()
-        if (existing.isNotEmpty()) return@withContext false
+        var changed = false
 
-        var copied = false
+        for (oldName in OBSOLETE_BUNDLED_FILE_NAMES) {
+            val stale = File(dir, oldName)
+            if (stale.exists() && stale.delete()) changed = true
+        }
+
         for ((fileName, resId) in BUNDLED_LULLABIES) {
             val target = File(dir, fileName)
-            if (target.exists()) {
-                copied = true
-                continue
-            }
+            if (target.exists()) continue
             try {
                 context.resources.openRawResource(resId).use { input ->
                     target.outputStream().use { output -> input.copyTo(output) }
                 }
-                copied = true
+                changed = true
             } catch (e: Exception) {
                 target.delete()
             }
         }
-        copied
+        changed
     }
 
     // ---------------- Elenco ----------------
 
     suspend fun listLullabies(context: Context): List<Lullaby> = withContext(Dispatchers.IO) {
         val dir = lullabiesDir(context)
-        // Al primo avvio (cartella vuota) copia le ninnenanne incluse nell'APK.
+        // Allinea i suoni preinstallati: copia i mancanti, rimuove i vecchi.
         ensureBundledLullabies(context)
         dir.listFiles { f -> f.isFile }
             ?.sortedBy { it.name.lowercase() }
@@ -362,6 +371,15 @@ object DownloadRepository {
  * - Title Case semplice (prima lettera di ogni parola maiuscola, il resto
  *   invariato: gli acronimi eventuali non vengono toccati).
  */
+/** Nomi in italiano dei suoni preinstallati (solo per la visualizzazione). */
+private val BUNDLED_DISPLAY_NAMES_IT = mapOf(
+    "brahms_lullaby" to "Ninna nanna di Brahms",
+    "white_noise" to "Rumore bianco",
+    "cuore_arricchito" to "Cuore arricchito",
+    "ecografia_vera" to "Ecografia vera",
+    "cuore_marrone" to "Cuore marrone"
+)
+
 fun formatDisplayName(fileName: String): String {
     var name = fileName.trim()
     for (ext in DISPLAY_EXTENSIONS) {
@@ -370,6 +388,8 @@ fun formatDisplayName(fileName: String): String {
             break
         }
     }
+    // Nomi in italiano per i suoni preinstallati.
+    BUNDLED_DISPLAY_NAMES_IT[name.lowercase()]?.let { return it }
     val words = name
         .replace('_', ' ')
         .replace('-', ' ')

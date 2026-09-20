@@ -54,7 +54,7 @@ fun SettingsScreen(onBack: () -> Unit) {
     val context = LocalContext.current.applicationContext
     val scope = rememberCoroutineScope()
 
-    val themeMode by SettingsStore.themeMode(context).collectAsState(initial = ThemeMode.AMOLED)
+    val themeMode by SettingsStore.themeMode(context).collectAsState(initial = ThemeMode.DARK)
     val keepScreenOn by SettingsStore.keepScreenOn(context).collectAsState(initial = false)
 
     var lullabies by remember { mutableStateOf(emptyList<Lullaby>()) }
