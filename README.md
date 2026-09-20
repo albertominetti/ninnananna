@@ -157,9 +157,10 @@ L'app richiede **solo** il permesso `INTERNET` per il download; non chiede altri
 Su un tag `v*` (es. `git tag v1.0.0 && git push origin v1.0.0`) il workflow
 `.github/workflows/release.yml`:
 
-1. compila `assembleRelease` + `bundleRelease` con `setup-java` (Temurin 17) e `setup-android`;
-2. carica APK e AAB come **artifact**;
-3. crea una **GitHub Release** con i file allegati (`softprops/action-gh-release`).
+1. configura JDK 17 (Temurin) con `actions/setup-java` — l'**Android SDK** è già preinstallato sul runner (niente più `android-actions/setup-android`, ormai deprecato e rotto);
+2. compila `assembleRelease` + `bundleRelease`;
+3. carica APK e AAB come **artifact**;
+4. crea una **GitHub Release** con i file allegati (`softprops/action-gh-release`).
 
 Per firmare con la chiave di release su GitHub, aggiungere i **repository secrets**:
 `KEYSTORE_BASE64` (keystore codificato in base64), `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
