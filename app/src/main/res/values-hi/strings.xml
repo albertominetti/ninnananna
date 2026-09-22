@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">सहेजें</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="close">बंद करें</string>
+    <string name="stop">रोकें</string>
+    <string name="play">चलाएं</string>
+    <string name="off">बंद</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">सेटिंग्स</string>
+    <string name="content_desc_back">वापस</string>
+    <string name="content_desc_add_from_yt">YT से जोड़ें</string>
+    <string name="content_desc_volume">वॉल्यूम</string>
+    <string name="content_desc_rename">नाम बदलें</string>
+    <string name="content_desc_delete">हटाएं</string>
+    <string name="content_desc_repeat_one_on">एक गाना दोहराएँ: चालू</string>
+    <string name="content_desc_repeat_one_off">एक गाना दोहराएँ: बंद</string>
+    <string name="content_desc_sleep_timer">स्लीप टाइमर</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">डाउनलोड हो रहा है (%1$d)</string>
+    <string name="empty_list">कोई ऑडियो नहीं। YouTube से लोरी जोड़ें, या पहली बार लॉन्च पर पहले से इंस्टॉल किए गए (ब्राह्म्स, सफेद शोर, पेट में दिल की धड़कन) कॉपी हो जाएंगे।</string>
+    <string name="section_predownloaded">पहले से इंस्टॉल</string>
+    <string name="section_downloaded">डाउनलोड किया गया</string>
+    <string name="add_from_youtube_title">YouTube से जोड़ें</string>
+    <string name="add_from_youtube_subtitle">YouTube लिंक पेस्ट करें: ऑडियो बैकग्राउंड में प्रगति नोटिफिकेशन के साथ डाउनलोड होगा।</string>
+    <string name="youtube_url_label">YouTube URL</string>
+    <string name="download_in_background">बैकग्राउंड में डाउनलोड करें</string>
+    <string name="download_failed">डाउनलोड विफल।</string>
+    <string name="download_started_background">बैकग्राउंड में डाउनलोड शुरू हुआ: प्रगति नोटिफिकेशन में देखें।</string>
+    <string name="rename_dialog_title">ऑडियो का नाम बदलें</string>
+    <string name="new_name_label">नया नाम</string>
+    <string name="rename_failed">नाम बदलना विफल: नाम पहले से मौजूद है या अमान्य है।</string>
+    <string name="queued">कतार में: कनेक्शन की प्रतीक्षा…</string>
+    <string name="downloading_progress">डाउनलोड हो रहा है… %1$d%%</string>
+    <string name="preparing">तैयार हो रहा है…</string>
+    <string name="streaming_to">%1$s पर स्ट्रीम हो रहा है</string>
+    <string name="cast_device">कास्ट डिवाइस</string>
+    <string name="now_playing">अभी चल रहा है</string>
+    <string name="sleep_timer">स्लीप टाइमर</string>
+    <string name="sleep_timer_active">स्लीप टाइमर सक्रिय</string>
+    <string name="sleep_timer_remaining">स्लीप टाइमर: %1$s</string>
+    <string name="sleep_15_min">15 मिनट</string>
+    <string name="sleep_30_min">30 मिनट</string>
+    <string name="sleep_1_hour">1 घंटा</string>
+    <string name="sleep_2_hours">2 घंटे</string>
+    <string name="sleep_3_hours">3 घंटे</string>
+    <string name="sleep_4_hours">4 घंटे</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">ब्राह्म्स की लोरी</string>
+    <string name="bundled_white_noise">सफेद शोर</string>
+    <string name="bundled_enriched_heart">बढ़ी हुई दिल की धड़कन</string>
+    <string name="bundled_real_ultrasound">वास्तविक अल्ट्रासाउंड</string>
+    <string name="bundled_brown_heart">ब्राउन दिल की धड़कन</string>
+
+    <!-- Settings -->
+    <string name="settings_section">सेटिंग्स</string>
+    <string name="theme_section">थीम</string>
+    <string name="theme_light">लाइट</string>
+    <string name="theme_light_desc">हल्के रंग</string>
+    <string name="theme_dark">डार्क</string>
+    <string name="theme_dark_desc">गहरे रंग</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">शुद्ध काला: रात के लिए आदर्श</string>
+    <string name="keep_screen_on">स्क्रीन चालू रखें</string>
+    <string name="keep_screen_on_desc">प्लेबैक के दौरान स्क्रीन बंद होने से रोकें</string>
+    <string name="data_section">डेटा</string>
+    <string name="downloaded_count">%1$d डाउनलोड किए गए ऑडियो (%2$d पहले से इंस्टॉल हमेशा रखे जाते हैं)</string>
+    <string name="delete_all_downloaded">सभी डाउनलोड हटाएं</string>
+    <string name="reset_title">पूर्ण रीसेट</string>
+    <string name="reset_message">क्या आप %1$d डाउनलोड किए गए ऑडियो हटाना चाहते हैं? पहले से इंस्टॉल (ब्राह्म्स, सफेद शोर, दिल की धड़कन) नहीं हटेंगे। यह क्रिया वापस नहीं ली जा सकती।</string>
+    <string name="delete_all">सभी हटाएं</string>
+    <string name="reset_deleted">%1$d डाउनलोड किए गए ऑडियो हटाए गए (पहले से इंस्टॉल रखे गए)।</string>
+    <string name="reset_none">हटाने के लिए कोई डाउनलोड ऑडियो नहीं।</string>
+    <string name="language_section">भाषा</string>
+    <string name="language_system_default">सिस्टम डिफ़ॉल्ट</string>
+    <string name="language_system_default_desc">डिवाइस की भाषा उपयोग करें</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">अमान्य URL।</string>
+    <string name="starting_download">डाउनलोड शुरू हो रहा है…</string>
+    <string name="download_completed">डाउनलोड पूरा हुआ</string>
+    <string name="download_completed_title">डाउनलोड पूरा हुआ: %1$s</string>
+    <string name="preparing_download">डाउनलोड तैयार हो रहा है…</string>
+    <string name="download_error">डाउनलोड के दौरान त्रुटि।</string>
+    <string name="channel_downloads">लोरी डाउनलोड</string>
+    <string name="channel_downloads_desc">बैकग्राउंड डाउनलोड प्रगति</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">इस वीडियो के लिए कोई ऑडियो स्ट्रीम उपलब्ध नहीं।</string>
+    <string name="err_no_url">स्ट्रीम में फ़ाइल URL नहीं।</string>
+    <string name="err_network">डाउनलोड के दौरान नेटवर्क त्रुटि: %1$s</string>
+    <string name="err_parse">वीडियो पार्स नहीं हो सका: %1$s</string>
+    <string name="err_download">डाउनलोड के दौरान त्रुटि: %1$s</string>
+    <string name="err_http">डाउनलोड के दौरान HTTP प्रतिक्रिया %1$d।</string>
+    <string name="err_no_body">बिना सामग्री की प्रतिक्रिया।</string>
+    <string name="err_incomplete">अधूरा डाउनलोड (%1$d/%2$d बाइट)।</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">प्लेबैक</string>
+    <string name="channel_playback_desc">प्लेबैक के दौरान स्थायी अधिसूचना</string>
+
+    <!-- About -->
+    <string name="version">संस्करण: %1$s</string>
+</resources>

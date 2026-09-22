@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">حفظ</string>
+    <string name="cancel">إلغاء</string>
+    <string name="close">إغلاق</string>
+    <string name="stop">إيقاف</string>
+    <string name="play">تشغيل</string>
+    <string name="off">إيقاف</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">الإعدادات</string>
+    <string name="content_desc_back">رجوع</string>
+    <string name="content_desc_add_from_yt">إضافة من YT</string>
+    <string name="content_desc_volume">مستوى الصوت</string>
+    <string name="content_desc_rename">إعادة تسمية</string>
+    <string name="content_desc_delete">حذف</string>
+    <string name="content_desc_repeat_one_on">تكرار أغنية واحدة: تشغيل</string>
+    <string name="content_desc_repeat_one_off">تكرار أغنية واحدة: إيقاف</string>
+    <string name="content_desc_sleep_timer">مؤقت النوم</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">جارٍ التنزيل (%1$d)</string>
+    <string name="empty_list">لا يوجد صوت. أضف تهويدة من YouTube، أو سيتم نسخ الأصوات المثبتة مسبقاً (برامز، الضوضاء البيضاء، نبض القلب في البطن) عند التشغيل الأول.</string>
+    <string name="section_predownloaded">مثبتة مسبقاً</string>
+    <string name="section_downloaded">تم تنزيلها</string>
+    <string name="add_from_youtube_title">إضافة من YouTube</string>
+    <string name="add_from_youtube_subtitle">الصق رابط YouTube: سيتم تنزيل الصوت في الخلفية مع إشعار بالتقدم.</string>
+    <string name="youtube_url_label">رابط YouTube</string>
+    <string name="download_in_background">تنزيل في الخلفية</string>
+    <string name="download_failed">فشل التنزيل.</string>
+    <string name="download_started_background">بدأ التنزيل في الخلفية: التقدم في الإشعار.</string>
+    <string name="rename_dialog_title">إعادة تسمية الصوت</string>
+    <string name="new_name_label">الاسم الجديد</string>
+    <string name="rename_failed">فشلت إعادة التسمية: الاسم موجود بالفعل أو غير صالح.</string>
+    <string name="queued">في الانتظار: انتظار الاتصال…</string>
+    <string name="downloading_progress">جارٍ التنزيل… %1$d%%</string>
+    <string name="preparing">جارٍ التحضير…</string>
+    <string name="streaming_to">البث إلى %1$s</string>
+    <string name="cast_device">جهاز البث</string>
+    <string name="now_playing">قيد التشغيل الآن</string>
+    <string name="sleep_timer">مؤقت النوم</string>
+    <string name="sleep_timer_active">مؤقت النوم نشط</string>
+    <string name="sleep_timer_remaining">مؤقت النوم: %1$s</string>
+    <string name="sleep_15_min">15 دقيقة</string>
+    <string name="sleep_30_min">30 دقيقة</string>
+    <string name="sleep_1_hour">ساعة واحدة</string>
+    <string name="sleep_2_hours">ساعتان</string>
+    <string name="sleep_3_hours">3 ساعات</string>
+    <string name="sleep_4_hours">4 ساعات</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">تهويدة برامز</string>
+    <string name="bundled_white_noise">الضوضاء البيضاء</string>
+    <string name="bundled_enriched_heart">نبض القلب المعزز</string>
+    <string name="bundled_real_ultrasound">موجات فوق صوتية حقيقية</string>
+    <string name="bundled_brown_heart">نبض القلب البني</string>
+
+    <!-- Settings -->
+    <string name="settings_section">الإعدادات</string>
+    <string name="theme_section">السمة</string>
+    <string name="theme_light">فاتح</string>
+    <string name="theme_light_desc">ألوان فاتحة</string>
+    <string name="theme_dark">داكن</string>
+    <string name="theme_dark_desc">ألوان داكنة</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">أسود خالص: مثالي ليلاً</string>
+    <string name="keep_screen_on">إبقاء الشاشة مضاءة</string>
+    <string name="keep_screen_on_desc">منع إطفاء الشاشة أثناء التشغيل</string>
+    <string name="data_section">البيانات</string>
+    <string name="downloaded_count">%1$d من الأصوات التي تم تنزيلها (%2$d مثبتة مسبقاً محفوظة دائماً)</string>
+    <string name="delete_all_downloaded">حذف كل ما تم تنزيله</string>
+    <string name="reset_title">إعادة تعيين كاملة</string>
+    <string name="reset_message">هل تريد حذف %1$d من الأصوات التي تم تنزيلها؟ الأصوات المثبتة مسبقاً (برامز، الضوضاء البيضاء، نبض القلب) لن تُمس. هذه العملية لا يمكن التراجع عنها.</string>
+    <string name="delete_all">حذف الكل</string>
+    <string name="reset_deleted">تم حذف %1$d من الأصوات التي تم تنزيلها (تم الاحتفاظ بالمثبتة مسبقاً).</string>
+    <string name="reset_none">لا توجد أصوات تم تنزيلها لحذفها.</string>
+    <string name="language_section">اللغة</string>
+    <string name="language_system_default">افتراضي النظام</string>
+    <string name="language_system_default_desc">استخدام لغة الجهاز</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">رابط غير صالح.</string>
+    <string name="starting_download">بدء التنزيل…</string>
+    <string name="download_completed">اكتمل التنزيل</string>
+    <string name="download_completed_title">اكتمل التنزيل: %1$s</string>
+    <string name="preparing_download">جارٍ تحضير التنزيل…</string>
+    <string name="download_error">خطأ أثناء التنزيل.</string>
+    <string name="channel_downloads">تنزيل التهويدات</string>
+    <string name="channel_downloads_desc">تقدم التنزيلات في الخلفية</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">لا يوجد تدفق صوتي متاح لهذا الفيديو.</string>
+    <string name="err_no_url">التدفق بدون رابط ملف.</string>
+    <string name="err_network">خطأ في الشبكة أثناء التنزيل: %1$s</string>
+    <string name="err_parse">تعذر تحليل الفيديو: %1$s</string>
+    <string name="err_download">خطأ أثناء التنزيل: %1$s</string>
+    <string name="err_http">استجابة HTTP %1$d أثناء التنزيل.</string>
+    <string name="err_no_body">استجابة بدون محتوى.</string>
+    <string name="err_incomplete">تنزيل غير مكتمل (%1$d/%2$d بايت).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">التشغيل</string>
+    <string name="channel_playback_desc">إشعار مستمر أثناء التشغيل</string>
+
+    <!-- About -->
+    <string name="version">الإصدار: %1$s</string>
+</resources>

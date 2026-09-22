@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">சேமி</string>
+    <string name="cancel">ரத்து செய்</string>
+    <string name="close">மூடு</string>
+    <string name="stop">நிறுத்து</string>
+    <string name="play">இயக்கு</string>
+    <string name="off">அணை</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">அமைப்புகள்</string>
+    <string name="content_desc_back">பின்</string>
+    <string name="content_desc_add_from_yt">YT இலிருந்து சேர்</string>
+    <string name="content_desc_volume">ஒலி அளவு</string>
+    <string name="content_desc_rename">பெயர் மாற்று</string>
+    <string name="content_desc_delete">நீக்கு</string>
+    <string name="content_desc_repeat_one_on">ஒரு பாடல் மீண்டும்: இயக்கத்தில்</string>
+    <string name="content_desc_repeat_one_off">ஒரு பாடல் மீண்டும்: அணைக்கப்பட்டது</string>
+    <string name="content_desc_sleep_timer">தூக்க டைமர்</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">பதிவிறக்கம் (%1$d)</string>
+    <string name="empty_list">ஆடியோ இல்லை. YouTube இலிருந்து தாலாட்டு சேர்க்கவும், அல்லது முதல் தொடக்கத்தில் முன் நிறுவப்பட்டவை (பிராம்ஸ், வெள்ளை இரைச்சல், வயிற்றில் இதயத் துடிப்பு) நகலெடுக்கப்படும்.</string>
+    <string name="section_predownloaded">முன் நிறுவப்பட்டது</string>
+    <string name="section_downloaded">பதிவிறக்கப்பட்டது</string>
+    <string name="add_from_youtube_title">YouTube இலிருந்து சேர்</string>
+    <string name="add_from_youtube_subtitle">YouTube இணைப்பை ஒட்டவும்: ஆடியோ பின்னணியில் பதிவிறக்கப்பட்டு முன்னேற்ற அறிவிப்பு காட்டப்படும்.</string>
+    <string name="youtube_url_label">YouTube இணைப்பு</string>
+    <string name="download_in_background">பின்னணியில் பதிவிறக்கு</string>
+    <string name="download_failed">பதிவிறக்கம் தோல்வி.</string>
+    <string name="download_started_background">பின்னணியில் பதிவிறக்கம் தொடங்கியது: முன்னேற்றம் அறிவிப்பில்.</string>
+    <string name="rename_dialog_title">ஆடியோ பெயர் மாற்று</string>
+    <string name="new_name_label">புதிய பெயர்</string>
+    <string name="rename_failed">பெயர் மாற்றம் தோல்வி: பெயர் ஏற்கனவே உள்ளது அல்லது தவறானது.</string>
+    <string name="queued">வரிசையில்: இணைப்புக்காக காத்திருக்கிறது…</string>
+    <string name="downloading_progress">பதிவிறக்குகிறது… %1$d%%</string>
+    <string name="preparing">தயாராகிறது…</string>
+    <string name="streaming_to">%1$s க்கு ஸ்ட்ரீமிங்</string>
+    <string name="cast_device">காஸ்ட் சாதனம்</string>
+    <string name="now_playing">இப்போது இயங்குகிறது</string>
+    <string name="sleep_timer">தூக்க டைமர்</string>
+    <string name="sleep_timer_active">தூக்க டைமர் செயலில்</string>
+    <string name="sleep_timer_remaining">தூக்க டைமர்: %1$s</string>
+    <string name="sleep_15_min">15 நிமிடங்கள்</string>
+    <string name="sleep_30_min">30 நிமிடங்கள்</string>
+    <string name="sleep_1_hour">1 மணி</string>
+    <string name="sleep_2_hours">2 மணி</string>
+    <string name="sleep_3_hours">3 மணி</string>
+    <string name="sleep_4_hours">4 மணி</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">பிராம்ஸ் தாலாட்டு</string>
+    <string name="bundled_white_noise">வெள்ளை இரைச்சல்</string>
+    <string name="bundled_enriched_heart">மேம்படுத்தப்பட்ட இதயத் துடிப்பு</string>
+    <string name="bundled_real_ultrasound">உண்மையான அல்ட்ராசவுண்ட்</string>
+    <string name="bundled_brown_heart">பிரவுன் இதயத் துடிப்பு</string>
+
+    <!-- Settings -->
+    <string name="settings_section">அமைப்புகள்</string>
+    <string name="theme_section">தீம்</string>
+    <string name="theme_light">லைட்</string>
+    <string name="theme_light_desc">வெளிர் நிறங்கள்</string>
+    <string name="theme_dark">டார்க்</string>
+    <string name="theme_dark_desc">அடர் நிறங்கள்</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">தூய கருப்பு: இரவுக்கு சிறந்தது</string>
+    <string name="keep_screen_on">திரையை இயக்கத்தில் வை</string>
+    <string name="keep_screen_on_desc">இயக்கத்தின் போது திரை அணைவதைத் தடு</string>
+    <string name="data_section">தரவு</string>
+    <string name="downloaded_count">%1$d பதிவிறக்கப்பட்ட ஆடியோக்கள் (%2$d முன் நிறுவப்பட்டவை எப்போதும் வைக்கப்படும்)</string>
+    <string name="delete_all_downloaded">பதிவிறக்கிய அனைத்தையும் நீக்கு</string>
+    <string name="reset_title">முழு மீட்டமைப்பு</string>
+    <string name="reset_message">%1$d பதிவிறக்கப்பட்ட ஆடியோக்களை நீக்கவா? முன் நிறுவப்பட்டவை (பிராம்ஸ், வெள்ளை இரைச்சல், இதயத் துடிப்பு) நீக்கப்படாது. இது மீள முடியாதது.</string>
+    <string name="delete_all">அனைத்தையும் நீக்கு</string>
+    <string name="reset_deleted">%1$d பதிவிறக்கப்பட்ட ஆடியோக்கள் நீக்கப்பட்டன (முன் நிறுவப்பட்டவை வைக்கப்பட்டன).</string>
+    <string name="reset_none">நீக்க பதிவிறக்கப்பட்ட ஆடியோ இல்லை.</string>
+    <string name="language_section">மொழி</string>
+    <string name="language_system_default">கணினி இயல்புநிலை</string>
+    <string name="language_system_default_desc">சாதன மொழியைப் பயன்படுத்து</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">தவறான URL.</string>
+    <string name="starting_download">பதிவிறக்கம் தொடங்குகிறது…</string>
+    <string name="download_completed">பதிவிறக்கம் முடிந்தது</string>
+    <string name="download_completed_title">பதிவிறக்கம் முடிந்தது: %1$s</string>
+    <string name="preparing_download">பதிவிறக்கம் தயாராகிறது…</string>
+    <string name="download_error">பதிவிறக்கத்தில் பிழை.</string>
+    <string name="channel_downloads">தாலாட்டு பதிவிறக்கங்கள்</string>
+    <string name="channel_downloads_desc">பின்னணி பதிவிறக்க முன்னேற்றம்</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">இந்த வீடியோவிற்கு ஆடியோ ஸ்ட்ரீம் இல்லை.</string>
+    <string name="err_no_url">ஸ்ட்ரீமில் கோப்பு URL இல்லை.</string>
+    <string name="err_network">பதிவிறக்கத்தில் நெட்வொர்க் பிழை: %1$s</string>
+    <string name="err_parse">வீடியோவை பாகுபடுத்த முடியவில்லை: %1$s</string>
+    <string name="err_download">பதிவிறக்கத்தில் பிழை: %1$s</string>
+    <string name="err_http">பதிவிறக்கத்தில் HTTP பதில் %1$d.</string>
+    <string name="err_no_body">உள்ளடக்கம் இல்லாத பதில்.</string>
+    <string name="err_incomplete">முழுமையற்ற பதிவிறக்கம் (%1$d/%2$d பைட்டுகள்).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">இயக்கம்</string>
+    <string name="channel_playback_desc">இயக்கத்தின் போது நிலையான அறிவிப்பு</string>
+
+    <!-- About -->
+    <string name="version">பதிப்பு: %1$s</string>
+</resources>

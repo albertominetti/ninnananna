@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
+    <string name="close">닫기</string>
+    <string name="stop">정지</string>
+    <string name="play">재생</string>
+    <string name="off">끔</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">설정</string>
+    <string name="content_desc_back">뒤로</string>
+    <string name="content_desc_add_from_yt">YT에서 추가</string>
+    <string name="content_desc_volume">음량</string>
+    <string name="content_desc_rename">이름 바꾸기</string>
+    <string name="content_desc_delete">삭제</string>
+    <string name="content_desc_repeat_one_on">한 곡 반복: 켬</string>
+    <string name="content_desc_repeat_one_off">한 곡 반복: 끔</string>
+    <string name="content_desc_sleep_timer">수면 타이머</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">다운로드 중 (%1$d)</string>
+    <string name="empty_list">오디오가 없습니다. YouTube에서 자장가를 추가하거나, 첫 실행 시 미리 설치된 음원(브람스, 백색소음, 배 속 심장 소리)이 복사됩니다.</string>
+    <string name="section_predownloaded">미리 설치됨</string>
+    <string name="section_downloaded">다운로드됨</string>
+    <string name="add_from_youtube_title">YouTube에서 추가</string>
+    <string name="add_from_youtube_subtitle">YouTube 링크를 붙여넣으세요: 오디오가 백그라운드에서 다운로드되며 진행률이 알림에 표시됩니다.</string>
+    <string name="youtube_url_label">YouTube 링크</string>
+    <string name="download_in_background">백그라운드에서 다운로드</string>
+    <string name="download_failed">다운로드 실패.</string>
+    <string name="download_started_background">백그라운드에서 다운로드가 시작되었습니다: 진행률은 알림에서 확인하세요.</string>
+    <string name="rename_dialog_title">오디오 이름 바꾸기</string>
+    <string name="new_name_label">새 이름</string>
+    <string name="rename_failed">이름 바꾸기 실패: 이름이 이미 존재하거나 유효하지 않습니다.</string>
+    <string name="queued">대기 중: 연결 대기…</string>
+    <string name="downloading_progress">다운로드 중… %1$d%%</string>
+    <string name="preparing">준비 중…</string>
+    <string name="streaming_to">%1$s(으)로 캐스팅 중</string>
+    <string name="cast_device">캐스트 기기</string>
+    <string name="now_playing">재생 중</string>
+    <string name="sleep_timer">수면 타이머</string>
+    <string name="sleep_timer_active">수면 타이머 작동 중</string>
+    <string name="sleep_timer_remaining">수면 타이머: %1$s</string>
+    <string name="sleep_15_min">15분</string>
+    <string name="sleep_30_min">30분</string>
+    <string name="sleep_1_hour">1시간</string>
+    <string name="sleep_2_hours">2시간</string>
+    <string name="sleep_3_hours">3시간</string>
+    <string name="sleep_4_hours">4시간</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">브람스 자장가</string>
+    <string name="bundled_white_noise">백색소음</string>
+    <string name="bundled_enriched_heart">강화된 심장 소리</string>
+    <string name="bundled_real_ultrasound">실제 초음파</string>
+    <string name="bundled_brown_heart">브라운 심장 소리</string>
+
+    <!-- Settings -->
+    <string name="settings_section">설정</string>
+    <string name="theme_section">테마</string>
+    <string name="theme_light">라이트</string>
+    <string name="theme_light_desc">밝은 색상</string>
+    <string name="theme_dark">다크</string>
+    <string name="theme_dark_desc">어두운 색상</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">완전 검정: 밤에 최적</string>
+    <string name="keep_screen_on">화면 켜짐 유지</string>
+    <string name="keep_screen_on_desc">재생 중 화면이 꺼지지 않도록 방지</string>
+    <string name="data_section">데이터</string>
+    <string name="downloaded_count">%1$d개 다운로드된 오디오 (%2$d개 미리 설치된 항목은 항상 유지)</string>
+    <string name="delete_all_downloaded">다운로드한 항목 모두 삭제</string>
+    <string name="reset_title">전체 초기화</string>
+    <string name="reset_message">%1$d개의 다운로드된 오디오를 삭제하시겠습니까? 미리 설치된 항목(브람스, 백색소음, 심장 소리)은 삭제되지 않습니다. 이 작업은 되돌릴 수 없습니다.</string>
+    <string name="delete_all">모두 삭제</string>
+    <string name="reset_deleted">%1$d개의 다운로드된 오디오를 삭제했습니다 (미리 설치된 항목 유지).</string>
+    <string name="reset_none">삭제할 다운로드된 오디오가 없습니다.</string>
+    <string name="language_section">언어</string>
+    <string name="language_system_default">시스템 기본값</string>
+    <string name="language_system_default_desc">기기 언어 사용</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">잘못된 URL.</string>
+    <string name="starting_download">다운로드 시작…</string>
+    <string name="download_completed">다운로드 완료</string>
+    <string name="download_completed_title">다운로드 완료: %1$s</string>
+    <string name="preparing_download">다운로드 준비 중…</string>
+    <string name="download_error">다운로드 중 오류가 발생했습니다.</string>
+    <string name="channel_downloads">자장가 다운로드</string>
+    <string name="channel_downloads_desc">백그라운드 다운로드 진행률</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">이 동영상에 사용할 수 있는 오디오 스트림이 없습니다.</string>
+    <string name="err_no_url">스트림에 파일 URL이 없습니다.</string>
+    <string name="err_network">다운로드 중 네트워크 오류: %1$s</string>
+    <string name="err_parse">동영상을 파싱할 수 없습니다: %1$s</string>
+    <string name="err_download">다운로드 중 오류 발생: %1$s</string>
+    <string name="err_http">다운로드 중 HTTP 응답 %1$d.</string>
+    <string name="err_no_body">내용 없는 응답.</string>
+    <string name="err_incomplete">불완전한 다운로드(%1$d/%2$d 바이트).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">재생</string>
+    <string name="channel_playback_desc">재생 중 지속 알림</string>
+
+    <!-- About -->
+    <string name="version">버전: %1$s</string>
+</resources>

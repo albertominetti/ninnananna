@@ -39,4 +39,10 @@
     <locale android:name="bs" />
     <locale android:name="cy" />
     <locale android:name="lb" />
+    <locale android:name="zh" />
+    <locale android:name="ja" />
+    <locale android:name="ko" />
+    <locale android:name="ar" />
+    <locale android:name="hi" />
+    <locale android:name="ta" />
 </locale-config>

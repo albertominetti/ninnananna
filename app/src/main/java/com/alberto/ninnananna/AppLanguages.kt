@@ -14,7 +14,7 @@ import kotlinx.coroutines.runBlocking
  */
 object AppLanguages {
 
-    /** Supported European locales with their native display names. */
+    /** Supported locales with their native display names. */
     val SUPPORTED: List<Pair<String, String>> = listOf(
         "en" to "English",
         "it" to "Italiano",
@@ -54,22 +54,43 @@ object AppLanguages {
         "be" to "Беларуская",
         "bs" to "Bosanski",
         "cy" to "Cymraeg",
-        "lb" to "Lëtzebuergesch"
+        "lb" to "Lëtzebuergesch",
+        "zh" to "中文 (简体)",
+        "ja" to "日本語",
+        "ko" to "한국어",
+        "ar" to "العربية",
+        "hi" to "हिन्दी",
+        "ta" to "தமிழ்"
     )
 
     fun isSupported(tag: String): Boolean = SUPPORTED.any { it.first == tag }
 
     /**
-     * Reads the stored preference and applies it to the app (or resets to
-     * the system default when null).
+     * Reads the stored preference and applies it to the app.
+     * - If a valid stored tag exists, it is applied.
+     * - If the stored tag is invalid, English is used.
+     * - If no stored preference ([null] = follow system): when the system
+     *   language is not among [SUPPORTED], English is enforced as default.
      */
     fun applyStoredOrDefault(context: Context) {
         val tag = runBlocking { SettingsStore.language(context).first() }
-        if (tag != null && isSupported(tag)) {
-            setLocale(tag)
-        } else {
-            setLocale(null)
+        if (tag != null) {
+            if (isSupported(tag)) setLocale(tag) else setLocale("en")
+            return
         }
+        // No stored preference -> check system locales
+        val locales = context.resources.configuration.locales
+        for (i in 0 until locales.size()) {
+            val locale = locales.get(i)
+            val fullTag = locale.toLanguageTag()
+            val lang = locale.language
+            if (isSupported(fullTag) || isSupported(lang)) {
+                setLocale(null) // follow system
+                return
+            }
+        }
+        // System language not supported -> default to English
+        setLocale("en")
     }
 
     /** Applies a locale tag immediately (null = follow the system language). */

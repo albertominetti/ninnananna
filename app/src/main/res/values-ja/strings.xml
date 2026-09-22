@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">保存</string>
+    <string name="cancel">キャンセル</string>
+    <string name="close">閉じる</string>
+    <string name="stop">停止</string>
+    <string name="play">再生</string>
+    <string name="off">オフ</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">設定</string>
+    <string name="content_desc_back">戻る</string>
+    <string name="content_desc_add_from_yt">YTから追加</string>
+    <string name="content_desc_volume">音量</string>
+    <string name="content_desc_rename">名前変更</string>
+    <string name="content_desc_delete">削除</string>
+    <string name="content_desc_repeat_one_on">リピート1曲：オン</string>
+    <string name="content_desc_repeat_one_off">リピート1曲：オフ</string>
+    <string name="content_desc_sleep_timer">スリープタイマー</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">ダウンロード中 (%1$d)</string>
+    <string name="empty_list">音声がありません。YouTubeから子守唄を追加するか、初回起動時にプリインストール音源（ブラームス、ホワイトノイズ、お腹の心音）がコピーされます。</string>
+    <string name="section_predownloaded">プリインストール</string>
+    <string name="section_downloaded">ダウンロード済み</string>
+    <string name="add_from_youtube_title">YouTubeから追加</string>
+    <string name="add_from_youtube_subtitle">YouTubeリンクを貼り付け：音声はバックグラウンドでダウンロードされ進捗が通知されます。</string>
+    <string name="youtube_url_label">YouTubeリンク</string>
+    <string name="download_in_background">バックグラウンドでダウンロード</string>
+    <string name="download_failed">ダウンロードに失敗しました。</string>
+    <string name="download_started_background">バックグラウンドでダウンロードを開始しました：進捗は通知で確認できます。</string>
+    <string name="rename_dialog_title">音声の名前変更</string>
+    <string name="new_name_label">新しい名前</string>
+    <string name="rename_failed">名前変更に失敗しました：名前が既に存在するか無効です。</string>
+    <string name="queued">キュー待ち：接続待機中…</string>
+    <string name="downloading_progress">ダウンロード中… %1$d%%</string>
+    <string name="preparing">準備中…</string>
+    <string name="streaming_to">%1$s にキャスト中</string>
+    <string name="cast_device">キャストデバイス</string>
+    <string name="now_playing">再生中</string>
+    <string name="sleep_timer">スリープタイマー</string>
+    <string name="sleep_timer_active">スリープタイマー作動中</string>
+    <string name="sleep_timer_remaining">スリープタイマー：%1$s</string>
+    <string name="sleep_15_min">15分</string>
+    <string name="sleep_30_min">30分</string>
+    <string name="sleep_1_hour">1時間</string>
+    <string name="sleep_2_hours">2時間</string>
+    <string name="sleep_3_hours">3時間</string>
+    <string name="sleep_4_hours">4時間</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">ブラームスの子守唄</string>
+    <string name="bundled_white_noise">ホワイトノイズ</string>
+    <string name="bundled_enriched_heart">強調された心音</string>
+    <string name="bundled_real_ultrasound">実際の超音波</string>
+    <string name="bundled_brown_heart">ブラウン心音</string>
+
+    <!-- Settings -->
+    <string name="settings_section">設定</string>
+    <string name="theme_section">テーマ</string>
+    <string name="theme_light">ライト</string>
+    <string name="theme_light_desc">明るい色</string>
+    <string name="theme_dark">ダーク</string>
+    <string name="theme_dark_desc">暗い色</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">真っ黒：夜に最適</string>
+    <string name="keep_screen_on">画面をオンに保つ</string>
+    <string name="keep_screen_on_desc">再生中に画面が消えないようにする</string>
+    <string name="data_section">データ</string>
+    <string name="downloaded_count">%1$d 件のダウンロード済み音声（%2$d 件のプリインストールは常に保持）</string>
+    <string name="delete_all_downloaded">ダウンロード済みをすべて削除</string>
+    <string name="reset_title">完全リセット</string>
+    <string name="reset_message">%1$d 件のダウンロード済み音声を削除しますか？プリインストール（ブラームス、ホワイトノイズ、心音）は削除されません。この操作は元に戻せません。</string>
+    <string name="delete_all">すべて削除</string>
+    <string name="reset_deleted">%1$d 件のダウンロード済み音声を削除しました（プリインストールは保持）。</string>
+    <string name="reset_none">削除するダウンロード済み音声がありません。</string>
+    <string name="language_section">言語</string>
+    <string name="language_system_default">システム既定</string>
+    <string name="language_system_default_desc">デバイスの言語を使用</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">無効なURL。</string>
+    <string name="starting_download">ダウンロード開始…</string>
+    <string name="download_completed">ダウンロード完了</string>
+    <string name="download_completed_title">ダウンロード完了：%1$s</string>
+    <string name="preparing_download">ダウンロード準備中…</string>
+    <string name="download_error">ダウンロード中にエラーが発生しました。</string>
+    <string name="channel_downloads">子守唄のダウンロード</string>
+    <string name="channel_downloads_desc">バックグラウンドダウンロードの進捗</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">この動画には利用可能な音声ストリームがありません。</string>
+    <string name="err_no_url">ストリームにファイルURLがありません。</string>
+    <string name="err_network">ダウンロード中のネットワークエラー：%1$s</string>
+    <string name="err_parse">動画を解析できませんでした：%1$s</string>
+    <string name="err_download">ダウンロード中にエラーが発生しました：%1$s</string>
+    <string name="err_http">ダウンロード中に HTTP レスポンス %1$d。</string>
+    <string name="err_no_body">内容のないレスポンス。</string>
+    <string name="err_incomplete">不完全なダウンロード（%1$d/%2$d バイト）。</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">再生</string>
+    <string name="channel_playback_desc">再生中の常駐通知</string>
+
+    <!-- About -->
+    <string name="version">バージョン：%1$s</string>
+</resources>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="close">关闭</string>
+    <string name="stop">停止</string>
+    <string name="play">播放</string>
+    <string name="off">关闭</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">设置</string>
+    <string name="content_desc_back">返回</string>
+    <string name="content_desc_add_from_yt">从 YT 添加</string>
+    <string name="content_desc_volume">音量</string>
+    <string name="content_desc_rename">重命名</string>
+    <string name="content_desc_delete">删除</string>
+    <string name="content_desc_repeat_one_on">单曲循环：开</string>
+    <string name="content_desc_repeat_one_off">单曲循环：关</string>
+    <string name="content_desc_sleep_timer">睡眠定时器</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">正在下载 (%1$d)</string>
+    <string name="empty_list">暂无音频。请从 YouTube 添加摇篮曲，或首次启动时会自动复制预装的音频（勃拉姆斯、白噪音、腹中胎心）。</string>
+    <string name="section_predownloaded">预装</string>
+    <string name="section_downloaded">已下载</string>
+    <string name="add_from_youtube_title">从 YouTube 添加</string>
+    <string name="add_from_youtube_subtitle">粘贴 YouTube 链接：音频将在后台下载并显示进度通知。</string>
+    <string name="youtube_url_label">YouTube 链接</string>
+    <string name="download_in_background">在后台下载</string>
+    <string name="download_failed">下载失败。</string>
+    <string name="download_started_background">已在后台开始下载：进度见通知。</string>
+    <string name="rename_dialog_title">重命名音频</string>
+    <string name="new_name_label">新名称</string>
+    <string name="rename_failed">重命名失败：名称已存在或无效。</string>
+    <string name="queued">已排队：等待连接…</string>
+    <string name="downloading_progress">正在下载… %1$d%%</string>
+    <string name="preparing">准备中…</string>
+    <string name="streaming_to">正在投射到 %1$s</string>
+    <string name="cast_device">投射设备</string>
+    <string name="now_playing">正在播放</string>
+    <string name="sleep_timer">睡眠定时器</string>
+    <string name="sleep_timer_active">睡眠定时器已启用</string>
+    <string name="sleep_timer_remaining">睡眠定时器：%1$s</string>
+    <string name="sleep_15_min">15 分钟</string>
+    <string name="sleep_30_min">30 分钟</string>
+    <string name="sleep_1_hour">1 小时</string>
+    <string name="sleep_2_hours">2 小时</string>
+    <string name="sleep_3_hours">3 小时</string>
+    <string name="sleep_4_hours">4 小时</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">勃拉姆斯摇篮曲</string>
+    <string name="bundled_white_noise">白噪音</string>
+    <string name="bundled_enriched_heart">增强胎心</string>
+    <string name="bundled_real_ultrasound">真实超声</string>
+    <string name="bundled_brown_heart">棕色胎心</string>
+
+    <!-- Settings -->
+    <string name="settings_section">设置</string>
+    <string name="theme_section">主题</string>
+    <string name="theme_light">浅色</string>
+    <string name="theme_light_desc">浅色主题</string>
+    <string name="theme_dark">深色</string>
+    <string name="theme_dark_desc">深色主题</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">纯黑：适合夜间</string>
+    <string name="keep_screen_on">保持屏幕常亮</string>
+    <string name="keep_screen_on_desc">播放期间防止屏幕关闭</string>
+    <string name="data_section">数据</string>
+    <string name="downloaded_count">%1$d 个已下载音频（%2$d 个预装的始终保留）</string>
+    <string name="delete_all_downloaded">删除所有已下载</string>
+    <string name="reset_title">完全重置</string>
+    <string name="reset_message">要删除 %1$d 个已下载的音频吗？预装的（勃拉姆斯、白噪音、胎心）不会被删除。此操作不可撤销。</string>
+    <string name="delete_all">全部删除</string>
+    <string name="reset_deleted">已删除 %1$d 个已下载音频（预装的已保留）。</string>
+    <string name="reset_none">没有可删除的已下载音频。</string>
+    <string name="language_section">语言</string>
+    <string name="language_system_default">系统默认</string>
+    <string name="language_system_default_desc">使用设备语言</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">无效的链接。</string>
+    <string name="starting_download">开始下载…</string>
+    <string name="download_completed">下载完成</string>
+    <string name="download_completed_title">下载完成：%1$s</string>
+    <string name="preparing_download">正在准备下载…</string>
+    <string name="download_error">下载出错。</string>
+    <string name="channel_downloads">摇篮曲下载</string>
+    <string name="channel_downloads_desc">后台下载进度</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">此视频没有可用的音频流。</string>
+    <string name="err_no_url">音频流没有文件链接。</string>
+    <string name="err_network">下载时网络错误：%1$s</string>
+    <string name="err_parse">无法解析视频：%1$s</string>
+    <string name="err_download">下载时出错：%1$s</string>
+    <string name="err_http">下载时 HTTP 响应 %1$d。</string>
+    <string name="err_no_body">响应无内容。</string>
+    <string name="err_incomplete">下载不完整（%1$d/%2$d 字节）。</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">播放</string>
+    <string name="channel_playback_desc">播放期间的常驻通知</string>
+
+    <!-- About -->
+    <string name="version">版本：%1$s</string>
+</resources>
