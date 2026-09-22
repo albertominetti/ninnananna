@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Esitamine</string>
     <string name="channel_playback_desc">Püsiv teade esitamise ajal</string>
+    <string name="version">Versioon: %1$s</string>
 </resources>

@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Redare</string>
     <string name="channel_playback_desc">Notificare persistentă în timpul redării</string>
+    <string name="version">Versiune: %1$s</string>
 </resources>

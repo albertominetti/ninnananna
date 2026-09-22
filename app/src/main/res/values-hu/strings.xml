@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Lejátszás</string>
     <string name="channel_playback_desc">Állandó értesítés lejátszás közben</string>
+    <string name="version">Verzió: %1$s</string>
 </resources>

@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Репродукција</string>
     <string name="channel_playback_desc">Стално обавештење током репродукције</string>
+    <string name="version">Верзија: %1$s</string>
 </resources>

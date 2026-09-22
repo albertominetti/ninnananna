@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Çalma</string>
     <string name="channel_playback_desc">Çalma sırasında kalıcı bildirim</string>
+    <string name="version">Sürüm: %1$s</string>
 </resources>

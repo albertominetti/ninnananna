@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Chwarae</string>
     <string name="channel_playback_desc">Hysbysiad parhaol yn ystod chwarae</string>
+    <string name="version">Fersiwn: %1$s</string>
 </resources>

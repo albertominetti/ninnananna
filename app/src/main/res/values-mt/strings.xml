@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Playback</string>
     <string name="channel_playback_desc">Notifika permanenti matul il-playback</string>
+    <string name="version">Verżjoni: %1$s</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.alberto.ninnananna
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -17,11 +16,14 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -39,15 +41,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
 /**
  * Settings screen:
- * - Light / Dark / Amoled theme (pure black);
+ * - Light / Dark / Amoled theme (drop-down);
  * - keep screen on (FLAG_KEEP_SCREEN_ON on the MainActivity);
- * - full reset of everything that was downloaded.
+ * - app language (drop-down, default = system);
+ * - full reset of everything that was downloaded;
+ * - app version info.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,7 +66,7 @@ fun SettingsScreen(onBack: () -> Unit) {
     var showResetDialog by remember { mutableStateOf(false) }
     var resetFeedback by remember { mutableStateOf<String?>(null) }
 
-    // Number of audios downloaded by the user (the 3 preinstalled ones are excluded).
+    // Number of audios downloaded by the user (the preinstalled ones are excluded).
     val downloadedCount = lullabies.count { !it.isBundled }
 
     LaunchedEffect(Unit) {
@@ -90,35 +93,18 @@ fun SettingsScreen(onBack: () -> Unit) {
                 .padding(16.dp)
         ) {
             // ---------- Theme ----------
-            Text(text = stringResource(R.string.theme_section), style = MaterialTheme.typography.titleMedium)
-            Spacer(Modifier.height(4.dp))
-
-            Column(Modifier.selectableGroup()) {
-                OptionRow(
-                    label = stringResource(R.string.theme_light),
-                    description = stringResource(R.string.theme_light_desc),
-                    selected = themeMode == ThemeMode.LIGHT,
-                    onSelect = {
-                        scope.launch { SettingsStore.setThemeMode(context, ThemeMode.LIGHT) }
-                    }
-                )
-                OptionRow(
-                    label = stringResource(R.string.theme_dark),
-                    description = stringResource(R.string.theme_dark_desc),
-                    selected = themeMode == ThemeMode.DARK,
-                    onSelect = {
-                        scope.launch { SettingsStore.setThemeMode(context, ThemeMode.DARK) }
-                    }
-                )
-                OptionRow(
-                    label = stringResource(R.string.theme_amoled),
-                    description = stringResource(R.string.theme_amoled_desc),
-                    selected = themeMode == ThemeMode.AMOLED,
-                    onSelect = {
-                        scope.launch { SettingsStore.setThemeMode(context, ThemeMode.AMOLED) }
-                    }
-                )
-            }
+            SettingDropdown(
+                label = stringResource(R.string.theme_section),
+                selectedKey = themeMode.name,
+                options = listOf(
+                    ThemeMode.LIGHT.name to stringResource(R.string.theme_light),
+                    ThemeMode.DARK.name to stringResource(R.string.theme_dark),
+                    ThemeMode.AMOLED.name to stringResource(R.string.theme_amoled)
+                ),
+                onSelect = { key ->
+                    scope.launch { SettingsStore.setThemeMode(context, ThemeMode.valueOf(key)) }
+                }
+            )
 
             Spacer(Modifier.height(16.dp))
             Divider()
@@ -150,43 +136,24 @@ fun SettingsScreen(onBack: () -> Unit) {
 
             // ---------- Language ----------
             Spacer(Modifier.height(16.dp))
-            Divider()
-
-            Spacer(Modifier.height(16.dp))
-            Text(text = stringResource(R.string.language_section), style = MaterialTheme.typography.titleMedium)
-            Spacer(Modifier.height(4.dp))
-
-            Column(Modifier.selectableGroup()) {
-                OptionRow(
-                    label = stringResource(R.string.language_system_default),
-                    description = stringResource(R.string.language_system_default_desc),
-                    selected = language == null,
-                    onSelect = {
-                        scope.launch {
-                            SettingsStore.setLanguage(context, null)
-                            AppLanguages.setLocale(null)
-                        }
+            SettingDropdown(
+                label = stringResource(R.string.language_section),
+                selectedKey = language ?: "",
+                options = listOf("" to stringResource(R.string.language_system_default)) +
+                    AppLanguages.SUPPORTED.map { (tag, nativeName) -> tag to nativeName },
+                onSelect = { key ->
+                    val tag = key.ifEmpty { null }
+                    scope.launch {
+                        SettingsStore.setLanguage(context, tag)
+                        AppLanguages.setLocale(tag)
                     }
-                )
-                AppLanguages.SUPPORTED.forEach { (tag, nativeName) ->
-                    OptionRow(
-                        label = nativeName,
-                        description = null,
-                        selected = language == tag,
-                        onSelect = {
-                            scope.launch {
-                                SettingsStore.setLanguage(context, tag)
-                                AppLanguages.setLocale(tag)
-                            }
-                        }
-                    )
                 }
-            }
+            )
 
             Spacer(Modifier.height(16.dp))
             Divider()
 
-            // ---------- Reset ----------
+            // ---------- Data / reset ----------
             Spacer(Modifier.height(16.dp))
             Text(text = stringResource(R.string.data_section), style = MaterialTheme.typography.titleMedium)
             Text(
@@ -219,6 +186,17 @@ fun SettingsScreen(onBack: () -> Unit) {
                     color = MaterialTheme.colorScheme.primary
                 )
             }
+
+            Spacer(Modifier.height(16.dp))
+            Divider()
+
+            // ---------- About / version ----------
+            Spacer(Modifier.height(16.dp))
+            Text(
+                text = stringResource(R.string.version, resolveVersionName(context)),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 
@@ -257,32 +235,53 @@ fun SettingsScreen(onBack: () -> Unit) {
 }
 
 @Composable
-private fun OptionRow(
+private fun resolveVersionName(context: Context): String =
+    remember(context) {
+        runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }
+            .getOrNull() ?: ""
+    }
+
+/**
+ * Settings control: a read-only text field that opens a drop-down menu.
+ * Options are (key, label) pairs; [onSelect] receives the chosen key.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun SettingDropdown(
     label: String,
-    description: String?,
-    selected: Boolean,
-    onSelect: () -> Unit
+    selectedKey: String,
+    options: List<Pair<String, String>>,
+    onSelect: (String) -> Unit
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .selectable(
-                selected = selected,
-                role = Role.RadioButton,
-                onClick = onSelect
-            )
-            .padding(vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
+    var expanded by remember { mutableStateOf(false) }
+    val selectedLabel = options.firstOrNull { it.first == selectedKey }?.second ?: ""
+
+    ExposedDropdownMenuBox(
+        expanded = expanded,
+        onExpandedChange = { expanded = it }
     ) {
-        RadioButton(selected = selected, onClick = null)
-        Spacer(Modifier.height(0.dp))
-        Column {
-            Text(text = label, style = MaterialTheme.typography.bodyLarge)
-            if (description != null) {
-                Text(
-                    text = description,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+        OutlinedTextField(
+            value = selectedLabel,
+            onValueChange = {},
+            readOnly = true,
+            singleLine = true,
+            label = { Text(label) },
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .menuAnchor()
+        )
+        ExposedDropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            options.forEach { (key, optionLabel) ->
+                DropdownMenuItem(
+                    text = { Text(optionLabel) },
+                    onClick = {
+                        expanded = false
+                        onSelect(key)
+                    }
                 )
             }
         }

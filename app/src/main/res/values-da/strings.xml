@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Afspilning</string>
     <string name="channel_playback_desc">Vedvarende meddelelse under afspilning</string>
+    <string name="version">Version: %1$s</string>
 </resources>

@@ -104,4 +104,5 @@
     <!-- Playback notification -->
     <string name="channel_playback">Відтворення</string>
     <string name="channel_playback_desc">Постійне повідомлення під час відтворення</string>
+    <string name="version">Версія: %1$s</string>
 </resources>
