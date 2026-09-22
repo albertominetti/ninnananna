@@ -28,7 +28,7 @@ object PlaybackNotification {
     const val ACTION_STOP = "com.alberto.ninnananna.action.STOP_PLAYBACK"
 
     /** Mostra (o aggiorna) la notifica persistente del brano in riproduzione. */
-    fun show(context: Context, lullabyTitle: String) {
+    fun show(context: Context, lullabyTitle: String, statusText: String = "In riproduzione") {
         val appContext = context.applicationContext
         ensureChannel(appContext)
 
@@ -63,7 +63,7 @@ object PlaybackNotification {
         val notification = NotificationCompat.Builder(appContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification_download)
             .setContentTitle(lullabyTitle)
-            .setContentText("In riproduzione")
+            .setContentText(statusText)
             .setContentIntent(openAppPendingIntent)
             .setCategory(NotificationCompat.CATEGORY_TRANSPORT)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
@@ -113,6 +113,7 @@ class PlaybackStopReceiver : BroadcastReceiver() {
         if (intent.action != PlaybackNotification.ACTION_STOP) return
         val appContext = context.applicationContext
         PlayerManager.stop()
+        CastManager.stopStreaming()
         PlaybackNotification.hide(appContext)
     }
 }

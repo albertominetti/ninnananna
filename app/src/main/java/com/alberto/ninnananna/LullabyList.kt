@@ -227,6 +227,9 @@ fun LullabyList(onOpenSettings: () -> Unit) {
     val playing by PlayerManager.playing.collectAsState()
     val loopEnabled by PlayerManager.loopEnabled.collectAsState()
     val sleepRemaining by SleepTimerManager.remainingMillis.collectAsState()
+    val castStreaming by CastManager.streaming.collectAsState()
+    val castLoopEnabled by CastManager.castLoopEnabled.collectAsState()
+    val castDeviceName by CastManager.deviceName.collectAsState()
 
     val refresh: () -> Unit = {
         scope.launch {
@@ -330,14 +333,23 @@ fun LullabyList(onOpenSettings: () -> Unit) {
             Column {
                 // Barra volume sempre visibile, sopra la mini-bar del player.
                 VolumeBar()
-                current?.let { lullaby ->
+                val nowPlaying = current ?: castStreaming
+                if (nowPlaying != null) {
+                    val casting = castStreaming != null
                     MiniPlayerBar(
-                        lullaby = lullaby,
-                        playing = playing,
-                        loopEnabled = loopEnabled,
+                        lullaby = nowPlaying,
+                        playing = if (casting) true else playing,
+                        loopEnabled = if (casting) castLoopEnabled else loopEnabled,
+                        casting = casting,
+                        castingDeviceName = if (casting) castDeviceName else null,
                         sleepRemaining = sleepRemaining,
-                        onStop = { PlayerManager.stop() },
-                        onToggleLoop = { PlayerManager.toggleLoop() },
+                        onStop = {
+                            PlayerManager.stop()
+                            CastManager.stopStreaming()
+                        },
+                        onToggleLoop = {
+                            if (casting) CastManager.toggleCastLoop() else PlayerManager.toggleLoop()
+                        },
                         onOpenSleepTimer = { showSleepTimerDialog = true }
                     )
                 }
@@ -389,19 +401,23 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                     items(bundled, key = { it.id }) { lullaby ->
                         LullabyRow(
                             lullaby = lullaby,
-                            isCurrent = current?.id == lullaby.id,
-                            isPlaying = playing && current?.id == lullaby.id,
+                            isCurrent = (current?.id ?: castStreaming?.id) == lullaby.id,
+                            isPlaying = (playing && current?.id == lullaby.id) ||
+                                castStreaming?.id == lullaby.id,
                             onPlay = {
                                 requestNotificationPermissionIfNeeded()
-                                if (CastManager.connected.value) {
-                                    // Sessione Cast attiva: streamma sul dispositivo
-                                    // invece di riprodurre sullo speaker del telefono.
+                                // Con una sessione Cast attiva prova a streammare;
+                                // se non riesce (rete/device), fallback locale.
+                                val casted = CastManager.connected.value &&
                                     CastManager.castCurrent(context, lullaby)
-                                } else {
+                                if (!casted) {
                                     PlayerManager.play(context, lullaby)
                                 }
                             },
-                            onStop = { PlayerManager.stop() },
+                            onStop = {
+                                PlayerManager.stop()
+                                CastManager.stopStreaming()
+                            },
                             onRename = {
                                 renameTarget = lullaby
                                 renameText = lullaby.title
@@ -410,6 +426,9 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                                 scope.launch {
                                     if (current?.filePath == lullaby.filePath) {
                                         PlayerManager.stop()
+                                    }
+                                    if (castStreaming?.filePath == lullaby.filePath) {
+                                        CastManager.stopStreaming()
                                     }
                                     DownloadRepository.delete(context, lullaby)
                                     refresh()
@@ -426,19 +445,23 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                     items(downloaded, key = { it.id }) { lullaby ->
                         LullabyRow(
                             lullaby = lullaby,
-                            isCurrent = current?.id == lullaby.id,
-                            isPlaying = playing && current?.id == lullaby.id,
+                            isCurrent = (current?.id ?: castStreaming?.id) == lullaby.id,
+                            isPlaying = (playing && current?.id == lullaby.id) ||
+                                castStreaming?.id == lullaby.id,
                             onPlay = {
                                 requestNotificationPermissionIfNeeded()
-                                if (CastManager.connected.value) {
-                                    // Sessione Cast attiva: streamma sul dispositivo
-                                    // invece di riprodurre sullo speaker del telefono.
+                                // Con una sessione Cast attiva prova a streammare;
+                                // se non riesce (rete/device), fallback locale.
+                                val casted = CastManager.connected.value &&
                                     CastManager.castCurrent(context, lullaby)
-                                } else {
+                                if (!casted) {
                                     PlayerManager.play(context, lullaby)
                                 }
                             },
-                            onStop = { PlayerManager.stop() },
+                            onStop = {
+                                PlayerManager.stop()
+                                CastManager.stopStreaming()
+                            },
                             onRename = {
                                 renameTarget = lullaby
                                 renameText = lullaby.title
@@ -447,6 +470,9 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                                 scope.launch {
                                     if (current?.filePath == lullaby.filePath) {
                                         PlayerManager.stop()
+                                    }
+                                    if (castStreaming?.filePath == lullaby.filePath) {
+                                        CastManager.stopStreaming()
                                     }
                                     DownloadRepository.delete(context, lullaby)
                                     refresh()
@@ -533,6 +559,9 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                             if (ok) {
                                 if (PlayerManager.current.value?.filePath == target.filePath) {
                                     PlayerManager.stop()
+                                }
+                                if (CastManager.streaming.value?.filePath == target.filePath) {
+                                    CastManager.stopStreaming()
                                 }
                                 refresh()
                             } else {
@@ -758,6 +787,8 @@ private fun MiniPlayerBar(
     lullaby: Lullaby,
     playing: Boolean,
     loopEnabled: Boolean,
+    casting: Boolean,
+    castingDeviceName: String?,
     sleepRemaining: Long?,
     onStop: () -> Unit,
     onToggleLoop: () -> Unit,
@@ -784,7 +815,11 @@ private fun MiniPlayerBar(
                 Spacer(Modifier.width(12.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "In riproduzione",
+                        text = if (casting) {
+                            "In streaming su ${castingDeviceName ?: "dispositivo Cast"}"
+                        } else {
+                            "In riproduzione"
+                        },
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

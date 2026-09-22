@@ -50,6 +50,7 @@ object SleepTimerManager {
             }
             // Allo scadere: ferma l'audio e togli il "mantieni schermo attivo".
             PlayerManager.stop()
+            CastManager.stopStreaming()
             SettingsStore.setKeepScreenOn(context, false)
             _remainingMillis.value = null
         }
