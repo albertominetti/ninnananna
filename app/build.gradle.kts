@@ -11,8 +11,8 @@ android {
         applicationId = "com.alberto.ninnananna"
         minSdk = 26
         targetSdk = 34
-        versionCode = 6
-        versionName = "6.0"
+        versionCode = 7
+        versionName = "7.0"
     }
 
     signingConfigs {
@@ -90,6 +90,14 @@ dependencies {
 
     // Download in background (WorkManager + notifica foreground permanente)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    // Cast su Google Chromecast / dispositivi Cast
+    implementation("com.google.android.gms:play-services-cast-framework:21.4.0")
+    implementation("androidx.mediarouter:mediarouter:1.6.0")
+    // Tema MaterialComponents per il MediaRouteButton (il tema app non è AppCompat)
+    implementation("com.google.android.material:material:1.11.0")
+    // Mini server HTTP locale per servire i file audio in LAN (richiesto da Chromecast)
+    implementation("org.nanohttpd:nanohttpd:2.3.1")
 
     // Download audio YouTube (on-device, nessun backend)
     implementation("com.squareup.okhttp3:okhttp:4.12.0")

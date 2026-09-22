@@ -22,6 +22,12 @@
             android:name=".PlaybackStopReceiver"
             android:exported="false" />
 
+        <!-- Provider delle opzioni del framework Google Cast (Default Media
+             Receiver "CC1AD845", nessuna appId registrata necessaria) -->
+        <meta-data
+            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+            android:value="com.alberto.ninnananna.CastOptionsProvider" />
+
         <!-- Foreground service usato da WorkManager per i download:
              deve dichiarare il tipo dataSync (Android 14+) -->
         <service

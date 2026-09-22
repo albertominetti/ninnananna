@@ -3,6 +3,7 @@ package com.alberto.ninnananna
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
+import android.view.ContextThemeWrapper
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -70,9 +71,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.mediarouter.app.MediaRouteButton
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
+import com.google.android.gms.cast.framework.CastButtonFactory
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -389,7 +393,13 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                             isPlaying = playing && current?.id == lullaby.id,
                             onPlay = {
                                 requestNotificationPermissionIfNeeded()
-                                PlayerManager.play(context, lullaby)
+                                if (CastManager.connected.value) {
+                                    // Sessione Cast attiva: streamma sul dispositivo
+                                    // invece di riprodurre sullo speaker del telefono.
+                                    CastManager.castCurrent(context, lullaby)
+                                } else {
+                                    PlayerManager.play(context, lullaby)
+                                }
                             },
                             onStop = { PlayerManager.stop() },
                             onRename = {
@@ -420,7 +430,13 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                             isPlaying = playing && current?.id == lullaby.id,
                             onPlay = {
                                 requestNotificationPermissionIfNeeded()
-                                PlayerManager.play(context, lullaby)
+                                if (CastManager.connected.value) {
+                                    // Sessione Cast attiva: streamma sul dispositivo
+                                    // invece di riprodurre sullo speaker del telefono.
+                                    CastManager.castCurrent(context, lullaby)
+                                } else {
+                                    PlayerManager.play(context, lullaby)
+                                }
                             },
                             onStop = { PlayerManager.stop() },
                             onRename = {
@@ -602,6 +618,21 @@ private fun ActiveDownloadCard(info: WorkInfo) {
 private fun VolumeBar() {
     val context = LocalContext.current.applicationContext
     val volume by VolumeManager.percent.collectAsState()
+    val castConnected by CastManager.connected.collectAsState()
+    val castVolume by CastManager.volumePercent.collectAsState()
+    val displayVolume = if (castConnected) castVolume else volume
+
+    // Il tema dell'app è Theme.NinnaNanna (parent Material.NoActionBar, non
+    // AppCompat): il MediaRouteButton di androidx.mediarouter è un
+    // AppCompatButton, quindi gli forniamo un Context con tema MaterialComponents.
+    val buttonContext = LocalContext.current
+    val mediaRouteContext = remember(buttonContext) {
+        ContextThemeWrapper(
+            buttonContext,
+            com.google.android.material.R.style.Theme_MaterialComponents_DayNight
+        )
+    }
+
     Surface(tonalElevation = 3.dp) {
         Row(
             modifier = Modifier
@@ -617,17 +648,36 @@ private fun VolumeBar() {
             )
             Spacer(Modifier.width(8.dp))
             Slider(
-                value = volume.toFloat(),
-                onValueChange = { VolumeManager.setPercent(context, it.toInt()) },
+                value = displayVolume.toFloat(),
+                onValueChange = { value ->
+                    if (castConnected) {
+                        // Volume del dispositivo Cast (0..100 → 0.0..1.0).
+                        CastManager.setVolume(value.toInt())
+                    } else {
+                        // Comportamento attuale: volume di sistema dello smartphone.
+                        VolumeManager.setPercent(context, value.toInt())
+                    }
+                },
                 valueRange = 0f..100f,
                 modifier = Modifier.weight(1f)
             )
             Spacer(Modifier.width(8.dp))
             Text(
-                text = "$volume%",
+                text = "$displayVolume%",
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.width(44.dp)
+            )
+            Spacer(Modifier.width(4.dp))
+            // Pulsante Cast ufficiale: al tap apre il selettore dispositivi;
+            // gestisce connessione/disconnessione e mostra lo stato attivo.
+            AndroidView(
+                factory = {
+                    MediaRouteButton(mediaRouteContext).also { btn ->
+                        CastButtonFactory.setUpMediaRouteButton(mediaRouteContext, btn)
+                    }
+                },
+                modifier = Modifier.size(40.dp)
             )
         }
     }
