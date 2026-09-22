@@ -32,12 +32,6 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Cache debug keystore (keep sideload installs upgradeable)
-        uses: actions/cache@v4
-        with:
-          path: ~/.android/debug.keystore
-          key: debug-keystore-v1
-
       - name: Prepare keystore (if present in secrets)
         shell: bash
         env:

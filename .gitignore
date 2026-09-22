@@ -21,5 +21,4 @@ dist/
 # Keystore / segreti
 *.jks
 *.keystore
-!app/debug.keystore
 keystore.jks
