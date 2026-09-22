@@ -11,8 +11,8 @@ android {
         applicationId = "com.alberto.ninnananna"
         minSdk = 26
         targetSdk = 34
-        versionCode = 7
-        versionName = "7.0"
+        versionCode = 8
+        versionName = "7.1"
     }
 
     signingConfigs {
@@ -94,6 +94,7 @@ dependencies {
     // Cast su Google Chromecast / dispositivi Cast
     implementation("com.google.android.gms:play-services-cast-framework:21.4.0")
     implementation("androidx.mediarouter:mediarouter:1.6.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
     // Tema MaterialComponents per il MediaRouteButton (il tema app non è AppCompat)
     implementation("com.google.android.material:material:1.11.0")
     // Mini server HTTP locale per servire i file audio in LAN (richiesto da Chromecast)

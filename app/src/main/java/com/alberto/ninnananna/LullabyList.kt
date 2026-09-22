@@ -625,13 +625,7 @@ private fun VolumeBar() {
     // Il tema dell'app è Theme.NinnaNanna (parent Material.NoActionBar, non
     // AppCompat): il MediaRouteButton di androidx.mediarouter è un
     // AppCompatButton, quindi gli forniamo un Context con tema MaterialComponents.
-    val buttonContext = LocalContext.current
-    val mediaRouteContext = remember(buttonContext) {
-        ContextThemeWrapper(
-            buttonContext,
-            com.google.android.material.R.style.Theme_MaterialComponents_DayNight
-        )
-    }
+    val mediaRouteContext = LocalContext.current
 
     Surface(tonalElevation = 3.dp) {
         Row(
