@@ -11,11 +11,19 @@ android {
         applicationId = "com.alberto.ninnananna"
         minSdk = 26
         targetSdk = 34
-        versionCode = 11
-        versionName = "7.4"
+        versionCode = 12
+        versionName = "7.5"
     }
 
     signingConfigs {
+        // Debug keystore committed to repo to keep sideload installs upgradeable
+        // across ephemeral CI runners (otherwise each build gets a random debug key).
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
         create("release") {
             val keystoreFile = System.getenv("KEYSTORE_FILE")
             if (keystoreFile != null) {

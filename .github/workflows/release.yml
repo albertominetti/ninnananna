@@ -32,6 +32,12 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      - name: Cache debug keystore (keep sideload installs upgradeable)
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: debug-keystore-v1
+
       - name: Prepare keystore (if present in secrets)
         shell: bash
         env:
@@ -54,17 +60,26 @@ jobs:
       - name: Build release APK + AAB
         run: ./gradlew assembleRelease bundleRelease --no-daemon --console=plain
 
+      - name: Rename artifacts with version
+        run: |
+          VER="${{ github.ref_name }}"
+          APK="app/build/outputs/apk/release/app-release.apk"
+          AAB="app/build/outputs/bundle/release/app-release.aab"
+          if [ -f "$APK" ]; then mv "$APK" "app/build/outputs/apk/release/ninnananna-${VER}.apk"; fi
+          if [ -f "$AAB" ]; then mv "$AAB" "app/build/outputs/bundle/release/ninnananna-${VER}.aab"; fi
+          ls -lh app/build/outputs/apk/release/ app/build/outputs/bundle/release/
+
       - name: Upload artifact (APK)
         uses: actions/upload-artifact@v6
         with:
-          name: ninnananna-release-apk
+          name: ninnananna-${{ github.ref_name }}-apk
           path: app/build/outputs/apk/release/*.apk
           retention-days: 90
 
       - name: Upload artifact (AAB)
         uses: actions/upload-artifact@v6
         with:
-          name: ninnananna-release-aab
+          name: ninnananna-${{ github.ref_name }}-aab
           path: app/build/outputs/bundle/release/*.aab
           retention-days: 90
 
