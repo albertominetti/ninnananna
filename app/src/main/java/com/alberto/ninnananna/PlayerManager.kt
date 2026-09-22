@@ -62,7 +62,10 @@ object PlayerManager {
         }
         _current.value = null
         _playing.value = false
-        PlaybackNotification.hide(appContext ?: return)
+        // Don't hide when Cast is streaming – the Cast notification must stay
+        if (CastManager.streaming.value == null) {
+            PlaybackNotification.hide(appContext ?: return)
+        }
     }
 
     @Synchronized
@@ -72,7 +75,9 @@ object PlayerManager {
         _current.value = null
         _playing.value = false
         _loopEnabled.value = false
-        PlaybackNotification.hide(appContext ?: return)
+        if (CastManager.streaming.value == null) {
+            PlaybackNotification.hide(appContext ?: return)
+        }
     }
 
     private fun createPlayer(context: Context): ExoPlayer {
@@ -81,15 +86,18 @@ object PlayerManager {
                 override fun onPlaybackStateChanged(playbackState: Int) {
                     if (playbackState == Player.STATE_ENDED) {
                         _playing.value = false
-                        // Natural end of the track: remove the persistent notification.
-                        PlaybackNotification.hide(appContext ?: return)
+                        // Natural end – only hide if not casting (Cast has its own notification)
+                        if (CastManager.streaming.value == null) {
+                            PlaybackNotification.hide(appContext ?: return)
+                        }
                     }
                 }
 
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
                     _playing.value = isPlaying
-                    // If there is no current track anymore, the notification must be removed.
-                    if (!isPlaying && _current.value == null) {
+                    // If there is no current track anymore, remove notification
+                    // unless Cast is streaming (its notification must stay).
+                    if (!isPlaying && _current.value == null && CastManager.streaming.value == null) {
                         PlaybackNotification.hide(appContext ?: return)
                     }
                 }
