@@ -29,10 +29,10 @@ jobs:
           java-version: 17
           cache: gradle
 
-      - name: Rendi eseguibile gradlew
+      - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Prepara keystore (se presente nei secrets)
+      - name: Prepare keystore (if present in secrets)
         shell: bash
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
@@ -46,9 +46,9 @@ jobs:
             echo "KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
             echo "KEY_ALIAS=$KEY_ALIAS" >> "$GITHUB_ENV"
             echo "KEY_PASSWORD=$KEY_PASSWORD" >> "$GITHUB_ENV"
-            echo "Keystore configurato dai secrets."
+            echo "Keystore configured from secrets."
           else
-            echo "Nessun secrets keystore: build firmata con chiave debug (demo)."
+            echo "No keystore secrets: build signed with debug key (demo)."
           fi
 
       - name: Build release APK + AAB
@@ -68,7 +68,7 @@ jobs:
           path: app/build/outputs/bundle/release/*.aab
           retention-days: 90
 
-      - name: Crea GitHub Release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           name: NinnaNanna ${{ github.ref_name }}

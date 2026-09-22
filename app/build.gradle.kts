@@ -34,8 +34,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Se non sono presenti variabili keystore, firma con la chiave debug
-            // per produrre comunque un APK installabile (non adatto a Google Play).
+            // If there are no keystore variables, sign with the debug key
+            // to still produce an installable APK (not suitable for Google Play).
             signingConfig = if (System.getenv("KEYSTORE_FILE") != null) {
                 signingConfigs.getByName("release")
             } else {
@@ -88,19 +88,19 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer:1.3.1")
     implementation("androidx.media3:media3-common:1.3.1")
 
-    // Download in background (WorkManager + notifica foreground permanente)
+    // Background download (WorkManager + permanent foreground notification)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
-    // Cast su Google Chromecast / dispositivi Cast
+    // Cast to Google Chromecast / Cast devices
     implementation("com.google.android.gms:play-services-cast-framework:21.4.0")
     implementation("androidx.mediarouter:mediarouter:1.6.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    // Tema MaterialComponents per il MediaRouteButton (il tema app non è AppCompat)
+    // MaterialComponents theme for the MediaRouteButton (the app theme is not AppCompat)
     implementation("com.google.android.material:material:1.11.0")
-    // Mini server HTTP locale per servire i file audio in LAN (richiesto da Chromecast)
+    // Mini local HTTP server to serve audio files over LAN (required by Chromecast)
     implementation("org.nanohttpd:nanohttpd:2.3.1")
 
-    // Download audio YouTube (on-device, nessun backend)
+    // YouTube audio download (on-device, no backend)
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.github.TeamNewPipe:NewPipeExtractor:v0.26.5")
 }

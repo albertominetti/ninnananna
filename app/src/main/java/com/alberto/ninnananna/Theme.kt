@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 /**
- * Modalità di tema disponibili.
- * - LIGHT: chiaro
- * - DARK: scuro
- * - AMOLED: nero puro (ideale di notte / per ninnananna)
+ * Available theme modes.
+ * - LIGHT: light
+ * - DARK: dark
+ * - AMOLED: pure black (ideal at night / for lullabies)
  */
 enum class ThemeMode {
     LIGHT,
@@ -62,7 +62,7 @@ private val DarkColors = darkColorScheme(
     onError = Color(0xFF601410)
 )
 
-// AMOLED: sfondi a nero puro per risparmiare batteria e occhi di notte
+// AMOLED: pure black backgrounds to save battery and eyes at night
 private val AmoledColors = darkColorScheme(
     primary = Color(0xFFD0BCFF),
     onPrimary = Color(0xFF381E72),
@@ -91,7 +91,7 @@ private val AmoledColors = darkColorScheme(
 )
 
 /**
- * Applica il tema custom Material3 in base alla modalità scelta.
+ * Applies the custom Material3 theme based on the selected mode.
  */
 @Composable
 fun NinnanannaTheme(mode: ThemeMode, content: @Composable () -> Unit) {

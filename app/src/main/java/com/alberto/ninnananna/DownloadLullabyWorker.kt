@@ -15,12 +15,12 @@ import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 
 /**
- * Scarica una ninnananna da YouTube in **background** con WorkManager.
+ * Downloads a lullaby from YouTube in the **background** with WorkManager.
  *
- * Durante il download mostra una **notifica foreground permanente** con
- * l'avanzamento; il file viene comunque salvato in filesDir/lullabies da
- * [DownloadRepository]. L'esecuzione continua anche se l'app va in background
- * o viene chiusa.
+ * During the download it shows a **permanent foreground notification** with
+ * the progress; the file is still saved into filesDir/lullabies by
+ * [DownloadRepository]. Execution continues even if the app goes to the
+ * background or is closed.
  */
 class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
     CoroutineWorker(appContext, params) {
@@ -28,27 +28,27 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
     override suspend fun doWork(): Result {
         val url = inputData.getString(KEY_URL)?.trim()
         if (url.isNullOrEmpty()) {
-            return Result.failure(workDataOf(KEY_ERROR to "URL non valido."))
+            return Result.failure(workDataOf(KEY_ERROR to "Invalid URL."))
         }
 
         ensureNotificationChannel(applicationContext)
 
-        // Avvia subito la notifica foreground permanente.
-        setForeground(createForegroundInfo(0f, "Avvio download…"))
+        // Starts the permanent foreground notification right away.
+        setForeground(createForegroundInfo(0f, "Starting download…"))
 
         return try {
             val lullaby = DownloadRepository.download(applicationContext, url) { progress ->
                 val pct = (progress * 100).toInt().coerceIn(0, 100)
                 setProgressAsync(workDataOf(KEY_PROGRESS to progress))
                 setForegroundAsync(
-                    createForegroundInfo(progress, "Download in corso… $pct%")
+                    createForegroundInfo(progress, "Downloading… $pct%")
                 )
             }
-            setForegroundAsync(createForegroundInfo(1f, "Download completato"))
+            setForegroundAsync(createForegroundInfo(1f, "Download completed"))
             val title = lullaby?.title?.let { formatDisplayName(it) }.orEmpty()
             if (title.isNotBlank()) {
                 setForegroundAsync(
-                    createForegroundInfo(1f, "Download completato: $title")
+                    createForegroundInfo(1f, "Download completed: $title")
                 )
             }
             Result.success(
@@ -56,17 +56,17 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
             )
         } catch (e: Exception) {
             Result.failure(
-                workDataOf(KEY_ERROR to (e.message ?: "Errore durante il download."))
+                workDataOf(KEY_ERROR to (e.message ?: "Error during download."))
             )
         }
     }
 
     /**
-     * Usato da WorkManager per ri-creare la notifica (es. worker riavviato
-     * dopo un kill del processo).
+     * Used by WorkManager to re-create the notification (e.g. worker
+     * restarted after a process kill).
      */
     override suspend fun getForegroundInfo(): ForegroundInfo =
-        createForegroundInfo(0f, "Preparazione download…")
+        createForegroundInfo(0f, "Preparing download…")
 
     private fun createForegroundInfo(progress: Float, text: String): ForegroundInfo {
         val indeterminate = progress <= 0f
@@ -86,7 +86,7 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
         )
     }
 
-    /** Id stabile per lo stesso lavoro (anche dopo un riavvio del processo). */
+    /** Stable id for the same work (also after a process restart). */
     private fun notificationId(): Int =
         NOTIFICATION_ID + (id.hashCode() and 0x1F)
 
@@ -101,8 +101,8 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
         private const val NOTIFICATION_ID = 1001
 
         /**
-         * Accoda il download in background (WorkManager). Se l'app viene
-         * chiusa il lavoro continua; la notifica foreground mostra l'avanzamento.
+         * Queues the download in the background (WorkManager). If the app is
+         * closed the work continues; the foreground notification shows the progress.
          */
         fun enqueue(context: Context, url: String) {
             ensureNotificationChannel(context)
@@ -121,9 +121,9 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
         fun ensureNotificationChannel(context: Context) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "Download ninnenanne",
+                "Lullaby downloads",
                 NotificationManager.IMPORTANCE_LOW
-            ).apply { description = "Avanzamento dei download in background" }
+            ).apply { description = "Progress of the background downloads" }
             context.getSystemService(NotificationManager::class.java)
                 .createNotificationChannel(channel)
         }

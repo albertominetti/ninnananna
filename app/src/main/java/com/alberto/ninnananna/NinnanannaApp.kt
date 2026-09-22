@@ -15,11 +15,11 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-// Un solo DataStore per tutta l'app
+// Only one DataStore for the whole app
 private val Context.settingsDataStore by preferencesDataStore(name = "settings")
 
 /**
- * Accesso alle preferenze tramite DataStore Preferences.
+ * Access to preferences via DataStore Preferences.
  */
 object SettingsStore {
 
@@ -46,7 +46,7 @@ object SettingsStore {
 }
 
 /**
- * Radice Compose: tema + navigazione tra Home (LullabyList) e Impostazioni.
+ * Compose root: theme + navigation between Home (LullabyList) and Settings.
  */
 @Composable
 fun NinnanannaApp() {

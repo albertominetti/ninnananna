@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Tema base minimale: il vero tema grafico è gestito da Jetpack Compose -->
+    <!-- Minimal base theme: the real graphical theme is handled by Jetpack Compose -->
     <style name="Theme.NinnaNanna" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>

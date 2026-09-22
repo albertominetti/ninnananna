@@ -11,34 +11,34 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
 /**
- * Notifica **persistente** (ongoing) mostrata mentre un brano è in riproduzione,
- * senza usare un foreground service: è una normale notifica con ongoing=true.
+ * **Persistent** (ongoing) notification shown while a track is playing,
+ * without using a foreground service: it is a normal notification with ongoing=true.
  *
- * - [show] pubblica la notifica con il titolo del brano + "In riproduzione"
- *   e un'azione "Stop" che ferma l'audio via [PlaybackStopReceiver].
- * - Tap sulla notifica -> riapre [MainActivity].
- * - [hide] rimuove la notifica (alla fine della riproduzione, stop o release).
+ * - [show] posts the notification with the track title + "Now playing"
+ *   and a "Stop" action that stops the audio via [PlaybackStopReceiver].
+ * - Tap on the notification -> reopens [MainActivity].
+ * - [hide] removes the notification (at the end of playback, stop or release).
  */
 object PlaybackNotification {
 
     private const val CHANNEL_ID = "playback"
-    private const val CHANNEL_NAME = "Riproduzione"
+    private const val CHANNEL_NAME = "Playback"
     private const val NOTIFICATION_ID = 1001
 
     const val ACTION_STOP = "com.alberto.ninnananna.action.STOP_PLAYBACK"
 
-    /** Mostra (o aggiorna) la notifica persistente del brano in riproduzione. */
-    fun show(context: Context, lullabyTitle: String, statusText: String = "In riproduzione") {
+    /** Shows (or updates) the persistent notification of the track being played. */
+    fun show(context: Context, lullabyTitle: String, statusText: String = "Now playing") {
         val appContext = context.applicationContext
         ensureChannel(appContext)
 
-        // Android 13+: se POST_NOTIFICATIONS non è concesso non mostriamo nulla
-        // (fallback silenzioso; evita anche la SecurityException di notify()).
+        // Android 13+: if POST_NOTIFICATIONS is not granted we show nothing
+        // (silent fallback; also avoids the SecurityException of notify()).
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
             !NotificationManagerCompat.from(appContext).areNotificationsEnabled()
         ) return
 
-        // Tap sulla notifica -> riapre MainActivity
+        // Tap on the notification -> reopens MainActivity
         val openAppIntent = Intent(appContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         }
@@ -49,7 +49,7 @@ object PlaybackNotification {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        // Azione "Stop" -> BroadcastReceiver che ferma l'audio e nasconde la notifica
+        // "Stop" action -> BroadcastReceiver that stops the audio and hides the notification
         val stopIntent = Intent(appContext, PlaybackStopReceiver::class.java).apply {
             action = ACTION_STOP
         }
@@ -82,7 +82,7 @@ object PlaybackNotification {
         NotificationManagerCompat.from(appContext).notify(NOTIFICATION_ID, notification)
     }
 
-    /** Rimuove la notifica persistente (stop, fine brano o release). */
+    /** Removes the persistent notification (stop, end of track or release). */
     fun hide(context: Context) {
         NotificationManagerCompat.from(context.applicationContext).cancel(NOTIFICATION_ID)
     }
@@ -97,7 +97,7 @@ object PlaybackNotification {
                     CHANNEL_NAME,
                     NotificationManager.IMPORTANCE_LOW
                 ).apply {
-                    description = "Notifica persistente durante la riproduzione"
+                    description = "Persistent notification during playback"
                 }
             )
         }
@@ -105,7 +105,7 @@ object PlaybackNotification {
 }
 
 /**
- * Riceve l'azione "Stop" dalla notifica persistente e ferma la riproduzione.
+ * Receives the "Stop" action from the persistent notification and stops the playback.
  */
 class PlaybackStopReceiver : BroadcastReceiver() {
 

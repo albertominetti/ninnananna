@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import java.io.File
 
 /**
- * Singleton ExoPlayer: un solo player alla volta in tutta l'app.
- * Espone flussi StateFlow osservabili dalla UI (mini-bar, pulsanti Play/Stop).
+ * Singleton ExoPlayer: only one player at a time across the whole app.
+ * Exposes StateFlow streams observable from the UI (mini bar, Play/Stop buttons).
  */
 object PlayerManager {
 
@@ -34,13 +34,13 @@ object PlayerManager {
         appContext = appCtx
         val p = player ?: createPlayer(appCtx)
         p.setMediaItem(MediaItem.fromUri(Uri.fromFile(File(lullaby.filePath))))
-        // Loop "repeat-one" se abilitato (persiste tra i brani).
+        // "Repeat one" loop if enabled (persists between tracks).
         p.repeatMode = if (_loopEnabled.value) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
         p.prepare()
         p.playWhenReady = true
         _current.value = lullaby
         _playing.value = true
-        // Notifica persistente "In riproduzione" (ongoing, con azione Stop).
+        // Persistent "Now playing" notification (ongoing, with a Stop action).
         PlaybackNotification.show(appCtx, formatDisplayName(lullaby.title))
     }
 
@@ -80,14 +80,14 @@ object PlayerManager {
                 override fun onPlaybackStateChanged(playbackState: Int) {
                     if (playbackState == Player.STATE_ENDED) {
                         _playing.value = false
-                        // Fine naturale del brano: rimuovi la notifica persistente.
+                        // Natural end of the track: remove the persistent notification.
                         PlaybackNotification.hide(appContext ?: return)
                     }
                 }
 
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
                     _playing.value = isPlaying
-                    // Se non c'è più un brano corrente, la notifica va rimossa.
+                    // If there is no current track anymore, the notification must be removed.
                     if (!isPlaying && _current.value == null) {
                         PlaybackNotification.hide(appContext ?: return)
                     }

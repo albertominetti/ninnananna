@@ -10,14 +10,14 @@ import java.net.Inet4Address
 import java.net.NetworkInterface
 
 /**
- * Mini server HTTP locale: serve i file in `filesDir/lullabies` sulla LAN,
- * così il ricevitore Chromecast (che NON può leggere lo storage del telefono)
- * può riprodurli da un URL `http://<IP-del-telefono>:<porta>/<fileName>`.
+ * Mini local HTTP server: serves the files in `filesDir/lullabies` on the LAN,
+ * so the Chromecast receiver (which CANNOT read the phone's storage) can play
+ * them from a URL `http://<phone-IP>:<port>/<fileName>`.
  *
- * - porta fissa 8975 (auto-fallback su una porta libera se occupata);
- * - supporta l'header `Range` con risposta 206 (fondamentale per Cast);
- * - [ensureStarted] è idempotente; ogni errore è catturato per non crashare
- *   in assenza di rete.
+ * - fixed port 8975 (auto-fallback to a free port if busy);
+ * - supports the `Range` header with a 206 response (essential for Cast);
+ * - [ensureStarted] is idempotent; every error is caught so it does not crash
+ *   without a network.
  */
 object LocalMediaServer {
 
@@ -37,7 +37,7 @@ object LocalMediaServer {
             val uri = session.uri ?: return newFixedLengthResponse(
                 Response.Status.NOT_FOUND, MIME_PLAINTEXT, "Not found"
             )
-            // Normalizza il path: solo il nome file, niente traversal ("..").
+            // Normalizes the path: only the file name, no traversal ("..").
             val name = uri.trimStart('/').substringAfterLast('/')
             if (name.isEmpty() || name.contains("..")) {
                 return newFixedLengthResponse(
@@ -53,14 +53,14 @@ object LocalMediaServer {
             return try {
                 serveFileWithRange(session, file)
             } catch (e: IOException) {
-                Log.w(TAG, "Errore servendo $name", e)
+                Log.w(TAG, "Error serving $name", e)
                 newFixedLengthResponse(
                     Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, "Error"
                 )
             }
         }
 
-        /** Serve il file gestendo l'header Range (206 Partial Content). */
+        /** Serves the file handling the Range header (206 Partial Content). */
         private fun serveFileWithRange(session: IHTTPSession, file: File): Response {
             val length = file.length()
             val range = session.headers["range"]?.trim()
@@ -72,7 +72,7 @@ object LocalMediaServer {
                 )
             }
 
-            // Formati attesi: "bytes=start-end" | "bytes=start-" | "bytes=-suffix"
+            // Expected formats: "bytes=start-end" | "bytes=start-" | "bytes=-suffix"
             val match = Regex("""bytes=(\d*)-(\d*)""").find(range)
             if (match == null) {
                 return newFixedLengthResponse(
@@ -83,7 +83,7 @@ object LocalMediaServer {
             var start: Long
             var end: Long
             if (startStr.isEmpty()) {
-                // Range negativo: ultimi N byte
+                // Negative range: last N bytes
                 val suffix = endStr.toLongOrNull() ?: 0L
                 start = (length - suffix).coerceAtLeast(0L)
                 end = length - 1
@@ -116,7 +116,7 @@ object LocalMediaServer {
         }
     }
 
-    /** Content-Type corretto in base all'estensione (bundled .mp3, download .m4a). */
+    /** Correct Content-Type based on the extension (bundled .mp3, downloaded .m4a). */
     fun contentTypeFor(fileName: String): String {
         return when (fileName.substringAfterLast('.', "").lowercase()) {
             "m4a", "mp4", "aac" -> "audio/mp4"
@@ -127,13 +127,13 @@ object LocalMediaServer {
         }
     }
 
-    /** Avvia il server se non è già attivo. Idempotente e sicuro in assenza di rete. */
+    /** Starts the server if not already active. Idempotent and safe without a network. */
     @Synchronized
     fun ensureStarted(context: Context) {
         if (server?.isAlive == true) return
         val rootDir = File(context.applicationContext.filesDir, DIR_NAME)
         if (!rootDir.isDirectory) {
-            Log.w(TAG, "Directory inesistente: ${rootDir.absolutePath}")
+            Log.w(TAG, "Nonexistent directory: ${rootDir.absolutePath}")
             return
         }
         val started = try {
@@ -142,37 +142,37 @@ object LocalMediaServer {
             server = s
             true
         } catch (e: Exception) {
-            // Porta occupata: prova una porta libera (auto).
+            // Port busy: try a free port (auto).
             try {
                 val s = LullabyHttpServer(0, rootDir)
                 s.start()
                 server = s
                 true
             } catch (e2: Exception) {
-                Log.e(TAG, "Impossibile avviare il server HTTP locale", e2)
+                Log.e(TAG, "Unable to start the local HTTP server", e2)
                 false
             }
         }
-        if (started) Log.i(TAG, "Server HTTP locale avviato sulla porta ${server?.listeningPort}")
+        if (started) Log.i(TAG, "Local HTTP server started on port ${server?.listeningPort}")
     }
 
-    /** URL LAN del file: `http://<IP-del-telefono>:<porta>/<fileName>`. */
+    /** LAN URL of the file: `http://<phone-IP>:<port>/<fileName>`. */
     fun localUrl(context: Context, fileName: String): String? {
         return try {
             ensureStarted(context)
             val port = server?.listeningPort ?: return null
             val ip = lanIpv4() ?: run {
-                Log.w(TAG, "Nessun indirizzo LAN trovato")
+                Log.w(TAG, "No LAN address found")
                 return null
             }
             "http://$ip:$port/$fileName"
         } catch (e: Exception) {
-            Log.e(TAG, "Errore costruendo l'URL locale", e)
+            Log.e(TAG, "Error building the local URL", e)
             null
         }
     }
 
-    /** Primo IPv4 non-loopback, non 127.0.0.1. Mai "localhost". */
+    /** First non-loopback IPv4, not 127.0.0.1. Never "localhost". */
     private fun lanIpv4(): String? {
         return try {
             var found: String? = null
@@ -189,18 +189,18 @@ object LocalMediaServer {
             }
             found
         } catch (e: Exception) {
-            Log.w(TAG, "Errore nel recupero dell'IP LAN", e)
+            Log.w(TAG, "Error retrieving the LAN IP", e)
             null
         }
     }
 
-    /** Ferma il server (best-effort). */
+    /** Stops the server (best-effort). */
     @Synchronized
     fun stop() {
         try {
             server?.stop()
         } catch (e: Exception) {
-            Log.w(TAG, "Errore fermando il server", e)
+            Log.w(TAG, "Error stopping the server", e)
         }
         server = null
     }

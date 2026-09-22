@@ -13,18 +13,18 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlin.math.roundToInt
 
 /**
- * Barra volume collegata al **volume reale dello smartphone** (AudioManager,
- * stream STREAM_MUSIC), non al volume interno dell'ExoPlayer.
+ * Volume bar linked to the **real volume of the smartphone** (AudioManager,
+ * STREAM_MUSIC stream), not to ExoPlayer's internal volume.
  *
- * - [percent] è il volume di sistema normalizzato a 0..100;
- * - [setPercent] chiama AudioManager.setStreamVolume;
- * - un BroadcastReceiver su AudioManager.VOLUME_CHANGED_ACTION tiene la UI in
- *   sync quando l'utente usa i tasti fisici del volume.
+ * - [percent] is the system volume normalized to 0..100;
+ * - [setPercent] calls AudioManager.setStreamVolume;
+ * - a BroadcastReceiver on AudioManager.VOLUME_CHANGED_ACTION keeps the UI in
+ *   sync when the user uses the physical volume keys.
  */
 object VolumeManager {
 
-    // Costanti "android.media.VOLUME_CHANGED_ACTION" / EXTRA_VOLUME_STREAM_TYPE:
-    // sono @hide nel SDK, quindi usiamo le stringhe letterali del framework.
+    // "android.media.VOLUME_CHANGED_ACTION" / EXTRA_VOLUME_STREAM_TYPE constants:
+    // they are @hide in the SDK, so we use the framework literal strings.
     private const val ACTION_VOLUME_CHANGED = "android.media.VOLUME_CHANGED_ACTION"
     private const val EXTRA_VOLUME_STREAM_TYPE = "android.media.EXTRA_VOLUME_STREAM_TYPE"
 
@@ -39,7 +39,7 @@ object VolumeManager {
     fun currentIndex(context: Context): Int =
         audioManager(context)?.getStreamVolume(AudioManager.STREAM_MUSIC) ?: 0
 
-    /** Converte un indice di volume del device nella percentuale 0..100. */
+    /** Converts a device volume index into the 0..100 percentage. */
     fun percentFromIndex(context: Context, index: Int): Int {
         val am = audioManager(context) ?: return 100
         val max = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
@@ -47,15 +47,15 @@ object VolumeManager {
         return ((index.toFloat() / max) * 100f).roundToInt().coerceIn(0, 100)
     }
 
-    /** Aggiorna il valore mostrato dalla UI leggendo il volume di sistema. */
+    /** Updates the value shown by the UI by reading the system volume. */
     fun refresh(context: Context) {
         _percent.value = percentFromIndex(context, currentIndex(context))
     }
 
     /**
-     * Imposta il volume di sistema (0..100) tramite AudioManager.
-     * Il valore viene applicato subito; in più il sistema emetterà
-     * VOLUME_CHANGED_ACTION che aggiornerà [percent] (tramite l'observer).
+     * Sets the system volume (0..100) through AudioManager.
+     * The value is applied immediately; in addition the system will emit
+     * VOLUME_CHANGED_ACTION which will update [percent] (through the observer).
      */
     fun setPercent(context: Context, percent: Int) {
         val am = audioManager(context) ?: return
@@ -72,8 +72,8 @@ object VolumeManager {
     }
 
     /**
-     * Registra l'osservatore dei cambi di volume (tasti fisici).
-     * Idempotente: un solo receiver per processo.
+     * Registers the volume-change observer (physical keys).
+     * Idempotent: only one receiver per process.
      */
     fun register(context: Context) {
         if (receiver != null) return

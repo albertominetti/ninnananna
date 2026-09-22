@@ -1,171 +1,172 @@
 # NinnaNanna 🌙
 
-App Android **nativa** per scaricare l'audio di una ninna nanna (o di qualsiasi video YouTube)
-e riprodurlo **offline** a tutto schermo, con temi pensati per la camera dei bambini.
+A **native Android** app to download the audio of a lullaby (or of any YouTube video)
+and play it **offline** full screen, with themes designed for a kids' room.
 
-Tutto avviene **on-device**: nessun backend, nessun account, nessuna pubblicità.
-I file audio vengono salvati nello **storage interno** dell'app
-(`filesDir/lullabies`), al sicuro da altri utenti/app.
+Everything runs **on-device**: no backend, no account, no ads.
+Audio files are saved in the app's **internal storage**
+(`filesDir/lullabies`), safe from other users/apps.
 
-> ⚠️ **Responsabilità d'uso** — leggi le [note legali](#note-legali-youtube) in fondo.
-> Scarica **solo** contenuti tuoi, con licenza Creative Commons/libera o per cui hai
-> l'autorizzazione. Rispetta i Termini di Servizio di YouTube.
+> ⚠️ **Responsible use** — read the [YouTube legal notes](#youtube-legal-notes) at the bottom.
+> Download **only** your own content, content under a Creative Commons/free license or for
+> which you have authorization. Respect YouTube's Terms of Service.
 
 ---
 
-## Funzionalità
+## Features
 
-| Area | Cosa fa |
+| Area | What it does |
 |---|---|
-| **Schermata principale** | Campo per incollare un URL YouTube + bottone **"Scarica audio"** |
-| **Intent** | `ACTION_SEND` (Condividi → NinnaNanna) e `ACTION_VIEW` (link `youtube.com/watch`, `youtu.be`, …): apre l'app, pre-compila il campo e avvia il download |
-| **Lista audio** | Nome file, durata, dimensione e data; ordinate per nome |
-| **Riproduzione** | Un **solo player alla volta** (singleton ExoPlayer): Play / Stop per ogni item |
-| **Mini-player bar** | Barra in basso con titolo della traccia + pulsante **Stop** |
-| **Gestione file** | **Rinomina** e **Elimina** ogni audio |
-| **Impostazioni** | Tema **Chiaro / Scuro / Amoled** (nero puro), **Mantieni schermo attivo** (`FLAG_KEEP_SCREEN_ON`), **Reset di tutto** con dialog di conferma |
-| **Per scaricare** | Risoluzione del **miglior stream audio progressivo** con **NewPipeExtractor**, download con **OkHttp** (`DownloadManager` del sistema non usato: download diretto HTTP) |
+| **Main screen** | Field to paste a YouTube URL + **"Download audio"** button |
+| **Intents** | `ACTION_SEND` (Share → NinnaNanna) and `ACTION_VIEW` (links `youtube.com/watch`, `youtu.be`, …): opens the app, pre-fills the field and starts the download |
+| **Audio list** | File name, duration, size and date; sorted by name |
+| **Playback** | **Single player** at a time (ExoPlayer singleton): Play / Stop for each item |
+| **Mini-player bar** | Bottom bar with track title + **Stop** button |
+| **File management** | **Rename** and **Delete** each audio |
+| **Settings** | Theme **Light / Dark / Amoled** (pure black), **Keep screen on** (`FLAG_KEEP_SCREEN_ON`), **Reset all** with confirmation dialog |
+| **Downloading** | Best **progressive audio stream** resolution with **NewPipeExtractor**, download with **OkHttp** (system `DownloadManager` not used: direct HTTP download) |
 
-## Screenshot
+## Screenshots
 
-> 📷 _Inserire qui gli screenshot reali dell'app (Schermata principale, Mini-player, Impostazioni)._
+> 📷 _Add real app screenshots here (Main screen, Mini-player, Settings)._
 
-| Schermata principale | Impostazioni |
+| Main screen | Settings |
 |---|---|
 | _placeholder_ | _placeholder_ |
 
-## Stack tecnologico
+## Tech stack
 
 - **Kotlin** + **Jetpack Compose** (Material 3)
-- **Gradle Kotlin DSL** — wrapper **Gradle 8.7**
+- **Gradle Kotlin DSL** — **Gradle 8.7** wrapper
 - **AGP 8.2.2** · `minSdk 26` · `targetSdk 34` · package `com.alberto.ninnananna`
-- **ExoPlayer** `androidx.media3:media3-exoplayer` (player locale)
-- **NewPipeExtractor** `com.github.TeamNewPipe:NewPipeExtractor:v0.26.5` (risoluzione stream, on-device)
-- **OkHttp** `com.squareup.okhttp3:okhttp:4.12.0` (Downloader dell'estrattore + download file)
-- **DataStore Preferences** (impostazioni tema / keep-screen-on)
-- **Navigation Compose** (schermata principale ↔ impostazioni)
-- **Nessuna** dipendenza da `yt-dlp`, nessun backend, nessuna pubblicità
+- **ExoPlayer** `androidx.media3:media3-exoplayer` (local player)
+- **NewPipeExtractor** `com.github.TeamNewPipe:NewPipeExtractor:v0.26.5` (on-device stream resolution)
+- **OkHttp** `com.squareup.okhttp3:okhttp:4.12.0` (extractor downloader + file download)
+- **DataStore Preferences** (theme / keep-screen-on settings)
+- **Navigation Compose** (main screen ↔ settings)
+- **No** `yt-dlp` dependency, no backend, no ads
 
-### Struttura del progetto
+### Project structure
 
 ```
 ninnananna/
 ├── settings.gradle.kts
 ├── build.gradle.kts
 ├── gradle.properties
-├── gradle/wrapper/…                    # wrapper Gradle 8.7
+├── gradle/wrapper/…                    # Gradle 8.7 wrapper
 ├── app/
 │   ├── build.gradle.kts
 │   └── src/main/
 │       ├── AndroidManifest.xml         # INTERNET + SEND/VIEW + FOREGROUND_SERVICE_MEDIA_PLAYBACK + POST_NOTIFICATIONS
-│       ├── res/…                       # strings, themes, icona launcher adattiva
+│       ├── res/…                       # strings, themes, adaptive launcher icon
 │       └── java/com/alberto/ninnananna/
-│           ├── MainActivity.kt         # activity + intent SEND/VIEW + FLAG_KEEP_SCREEN_ON
-│           ├── NinnanannaApp.kt        # tema + navigazione + DataStore (SettingsStore)
-│           ├── Theme.kt                # color scheme Chiaro / Scuro / Amoled
+│           ├── MainActivity.kt         # activity + SEND/VIEW intents + FLAG_KEEP_SCREEN_ON
+│           ├── NinnanannaApp.kt        # theme + navigation + DataStore (SettingsStore)
+│           ├── Theme.kt                # Light / Dark / Amoled color schemes
 │           ├── DownloadRepository.kt   # NewPipeExtractor + OkHttp + filesDir/lullabies
-│           ├── PlayerManager.kt        # ExoPlayer singleton (un solo player alla volta)
-│           ├── LullabyList.kt          # schermata principale + mini-player bar
-│           └── SettingsScreen.kt       # impostazioni + reset
-├── scripts/build-apk.sh                # build automatica (vedi sotto)
-├── .github/workflows/release.yml       # release APK/AAB su tag v*
+│           ├── PlayerManager.kt        # ExoPlayer singleton (single player at a time)
+│           ├── LullabyList.kt          # main screen + mini-player bar
+│           └── SettingsScreen.kt       # settings + reset
+├── scripts/build-apk.sh                # automatic build (see below)
+├── .github/workflows/release.yml       # APK/AAB release on v* tags
 └── README.md
 ```
 
-## Come compilare
+## How to build
 
-### Prerequisiti
+### Prerequisites
 
-- **JDK 17 o 21** (consigliato). Impostare `JAVA_HOME` se non è già nel PATH.
-- **Android SDK** (opzionale): se `ANDROID_SDK_ROOT`/`ANDROID_HOME` non sono configurati,
-  lo script lo installa automaticamente in `~/android-sdk`.
+- **JDK 17 or 21** (recommended). Set `JAVA_HOME` if it's not already in the PATH.
+- **Android SDK** (optional): if `ANDROID_SDK_ROOT`/`ANDROID_HOME` are not configured,
+  the script installs it automatically into `~/android-sdk`.
 
-### Con lo script automatico (consigliato)
+### With the automatic script (recommended)
 
-Lo script `scripts/build-apk.sh`:
+`scripts/build-apk.sh`:
 
-1. controlla `JAVA_HOME`;
-2. installa **cmdline-tools** se manca `ANDROID_SDK_ROOT`;
-3. accetta le **licenze** SDK;
-4. installa `platforms;android-34` e `build-tools;34.0.0`;
-5. lancia `./gradlew assembleDebug` (default) o `assembleRelease`;
-6. copia l'APK finale in `./dist/`.
+1. checks `JAVA_HOME`;
+2. installs **cmdline-tools** if `ANDROID_SDK_ROOT` is missing;
+3. accepts the **SDK licenses**;
+4. installs `platforms;android-34` and `build-tools;34.0.0`;
+5. runs `./gradlew assembleDebug` (default) or `assembleRelease`;
+6. copies the final APK into `./dist/`.
 
 ```bash
 cd ninnananna
 
-# APK di debug
+# Debug APK
 ./scripts/build-apk.sh
 
-# APK di release
-# (senza keystore: firmato con la chiave debug, installabile ma non per Google Play)
+# Release APK
+# (without a keystore: signed with the debug key, installable but not for Google Play)
 ./scripts/build-apk.sh release
 
-# Release con firma vera (variabili d'ambiente opzionali)
-export KEYSTORE_FILE=/percorso/keystore.jks
+# Release with a real signature (optional environment variables)
+export KEYSTORE_FILE=/path/to/keystore.jks
 export KEYSTORE_PASSWORD=...
 export KEY_ALIAS=...
 export KEY_PASSWORD=...
 ./scripts/build-apk.sh release
 
-# Oppure keystore in base64 (comodo per CI):
+# Or keystore as base64 (handy for CI):
 export KEYSTORE_BASE64="$(base64 -w0 keystore.jks)"
 ./scripts/build-apk.sh release
 ```
 
-Lo script è idempotente: al secondo giro salta il setup dell'SDK già presente.
+The script is idempotent: on the second run it skips the already-installed SDK setup.
 
-### A mano (debug)
+### Manually (debug)
 
 ```bash
 cd ninnananna
-export ANDROID_SDK_ROOT=$HOME/android-sdk   # se non già impostato
+export ANDROID_SDK_ROOT=$HOME/android-sdk   # if not already set
 ./gradlew assembleDebug
 # APK: app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## Come installare l'APK
+## How to install the APK
 
-Collegare un dispositivo Android con **debug USB** abilitato oppure usare un emulatore:
+Connect an Android device with **USB debugging** enabled or use an emulator:
 
 ```bash
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-In alternativa: copiare l'APK sul telefono e toccarlo per installarlo
-(consentire "Installa da fonti sconosciute" se richiesto).
-L'app richiede **solo** il permesso `INTERNET` per il download; non chiede altri permessi.
+Alternatively: copy the APK to the phone and tap it to install
+(allow "install from unknown sources" if prompted).
+The app only requires the `INTERNET` permission for downloading; it does not ask for any other permissions.
 
-## Note legali YouTube
+## YouTube legal notes
 
-- Questa app usa **NewPipeExtractor**, una libreria open source (GPLv3) che **non** utilizza
-  API YouTube ufficiali. La disponibilità degli stream può cambiare ed è fuori dal controllo dell'app.
-- YouTube e i singoli video sono soggetti ai **Termini di Servizio di Google/YouTube**.
-- **Scarica esclusivamente**:
-  - video di tua proprietà;
-  - video con **licenza Creative Commons / libera** (visibile nella descrizione del video);
-  - contenuti per cui hai il permesso esplicito dell'autore.
-- **Non** scaricare musica o video protetti da copyright senza autorizzazione:
-  in molti Paesi è illegale e comunque contrario ai ToS di YouTube.
-- L'autore dell'app non è responsabile dell'uso improprio.
+- This app uses **NewPipeExtractor**, an open source (GPLv3) library that **does not** use
+  official YouTube APIs. Stream availability can change and is outside the app's control.
+- YouTube and individual videos are subject to **Google/YouTube Terms of Service**.
+- **Download exclusively**:
+  - videos you own;
+  - videos under a **Creative Commons / free license** (visible in the video description);
+  - content for which you have the author's explicit permission.
+- **Do not** download copyrighted music or videos without authorization:
+  in many countries it is illegal and, in any case, contrary to YouTube's ToS.
+- The app's author is not responsible for misuse.
 
-> Un uso corretto e legale tipico: scaricare **le proprie** ninnenanne
-> (ad esempio registrazioni personali caricate su YouTube) per riprodurle offline di notte.
+> A typical legal use case: downloading **your own** lullabies
+> (e.g. personal recordings uploaded to YouTube) to play them offline at night.
 
-## Release automatica (GitHub Actions)
+## Automatic releases (GitHub Actions)
 
-Su un tag `v*` (es. `git tag v1.0.0 && git push origin v1.0.0`) il workflow
+On a `v*` tag (e.g. `git tag v1.0.0 && git push origin v1.0.0`) the workflow
 `.github/workflows/release.yml`:
 
-1. configura JDK 17 (Temurin) con `actions/setup-java` — l'**Android SDK** è già preinstallato sul runner (niente più `android-actions/setup-android`, ormai deprecato e rotto);
-2. compila `assembleRelease` + `bundleRelease`;
-3. carica APK e AAB come **artifact**;
-4. crea una **GitHub Release** con i file allegati (`softprops/action-gh-release`).
+1. sets up JDK 17 (Temurin) with `actions/setup-java` — the **Android SDK** is already
+   preinstalled on the runner (no more `android-actions/setup-android`, now deprecated and broken);
+2. builds `assembleRelease` + `bundleRelease`;
+3. uploads APK and AAB as **artifacts**;
+4. creates a **GitHub Release** with the attached files (`softprops/action-gh-release`).
 
-Per firmare con la chiave di release su GitHub, aggiungere i **repository secrets**:
-`KEYSTORE_BASE64` (keystore codificato in base64), `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
-Senza secrets la build è firmata con la chiave debug (installabile, non pubblicabile su Google Play).
+To sign with the release key on GitHub, add the **repository secrets**:
+`KEYSTORE_BASE64` (base64-encoded keystore), `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
+Without secrets the build is signed with the debug key (installable, not publishable on Google Play).
 
-## Autore
+## Author
 
-Alberto Minetti — app pubblicata a scopo dimostrativo/test con licenza GPLv3.
+Alberto Minetti — app published for demo/testing purposes under the GPLv3 license.

@@ -13,12 +13,12 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 /**
- * Sleep timer globale: allo scadere ferma la riproduzione e rimuove il
- * flag "mantieni schermo attivo" (impostato in [SettingsStore]).
+ * Global sleep timer: when it expires it stops the playback and removes the
+ * "keep screen on" flag (set in [SettingsStore]).
  *
- * I timeout disponibili sono scelti dalla UI (15 min, 30 min, 1h, 2h, 3h,
- * 4h oppure off). Il conto alla rovescia sopravvive alla chiusura della
- * schermata finché il processo dell'app è vivo.
+ * The available timeouts are chosen by the UI (15 min, 30 min, 1h, 2h, 3h,
+ * 4h or off). The countdown survives the closing of the screen as long as
+ * the app process is alive.
  */
 object SleepTimerManager {
 
@@ -26,14 +26,14 @@ object SleepTimerManager {
 
     private val _remainingMillis = MutableStateFlow<Long?>(null)
 
-    /** Millisecondi rimanenti, oppure null quando il timer è spento. */
+    /** Remaining milliseconds, or null when the timer is off. */
     val remainingMillis: StateFlow<Long?> = _remainingMillis.asStateFlow()
 
     private var job: Job? = null
 
     /**
-     * Avvia (o riavvia) il timer con la durata indicata.
-     * [context] serve solo allo scadere per rimuovere il keep-screen-on.
+     * Starts (or restarts) the timer with the given duration.
+     * [context] is used only on expiry to remove keep-screen-on.
      */
     @Synchronized
     fun start(context: Context, durationMillis: Long): Boolean {
@@ -48,7 +48,7 @@ object SleepTimerManager {
                 _remainingMillis.value = remaining
                 delay(1000)
             }
-            // Allo scadere: ferma l'audio e togli il "mantieni schermo attivo".
+            // On expiry: stop the audio and remove the "keep screen on".
             PlayerManager.stop()
             CastManager.stopStreaming()
             SettingsStore.setKeepScreenOn(context, false)
@@ -57,7 +57,7 @@ object SleepTimerManager {
         return true
     }
 
-    /** Spegne il timer senza azioni (la riproduzione continua). */
+    /** Turns off the timer without any action (playback continues). */
     @Synchronized
     fun cancel() {
         job?.cancel()

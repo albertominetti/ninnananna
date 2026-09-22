@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Icona piccola (24dp) per la notifica foreground di download: nota musicale bianca -->
+<!-- Small icon (24dp) for the foreground download notification: white music note -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"

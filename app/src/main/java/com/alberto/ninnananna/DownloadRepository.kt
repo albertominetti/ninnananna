@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
 class DownloadException(message: String, cause: Throwable? = null) : Exception(message, cause)
 
 /**
- * Un audio scaricato, salvato in filesDir/lullabies.
+ * A downloaded audio, saved in filesDir/lullabies.
  */
 data class Lullaby(
     val id: String,
@@ -30,7 +30,7 @@ data class Lullaby(
     val durationMs: Long,
     val sizeBytes: Long,
     val lastModified: Long,
-    /** true per le ninnenanne preinstallate nell'APK (non cancellabili/rinominabili). */
+    /** true for the lullabies preinstalled in the APK (cannot be deleted/renamed). */
     val isBundled: Boolean = false
 ) {
     val file: File get() = File(filePath)
@@ -38,12 +38,12 @@ data class Lullaby(
 }
 
 /**
- * Repository di download:
- * - risolve il miglior stream audio progressivo con NewPipeExtractor;
- * - scarica il file con OkHttp in filesDir/lullabies;
- * - elenca / rinomina / elimina gli audio locali.
+ * Download repository:
+ * - resolves the best progressive audio stream with NewPipeExtractor;
+ * - downloads the file with OkHttp into filesDir/lullabies;
+ * - lists / renames / deletes local audios.
  *
- * Tutto on-device: nessun backend, nessuna dipendenza esterna.
+ * Everything on-device: no backend, no external dependency.
  */
 object DownloadRepository {
 
@@ -52,13 +52,13 @@ object DownloadRepository {
     private const val EXTENSION = ".m4a"
 
     /**
-     * Ninnenanne preinstallate nell'APK (res/raw) e copiate in
-     * filesDir/lullabies al primo avvio (e a ogni avvio, se mancanti):
-     * - Brahms "Wiegenlied" op.49 n.4 (registrazione 1915, pubblico dominio);
-     * - rumore bianco (5 min) per mascherare i rumori;
-     * - "cuore arricchito" (5 min): battito + rumore bianco della pancia + whoosh;
-     * - "ecografia vera" (~6 min): registrazione doppler ripulita e ammorbidita;
-     * - "cuore marrone" (5 min): rumore marrone + battito lento e dolce.
+     * Lullabies preinstalled in the APK (res/raw) and copied into
+     * filesDir/lullabies on first launch (and on every launch, if missing):
+     * - Brahms' "Wiegenlied" op.49 n.4 (1915 recording, public domain);
+     * - white noise (5 min) to mask other noises;
+     * - "enriched heart" (5 min): heartbeat + belly white noise + whoosh;
+     * - "real ultrasound" (~6 min): cleaned-up and softened doppler recording;
+     * - "brown heart" (5 min): brown noise + slow, gentle heartbeat.
      */
     private val BUNDLED_LULLABIES = listOf(
         "brahms_lullaby.mp3" to R.raw.brahms_lullaby,
@@ -68,14 +68,14 @@ object DownloadRepository {
         "cuore_marrone.mp3" to R.raw.cuore_marrone
     )
 
-    /** Suoni preinstallati in versioni precedenti e non più inclusi: vengono
-     *  rimossi automaticamente (erano protetti, quindi mai modificati). */
+    /** Sounds preinstalled in previous versions and no longer included: they are
+     *  removed automatically (they were protected, so never modified). */
     private val OBSOLETE_BUNDLED_FILE_NAMES = setOf("womb_heartbeat.mp3")
 
-    /** Nomi dei file preinstallati (per identificare gli item bundled). */
+    /** Names of the preinstalled files (to identify bundled items). */
     private val BUNDLED_FILE_NAMES = BUNDLED_LULLABIES.map { it.first }.toSet()
 
-    /** true se il file è una delle ninnenanne preinstallate (protette). */
+    /** true if the file is one of the preinstalled (protected) lullabies. */
     fun isBundledFile(file: File): Boolean = file.name in BUNDLED_FILE_NAMES
 
     private val client: OkHttpClient by lazy {
@@ -94,7 +94,7 @@ object DownloadRepository {
     @Synchronized
     private fun ensureInitialized() {
         if (initialized) return
-        // Il Downloader dell'estrattore usa lo stesso OkHttpClient del download
+        // The extractor's Downloader uses the same OkHttpClient used for the download
         NewPipe.init(object : Downloader() {
             override fun execute(
                 request: org.schabi.newpipe.extractor.downloader.Request
@@ -139,11 +139,11 @@ object DownloadRepository {
         File(context.applicationContext.filesDir, DIR_NAME).apply { mkdirs() }
 
     /**
-     * Allinea i suoni preinstallati nella cartella filesDir/lullabies:
-     * - rimuove quelli non più inclusi (es. il vecchio battito uterino);
-     * - copia quelli mancanti (primo avvio, oppure aggiornamento con nuovi suoni).
+     * Aligns the preinstalled sounds in the filesDir/lullabies folder:
+     * - removes those no longer included (e.g. the old womb heartbeat);
+     * - copies the missing ones (first launch, or update with new sounds).
      *
-     * @return true se qualcosa è stato copiato o rimosso.
+     * @return true if something was copied or removed.
      */
     suspend fun ensureBundledLullabies(context: Context): Boolean = withContext(Dispatchers.IO) {
         val dir = lullabiesDir(context)
@@ -173,7 +173,7 @@ object DownloadRepository {
 
     suspend fun listLullabies(context: Context): List<Lullaby> = withContext(Dispatchers.IO) {
         val dir = lullabiesDir(context)
-        // Allinea i suoni preinstallati: copia i mancanti, rimuove i vecchi.
+        // Align the preinstalled sounds: copy the missing ones, remove the old ones.
         ensureBundledLullabies(context)
         dir.listFiles { f -> f.isFile }
             ?.sortedBy { it.name.lowercase() }
@@ -205,8 +205,8 @@ object DownloadRepository {
     // ---------------- Download ----------------
 
     /**
-     * Risolve il miglior stream audio con NewPipeExtractor e lo scarica in filesDir/lullabies.
-     * [onProgress] riceve un valore 0..1 (dispatcher di rete, thread-safe per lo stato Compose).
+     * Resolves the best audio stream with NewPipeExtractor and downloads it into filesDir/lullabies.
+     * [onProgress] receives a 0..1 value (network dispatcher, thread-safe for Compose state).
      */
     suspend fun download(
         context: Context,
@@ -224,12 +224,12 @@ object DownloadRepository {
             val durationSec = runCatching { extractor.length }.getOrDefault(0L)
 
             val stream = resolveBestAudioStream(extractor)
-                ?: throw DownloadException("Nessuno stream audio disponibile per questo video.")
+                ?: throw DownloadException("No audio stream available for this video.")
 
             val dir = lullabiesDir(context)
             val target = uniqueFile(dir, sanitizeFileName(title))
             val streamUrl = stream.url
-                ?: throw DownloadException("Stream senza URL del file audio.")
+                ?: throw DownloadException("Stream without file URL.")
             downloadStream(streamUrl, target, onProgress)
 
             Lullaby(
@@ -243,18 +243,18 @@ object DownloadRepository {
         } catch (e: DownloadException) {
             throw e
         } catch (e: IOException) {
-            throw DownloadException("Errore di rete durante il download: ${e.message}", e)
+            throw DownloadException("Network error during download: ${e.message}", e)
         } catch (e: ExtractionException) {
-            throw DownloadException("Impossibile analizzare il video: ${e.message}", e)
+            throw DownloadException("Unable to parse the video: ${e.message}", e)
         } catch (e: Exception) {
-            throw DownloadException("Errore durante il download: ${e.message}", e)
+            throw DownloadException("Error during download: ${e.message}", e)
         }
     }
 
     /**
-     * Sceglie il "miglior stream audio progressivo": preferisce gli audio
-     * progressivi HTTP (itag YouTube 139/140/141, M4A/AAC), altrimenti il
-     * flusso audio con bitrate medio più alto.
+     * Chooses the "best progressive audio stream": prefers progressive HTTP
+     * audios (YouTube itag 139/140/141, M4A/AAC), otherwise the highest
+     * average-bitrate audio stream.
      */
     private fun resolveBestAudioStream(extractor: StreamExtractor): Stream? {
         val audioStreams: List<AudioStream> =
@@ -299,9 +299,9 @@ object DownloadRepository {
 
         client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
-                throw DownloadException("Risposta HTTP ${response.code} durante il download.")
+                throw DownloadException("HTTP response ${response.code} during download.")
             }
-            val body = response.body ?: throw DownloadException("Risposta senza contenuto.")
+            val body = response.body ?: throw DownloadException("Response without content.")
             val total = body.contentLength()
             val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
             var downloaded = 0L
@@ -319,16 +319,16 @@ object DownloadRepository {
                 }
             }
             if (total > 0 && downloaded < total) {
-                throw DownloadException("Download incompleto ($downloaded/${total} byte).")
+                throw DownloadException("Incomplete download ($downloaded/${total} bytes).")
             }
         }
     }
 
-    // ---------------- Gestione file ----------------
+    // ---------------- File management ----------------
 
     suspend fun rename(context: Context, lullaby: Lullaby, newTitle: String): Boolean =
         withContext(Dispatchers.IO) {
-            // Le preinstallate (bundled) non si rinominano mai.
+            // The preinstalled (bundled) ones are never renamed.
             if (lullaby.isBundled) return@withContext false
             val name = newTitle.trim().ifBlank { return@withContext false }
             val old = File(lullaby.filePath)
@@ -342,14 +342,14 @@ object DownloadRepository {
 
     suspend fun delete(context: Context, lullaby: Lullaby): Boolean =
         withContext(Dispatchers.IO) {
-            // Le preinstallate (bundled) non si eliminano mai.
+            // The preinstalled (bundled) ones are never deleted.
             if (lullaby.isBundled) return@withContext false
             File(lullaby.filePath).delete()
         }
 
     /**
-     * Elimina tutti i file scaricati (le preinstallate bundled sono sempre
-     * conservate); ritorna il numero di file eliminati.
+     * Deletes all downloaded files (the preinstalled bundled ones are always
+     * kept); returns the number of deleted files.
      */
     suspend fun resetAll(context: Context): Int = withContext(Dispatchers.IO) {
         val dir = lullabiesDir(context)
@@ -363,21 +363,21 @@ object DownloadRepository {
 }
 
 /**
- * Formatta il nome di un audio per la **sola visualizzazione** (i file su
- * disco non vengono rinominati):
- * - rimuove l'estensione .mp3/.m4a;
- * - sostituisce `_` e `-` con spazi;
- * - trim e rimozione di spazi multipli;
- * - Title Case semplice (prima lettera di ogni parola maiuscola, il resto
- *   invariato: gli acronimi eventuali non vengono toccati).
+ * Formats the name of an audio for **display only** (the files on disk are
+ * not renamed):
+ * - removes the .mp3/.m4a extension;
+ * - replaces `_` and `-` with spaces;
+ * - trims and removes multiple spaces;
+ * - simple Title Case (first letter of each word uppercase, the rest
+ *   unchanged: any acronyms are left untouched).
  */
-/** Nomi in italiano dei suoni preinstallati (solo per la visualizzazione). */
-private val BUNDLED_DISPLAY_NAMES_IT = mapOf(
-    "brahms_lullaby" to "Ninna nanna di Brahms",
-    "white_noise" to "Rumore bianco",
-    "cuore_arricchito" to "Cuore arricchito",
-    "ecografia_vera" to "Ecografia vera",
-    "cuore_marrone" to "Cuore marrone"
+/** English names of the preinstalled sounds (display only). */
+private val BUNDLED_DISPLAY_NAMES_EN = mapOf(
+    "brahms_lullaby" to "Brahms' lullaby",
+    "white_noise" to "White noise",
+    "cuore_arricchito" to "Enriched heartbeat",
+    "ecografia_vera" to "Real ultrasound",
+    "cuore_marrone" to "Brown heart"
 )
 
 fun formatDisplayName(fileName: String): String {
@@ -388,8 +388,8 @@ fun formatDisplayName(fileName: String): String {
             break
         }
     }
-    // Nomi in italiano per i suoni preinstallati.
-    BUNDLED_DISPLAY_NAMES_IT[name.lowercase()]?.let { return it }
+    // English names for the preinstalled sounds.
+    BUNDLED_DISPLAY_NAMES_EN[name.lowercase()]?.let { return it }
     val words = name
         .replace('_', ' ')
         .replace('-', ' ')

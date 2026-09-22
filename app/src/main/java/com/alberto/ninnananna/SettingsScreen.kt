@@ -43,10 +43,10 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
 /**
- * Schermata Impostazioni:
- * - tema Chiaro / Scuro / Amoled (nero puro);
- * - mantieni schermo attivo (FLAG_KEEP_SCREEN_ON sulla MainActivity);
- * - reset completo di tutto ciò che è stato scaricato.
+ * Settings screen:
+ * - Light / Dark / Amoled theme (pure black);
+ * - keep screen on (FLAG_KEEP_SCREEN_ON on the MainActivity);
+ * - full reset of everything that was downloaded.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -61,7 +61,7 @@ fun SettingsScreen(onBack: () -> Unit) {
     var showResetDialog by remember { mutableStateOf(false) }
     var resetFeedback by remember { mutableStateOf<String?>(null) }
 
-    // Numero di audio scaricati dall'utente (le 3 preinstallate sono escluse).
+    // Number of audios downloaded by the user (the 3 preinstalled ones are excluded).
     val downloadedCount = lullabies.count { !it.isBundled }
 
     LaunchedEffect(Unit) {
@@ -71,10 +71,10 @@ fun SettingsScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Impostazioni") },
+                title = { Text("Settings") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Indietro")
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 }
             )
@@ -87,22 +87,22 @@ fun SettingsScreen(onBack: () -> Unit) {
                 .verticalScroll(rememberScrollState())
                 .padding(16.dp)
         ) {
-            // ---------- Tema ----------
-            Text(text = "Tema", style = MaterialTheme.typography.titleMedium)
+            // ---------- Theme ----------
+            Text(text = "Theme", style = MaterialTheme.typography.titleMedium)
             Spacer(Modifier.height(4.dp))
 
             Column(Modifier.selectableGroup()) {
                 ThemeModeOption(
-                    label = "Chiaro",
-                    description = "Colori chiari",
+                    label = "Light",
+                    description = "Light colors",
                     selected = themeMode == ThemeMode.LIGHT,
                     onSelect = {
                         scope.launch { SettingsStore.setThemeMode(context, ThemeMode.LIGHT) }
                     }
                 )
                 ThemeModeOption(
-                    label = "Scuro",
-                    description = "Colori scuri",
+                    label = "Dark",
+                    description = "Dark colors",
                     selected = themeMode == ThemeMode.DARK,
                     onSelect = {
                         scope.launch { SettingsStore.setThemeMode(context, ThemeMode.DARK) }
@@ -110,7 +110,7 @@ fun SettingsScreen(onBack: () -> Unit) {
                 )
                 ThemeModeOption(
                     label = "Amoled",
-                    description = "Nero puro: ideale di notte",
+                    description = "Pure black: ideal at night",
                     selected = themeMode == ThemeMode.AMOLED,
                     onSelect = {
                         scope.launch { SettingsStore.setThemeMode(context, ThemeMode.AMOLED) }
@@ -121,16 +121,16 @@ fun SettingsScreen(onBack: () -> Unit) {
             Spacer(Modifier.height(16.dp))
             Divider()
 
-            // ---------- Mantieni schermo attivo ----------
+            // ---------- Keep screen on ----------
             Spacer(Modifier.height(16.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(text = "Mantieni schermo attivo", style = MaterialTheme.typography.titleMedium)
+                    Text(text = "Keep screen on", style = MaterialTheme.typography.titleMedium)
                     Text(
-                        text = "Impedisce il timeout dello schermo durante la riproduzione",
+                        text = "Prevents the screen timeout during playback",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -148,11 +148,11 @@ fun SettingsScreen(onBack: () -> Unit) {
 
             // ---------- Reset ----------
             Spacer(Modifier.height(16.dp))
-            Text(text = "Dati", style = MaterialTheme.typography.titleMedium)
+            Text(text = "Data", style = MaterialTheme.typography.titleMedium)
             Text(
-                text = "$downloadedCount audio scaricati" +
-                    " (le ${lullabies.count { it.isBundled }} preinstallate " +
-                    "sono sempre conservate)",
+                text = "$downloadedCount downloaded audios" +
+                    " (the ${lullabies.count { it.isBundled }} preinstalled " +
+                    "ones are always kept)",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -166,7 +166,7 @@ fun SettingsScreen(onBack: () -> Unit) {
                     contentColor = MaterialTheme.colorScheme.onError
                 )
             ) {
-                Text("Elimina tutto ciò che è scaricato")
+                Text("Delete everything downloaded")
             }
 
             resetFeedback?.let {
@@ -183,35 +183,35 @@ fun SettingsScreen(onBack: () -> Unit) {
     if (showResetDialog) {
         AlertDialog(
             onDismissRequest = { showResetDialog = false },
-            title = { Text("Reset completo") },
+            title = { Text("Full reset") },
             text = {
                 Text(
-                    "Vuoi eliminare i $downloadedCount audio scaricati? " +
-                        "Le preinstallate (Brahms, white noise, battito) " +
-                        "non vengono toccate. L'operazione non è reversibile."
+                    "Do you want to delete the $downloadedCount downloaded audios? " +
+                        "The preinstalled ones (Brahms, white noise, heartbeat) " +
+                        "are not touched. This operation is irreversible."
                 )
             },
             confirmButton = {
                 TextButton(onClick = {
                     showResetDialog = false
                     scope.launch {
-                        // resetAll elimina solo i file NON bundled.
+                        // resetAll deletes only the NON-bundled files.
                         val deleted = DownloadRepository.resetAll(context)
                         if (deleted > 0) {
                             PlayerManager.stop()
                         }
                         lullabies = DownloadRepository.listLullabies(context)
                         resetFeedback = if (deleted > 0) {
-                            "Eliminati $deleted audio scaricati " +
-                                "(preinstallate conservate)."
+                            "Deleted $deleted downloaded audios " +
+                                "(preinstalled ones kept)."
                         } else {
-                            "Nessun audio scaricato da eliminare."
+                            "No downloaded audios to delete."
                         }
                     }
-                }) { Text("Elimina tutto") }
+                }) { Text("Delete all") }
             },
             dismissButton = {
-                TextButton(onClick = { showResetDialog = false }) { Text("Annulla") }
+                TextButton(onClick = { showResetDialog = false }) { Text("Cancel") }
             }
         )
     }

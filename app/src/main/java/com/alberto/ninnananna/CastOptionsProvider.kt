@@ -6,9 +6,9 @@ import com.google.android.gms.cast.framework.OptionsProvider
 import com.google.android.gms.cast.framework.SessionProvider
 
 /**
- * Opzioni del framework Cast, dichiarate nel manifest con la meta-data
- * OPTIONS_PROVIDER_CLASS_NAME. Usa il **Default Media Receiver** di Google
- * ("CC1AD845"): non richiede registrazione di un'app personalizzata.
+ * Options of the Cast framework, declared in the manifest with the
+ * OPTIONS_PROVIDER_CLASS_NAME meta-data. Uses Google's **Default Media
+ * Receiver** ("CC1AD845"): no custom app registration required.
  */
 class CastOptionsProvider : OptionsProvider {
 

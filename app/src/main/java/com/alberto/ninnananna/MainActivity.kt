@@ -13,9 +13,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 /**
- * Bus per gli Intent in ingresso (ACTION_SEND / ACTION_VIEW): la UI
- * (LullabyList) osserva [pendingYoutubeUrl] per pre-compilare il campo
- * e avviare il download.
+ * Bus for incoming intents (ACTION_SEND / ACTION_VIEW): the UI
+ * (LullabyList) observes [pendingYoutubeUrl] to pre-fill the field
+ * and start the download.
  */
 object MainActivityEvents {
     val pendingYoutubeUrl = MutableStateFlow<String?>(null)
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Rilascia il player quando l'activity viene chiusa
+        // Releases the player when the activity is closed
         PlayerManager.release()
     }
 
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         /**
-         * Estrae un link YouTube da un Intent SEND (text/plain) o VIEW.
+         * Extracts a YouTube link from a SEND (text/plain) or VIEW intent.
          */
         fun parseYoutubeUrl(intent: Intent?): String? {
             if (intent == null) return null

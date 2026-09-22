@@ -17,16 +17,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 /**
- * Orchestra lo streaming verso un dispositivo Google Cast / Chromecast:
- * - espone [connected], [deviceName] e [volumePercent] osservabili dalla UI;
- * - [streaming] = brano attualmente in streaming sul dispositivo (null = nessuno);
- * - [castLoopEnabled] = repeat-one per lo streaming;
- * - [castCurrent] avvia il server HTTP locale e carica il brano corrente
- *   sul ricevitore distante (Default Media Receiver), mettendo in pausa
- *   lo speaker locale per evitare doppio audio e mostrando la notifica
- *   persistente "In streaming su <device>";
- * - quando connesso, la barra del volume controlla il volume del dispositivo
- *   Cast tramite [setVolume] (il Cast notifica i cambi via [volumeListener]).
+ * Orchestrates streaming to a Google Cast / Chromecast device:
+ * - exposes [connected], [deviceName] and [volumePercent] observable from the UI;
+ * - [streaming] = track currently streaming on the device (null = none);
+ * - [castLoopEnabled] = repeat-one for streaming;
+ * - [castCurrent] starts the local HTTP server and loads the current track
+ *   on the remote receiver (Default Media Receiver), pausing the local
+ *   speaker to avoid double audio and showing the persistent "Streaming to
+ *   <device>" notification;
+ * - when connected, the volume bar controls the Cast device volume through
+ *   [setVolume] (the Cast notifies changes via [volumeListener]).
  */
 object CastManager {
 
@@ -41,11 +41,11 @@ object CastManager {
     private val _volumePercent = MutableStateFlow(100)
     val volumePercent: StateFlow<Int> = _volumePercent.asStateFlow()
 
-    /** Brano attualmente in streaming sul dispositivo Cast (null = nessuno). */
+    /** Track currently streaming on the Cast device (null = none). */
     private val _streaming = MutableStateFlow<Lullaby?>(null)
     val streaming: StateFlow<Lullaby?> = _streaming.asStateFlow()
 
-    /** Repeat-one attivo per lo streaming Cast. */
+    /** Repeat-one active for Cast streaming. */
     private val _castLoopEnabled = MutableStateFlow(false)
     val castLoopEnabled: StateFlow<Boolean> = _castLoopEnabled.asStateFlow()
 
@@ -57,14 +57,14 @@ object CastManager {
     private var currentSession: CastSession? = null
     private var lastMediaInfo: MediaInfo? = null
 
-    /** Sincronizza la % mostrata dalla UI col volume reale del dispositivo Cast. */
+    /** Syncs the % shown by the UI with the real Cast device volume. */
     private val volumeListener = object : Cast.Listener() {
         override fun onVolumeChanged() {
             syncCastVolume()
         }
     }
 
-    /** Gestione fine riproduzione: repeat-one oppure pulizia + notifica via. */
+    /** End-of-playback handling: repeat-one or cleanup + notification removal. */
     private val mediaCallback = object : RemoteMediaClient.Callback() {
         override fun onStatusUpdated() {
             val s = activeSession()?.remoteMediaClient?.mediaStatus ?: return
@@ -73,7 +73,7 @@ object CastManager {
                 MediaStatus.IDLE_REASON_FINISHED -> {
                     val last = lastMediaInfo
                     if (_castLoopEnabled.value && last != null) {
-                        // Repeat-one: ricarica lo stesso brano.
+                        // Repeat-one: reload the same track.
                         runCatching { activeSession()?.remoteMediaClient?.load(last) }
                     } else {
                         clearStreaming(hideNotification = true)
@@ -89,31 +89,31 @@ object CastManager {
     private val sessionListener = object : SessionManagerListener<CastSession> {
 
         override fun onSessionStarted(session: CastSession, sessionId: String) {
-            Log.i(TAG, "Sessione Cast avviata")
+            Log.i(TAG, "Cast session started")
             onSessionActive(session)
         }
 
         override fun onSessionResumed(session: CastSession, wasSuspended: Boolean) {
-            Log.i(TAG, "Sessione Cast ripresa")
+            Log.i(TAG, "Cast session resumed")
             onSessionActive(session)
         }
 
         override fun onSessionEnding(session: CastSession) {
-            // Nient'altro: la pulizia completa avviene in onSessionEnded.
+            // Nothing else: full cleanup happens in onSessionEnded.
         }
 
         override fun onSessionEnded(session: CastSession, error: Int) {
-            Log.i(TAG, "Sessione Cast terminata (error=$error)")
+            Log.i(TAG, "Cast session ended (error=$error)")
             cleanup()
         }
 
         override fun onSessionStartFailed(session: CastSession, error: Int) {
-            Log.w(TAG, "Avvio sessione Cast fallito (error=$error)")
+            Log.w(TAG, "Cast session start failed (error=$error)")
             cleanup()
         }
 
         override fun onSessionResumeFailed(session: CastSession, error: Int) {
-            Log.w(TAG, "Ripresa sessione Cast fallita (error=$error)")
+            Log.w(TAG, "Cast session resume failed (error=$error)")
             cleanup()
         }
 
@@ -128,9 +128,9 @@ object CastManager {
         runCatching { session.remoteMediaClient?.registerCallback(mediaCallback) }
         _connected.value = true
         _deviceName.value = session.castDevice?.friendlyName ?: session.castDevice?.modelName
-        Log.i(TAG, "Connesso a: ${_deviceName.value}")
+        Log.i(TAG, "Connected to: ${_deviceName.value}")
         syncCastVolume()
-        // Se c'è già un brano corrente, caricalo subito sul dispositivo.
+        // If there is already a current track, load it on the device right away.
         val current = PlayerManager.current.value ?: return
         castCurrent(appContext ?: return, current)
     }
@@ -147,7 +147,7 @@ object CastManager {
         clearStreaming(hideNotification = true)
     }
 
-    /** Ferma lo stato di streaming lato app (senza toccare il device remoto). */
+    /** Stops the streaming state on the app side (without touching the remote device). */
     private fun clearStreaming(hideNotification: Boolean) {
         val had = _streaming.value != null
         _streaming.value = null
@@ -157,17 +157,17 @@ object CastManager {
         }
     }
 
-    /** Converte il volume del Cast (0.0..1.0) nella percentuale 0..100. */
+    /** Converts the Cast volume (0.0..1.0) into the 0..100 percentage. */
     private fun syncCastVolume() {
         try {
             val session = activeSession() ?: return
             _volumePercent.value = ((session.volume * 100f).toInt()).coerceIn(0, 100)
         } catch (e: Exception) {
-            Log.w(TAG, "Errore leggendo il volume Cast", e)
+            Log.w(TAG, "Error reading the Cast volume", e)
         }
     }
 
-    /** Inizializza il listener di sessione. Idempotente; da chiamare in MainActivity.onCreate. */
+    /** Initializes the session listener. Idempotent; call from MainActivity.onCreate. */
     fun init(context: Context) {
         if (initialized) return
         initialized = true
@@ -175,25 +175,25 @@ object CastManager {
         try {
             sessionManager = CastContext.getSharedInstance(appContext!!).sessionManager
             sessionManager?.addSessionManagerListener(sessionListener, CastSession::class.java)
-            Log.i(TAG, "CastManager inizializzato")
+            Log.i(TAG, "CastManager initialized")
         } catch (e: Exception) {
-            // Senza Google Play Services o in emulatore non deve crashare.
-            Log.w(TAG, "Google Cast non disponibile: ${e.message}")
+            // Must not crash without Google Play Services or in the emulator.
+            Log.w(TAG, "Google Cast not available: ${e.message}")
         }
     }
 
-    /** Sessione Cast attiva, se presente. */
+    /** Active Cast session, if any. */
     fun activeSession(): CastSession? = try {
         sessionManager?.currentCastSession
     } catch (e: Exception) {
-        Log.w(TAG, "Errore leggendo la sessione Cast", e)
+        Log.w(TAG, "Error reading the Cast session", e)
         null
     }
 
     /**
-     * Imposta il volume del dispositivo Cast (0..100 → 0.0..1.0).
-     * Il valore viene applicato subito; il listener di volume tiene poi
-     * sincronizzata la UI con eventuali cambi lato dispositivo.
+     * Sets the Cast device volume (0..100 → 0.0..1.0).
+     * The value is applied immediately; the volume listener then keeps the
+     * UI synced with any device-side changes.
      */
     fun setVolume(percent: Int) {
         try {
@@ -202,33 +202,33 @@ object CastManager {
             session.setVolume(clamped / 100.0)
             _volumePercent.value = clamped
         } catch (e: Exception) {
-            Log.w(TAG, "Errore impostando il volume Cast", e)
+            Log.w(TAG, "Error setting the Cast volume", e)
         }
     }
 
     /**
-     * Carica un brano sul dispositivo Cast: avvia il server HTTP locale,
-     * costruisce una [MediaInfo] dall'URL e usa remoteMediaClient.load.
-     * Ferma lo speaker locale (evita doppio audio) e mostra la notifica
-     * persistente "In streaming su <device>".
+     * Loads a track on the Cast device: starts the local HTTP server,
+     * builds a [MediaInfo] from the URL and uses remoteMediaClient.load.
+     * Stops the local speaker (avoids double audio) and shows the persistent
+     * "Streaming to <device>" notification.
      *
-     * @return true se il caricamento è stato avviato, false altrimenti
-     *         (il chiamante può così ripiegare sulla riproduzione locale).
+     * @return true if the load was started, false otherwise
+     *         (the caller can then fall back to local playback).
      */
     fun castCurrent(context: Context, lullabyInput: Lullaby? = PlayerManager.current.value): Boolean {
         val lullaby = lullabyInput ?: run {
-            Log.w(TAG, "castCurrent: nessun brano corrente")
+            Log.w(TAG, "castCurrent: no current track")
             return false
         }
         val castSession = activeSession() ?: run {
-            Log.w(TAG, "castCurrent: nessuna sessione Cast attiva")
+            Log.w(TAG, "castCurrent: no active Cast session")
             return false
         }
         val url = LocalMediaServer.localUrl(context, lullaby.fileName) ?: run {
-            Log.e(TAG, "castCurrent: impossibile costruire l'URL locale (rete assente?)")
+            Log.e(TAG, "castCurrent: unable to build the local URL (no network?)")
             return false
         }
-        Log.i(TAG, "Streaming ${lullaby.fileName} da $url")
+        Log.i(TAG, "Streaming ${lullaby.fileName} from $url")
 
         val metadata = MediaMetadata(MediaMetadata.MEDIA_TYPE_MUSIC_TRACK).apply {
             putString(MediaMetadata.KEY_TITLE, formatDisplayName(lullaby.title))
@@ -245,40 +245,40 @@ object CastManager {
                 false
             } else {
                 lastMediaInfo = mediaInfo
-                // Evita doppio audio: ferma lo speaker locale (nasconde la
-                // notifica "In riproduzione"; la ri-mostriamo subito dopo).
+                // Avoids double audio: stops the local speaker (hides the
+                // "Now playing" notification; we re-show it right after).
                 PlayerManager.stop()
                 _streaming.value = lullaby
                 val dev = _deviceName.value
                 PlaybackNotification.show(
                     context.applicationContext,
                     formatDisplayName(lullaby.title),
-                    if (dev != null) "In streaming su $dev" else "In streaming"
+                    if (dev != null) "Streaming to $dev" else "Streaming"
                 )
                 pending.setResultCallback(
                     ResultCallback<RemoteMediaClient.MediaChannelResult> { result ->
                         if (!result.status.isSuccess) {
-                            Log.w(TAG, "Media load non riuscito: ${result.status.statusCode}")
+                            Log.w(TAG, "Media load failed: ${result.status.statusCode}")
                         }
                     }
                 )
                 true
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Errore durante il cast del brano", e)
+            Log.e(TAG, "Error during track cast", e)
             false
         }
     }
 
-    /** Repeat-one per lo streaming Cast (ricarica il brano a fine riproduzione). */
+    /** Repeat-one for Cast streaming (reloads the track at the end of playback). */
     @Synchronized
     fun toggleCastLoop() {
         _castLoopEnabled.value = !_castLoopEnabled.value
     }
 
     /**
-     * Stop dello streaming sul dispositivo Cast: ferma il media remoto,
-     * pulisce lo stato e nasconde la notifica.
+     * Stops the streaming on the Cast device: stops the remote media,
+     * cleans the state and hides the notification.
      */
     fun stopStreaming() {
         try {
@@ -287,7 +287,7 @@ object CastManager {
                 client.stop()
             }
         } catch (e: Exception) {
-            Log.w(TAG, "Errore nello stop dello streaming", e)
+            Log.w(TAG, "Error stopping the streaming", e)
         }
         clearStreaming(hideNotification = true)
     }

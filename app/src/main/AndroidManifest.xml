@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Permessi minimi: rete per il download, servizi/notifiche per
-         il download in background (WorkManager, notifica foreground) -->
+    <!-- Minimal permissions: network for downloads, services/notifications for
+         background downloads (WorkManager, foreground notification) -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
@@ -17,19 +17,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NinnaNanna">
 
-        <!-- Riceve l'azione "Stop" della notifica persistente di riproduzione -->
+        <!-- Receives the "Stop" action of the persistent playback notification -->
         <receiver
             android:name=".PlaybackStopReceiver"
             android:exported="false" />
 
-        <!-- Provider delle opzioni del framework Google Cast (Default Media
-             Receiver "CC1AD845", nessuna appId registrata necessaria) -->
+        <!-- Provider of the Google Cast framework options (Default Media
+             Receiver "CC1AD845", no registered appId needed) -->
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
             android:value="com.alberto.ninnananna.CastOptionsProvider" />
 
-        <!-- Foreground service usato da WorkManager per i download:
-             deve dichiarare il tipo dataSync (Android 14+) -->
+        <!-- Foreground service used by WorkManager for downloads:
+             must declare the dataSync type (Android 14+) -->
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="dataSync"
@@ -40,20 +40,20 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:configChanges="orientation|screenSize|keyboardHidden">
-            <!-- Avvio normale -->
+            <!-- Normal launch -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Condivisione link: "Condividi -> NinnaNanna" -->
+            <!-- Link sharing: "Share -> NinnaNanna" -->
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
             </intent-filter>
 
-            <!-- Apertura link YouTube: youtube.com/watch, youtu.be, ... -->
+            <!-- Opening YouTube links: youtube.com/watch, youtu.be, ... -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

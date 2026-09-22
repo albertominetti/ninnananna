@@ -83,7 +83,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
-// Icona "Stop" custom (un quadrato pieno), non presente nel set core di material-icons
+// Custom "Stop" icon (a filled square), not present in the core material-icons set
 private val StopIcon: ImageVector by lazy {
     ImageVector.Builder(
         name = "Stop",
@@ -102,7 +102,7 @@ private val StopIcon: ImageVector by lazy {
     }.build()
 }
 
-// Icona "Ripeti uno" custom (Material "repeat_one")
+// Custom "Repeat one" icon (Material "repeat_one")
 private val RepeatOneIcon: ImageVector by lazy {
     ImageVector.Builder(
         name = "RepeatOne",
@@ -144,7 +144,7 @@ private val RepeatOneIcon: ImageVector by lazy {
     }.build()
 }
 
-// Icona "Luna crescente" custom (Material "bedtime"), per il sleep timer
+// Custom "Crescent moon" icon (Material "bedtime"), for the sleep timer
 private val SleepIcon: ImageVector by lazy {
     ImageVector.Builder(
         name = "Sleep",
@@ -164,7 +164,7 @@ private val SleepIcon: ImageVector by lazy {
     }.build()
 }
 
-// Icona "Altoparlante" custom (Material "volume_up"), per la barra volume
+// Custom "Speaker" icon (Material "volume_up"), for the volume bar
 private val VolumeIcon: ImageVector by lazy {
     ImageVector.Builder(
         name = "VolumeUp",
@@ -199,9 +199,9 @@ private val VolumeIcon: ImageVector by lazy {
 }
 
 /**
- * Schermata principale: lista audio scaricati/preinstallati, download in
- * background via WorkManager (notifica foreground). Il FAB in basso a
- * destra "Add from YT" apre il bottom sheet per incollare un link YouTube.
+ * Main screen: list of downloaded/preinstalled audios, background download
+ * via WorkManager (foreground notification). The "Add from YT" FAB at the
+ * bottom right opens the bottom sheet to paste a YouTube link.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -212,7 +212,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 
     var lullabies by remember { mutableStateOf(emptyList<Lullaby>()) }
 
-    // Bottom sheet "Add from YT"
+    // "Add from YT" bottom sheet
     var showAddSheet by rememberSaveable { mutableStateOf(false) }
     var sheetUrl by rememberSaveable { mutableStateOf("") }
     val sheetState = rememberModalBottomSheetState()
@@ -220,7 +220,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
     var renameTarget by remember { mutableStateOf<Lullaby?>(null) }
     var renameText by remember { mutableStateOf("") }
 
-    // Sleep timer (UI nel player)
+    // Sleep timer (UI in the player)
     var showSleepTimerDialog by rememberSaveable { mutableStateOf(false) }
 
     val current by PlayerManager.current.collectAsState()
@@ -239,22 +239,22 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 
     LaunchedEffect(Unit) { refresh() }
 
-    // Volume di sistema (AudioManager STREAM_MUSIC): registra l'observer dei
-    // cambi volume (tasti fisici) e sincronizza lo Slider della VolumeBar.
+    // System volume (AudioManager STREAM_MUSIC): registers the volume-change
+    // observer (physical keys) and keeps the VolumeBar slider in sync.
     DisposableEffect(context) {
         VolumeManager.register(context)
         VolumeManager.refresh(context)
         onDispose { VolumeManager.unregister(context) }
     }
 
-    // ---------- Download in background (WorkManager) ----------
+    // ---------- Background download (WorkManager) ----------
     val workManager = remember { WorkManager.getInstance(context) }
     val downloadWorkInfos by workManager
         .getWorkInfosByTagFlow(DownloadLullabyWorker.TAG_DOWNLOAD)
         .collectAsState(initial = emptyList())
     val activeDownloads = downloadWorkInfos.filterNot { it.state.isFinished }
 
-    // Quando un download termina: aggiorna la lista e segnala eventuali errori.
+    // When a download finishes: refresh the list and surface any errors.
     var seenFinished by remember { mutableStateOf(setOf<UUID>()) }
     LaunchedEffect(downloadWorkInfos) {
         val finishedNow = downloadWorkInfos.filter { it.state.isFinished }
@@ -264,14 +264,14 @@ fun LullabyList(onOpenSettings: () -> Unit) {
             val failed = newOnes.firstOrNull { it.state == WorkInfo.State.FAILED }
             if (failed != null) {
                 val msg = failed.outputData.getString(DownloadLullabyWorker.KEY_ERROR)
-                    ?: "Download fallito."
+                    ?: "Download failed."
                 scope.launch { snackbarHostState.showSnackbar(msg) }
             }
         }
         seenFinished = seenFinished + finishedNow.map { it.id }
     }
 
-    // Permesso notifiche (Android 13+)
+    // Notification permission (Android 13+)
     val notifPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { _ -> }
@@ -285,7 +285,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
         }
     }
 
-    // Accoda il download in background (WorkManager) e dà un feedback via snackbar.
+    // Queue the background download (WorkManager) and give snackbar feedback.
     val enqueueDownload: (String) -> Unit = { raw ->
         val url = raw.trim()
         if (url.isNotBlank()) {
@@ -294,13 +294,13 @@ fun LullabyList(onOpenSettings: () -> Unit) {
             sheetUrl = ""
             scope.launch {
                 snackbarHostState.showSnackbar(
-                    "Download avviato in background: avanzamento nella notifica."
+                    "Download started in background: progress in the notification."
                 )
             }
         }
     }
 
-    // Intent esterni (Condividi -> NinnaNanna / link): avvia subito il download.
+    // External intents (Share -> NinnaNanna / link): start the download right away.
     val incoming by MainActivityEvents.pendingYoutubeUrl.collectAsState()
     var lastAutoUrl by remember { mutableStateOf<String?>(null) }
     LaunchedEffect(incoming) {
@@ -318,7 +318,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                 title = { Text("NinnaNanna") },
                 actions = {
                     IconButton(onClick = onOpenSettings) {
-                        Icon(Icons.Default.Settings, contentDescription = "Impostazioni")
+                        Icon(Icons.Default.Settings, contentDescription = "Settings")
                     }
                 }
             )
@@ -331,7 +331,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
         },
         bottomBar = {
             Column {
-                // Barra volume sempre visibile, sopra la mini-bar del player.
+                // Volume bar always visible, above the player mini-bar.
                 VolumeBar()
                 val nowPlaying = current ?: castStreaming
                 if (nowPlaying != null) {
@@ -362,10 +362,10 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            // Download attivi in cima alla lista (download in secondo piano)
+            // Active downloads on top of the list (background downloads)
             if (activeDownloads.isNotEmpty()) {
                 Text(
-                    text = "Download in corso (${activeDownloads.size})",
+                    text = "Downloading (${activeDownloads.size})",
                     style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(Modifier.height(4.dp))
@@ -379,9 +379,9 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 
             if (lullabies.isEmpty() && activeDownloads.isEmpty()) {
                 Text(
-                    text = "Nessun audio. Aggiungi una ninnananna da YouTube " +
-                        "oppure le preinstallate (Brahms, white noise, battito " +
-                        "uterino) vengono copiate al primo avvio.",
+                    text = "No audio. Add a lullaby from YouTube, " +
+                        "or the preinstalled ones (Brahms, white noise, " +
+                        "womb heartbeat) are copied on first launch.",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -406,8 +406,8 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                                 castStreaming?.id == lullaby.id,
                             onPlay = {
                                 requestNotificationPermissionIfNeeded()
-                                // Con una sessione Cast attiva prova a streammare;
-                                // se non riesce (rete/device), fallback locale.
+                                // With an active Cast session, try to stream;
+                                // if it fails (network/device), fall back to local playback.
                                 val casted = CastManager.connected.value &&
                                     CastManager.castCurrent(context, lullaby)
                                 if (!casted) {
@@ -440,7 +440,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 
                 if (downloaded.isNotEmpty()) {
                     item(key = "header-downloaded") {
-                        SectionHeader("Scaricate", count = downloaded.size)
+                        SectionHeader("Downloaded", count = downloaded.size)
                     }
                     items(downloaded, key = { it.id }) { lullaby ->
                         LullabyRow(
@@ -450,8 +450,8 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                                 castStreaming?.id == lullaby.id,
                             onPlay = {
                                 requestNotificationPermissionIfNeeded()
-                                // Con una sessione Cast attiva prova a streammare;
-                                // se non riesce (rete/device), fallback locale.
+                                // With an active Cast session, try to stream;
+                                // if it fails (network/device), fall back to local playback.
                                 val casted = CastManager.connected.value &&
                                     CastManager.castCurrent(context, lullaby)
                                 if (!casted) {
@@ -485,7 +485,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
         }
     }
 
-    // Bottom sheet "Add from YT" (aperto dal FAB)
+    // "Add from YT" bottom sheet (opened by the FAB)
     if (showAddSheet) {
         ModalBottomSheet(
             onDismissRequest = { showAddSheet = false },
@@ -498,13 +498,13 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                     .padding(bottom = 32.dp)
             ) {
                 Text(
-                    text = "Aggiungi da YouTube",
+                    text = "Add from YouTube",
                     style = MaterialTheme.typography.titleLarge
                 )
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text = "Incolla un link YouTube: l'audio viene scaricato in " +
-                        "background con una notifica di avanzamento.",
+                    text = "Paste a YouTube link: the audio is downloaded in " +
+                        "the background with a progress notification.",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -513,7 +513,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                     value = sheetUrl,
                     onValueChange = { sheetUrl = it },
                     modifier = Modifier.fillMaxWidth(),
-                    label = { Text("URL YouTube") },
+                    label = { Text("YouTube URL") },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
                     keyboardActions = KeyboardActions(onGo = {
@@ -530,23 +530,23 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                     enabled = sheetUrl.isNotBlank(),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Scarica in background")
+                    Text("Download in background")
                 }
             }
         }
     }
 
-    // Dialog di rinomina
+    // Rename dialog
     renameTarget?.let { target ->
         AlertDialog(
             onDismissRequest = { renameTarget = null },
-            title = { Text("Rinomina audio") },
+            title = { Text("Rename audio") },
             text = {
                 TextField(
                     value = renameText,
                     onValueChange = { renameText = it },
                     singleLine = true,
-                    label = { Text("Nuovo nome") }
+                    label = { Text("New name") }
                 )
             },
             confirmButton = {
@@ -566,20 +566,20 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                                 refresh()
                             } else {
                                 snackbarHostState.showSnackbar(
-                                    "Rinomina non riuscita: nome già esistente o non valido."
+                                    "Rename failed: name already exists or is invalid."
                                 )
                             }
                         }
                     }
-                }) { Text("Salva") }
+                }) { Text("Save") }
             },
             dismissButton = {
-                TextButton(onClick = { renameTarget = null }) { Text("Annulla") }
+                TextButton(onClick = { renameTarget = null }) { Text("Cancel") }
             }
         )
     }
 
-    // Dialog sleep timer
+    // Sleep timer dialog
     if (showSleepTimerDialog) {
         SleepTimerDialog(
             active = sleepRemaining,
@@ -597,16 +597,16 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 }
 
 /**
- * Card mostrata in cima alla lista per ogni download attivo:
- * avanzamento live dalla WorkInfo.
+ * Card shown at the top of the list for each active download:
+ * live progress from the WorkInfo.
  */
 @Composable
 private fun ActiveDownloadCard(info: WorkInfo) {
     val progress = info.progress.getFloat(DownloadLullabyWorker.KEY_PROGRESS, 0f)
     val text = when (info.state) {
-        WorkInfo.State.ENQUEUED -> "In coda: in attesa della connessione…"
-        WorkInfo.State.RUNNING -> "Download in corso… ${(progress * 100).toInt()}%"
-        else -> "Preparazione…"
+        WorkInfo.State.ENQUEUED -> "Queued: waiting for connection…"
+        WorkInfo.State.RUNNING -> "Downloading… ${(progress * 100).toInt()}%"
+        else -> "Preparing…"
     }
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(
@@ -637,11 +637,11 @@ private fun ActiveDownloadCard(info: WorkInfo) {
 }
 
 /**
- * Barra volume sempre visibile in fondo alla schermata principale, sopra la
- * mini-bar del player. Slider 0..100 sincronizzato col **volume di sistema**
- * (AudioManager STREAM_MUSIC): mostra il valore corrente e lo modifica via
- * [VolumeManager]; un observer aggiorna lo Slider se l'utente usa i tasti
- * fisici del volume.
+ * Volume bar always visible at the bottom of the main screen, above the
+ * player mini-bar. 0..100 slider synced with the **system volume**
+ * (AudioManager STREAM_MUSIC): shows the current value and changes it via
+ * [VolumeManager]; an observer updates the slider if the user uses the
+ * physical volume keys.
  */
 @Composable
 private fun VolumeBar() {
@@ -651,9 +651,9 @@ private fun VolumeBar() {
     val castVolume by CastManager.volumePercent.collectAsState()
     val displayVolume = if (castConnected) castVolume else volume
 
-    // Il tema dell'app è Theme.NinnaNanna (parent Material.NoActionBar, non
-    // AppCompat): il MediaRouteButton di androidx.mediarouter è un
-    // AppCompatButton, quindi gli forniamo un Context con tema MaterialComponents.
+    // The app theme is Theme.NinnaNanna (parent Material.NoActionBar, not
+    // AppCompat): androidx.mediarouter's MediaRouteButton is an
+    // AppCompatButton, so we give it a Context themed with MaterialComponents.
     val mediaRouteContext = LocalContext.current
 
     Surface(tonalElevation = 3.dp) {
@@ -674,10 +674,10 @@ private fun VolumeBar() {
                 value = displayVolume.toFloat(),
                 onValueChange = { value ->
                     if (castConnected) {
-                        // Volume del dispositivo Cast (0..100 → 0.0..1.0).
+                        // Cast device volume (0..100 → 0.0..1.0).
                         CastManager.setVolume(value.toInt())
                     } else {
-                        // Comportamento attuale: volume di sistema dello smartphone.
+                        // Current behavior: smartphone system volume.
                         VolumeManager.setPercent(context, value.toInt())
                     }
                 },
@@ -692,8 +692,8 @@ private fun VolumeBar() {
                 modifier = Modifier.width(44.dp)
             )
             Spacer(Modifier.width(4.dp))
-            // Pulsante Cast ufficiale: al tap apre il selettore dispositivi;
-            // gestisce connessione/disconnessione e mostra lo stato attivo.
+            // Official Cast button: on tap it opens the device picker;
+            // it handles connect/disconnect and shows the active state.
             AndroidView(
                 factory = {
                     MediaRouteButton(mediaRouteContext).also { btn ->
@@ -706,7 +706,7 @@ private fun VolumeBar() {
     }
 }
 
-/** Intestazione di sezione della lista (es. "Pre downloaded", "Scaricate"). */
+/** Section header of the list (e.g. "Pre downloaded", "Downloaded"). */
 @Composable
 private fun SectionHeader(title: String, count: Int) {
     Text(
@@ -753,8 +753,8 @@ private fun LullabyRow(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                // Per le preinstallate ("Pre downloaded") non mostrare la data:
-                // solo durata • dimensione. Le scaricate mantengono anche la data.
+                // For the preinstalled ones ("Pre downloaded") don't show the date:
+                // only duration • size. Downloaded ones also keep the date.
                 val infoText = if (lullaby.isBundled) {
                     "${formatDuration(lullaby.durationMs)}  •  " +
                         formatSize(lullaby.sizeBytes)
@@ -769,13 +769,13 @@ private fun LullabyRow(
                 )
             }
 
-            // Le preinstallate (bundled) non sono né rinominabili né eliminabili.
+            // The preinstalled (bundled) ones can be neither renamed nor deleted.
             if (!lullaby.isBundled) {
                 IconButton(onClick = onRename) {
-                    Icon(Icons.Default.Edit, contentDescription = "Rinomina")
+                    Icon(Icons.Default.Edit, contentDescription = "Rename")
                 }
                 IconButton(onClick = onDelete) {
-                    Icon(Icons.Default.Delete, contentDescription = "Elimina")
+                    Icon(Icons.Default.Delete, contentDescription = "Delete")
                 }
             }
         }
@@ -816,9 +816,9 @@ private fun MiniPlayerBar(
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = if (casting) {
-                            "In streaming su ${castingDeviceName ?: "dispositivo Cast"}"
+                            "Streaming to ${castingDeviceName ?: "Cast device"}"
                         } else {
-                            "In riproduzione"
+                            "Now playing"
                         },
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -831,11 +831,11 @@ private fun MiniPlayerBar(
                     )
                 }
 
-                // Toggle loop "repeat-one"
+                // "Repeat one" loop toggle
                 IconButton(onClick = onToggleLoop) {
                     Icon(
                         imageVector = RepeatOneIcon,
-                        contentDescription = if (loopEnabled) "Ripeti uno: attivo" else "Ripeti uno: spento",
+                        contentDescription = if (loopEnabled) "Repeat one: on" else "Repeat one: off",
                         tint = if (loopEnabled) {
                             MaterialTheme.colorScheme.primary
                         } else {
@@ -862,7 +862,7 @@ private fun MiniPlayerBar(
                 }
             }
 
-            // Riga timer attivo: mostra il tempo rimanente
+            // Active timer row: shows the remaining time
             if (sleepRemaining != null) {
                 Text(
                     text = "Sleep timer: ${formatRemaining(sleepRemaining)}",
@@ -876,8 +876,8 @@ private fun MiniPlayerBar(
 }
 
 /**
- * Dialog di scelta del sleep timer: 15 min, 30 min, 1h, 2h, 3h, 4h oppure Off.
- * Allo scadere l'audio viene fermato e il keep-screen-on rimosso.
+ * Sleep timer selection dialog: 15 min, 30 min, 1h, 2h, 3h, 4h or Off.
+ * On expiry the audio is stopped and keep-screen-on is removed.
  */
 @Composable
 private fun SleepTimerDialog(
@@ -886,17 +886,17 @@ private fun SleepTimerDialog(
     onDismiss: () -> Unit
 ) {
     val options = listOf(
-        15L * 60 * 1000 to "15 minuti",
-        30L * 60 * 1000 to "30 minuti",
-        60L * 60 * 1000 to "1 ora",
-        120L * 60 * 1000 to "2 ore",
-        180L * 60 * 1000 to "3 ore",
-        240L * 60 * 1000 to "4 ore"
+        15L * 60 * 1000 to "15 minutes",
+        30L * 60 * 1000 to "30 minutes",
+        60L * 60 * 1000 to "1 hour",
+        120L * 60 * 1000 to "2 hours",
+        180L * 60 * 1000 to "3 hours",
+        240L * 60 * 1000 to "4 hours"
     )
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text(if (active != null) "Sleep timer attivo" else "Sleep timer")
+            Text(if (active != null) "Sleep timer active" else "Sleep timer")
         },
         text = {
             Column(
@@ -921,7 +921,7 @@ private fun SleepTimerDialog(
             }
         },
         confirmButton = {
-            TextButton(onClick = onDismiss) { Text("Chiudi") }
+            TextButton(onClick = onDismiss) { Text("Close") }
         }
     )
 }
