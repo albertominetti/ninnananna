@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Cadw</string>
+    <string name="cancel">Canslo</string>
+    <string name="close">Cau</string>
+    <string name="stop">Stop</string>
+    <string name="play">Chwarae</string>
+    <string name="off">Oddi</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Gosodiadau</string>
+    <string name="content_desc_back">Yn ôl</string>
+    <string name="content_desc_add_from_yt">Ychwanegu o YT</string>
+    <string name="content_desc_volume">Cyfaint</string>
+    <string name="content_desc_rename">Ailenwi</string>
+    <string name="content_desc_delete">Dileu</string>
+    <string name="content_desc_repeat_one_on">Ailadrodd un: ymlaen</string>
+    <string name="content_desc_repeat_one_off">Ailadrodd un: i ffwrdd</string>
+    <string name="content_desc_sleep_timer">Amserydd cysgu</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Lawrlwytho (%1$d)</string>
+    <string name="empty_list">Dim sain. Ychwanegwch hwiangerdd o YouTube, neu bydd y rhai wedi\'u rhagosod (Brahms, sŵn gwyn, curiad y galon yn y bol) yn cael eu copïo ar y lansiad cyntaf.</string>
+    <string name="section_predownloaded">Wedi\'u rhagosod</string>
+    <string name="section_downloaded">Wedi\'u lawrlwytho</string>
+    <string name="add_from_youtube_title">Ychwanegu o YouTube</string>
+    <string name="add_from_youtube_subtitle">Gludwch ddolen YouTube: bydd y sain yn cael ei lawrlwytho yn y cefndir gyda hysbysiad cynnydd.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Lawrlwytho yn y cefndir</string>
+    <string name="download_failed">Methwyd â lawrlwytho.</string>
+    <string name="download_started_background">Dechreuwyd lawrlwytho yn y cefndir: cynnydd yn yr hysbysiad.</string>
+    <string name="rename_dialog_title">Ailenwi sain</string>
+    <string name="new_name_label">Enw newydd</string>
+    <string name="rename_failed">Methwyd ag ailenwi: mae\'r enw eisoes yn bodoli neu mae\'n annilys.</string>
+    <string name="queued">Mewn ciw: aros am gysylltiad…</string>
+    <string name="downloading_progress">Lawrlwytho… %1$d%%</string>
+    <string name="preparing">Paratoi…</string>
+    <string name="streaming_to">Ffrydio i %1$s</string>
+    <string name="cast_device">Dyfais ffrydio</string>
+    <string name="now_playing">Chwarae nawr</string>
+    <string name="sleep_timer">Amserydd cysgu</string>
+    <string name="sleep_timer_active">Amserydd cysgu ar waith</string>
+    <string name="sleep_timer_remaining">Amserydd cysgu: %1$s</string>
+    <string name="sleep_15_min">15 munud</string>
+    <string name="sleep_30_min">30 munud</string>
+    <string name="sleep_1_hour">1 awr</string>
+    <string name="sleep_2_hours">2 awr</string>
+    <string name="sleep_3_hours">3 awr</string>
+    <string name="sleep_4_hours">4 awr</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Hwiangerdd Brahms</string>
+    <string name="bundled_white_noise">Sŵn gwyn</string>
+    <string name="bundled_enriched_heart">Curiad calon atgyfnerthu</string>
+    <string name="bundled_real_ultrasound">Uwchsain go iawn</string>
+    <string name="bundled_brown_heart">Curiad calon brown</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Gosodiadau</string>
+    <string name="theme_section">Thema</string>
+    <string name="theme_light">Golau</string>
+    <string name="theme_light_desc">Lliwiau golau</string>
+    <string name="theme_dark">Tywyll</string>
+    <string name="theme_dark_desc">Lliwiau tywyll</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Du pur: delfrydol gyda\'r nos</string>
+    <string name="keep_screen_on">Cadw\'r sgrin ymlaen</string>
+    <string name="keep_screen_on_desc">Yn atal y sgrin rhag diffodd yn ystod chwarae</string>
+    <string name="data_section">Data</string>
+    <string name="downloaded_count">%1$d o seiniau wedi\'u lawrlwytho (mae\'r %2$d wedi\'u rhagosod yn cael eu cadw bob amser)</string>
+    <string name="delete_all_downloaded">Dileu popeth a lawrlwythwyd</string>
+    <string name="reset_title">Ailosodiad llawn</string>
+    <string name="reset_message">Ydych chi eisiau dileu\'r %1$d o seiniau a lawrlwythwyd? Ni chyffyrddir â\'r rhai wedi\'u rhagosod (Brahms, sŵn gwyn, curiad y galon). Mae\'r weithred hon yn anghildroadwy.</string>
+    <string name="delete_all">Dileu popeth</string>
+    <string name="reset_deleted">Dileuwyd %1$d o seiniau a lawrlwythwyd (cadwyd y rhai wedi\'u rhagosod).</string>
+    <string name="reset_none">Dim seiniau wedi\'u lawrlwytho i\'w dileu.</string>
+    <string name="language_section">Iaith</string>
+    <string name="language_system_default">Rhagosodiad y system</string>
+    <string name="language_system_default_desc">Defnyddio iaith y ddyfais</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">URL annilys.</string>
+    <string name="starting_download">Dechrau lawrlwytho…</string>
+    <string name="download_completed">Lawrlwythiad wedi cwblhau</string>
+    <string name="download_completed_title">Lawrlwythiad wedi cwblhau: %1$s</string>
+    <string name="preparing_download">Paratoi lawrlwythiad…</string>
+    <string name="download_error">Gwall yn ystod y lawrlwytho.</string>
+    <string name="channel_downloads">Lawrlwythiadau hwiangerddi</string>
+    <string name="channel_downloads_desc">Cynnydd y lawrlwythiadau yn y cefndir</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Dim ffrwd sain ar gael ar gyfer y fideo hwn.</string>
+    <string name="err_no_url">Ffrwd heb URL ffeil.</string>
+    <string name="err_network">Gwall rhwydwaith yn ystod y lawrlwytho: %1$s</string>
+    <string name="err_parse">Methwyd prosesu\'r fideo: %1$s</string>
+    <string name="err_download">Gwall yn ystod y lawrlwytho: %1$s</string>
+    <string name="err_http">Ymateb HTTP %1$d yn ystod y lawrlwytho.</string>
+    <string name="err_no_body">Ymateb heb gynnwys.</string>
+    <string name="err_incomplete">Lawrlwythiad anghyflawn (%1$d/%2$d beit).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Chwarae</string>
+    <string name="channel_playback_desc">Hysbysiad parhaol yn ystod chwarae</string>
+</resources>

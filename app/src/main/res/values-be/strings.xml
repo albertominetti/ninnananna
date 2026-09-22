@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Захаваць</string>
+    <string name="cancel">Адмяніць</string>
+    <string name="close">Закрыць</string>
+    <string name="stop">Спыніць</string>
+    <string name="play">Прайграць</string>
+    <string name="off">Выключана</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Налады</string>
+    <string name="content_desc_back">Назад</string>
+    <string name="content_desc_add_from_yt">Дадаць з YT</string>
+    <string name="content_desc_volume">Гучнасць</string>
+    <string name="content_desc_rename">Пераназваць</string>
+    <string name="content_desc_delete">Выдаліць</string>
+    <string name="content_desc_repeat_one_on">Паўтараць адзін: уключана</string>
+    <string name="content_desc_repeat_one_off">Паўтараць адзін: выключана</string>
+    <string name="content_desc_sleep_timer">Таймер сну</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Спампоўка (%1$d)</string>
+    <string name="empty_list">Няма аўдыё. Дадайце калыханку з YouTube, але загадзя ўсталяваныя (Брамс, белы шум, біццё сэрца ў жываціку) капіююцца пры першым запуску.</string>
+    <string name="section_predownloaded">Загадзя ўсталяваныя</string>
+    <string name="section_downloaded">Спампаваныя</string>
+    <string name="add_from_youtube_title">Дадаць з YouTube</string>
+    <string name="add_from_youtube_subtitle">Устаўце спасылку YouTube: аўдыё спампоўваецца ў фоне з апавяшчэннем аб прагрэсе.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Спампаваць у фоне</string>
+    <string name="download_failed">Не ўдалося спампаваць.</string>
+    <string name="download_started_background">Спампоўка пачалася ў фоне: прагрэс у апавяшчэнні.</string>
+    <string name="rename_dialog_title">Пераназваць аўдыё</string>
+    <string name="new_name_label">Новая назва</string>
+    <string name="rename_failed">Не ўдалося пераназваць: назва ўжо існуе або недапушчальная.</string>
+    <string name="queued">У чарзе: чаканне злучэння…</string>
+    <string name="downloading_progress">Спампоўка… %1$d%%</string>
+    <string name="preparing">Падрыхтоўка…</string>
+    <string name="streaming_to">Трансляцыя на %1$s</string>
+    <string name="cast_device">Прылада трансляцыі</string>
+    <string name="now_playing">Цяпер прайграваецца</string>
+    <string name="sleep_timer">Таймер сну</string>
+    <string name="sleep_timer_active">Таймер сну актыўны</string>
+    <string name="sleep_timer_remaining">Таймер сну: %1$s</string>
+    <string name="sleep_15_min">15 хвілін</string>
+    <string name="sleep_30_min">30 хвілін</string>
+    <string name="sleep_1_hour">1 гадзіна</string>
+    <string name="sleep_2_hours">2 гадзіны</string>
+    <string name="sleep_3_hours">3 гадзіны</string>
+    <string name="sleep_4_hours">4 гадзіны</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Калыханка Брамса</string>
+    <string name="bundled_white_noise">Белы шум</string>
+    <string name="bundled_enriched_heart">Узмацненае сэрцабіцце</string>
+    <string name="bundled_real_ultrasound">Сапраўднае УГД</string>
+    <string name="bundled_brown_heart">Карычневае сэрцабіцце</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Налады</string>
+    <string name="theme_section">Тэма</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_light_desc">Светлыя колеры</string>
+    <string name="theme_dark">Цёмная</string>
+    <string name="theme_dark_desc">Цёмныя колеры</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Чысты чорны: ідэальна ўначы</string>
+    <string name="keep_screen_on">Трымаць экран уключаным</string>
+    <string name="keep_screen_on_desc">Перашкаджае выключэнню экрана падчас прайгравання</string>
+    <string name="data_section">Даныя</string>
+    <string name="downloaded_count">Спампавана аўдыё: %1$d (загадзя ўсталяваныя %2$d заўсёды захоўваюцца)</string>
+    <string name="delete_all_downloaded">Выдаліць усё спампаванае</string>
+    <string name="reset_title">Поўны скід</string>
+    <string name="reset_message">Выдаліць %1$d спампаваных аўдыё? Загадзя ўсталяваныя (Брамс, белы шум, сэрцабіцце) не закранаюцца. Гэтае дзеянне незваротнае.</string>
+    <string name="delete_all">Выдаліць усё</string>
+    <string name="reset_deleted">Выдалена %1$d спампаваных аўдыё (загадзя ўсталяваныя захаваны).</string>
+    <string name="reset_none">Няма спампаваных аўдыё для выдалення.</string>
+    <string name="language_section">Мова</string>
+    <string name="language_system_default">Па змоўчанай сістэмы</string>
+    <string name="language_system_default_desc">Выкарыстоўваць мову прылады</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Няправільны URL.</string>
+    <string name="starting_download">Пачатак спампоўкі…</string>
+    <string name="download_completed">Спампоўка завершана</string>
+    <string name="download_completed_title">Спампоўка завершана: %1$s</string>
+    <string name="preparing_download">Падрыхтоўка спампоўкі…</string>
+    <string name="download_error">Памылка падчас спампоўкі.</string>
+    <string name="channel_downloads">Спампоўка калыханак</string>
+    <string name="channel_downloads_desc">Прагрэс фонавых спамповак</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Для гэтага відэа няма даступнага аўдыёпатоку.</string>
+    <string name="err_no_url">Паток без URL файла.</string>
+    <string name="err_network">Памылка сеткі падчас спампоўкі: %1$s</string>
+    <string name="err_parse">Не ўдалося апрацаваць відэа: %1$s</string>
+    <string name="err_download">Памылка падчас спампоўкі: %1$s</string>
+    <string name="err_http">HTTP-адказ %1$d падчас спампоўкі.</string>
+    <string name="err_no_body">Адказ без зместу.</string>
+    <string name="err_incomplete">Няпоўная спампоўка (%1$d/%2$d байт).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Прайграванне</string>
+    <string name="channel_playback_desc">Пастаяннае апавяшчэнне падчас прайгравання</string>
+</resources>

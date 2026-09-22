@@ -25,6 +25,7 @@ object SettingsStore {
 
     private val KEY_THEME = stringPreferencesKey("theme_mode")
     private val KEY_KEEP_SCREEN_ON = booleanPreferencesKey("keep_screen_on")
+    private val KEY_LANGUAGE = stringPreferencesKey("language")
 
     fun themeMode(context: Context): Flow<ThemeMode> =
         context.settingsDataStore.data.map { prefs ->
@@ -36,12 +37,22 @@ object SettingsStore {
     fun keepScreenOn(context: Context): Flow<Boolean> =
         context.settingsDataStore.data.map { prefs -> prefs[KEY_KEEP_SCREEN_ON] ?: false }
 
+    /** Locale tag chosen by the user, or null to follow the system language. */
+    fun language(context: Context): Flow<String?> =
+        context.settingsDataStore.data.map { prefs -> prefs[KEY_LANGUAGE] }
+
     suspend fun setThemeMode(context: Context, mode: ThemeMode) {
         context.settingsDataStore.edit { it[KEY_THEME] = mode.name }
     }
 
     suspend fun setKeepScreenOn(context: Context, enabled: Boolean) {
         context.settingsDataStore.edit { it[KEY_KEEP_SCREEN_ON] = enabled }
+    }
+
+    suspend fun setLanguage(context: Context, tag: String?) {
+        context.settingsDataStore.edit {
+            if (tag == null) it.remove(KEY_LANGUAGE) else it[KEY_LANGUAGE] = tag
+        }
     }
 }
 

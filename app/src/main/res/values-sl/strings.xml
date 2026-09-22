@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Shrani</string>
+    <string name="cancel">Prekliči</string>
+    <string name="close">Zapri</string>
+    <string name="stop">Ustavi</string>
+    <string name="play">Predvajaj</string>
+    <string name="off">Izključeno</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Nastavitve</string>
+    <string name="content_desc_back">Nazaj</string>
+    <string name="content_desc_add_from_yt">Dodaj iz YT</string>
+    <string name="content_desc_volume">Glasnost</string>
+    <string name="content_desc_rename">Preimenuj</string>
+    <string name="content_desc_delete">Izbriši</string>
+    <string name="content_desc_repeat_one_on">Ponovi eno: vklopljeno</string>
+    <string name="content_desc_repeat_one_off">Ponovi eno: izklopljeno</string>
+    <string name="content_desc_sleep_timer">Časovnik spanja</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Prenašanje (%1$d)</string>
+    <string name="empty_list">Ni zvoka. Dodaj uspavanko z YouTuba, ali pa se prednameščene (Brahms, beli šum, bitje srca v trebuhu) kopirajo ob prvem zagonu.</string>
+    <string name="section_predownloaded">Prednameščene</string>
+    <string name="section_downloaded">Prenesene</string>
+    <string name="add_from_youtube_title">Dodaj z YouTuba</string>
+    <string name="add_from_youtube_subtitle">Prilepi povezavo YouTube: zvok se prenese v ozadju z obvestilom o napredku.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Prenesi v ozadju</string>
+    <string name="download_failed">Prenos ni uspel.</string>
+    <string name="download_started_background">Prenos se je začel v ozadju: napredek v obvestilu.</string>
+    <string name="rename_dialog_title">Preimenuj zvok</string>
+    <string name="new_name_label">Novo ime</string>
+    <string name="rename_failed">Preimenovanje ni uspelo: ime že obstaja ali je neveljavno.</string>
+    <string name="queued">V čakalni vrsti: čaka na povezavo…</string>
+    <string name="downloading_progress">Prenašanje… %1$d%%</string>
+    <string name="preparing">Priprava…</string>
+    <string name="streaming_to">Predvajanje na %1$s</string>
+    <string name="cast_device">Naprava za predvajanje</string>
+    <string name="now_playing">Trenutno predvajano</string>
+    <string name="sleep_timer">Časovnik spanja</string>
+    <string name="sleep_timer_active">Časovnik spanja aktiven</string>
+    <string name="sleep_timer_remaining">Časovnik spanja: %1$s</string>
+    <string name="sleep_15_min">15 minut</string>
+    <string name="sleep_30_min">30 minut</string>
+    <string name="sleep_1_hour">1 ura</string>
+    <string name="sleep_2_hours">2 uri</string>
+    <string name="sleep_3_hours">3 ure</string>
+    <string name="sleep_4_hours">4 ure</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahmsova uspavanka</string>
+    <string name="bundled_white_noise">Beli šum</string>
+    <string name="bundled_enriched_heart">Ojačano bitje srca</string>
+    <string name="bundled_real_ultrasound">Pravi ultrazvok</string>
+    <string name="bundled_brown_heart">Rjavo bitje srca</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Nastavitve</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Svetla</string>
+    <string name="theme_light_desc">Svetle barve</string>
+    <string name="theme_dark">Temna</string>
+    <string name="theme_dark_desc">Temne barve</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Čista črna: idealna ponoči</string>
+    <string name="keep_screen_on">Ohrani zaslon prižgan</string>
+    <string name="keep_screen_on_desc">Prepreči ugasnitev zaslona med predvajanjem</string>
+    <string name="data_section">Podatki</string>
+    <string name="downloaded_count">%1$d prenesenih zvočnih datotek (tistih %2$d prednameščenih vedno ohranimo)</string>
+    <string name="delete_all_downloaded">Izbriši vse preneseno</string>
+    <string name="reset_title">Popolna ponastavitev</string>
+    <string name="reset_message">Ali želiš izbrisati %1$d prenesenih zvočnih datotek? Prednameščene (Brahms, beli šum, bitje srca) ne bodo prizadete. To dejanje je nepovratno.</string>
+    <string name="delete_all">Izbriši vse</string>
+    <string name="reset_deleted">Izbrisanih %1$d prenesenih zvočnih datotek (prednameščene ohranjene).</string>
+    <string name="reset_none">Ni prenesenih zvočnih datotek za brisanje.</string>
+    <string name="language_section">Jezik</string>
+    <string name="language_system_default">Privzeto za sistem</string>
+    <string name="language_system_default_desc">Uporabi jezik naprave</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Neveljaven URL.</string>
+    <string name="starting_download">Začetek prenosa…</string>
+    <string name="download_completed">Prenos končan</string>
+    <string name="download_completed_title">Prenos končan: %1$s</string>
+    <string name="preparing_download">Priprava prenosa…</string>
+    <string name="download_error">Napaka med prenosom.</string>
+    <string name="channel_downloads">Prenosi uspavank</string>
+    <string name="channel_downloads_desc">Napredek prenosov v ozadju</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Za ta videoposnetek ni na voljo zvočnega toka.</string>
+    <string name="err_no_url">Tok brez URL datoteke.</string>
+    <string name="err_network">Napaka omrežja med prenosom: %1$s</string>
+    <string name="err_parse">Videoposnetka ni mogoče obdelati: %1$s</string>
+    <string name="err_download">Napaka med prenosom: %1$s</string>
+    <string name="err_http">Odgovor HTTP %1$d med prenosom.</string>
+    <string name="err_no_body">Odgovor brez vsebine.</string>
+    <string name="err_incomplete">Nepopoln prenos (%1$d/%2$d bajtov).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Predvajanje</string>
+    <string name="channel_playback_desc">Trajno obvestilo med predvajanjem</string>
+</resources>

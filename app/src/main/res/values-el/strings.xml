@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Αποθήκευση</string>
+    <string name="cancel">Ακύρωση</string>
+    <string name="close">Κλείσιμο</string>
+    <string name="stop">Διακοπή</string>
+    <string name="play">Αναπαραγωγή</string>
+    <string name="off">Απενεργοποιημένο</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Ρυθμίσεις</string>
+    <string name="content_desc_back">Πίσω</string>
+    <string name="content_desc_add_from_yt">Προσθήκη από το YT</string>
+    <string name="content_desc_volume">Ένταση</string>
+    <string name="content_desc_rename">Μετονομασία</string>
+    <string name="content_desc_delete">Διαγραφή</string>
+    <string name="content_desc_repeat_one_on">Επανάληψη ενός: ενεργό</string>
+    <string name="content_desc_repeat_one_off">Επανάληψη ενός: ανενεργό</string>
+    <string name="content_desc_sleep_timer">Χρονοδιακόπτης ύπνου</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Λήψη (%1$d)</string>
+    <string name="empty_list">Κανένα αρχείο ήχου. Προσθέστε ένα νανούρισμα από το YouTube, ή τα προεγκατεστημένα (Μπραμς, λευκός θόρυβος, χτύπος καρδιάς στην κοιλιά) αντιγράφονται στην πρώτη εκκίνηση.</string>
+    <string name="section_predownloaded">Προεγκατεστημένα</string>
+    <string name="section_downloaded">Ληφθέντα</string>
+    <string name="add_from_youtube_title">Προσθήκη από το YouTube</string>
+    <string name="add_from_youtube_subtitle">Επικολλήστε έναν σύνδεσμο YouTube: ο ήχος κατεβαίνει στο παρασκήνιο με ειδοποίηση προόδου.</string>
+    <string name="youtube_url_label">Διεύθυνση YouTube</string>
+    <string name="download_in_background">Λήψη στο παρασκήνιο</string>
+    <string name="download_failed">Η λήψη απέτυχε.</string>
+    <string name="download_started_background">Η λήψη ξεκίνησε στο παρασκήνιο: πρόοδος στην ειδοποίηση.</string>
+    <string name="rename_dialog_title">Μετονομασία ήχου</string>
+    <string name="new_name_label">Νέο όνομα</string>
+    <string name="rename_failed">Η μετονομασία απέτυχε: το όνομα υπάρχει ήδη ή είναι άκυρο.</string>
+    <string name="queued">Σε αναμονή: περιμένει σύνδεση…</string>
+    <string name="downloading_progress">Λήψη… %1$d%%</string>
+    <string name="preparing">Προετοιμασία…</string>
+    <string name="streaming_to">Μετάδοση στο %1$s</string>
+    <string name="cast_device">Συσκευή μετάδοσης</string>
+    <string name="now_playing">Αναπαραγωγή τώρα</string>
+    <string name="sleep_timer">Χρονοδιακόπτης ύπνου</string>
+    <string name="sleep_timer_active">Ο χρονοδιακόπτης ύπνου είναι ενεργός</string>
+    <string name="sleep_timer_remaining">Χρονοδιακόπτης ύπνου: %1$s</string>
+    <string name="sleep_15_min">15 λεπτά</string>
+    <string name="sleep_30_min">30 λεπτά</string>
+    <string name="sleep_1_hour">1 ώρα</string>
+    <string name="sleep_2_hours">2 ώρες</string>
+    <string name="sleep_3_hours">3 ώρες</string>
+    <string name="sleep_4_hours">4 ώρες</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Το νανούρισμα του Μπραμς</string>
+    <string name="bundled_white_noise">Λευκός θόρυβος</string>
+    <string name="bundled_enriched_heart">Ενισχυμένος καρδιακός παλμός</string>
+    <string name="bundled_real_ultrasound">Πραγματικός υπέρηχος</string>
+    <string name="bundled_brown_heart">Καφέ καρδιακός παλμός</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Ρυθμίσεις</string>
+    <string name="theme_section">Θέμα</string>
+    <string name="theme_light">Φωτεινό</string>
+    <string name="theme_light_desc">Φωτεινά χρώματα</string>
+    <string name="theme_dark">Σκοτεινό</string>
+    <string name="theme_dark_desc">Σκοτεινά χρώματα</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Καθαρό μαύρο: ιδανικό τη νύχτα</string>
+    <string name="keep_screen_on">Να μένει η οθόνη ανοιχτή</string>
+    <string name="keep_screen_on_desc">Αποτρέπει το σβήσιμο της οθόνης κατά την αναπαραγωγή</string>
+    <string name="data_section">Δεδομένα</string>
+    <string name="downloaded_count">%1$d ηχητικά ληφθέντα (τα %2$d προεγκατεστημένα διατηρούνται πάντα)</string>
+    <string name="delete_all_downloaded">Διαγραφή όλων των ληφθέντων</string>
+    <string name="reset_title">Πλήρης επαναφορά</string>
+    <string name="reset_message">Θέλετε να διαγραφούν τα %1$d ηχητικά που λήφθηκαν; Τα προεγκατεστημένα (Μπραμς, λευκός θόρυβος, καρδιακός παλμός) δεν θίγονται. Αυτή η ενέργεια είναι μη αναστρέψιμη.</string>
+    <string name="delete_all">Διαγραφή όλων</string>
+    <string name="reset_deleted">Διαγράφηκαν %1$d ηχητικά (τα προεγκατεστημένα διατηρήθηκαν).</string>
+    <string name="reset_none">Δεν υπάρχουν ληφθέντα ηχητικά για διαγραφή.</string>
+    <string name="language_section">Γλώσσα</string>
+    <string name="language_system_default">Προεπιλογή συστήματος</string>
+    <string name="language_system_default_desc">Χρήση της γλώσσας της συσκευής</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Μη έγκυρη διεύθυνση.</string>
+    <string name="starting_download">Έναρξη λήψης…</string>
+    <string name="download_completed">Η λήψη ολοκληρώθηκε</string>
+    <string name="download_completed_title">Η λήψη ολοκληρώθηκε: %1$s</string>
+    <string name="preparing_download">Προετοιμασία λήψης…</string>
+    <string name="download_error">Σφάλμα κατά τη λήψη.</string>
+    <string name="channel_downloads">Λήψεις νανουρισμάτων</string>
+    <string name="channel_downloads_desc">Πρόοδος των λήψεων στο παρασκήνιο</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Δεν υπάρχει διαθέσιμο ηχητικό stream για αυτό το βίντεο.</string>
+    <string name="err_no_url">Stream χωρίς διεύθυνση αρχείου.</string>
+    <string name="err_network">Σφάλμα δικτύου κατά τη λήψη: %1$s</string>
+    <string name="err_parse">Αδυναμία επεξεργασίας του βίντεο: %1$s</string>
+    <string name="err_download">Σφάλμα κατά τη λήψη: %1$s</string>
+    <string name="err_http">Απόκριση HTTP %1$d κατά τη λήψη.</string>
+    <string name="err_no_body">Απόκριση χωρίς περιεχόμενο.</string>
+    <string name="err_incomplete">Ημιτελής λήψη (%1$d/%2$d byte).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Αναπαραγωγή</string>
+    <string name="channel_playback_desc">Μόνιμη ειδοποίηση κατά την αναπαραγωγή</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Zapisz</string>
+    <string name="cancel">Anuluj</string>
+    <string name="close">Zamknij</string>
+    <string name="stop">Zatrzymaj</string>
+    <string name="play">Odtwórz</string>
+    <string name="off">Wyłączone</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Ustawienia</string>
+    <string name="content_desc_back">Wstecz</string>
+    <string name="content_desc_add_from_yt">Dodaj z YT</string>
+    <string name="content_desc_volume">Głośność</string>
+    <string name="content_desc_rename">Zmień nazwę</string>
+    <string name="content_desc_delete">Usuń</string>
+    <string name="content_desc_repeat_one_on">Powtarzaj jeden: włączone</string>
+    <string name="content_desc_repeat_one_off">Powtarzaj jeden: wyłączone</string>
+    <string name="content_desc_sleep_timer">Timer snu</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Pobieranie (%1$d)</string>
+    <string name="empty_list">Brak audio. Dodaj kołysankę z YouTube, a preinstalowane (Brahms, biały szum, bicie serca w brzuchu) są kopiowane przy pierwszym uruchomieniu.</string>
+    <string name="section_predownloaded">Preinstalowane</string>
+    <string name="section_downloaded">Pobrane</string>
+    <string name="add_from_youtube_title">Dodaj z YouTube</string>
+    <string name="add_from_youtube_subtitle">Wklej link YouTube: audio jest pobierane w tle z powiadomieniem o postępie.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Pobierz w tle</string>
+    <string name="download_failed">Pobieranie nie powiodło się.</string>
+    <string name="download_started_background">Rozpoczęto pobieranie w tle: postęp w powiadomieniu.</string>
+    <string name="rename_dialog_title">Zmień nazwę audio</string>
+    <string name="new_name_label">Nowa nazwa</string>
+    <string name="rename_failed">Nie udało się zmienić nazwy: nazwa już istnieje lub jest nieprawidłowa.</string>
+    <string name="queued">W kolejce: oczekiwanie na połączenie…</string>
+    <string name="downloading_progress">Pobieranie… %1$d%%</string>
+    <string name="preparing">Przygotowanie…</string>
+    <string name="streaming_to">Transmisja do %1$s</string>
+    <string name="cast_device">Urządzenie Cast</string>
+    <string name="now_playing">Teraz odtwarzane</string>
+    <string name="sleep_timer">Timer snu</string>
+    <string name="sleep_timer_active">Timer snu aktywny</string>
+    <string name="sleep_timer_remaining">Timer snu: %1$s</string>
+    <string name="sleep_15_min">15 minut</string>
+    <string name="sleep_30_min">30 minut</string>
+    <string name="sleep_1_hour">1 godzina</string>
+    <string name="sleep_2_hours">2 godziny</string>
+    <string name="sleep_3_hours">3 godziny</string>
+    <string name="sleep_4_hours">4 godziny</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Kołysanka Brahmsa</string>
+    <string name="bundled_white_noise">Biały szum</string>
+    <string name="bundled_enriched_heart">Wzmocnione bicie serca</string>
+    <string name="bundled_real_ultrasound">Prawdziwe USG</string>
+    <string name="bundled_brown_heart">Brązowe serce</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Ustawienia</string>
+    <string name="theme_section">Motyw</string>
+    <string name="theme_light">Jasny</string>
+    <string name="theme_light_desc">Jasne kolory</string>
+    <string name="theme_dark">Ciemny</string>
+    <string name="theme_dark_desc">Ciemne kolory</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Czysta czerń: idealna na noc</string>
+    <string name="keep_screen_on">Trzymaj ekran włączony</string>
+    <string name="keep_screen_on_desc">Zapobiega wygaszaniu ekranu podczas odtwarzania</string>
+    <string name="data_section">Dane</string>
+    <string name="downloaded_count">%1$d pobranych nagrań (te %2$d preinstalowane są zawsze zachowane)</string>
+    <string name="delete_all_downloaded">Usuń wszystko, co pobrane</string>
+    <string name="reset_title">Pełny reset</string>
+    <string name="reset_message">Czy chcesz usunąć %1$d pobranych nagrań? Preinstalowane (Brahms, biały szum, bicie serca) nie zostaną naruszone. Ta operacja jest nieodwracalna.</string>
+    <string name="delete_all">Usuń wszystko</string>
+    <string name="reset_deleted">Usunięto %1$d pobranych nagrań (preinstalowane zachowane).</string>
+    <string name="reset_none">Brak pobranych nagrań do usunięcia.</string>
+    <string name="language_section">Język</string>
+    <string name="language_system_default">Domyślny systemu</string>
+    <string name="language_system_default_desc">Użyj języka urządzenia</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Nieprawidłowy URL.</string>
+    <string name="starting_download">Rozpoczynanie pobierania…</string>
+    <string name="download_completed">Pobieranie zakończone</string>
+    <string name="download_completed_title">Pobieranie zakończone: %1$s</string>
+    <string name="preparing_download">Przygotowywanie pobierania…</string>
+    <string name="download_error">Błąd podczas pobierania.</string>
+    <string name="channel_downloads">Pobieranie kołysanek</string>
+    <string name="channel_downloads_desc">Postęp pobierania w tle</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Brak dostępnego strumienia audio dla tego wideo.</string>
+    <string name="err_no_url">Strumień bez URL pliku.</string>
+    <string name="err_network">Błąd sieci podczas pobierania: %1$s</string>
+    <string name="err_parse">Nie można przeanalizować wideo: %1$s</string>
+    <string name="err_download">Błąd podczas pobierania: %1$s</string>
+    <string name="err_http">Odpowiedź HTTP %1$d podczas pobierania.</string>
+    <string name="err_no_body">Odpowiedź bez treści.</string>
+    <string name="err_incomplete">Niekompletne pobieranie (%1$d/%2$d bajtów).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Odtwarzanie</string>
+    <string name="channel_playback_desc">Stałe powiadomienie podczas odtwarzania</string>
+</resources>

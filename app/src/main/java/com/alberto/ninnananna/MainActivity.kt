@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Apply the language chosen in Settings (or the system default)
+        AppLanguages.applyStoredOrDefault(this)
         CastManager.init(this)
         observeKeepScreenOn()
         handleIntent(intent)

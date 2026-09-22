@@ -41,7 +41,8 @@ object PlayerManager {
         _current.value = lullaby
         _playing.value = true
         // Persistent "Now playing" notification (ongoing, with a Stop action).
-        PlaybackNotification.show(appCtx, formatDisplayName(lullaby.title))
+        val title = formatDisplayName(appCtx, lullaby.title)
+        PlaybackNotification.show(appCtx, title, appCtx.getString(R.string.now_playing))
     }
 
     @Synchronized

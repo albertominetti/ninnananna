@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Salva</string>
+    <string name="cancel">Annulla</string>
+    <string name="close">Chiudi</string>
+    <string name="stop">Ferma</string>
+    <string name="play">Riproduci</string>
+    <string name="off">Off</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Impostazioni</string>
+    <string name="content_desc_back">Indietro</string>
+    <string name="content_desc_add_from_yt">Aggiungi da YT</string>
+    <string name="content_desc_volume">Volume</string>
+    <string name="content_desc_rename">Rinomina</string>
+    <string name="content_desc_delete">Elimina</string>
+    <string name="content_desc_repeat_one_on">Ripeti uno: attivo</string>
+    <string name="content_desc_repeat_one_off">Ripeti uno: off</string>
+    <string name="content_desc_sleep_timer">Timer sonno</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Download in corso (%1$d)</string>
+    <string name="empty_list">Nessun audio. Aggiungi una ninnananna da YouTube, oppure quelle preinstallate (Brahms, rumore bianco, battito del cuore in pancia) vengono copiate al primo avvio.</string>
+    <string name="section_predownloaded">Pre-scaricati</string>
+    <string name="section_downloaded">Scaricati</string>
+    <string name="add_from_youtube_title">Aggiungi da YouTube</string>
+    <string name="add_from_youtube_subtitle">Incolla un link di YouTube: l\'audio verrà scaricato in background con una notifica di avanzamento.</string>
+    <string name="youtube_url_label">URL di YouTube</string>
+    <string name="download_in_background">Scarica in background</string>
+    <string name="download_failed">Download non riuscito.</string>
+    <string name="download_started_background">Download avviato in background: avanzamento nella notifica.</string>
+    <string name="rename_dialog_title">Rinomina audio</string>
+    <string name="new_name_label">Nuovo nome</string>
+    <string name="rename_failed">Rinomina non riuscita: il nome esiste già o non è valido.</string>
+    <string name="queued">In coda: in attesa della connessione…</string>
+    <string name="downloading_progress">Download in corso… %1$d%%</string>
+    <string name="preparing">Preparazione…</string>
+    <string name="streaming_to">Streaming verso %1$s</string>
+    <string name="cast_device">Dispositivo di casting</string>
+    <string name="now_playing">In riproduzione</string>
+    <string name="sleep_timer">Timer sonno</string>
+    <string name="sleep_timer_active">Timer sonno attivo</string>
+    <string name="sleep_timer_remaining">Timer sonno: %1$s</string>
+    <string name="sleep_15_min">15 minuti</string>
+    <string name="sleep_30_min">30 minuti</string>
+    <string name="sleep_1_hour">1 ora</string>
+    <string name="sleep_2_hours">2 ore</string>
+    <string name="sleep_3_hours">3 ore</string>
+    <string name="sleep_4_hours">4 ore</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Ninnananna di Brahms</string>
+    <string name="bundled_white_noise">Rumore bianco</string>
+    <string name="bundled_enriched_heart">Battito potenziato</string>
+    <string name="bundled_real_ultrasound">Ecografo reale</string>
+    <string name="bundled_brown_heart">Battito marrone</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Impostazioni</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Chiaro</string>
+    <string name="theme_light_desc">Colori chiari</string>
+    <string name="theme_dark">Scuro</string>
+    <string name="theme_dark_desc">Colori scuri</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Nero puro: ideale di notte</string>
+    <string name="keep_screen_on">Schermo sempre acceso</string>
+    <string name="keep_screen_on_desc">Evita il timeout dello schermo durante la riproduzione</string>
+    <string name="data_section">Dati</string>
+    <string name="downloaded_count">%1$d audio scaricati (i %2$d preinstallati vengono sempre mantenuti)</string>
+    <string name="delete_all_downloaded">Elimina tutto il download</string>
+    <string name="reset_title">Azzera tutto</string>
+    <string name="reset_message">Vuoi eliminare i %1$d audio scaricati? Quelli preinstallati (Brahms, rumore bianco, battito) non vengono toccati. Questa operazione è irreversibile.</string>
+    <string name="delete_all">Elimina tutto</string>
+    <string name="reset_deleted">Eliminati %1$d audio scaricati (preinstallati mantenuti).</string>
+    <string name="reset_none">Nessun audio scaricato da eliminare.</string>
+    <string name="language_section">Lingua</string>
+    <string name="language_system_default">Predefinita di sistema</string>
+    <string name="language_system_default_desc">Usa la lingua del dispositivo</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">URL non valido.</string>
+    <string name="starting_download">Avvio del download…</string>
+    <string name="download_completed">Download completato</string>
+    <string name="download_completed_title">Download completato: %1$s</string>
+    <string name="preparing_download">Preparazione del download…</string>
+    <string name="download_error">Errore durante il download.</string>
+    <string name="channel_downloads">Download ninna nanne</string>
+    <string name="channel_downloads_desc">Avanzamento dei download in background</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Nessuno stream audio disponibile per questo video.</string>
+    <string name="err_no_url">Stream senza URL del file.</string>
+    <string name="err_network">Errore di rete durante il download: %1$s</string>
+    <string name="err_parse">Impossibile analizzare il video: %1$s</string>
+    <string name="err_download">Errore durante il download: %1$s</string>
+    <string name="err_http">Risposta HTTP %1$d durante il download.</string>
+    <string name="err_no_body">Risposta senza contenuto.</string>
+    <string name="err_incomplete">Download incompleto (%1$d/%2$d byte).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Riproduzione</string>
+    <string name="channel_playback_desc">Notifica persistente durante la riproduzione</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Spremi</string>
+    <string name="cancel">Odustani</string>
+    <string name="close">Zatvori</string>
+    <string name="stop">Zaustavi</string>
+    <string name="play">Reproduciraj</string>
+    <string name="off">Isključeno</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Postavke</string>
+    <string name="content_desc_back">Natrag</string>
+    <string name="content_desc_add_from_yt">Dodaj s YT</string>
+    <string name="content_desc_volume">Glasnoća</string>
+    <string name="content_desc_rename">Preimenuj</string>
+    <string name="content_desc_delete">Obriši</string>
+    <string name="content_desc_repeat_one_on">Repetiraj jedan: uključeno</string>
+    <string name="content_desc_repeat_one_off">Repetiraj jedan: isključeno</string>
+    <string name="content_desc_sleep_timer">Timer za spavanje</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Preuzimanje (%1$d)</string>
+    <string name="empty_list">Nema zvuka. Dodaj uspavanku s YouTubea, a unaprijed instalirane (Brahms, bijeli šum, otkucaji srca u trbuhu) kopiraju se pri prvom pokretanju.</string>
+    <string name="section_predownloaded">Unaprijed instalirane</string>
+    <string name="section_downloaded">Preuzete</string>
+    <string name="add_from_youtube_title">Dodaj s YouTubea</string>
+    <string name="add_from_youtube_subtitle">Zalijepi YouTube poveznicu: zvuk se preuzima u pozadini uz obavijest o napretku.</string>
+    <string name="youtube_url_label">YouTube URL</string>
+    <string name="download_in_background">Preuzmi u pozadini</string>
+    <string name="download_failed">Preuzimanje nije uspjelo.</string>
+    <string name="download_started_background">Preuzimanje započeto u pozadini: napredak u obavijesti.</string>
+    <string name="rename_dialog_title">Preimenuj zvuk</string>
+    <string name="new_name_label">Novi naziv</string>
+    <string name="rename_failed">Preimenovanje nije uspjelo: naziv već postoji ili je nevažeći.</string>
+    <string name="queued">U redu čekanja: čeka vezu…</string>
+    <string name="downloading_progress">Preuzimanje… %1$d%%</string>
+    <string name="preparing">Priprema…</string>
+    <string name="streaming_to">Streaming na %1$s</string>
+    <string name="cast_device">Cast uređaj</string>
+    <string name="now_playing">Trenutačno se reproducira</string>
+    <string name="sleep_timer">Timer za spavanje</string>
+    <string name="sleep_timer_active">Timer za spavanje aktivan</string>
+    <string name="sleep_timer_remaining">Timer za spavanje: %1$s</string>
+    <string name="sleep_15_min">15 minuta</string>
+    <string name="sleep_30_min">30 minuta</string>
+    <string name="sleep_1_hour">1 sat</string>
+    <string name="sleep_2_hours">2 sata</string>
+    <string name="sleep_3_hours">3 sata</string>
+    <string name="sleep_4_hours">4 sata</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahmsova uspavanka</string>
+    <string name="bundled_white_noise">Bijeli šum</string>
+    <string name="bundled_enriched_heart">Pojačani otkucaji srca</string>
+    <string name="bundled_real_ultrasound">Pravi ultrazvuk</string>
+    <string name="bundled_brown_heart">Smeđi otkucaji srca</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Postavke</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Svijetla</string>
+    <string name="theme_light_desc">Svijetle boje</string>
+    <string name="theme_dark">Tamna</string>
+    <string name="theme_dark_desc">Tamne boje</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Čisto crna: idealno noću</string>
+    <string name="keep_screen_on">Zadrži uključen zaslon</string>
+    <string name="keep_screen_on_desc">Sprječava gašenje zaslona tijekom reprodukcije</string>
+    <string name="data_section">Podaci</string>
+    <string name="downloaded_count">%1$d preuzetih zvukova (onih %2$d unaprijed instaliranih uvijek se zadržava)</string>
+    <string name="delete_all_downloaded">Obriši sve preuzeto</string>
+    <string name="reset_title">Potpuni reset</string>
+    <string name="reset_message">Želite li obrisati %1$d preuzetih zvukova? Unaprijed instalirani (Brahms, bijeli šum, otkucaji srca) neće biti dirani. Ova je operacija nepovratna.</string>
+    <string name="delete_all">Obriši sve</string>
+    <string name="reset_deleted">Obrisano %1$d preuzetih zvukova (unaprijed instalirani zadržani).</string>
+    <string name="reset_none">Nema preuzetih zvukova za brisanje.</string>
+    <string name="language_section">Jezik</string>
+    <string name="language_system_default">Zadano za sustav</string>
+    <string name="language_system_default_desc">Upotrijebi jezik uređaja</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Nevažeći URL.</string>
+    <string name="starting_download">Pokretanje preuzimanja…</string>
+    <string name="download_completed">Preuzimanje završeno</string>
+    <string name="download_completed_title">Preuzimanje završeno: %1$s</string>
+    <string name="preparing_download">Priprema preuzimanja…</string>
+    <string name="download_error">Pogreška tijekom preuzimanja.</string>
+    <string name="channel_downloads">Preuzimanja uspavanki</string>
+    <string name="channel_downloads_desc">Napredak preuzimanja u pozadini</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Za ovaj video nije dostupan nijedan zvučni tok.</string>
+    <string name="err_no_url">Tok bez URL datoteke.</string>
+    <string name="err_network">Mrežna pogreška tijekom preuzimanja: %1$s</string>
+    <string name="err_parse">Video se ne može obraditi: %1$s</string>
+    <string name="err_download">Pogreška tijekom preuzimanja: %1$s</string>
+    <string name="err_http">HTTP odgovor %1$d tijekom preuzimanja.</string>
+    <string name="err_no_body">Odgovor bez sadržaja.</string>
+    <string name="err_incomplete">Nepotpuno preuzimanje (%1$d/%2$d bajta).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Reprodukcija</string>
+    <string name="channel_playback_desc">Trajna obavijest tijekom reprodukcije</string>
+</resources>

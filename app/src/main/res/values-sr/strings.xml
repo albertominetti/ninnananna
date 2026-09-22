@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Сачувај</string>
+    <string name="cancel">Откажи</string>
+    <string name="close">Затвори</string>
+    <string name="stop">Заустави</string>
+    <string name="play">Пусти</string>
+    <string name="off">Искључено</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Подешавања</string>
+    <string name="content_desc_back">Назад</string>
+    <string name="content_desc_add_from_yt">Додај са YT</string>
+    <string name="content_desc_volume">Јачина звука</string>
+    <string name="content_desc_rename">Промени име</string>
+    <string name="content_desc_delete">Обриши</string>
+    <string name="content_desc_repeat_one_on">Понови један: укључено</string>
+    <string name="content_desc_repeat_one_off">Понови један: искључено</string>
+    <string name="content_desc_sleep_timer">Тајмер за спавање</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Преузимање (%1$d)</string>
+    <string name="empty_list">Нема звука. Додајте успаванку са YouTube-а, а унапред инсталиране (Брамс, бели шум, откуцаји срца у стомаку) се копирају при првом покретању.</string>
+    <string name="section_predownloaded">Унапред инсталиране</string>
+    <string name="section_downloaded">Преузете</string>
+    <string name="add_from_youtube_title">Додај са YouTube-а</string>
+    <string name="add_from_youtube_subtitle">Налепите линк са YouTube-а: звук се преузима у позадини уз обавештење о напретку.</string>
+    <string name="youtube_url_label">YouTube URL</string>
+    <string name="download_in_background">Преузми у позадини</string>
+    <string name="download_failed">Преузимање није успело.</string>
+    <string name="download_started_background">Преузимање започето у позадини: напредак у обавештењу.</string>
+    <string name="rename_dialog_title">Промени име звука</string>
+    <string name="new_name_label">Ново име</string>
+    <string name="rename_failed">Преименовање није успело: име већ постоји или је неважеће.</string>
+    <string name="queued">У реду: чека се веза…</string>
+    <string name="downloading_progress">Преузимање… %1$d%%</string>
+    <string name="preparing">Припрема…</string>
+    <string name="streaming_to">Емитовање на %1$s</string>
+    <string name="cast_device">Cast уређај</string>
+    <string name="now_playing">Тренутно се репродукује</string>
+    <string name="sleep_timer">Тајмер за спавање</string>
+    <string name="sleep_timer_active">Тајмер за спавање је активан</string>
+    <string name="sleep_timer_remaining">Тајмер за спавање: %1$s</string>
+    <string name="sleep_15_min">15 минута</string>
+    <string name="sleep_30_min">30 минута</string>
+    <string name="sleep_1_hour">1 сат</string>
+    <string name="sleep_2_hours">2 сата</string>
+    <string name="sleep_3_hours">3 сата</string>
+    <string name="sleep_4_hours">4 сата</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Брамсова успаванка</string>
+    <string name="bundled_white_noise">Бели шум</string>
+    <string name="bundled_enriched_heart">Појачани откуцаји срца</string>
+    <string name="bundled_real_ultrasound">Прави ултразвук</string>
+    <string name="bundled_brown_heart">Смеђи откуцаји срца</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Подешавања</string>
+    <string name="theme_section">Тема</string>
+    <string name="theme_light">Светла</string>
+    <string name="theme_light_desc">Светле боје</string>
+    <string name="theme_dark">Тамна</string>
+    <string name="theme_dark_desc">Тамне боје</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Чисто црно: идеално ноћу</string>
+    <string name="keep_screen_on">Држи екран укључен</string>
+    <string name="keep_screen_on_desc">Спречава гашење екрана током репродукције</string>
+    <string name="data_section">Подаци</string>
+    <string name="downloaded_count">%1$d преузетих аудио записа (оних %2$d унапред инсталираних се увек задржава)</string>
+    <string name="delete_all_downloaded">Обриши све преузето</string>
+    <string name="reset_title">Потпуни ресет</string>
+    <string name="reset_message">Да ли желите да обришете %1$d преузетих аудио записа? Унапред инсталирани (Брамс, бели шум, откуцаји срца) неће бити дирани. Ова операција је неповратна.</string>
+    <string name="delete_all">Обриши све</string>
+    <string name="reset_deleted">Обрисано %1$d преузетих аудио записа (унапред инсталирани задржани).</string>
+    <string name="reset_none">Нема преузетих аудио записа за брисање.</string>
+    <string name="language_section">Језик</string>
+    <string name="language_system_default">Подразумевано за систем</string>
+    <string name="language_system_default_desc">Користи језик уређаја</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Неважећи URL.</string>
+    <string name="starting_download">Покретање преузимања…</string>
+    <string name="download_completed">Преузимање завршено</string>
+    <string name="download_completed_title">Преузимање завршено: %1$s</string>
+    <string name="preparing_download">Припрема преузимања…</string>
+    <string name="download_error">Грешка током преузимања.</string>
+    <string name="channel_downloads">Преузимање успаванки</string>
+    <string name="channel_downloads_desc">Напредак позадинских преузимања</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">За овај видео није доступан ниједан аудио ток.</string>
+    <string name="err_no_url">Ток без URL датотеке.</string>
+    <string name="err_network">Мрежна грешка током преузимања: %1$s</string>
+    <string name="err_parse">Видео се не може обрадити: %1$s</string>
+    <string name="err_download">Грешка током преузимања: %1$s</string>
+    <string name="err_http">HTTP одговор %1$d током преузимања.</string>
+    <string name="err_no_body">Одговор без садржаја.</string>
+    <string name="err_incomplete">Непотпуно преузимање (%1$d/%2$d бајтова).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Репродукција</string>
+    <string name="channel_playback_desc">Стално обавештење током репродукције</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Kaydet</string>
+    <string name="cancel">İptal</string>
+    <string name="close">Kapat</string>
+    <string name="stop">Durdur</string>
+    <string name="play">Çal</string>
+    <string name="off">Kapalı</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Ayarlar</string>
+    <string name="content_desc_back">Geri</string>
+    <string name="content_desc_add_from_yt">YT\'den ekle</string>
+    <string name="content_desc_volume">Ses</string>
+    <string name="content_desc_rename">Yeniden adlandır</string>
+    <string name="content_desc_delete">Sil</string>
+    <string name="content_desc_repeat_one_on">Birini tekrarla: açık</string>
+    <string name="content_desc_repeat_one_off">Birini tekrarla: kapalı</string>
+    <string name="content_desc_sleep_timer">Uyku zamanlayıcısı</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">İndiriliyor (%1$d)</string>
+    <string name="empty_list">Ses yok. YouTube\'dan bir ninni ekleyin; ya da önceden yüklenenler (Brahms, beyaz gürültü, karındaki kalp atışı) ilk açılışta kopyalanır.</string>
+    <string name="section_predownloaded">Önceden yüklenen</string>
+    <string name="section_downloaded">İndirilen</string>
+    <string name="add_from_youtube_title">YouTube\'dan ekle</string>
+    <string name="add_from_youtube_subtitle">Bir YouTube bağlantısı yapıştırın: ses, ilerleme bildirimiyle arka planda indirilir.</string>
+    <string name="youtube_url_label">YouTube URL\'si</string>
+    <string name="download_in_background">Arka planda indir</string>
+    <string name="download_failed">İndirme başarısız oldu.</string>
+    <string name="download_started_background">İndirme arka planda başladı: ilerleme bildirimde.</string>
+    <string name="rename_dialog_title">Sesi yeniden adlandır</string>
+    <string name="new_name_label">Yeni ad</string>
+    <string name="rename_failed">Yeniden adlandırma başarısız: ad zaten var veya geçersiz.</string>
+    <string name="queued">Sırada: bağlantı bekleniyor…</string>
+    <string name="downloading_progress">İndiriliyor… %1$d%%</string>
+    <string name="preparing">Hazırlanıyor…</string>
+    <string name="streaming_to">%1$s üzerinde yayınlanıyor</string>
+    <string name="cast_device">Yayın cihazı</string>
+    <string name="now_playing">Şu an çalınıyor</string>
+    <string name="sleep_timer">Uyku zamanlayıcısı</string>
+    <string name="sleep_timer_active">Uyku zamanlayıcısı aktif</string>
+    <string name="sleep_timer_remaining">Uyku zamanlayıcısı: %1$s</string>
+    <string name="sleep_15_min">15 dakika</string>
+    <string name="sleep_30_min">30 dakika</string>
+    <string name="sleep_1_hour">1 saat</string>
+    <string name="sleep_2_hours">2 saat</string>
+    <string name="sleep_3_hours">3 saat</string>
+    <string name="sleep_4_hours">4 saat</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahms ninnisi</string>
+    <string name="bundled_white_noise">Beyaz gürültü</string>
+    <string name="bundled_enriched_heart">Güçlendirilmiş kalp atışı</string>
+    <string name="bundled_real_ultrasound">Gerçek ultrason</string>
+    <string name="bundled_brown_heart">Kahverengi kalp atışı</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Ayarlar</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Açık</string>
+    <string name="theme_light_desc">Açık renkler</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="theme_dark_desc">Koyu renkler</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Saf siyah: gece için ideal</string>
+    <string name="keep_screen_on">Ekranı açık tut</string>
+    <string name="keep_screen_on_desc">Çalma sırasında ekranın kapanmasını engeller</string>
+    <string name="data_section">Veriler</string>
+    <string name="downloaded_count">%1$d indirilen ses (%2$d önceden yüklenen her zaman korunur)</string>
+    <string name="delete_all_downloaded">İndirilen her şeyi sil</string>
+    <string name="reset_title">Tam sıfırlama</string>
+    <string name="reset_message">%1$d indirilen sesi silmek istiyor musunuz? Önceden yüklenenler (Brahms, beyaz gürültü, kalp atışı) etkilenmez. Bu işlem geri alınamaz.</string>
+    <string name="delete_all">Tümünü sil</string>
+    <string name="reset_deleted">%1$d indirilen ses silindi (önceden yüklenenler korundu).</string>
+    <string name="reset_none">Silinecek indirilen ses yok.</string>
+    <string name="language_section">Dil</string>
+    <string name="language_system_default">Sistem varsayılanı</string>
+    <string name="language_system_default_desc">Cihazın dilini kullan</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Geçersiz URL.</string>
+    <string name="starting_download">İndirme başlatılıyor…</string>
+    <string name="download_completed">İndirme tamamlandı</string>
+    <string name="download_completed_title">İndirme tamamlandı: %1$s</string>
+    <string name="preparing_download">İndirme hazırlanıyor…</string>
+    <string name="download_error">İndirme sırasında hata oluştu.</string>
+    <string name="channel_downloads">Ninni indirmeleri</string>
+    <string name="channel_downloads_desc">Arka plandaki indirmelerin ilerlemesi</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Bu video için kullanılabilir ses akışı yok.</string>
+    <string name="err_no_url">Dosya URL\'si olmayan akış.</string>
+    <string name="err_network">İndirme sırasında ağ hatası: %1$s</string>
+    <string name="err_parse">Video işlenemedi: %1$s</string>
+    <string name="err_download">İndirme sırasında hata: %1$s</string>
+    <string name="err_http">İndirme sırasında HTTP yanıtı %1$d.</string>
+    <string name="err_no_body">İçeriksiz yanıt.</string>
+    <string name="err_incomplete">Eksik indirme (%1$d/%2$d bayt).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Çalma</string>
+    <string name="channel_playback_desc">Çalma sırasında kalıcı bildirim</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Ruaj</string>
+    <string name="cancel">Anulo</string>
+    <string name="close">Mbyll</string>
+    <string name="stop">Ndalo</string>
+    <string name="play">Luaj</string>
+    <string name="off">Fikur</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Cilësimet</string>
+    <string name="content_desc_back">Kthehu</string>
+    <string name="content_desc_add_from_yt">Shto nga YT</string>
+    <string name="content_desc_volume">Volumi</string>
+    <string name="content_desc_rename">Riemërto</string>
+    <string name="content_desc_delete">Fshi</string>
+    <string name="content_desc_repeat_one_on">Përsërit një: aktiv</string>
+    <string name="content_desc_repeat_one_off">Përsërit një: joaktiv</string>
+    <string name="content_desc_sleep_timer">Kronometri i gjumit</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Duke shkarkuar (%1$d)</string>
+    <string name="empty_list">Asnjë tingull. Shto një ninëreshë nga YouTube, ose ato të parainstaluara (Brahms, zhurma e bardhë, rrahjet e zemrës në bark) kopjohen në nisjen e parë.</string>
+    <string name="section_predownloaded">Të parainstaluara</string>
+    <string name="section_downloaded">Të shkarkuara</string>
+    <string name="add_from_youtube_title">Shto nga YouTube</string>
+    <string name="add_from_youtube_subtitle">Ngjitë një lidhje YouTube: tingulli shkarkohet në sfond me një njoftim për përparimin.</string>
+    <string name="youtube_url_label">URL e YouTube</string>
+    <string name="download_in_background">Shkarko në sfond</string>
+    <string name="download_failed">Shkarkimi dështoi.</string>
+    <string name="download_started_background">Shkarkimi filloi në sfond: përparimi në njoftim.</string>
+    <string name="rename_dialog_title">Riemërto tingullin</string>
+    <string name="new_name_label">Emri i ri</string>
+    <string name="rename_failed">Riemërtimi dështoi: emri ekziston ose është i pavlefshëm.</string>
+    <string name="queued">Në radhë: duke pritur lidhjen…</string>
+    <string name="downloading_progress">Duke shkarkuar… %1$d%%</string>
+    <string name="preparing">Duke përgatitur…</string>
+    <string name="streaming_to">Duke transmetuar drejt %1$s</string>
+    <string name="cast_device">Pajisje transmetimi</string>
+    <string name="now_playing">Duke u luajtur tani</string>
+    <string name="sleep_timer">Kronometri i gjumit</string>
+    <string name="sleep_timer_active">Kronometri i gjumit aktiv</string>
+    <string name="sleep_timer_remaining">Kronometri i gjumit: %1$s</string>
+    <string name="sleep_15_min">15 minuta</string>
+    <string name="sleep_30_min">30 minuta</string>
+    <string name="sleep_1_hour">1 orë</string>
+    <string name="sleep_2_hours">2 orë</string>
+    <string name="sleep_3_hours">3 orë</string>
+    <string name="sleep_4_hours">4 orë</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Ninëresha e Brahms</string>
+    <string name="bundled_white_noise">Zhurmë e bardhë</string>
+    <string name="bundled_enriched_heart">Rrahje e përforcuar e zemrës</string>
+    <string name="bundled_real_ultrasound">Ultratinguj të vërtetë</string>
+    <string name="bundled_brown_heart">Rrahje kafe e zemrës</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Cilësimet</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">E ndritshme</string>
+    <string name="theme_light_desc">Ngjyra të ndritshme</string>
+    <string name="theme_dark">E errët</string>
+    <string name="theme_dark_desc">Ngjyra të errëta</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">E zezë e pastër: ideale për natën</string>
+    <string name="keep_screen_on">Mbaj ekranin ndezur</string>
+    <string name="keep_screen_on_desc">Parandalon fikjen e ekranit gjatë riprodhimit</string>
+    <string name="data_section">Të dhëna</string>
+    <string name="downloaded_count">%1$d tinguj të shkarkuar (%2$d të parainstaluara ruhen gjithmonë)</string>
+    <string name="delete_all_downloaded">Fshi çdo gjë të shkarkuar</string>
+    <string name="reset_title">Rikthim i plotë</string>
+    <string name="reset_message">Doni të fshini %1$d tingujt e shkarkuar? Të parainstaluara (Brahms, zhurma e bardhë, rrahjet e zemrës) nuk preken. Kjo veprim është i paleverdishtë.</string>
+    <string name="delete_all">Fshi gjithçka</string>
+    <string name="reset_deleted">U fshinë %1$d tinguj të shkarkuar (të parainstaluara u ruajtën).</string>
+    <string name="reset_none">Asnjë tingull i shkarkuar për t\'u fshirë.</string>
+    <string name="language_section">Gjuha</string>
+    <string name="language_system_default">Parazgjedhje e sistemit</string>
+    <string name="language_system_default_desc">Përdor gjuhën e pajisjes</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">URL e pavlefshme.</string>
+    <string name="starting_download">Duke nisur shkarkimin…</string>
+    <string name="download_completed">Shkarkimi përfundoi</string>
+    <string name="download_completed_title">Shkarkimi përfundoi: %1$s</string>
+    <string name="preparing_download">Duke përgatitur shkarkimin…</string>
+    <string name="download_error">Gabim gjatë shkarkimit.</string>
+    <string name="channel_downloads">Shkarkimet e ninërshave</string>
+    <string name="channel_downloads_desc">Përparimi i shkarkimeve në sfond</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Asnjë rrjedhë audio në dispozicion për këtë video.</string>
+    <string name="err_no_url">Rrjedhë pa URL skedari.</string>
+    <string name="err_network">Gabim rrjeti gjatë shkarkimit: %1$s</string>
+    <string name="err_parse">Nuk mund të analizohet videoja: %1$s</string>
+    <string name="err_download">Gabim gjatë shkarkimit: %1$s</string>
+    <string name="err_http">Përgjigje HTTP %1$d gjatë shkarkimit.</string>
+    <string name="err_no_body">Përgjigje pa përmbajtje.</string>
+    <string name="err_incomplete">Shkarkim i paplotë (%1$d/%2$d byte).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Riprodhim</string>
+    <string name="channel_playback_desc">Njoftim i përhershëm gjatë riprodhimit</string>
+</resources>

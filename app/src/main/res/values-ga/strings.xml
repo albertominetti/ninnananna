@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Sábháil</string>
+    <string name="cancel">Cealaigh</string>
+    <string name="close">Dún</string>
+    <string name="stop">Stop</string>
+    <string name="play">Seinn</string>
+    <string name="off">As</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Socruithe</string>
+    <string name="content_desc_back">Ar ais</string>
+    <string name="content_desc_add_from_yt">Cuir leis ó YT</string>
+    <string name="content_desc_volume">Glórthoirt</string>
+    <string name="content_desc_rename">Athainmnigh</string>
+    <string name="content_desc_delete">Scrios</string>
+    <string name="content_desc_repeat_one_on">Déan ceann a athrá: ar siúl</string>
+    <string name="content_desc_repeat_one_off">Déan ceann a athrá: as</string>
+    <string name="content_desc_sleep_timer">Aimseoir codlata</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Ag íoslódáil (%1$d)</string>
+    <string name="empty_list">Níl aon fhuaim ann. Cuir suantraí leis ó YouTube, nó cóipeáiltear na cinn réamhshuiteáilte (Brahms, torann bán, croí ag bualadh sa bholg) ag an gcéad tosaithe.</string>
+    <string name="section_predownloaded">Réamhshuiteáilte</string>
+    <string name="section_downloaded">Íoslódáilte</string>
+    <string name="add_from_youtube_title">Cuir leis ó YouTube</string>
+    <string name="add_from_youtube_subtitle">Greamaigh nasc YouTube: íoslódáiltear an fhuaim sa chúlra le fógra faoin dul chun cinn.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Íoslódáil sa chúlra</string>
+    <string name="download_failed">Theip ar an íoslódáil.</string>
+    <string name="download_started_background">Thosaigh an íoslódáil sa chúlra: dul chun cinn san fhógra.</string>
+    <string name="rename_dialog_title">Athainmnigh fuaim</string>
+    <string name="new_name_label">Ainm nua</string>
+    <string name="rename_failed">Theip ar an athainmniú: tá an t-ainm ann cheana nó tá sé neamhbhailí.</string>
+    <string name="queued">Sa scuaine: ag fanacht ar an gceangal…</string>
+    <string name="downloading_progress">Ag íoslódáil… %1$d%%</string>
+    <string name="preparing">Ag ullmhú…</string>
+    <string name="streaming_to">Ag sruthú chuig %1$s</string>
+    <string name="cast_device">Gléas sruthaithe</string>
+    <string name="now_playing">Ag seinm anois</string>
+    <string name="sleep_timer">Aimseoir codlata</string>
+    <string name="sleep_timer_active">Aimseoir codlata gníomhach</string>
+    <string name="sleep_timer_remaining">Aimseoir codlata: %1$s</string>
+    <string name="sleep_15_min">15 nóiméad</string>
+    <string name="sleep_30_min">30 nóiméad</string>
+    <string name="sleep_1_hour">1 uair</string>
+    <string name="sleep_2_hours">2 uair</string>
+    <string name="sleep_3_hours">3 uair</string>
+    <string name="sleep_4_hours">4 huaire</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Suantraí Brahms</string>
+    <string name="bundled_white_noise">Torann bán</string>
+    <string name="bundled_enriched_heart">Bualadh croí treisithe</string>
+    <string name="bundled_real_ultrasound">Ultrathonagrafaíocht fhíor</string>
+    <string name="bundled_brown_heart">Bualadh croí donn</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Socruithe</string>
+    <string name="theme_section">Téama</string>
+    <string name="theme_light">Geal</string>
+    <string name="theme_light_desc">Dathanna geala</string>
+    <string name="theme_dark">Dorcha</string>
+    <string name="theme_dark_desc">Dathanna dorcha</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Dubh íon: iontach san oíche</string>
+    <string name="keep_screen_on">Coinnigh an scáileán ar siúl</string>
+    <string name="keep_screen_on_desc">Coscann sé múchadh an scáileáin le linn seinnm</string>
+    <string name="data_section">Sonraí</string>
+    <string name="downloaded_count">%1$d fuaim íoslódáilte (coinnítear na %2$d réamhshuiteáilte i gcónaí)</string>
+    <string name="delete_all_downloaded">Scrios gach rud a íoslódáladh</string>
+    <string name="reset_title">Athshocrú iomlán</string>
+    <string name="reset_message">Ar mhaith leat na %1$d fuaim íoslódáilte a scriosadh? Ní ghearrtar isteach ar na cinn réamhshuiteáilte (Brahms, torann bán, bualadh croí). Ní féidir an oibríocht seo a chur ar ceal.</string>
+    <string name="delete_all">Scrios gach rud</string>
+    <string name="reset_deleted">Scriosadh %1$d fuaim íoslódáilte (coinníodh na cinn réamhshuiteáilte).</string>
+    <string name="reset_none">Níl aon fhuaim íoslódáilte le scriosadh.</string>
+    <string name="language_section">Teanga</string>
+    <string name="language_system_default">Réamhshocrú an chórais</string>
+    <string name="language_system_default_desc">Úsáid teanga an ghléis</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">URL neamhbhailí.</string>
+    <string name="starting_download">Ag tosú ar an íoslódáil…</string>
+    <string name="download_completed">Íoslódáil críochnaithe</string>
+    <string name="download_completed_title">Íoslódáil críochnaithe: %1$s</string>
+    <string name="preparing_download">Ag ullmhú an íoslódáil…</string>
+    <string name="download_error">Earráid le linn an íoslódáil.</string>
+    <string name="channel_downloads">Íoslódálacha suantraithe</string>
+    <string name="channel_downloads_desc">Dul chun cinn na n-íoslódálacha sa chúlra</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Níl aon sruth fuaime ar fáil don fhíseán seo.</string>
+    <string name="err_no_url">Sruth gan URL comhaid.</string>
+    <string name="err_network">Earráid líonra le linn an íoslódáil: %1$s</string>
+    <string name="err_parse">Níorbh fhéidir an físeán a phróiseáil: %1$s</string>
+    <string name="err_download">Earráid le linn an íoslódáil: %1$s</string>
+    <string name="err_http">Freagra HTTP %1$d le linn an íoslódáil.</string>
+    <string name="err_no_body">Freagra gan ábhar.</string>
+    <string name="err_incomplete">Íoslódáil neamhiomlán (%1$d/%2$d beart).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Seinm</string>
+    <string name="channel_playback_desc">Fógra buan le linn seinnm</string>
+</resources>

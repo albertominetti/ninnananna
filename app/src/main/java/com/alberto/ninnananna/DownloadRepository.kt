@@ -224,13 +224,15 @@ object DownloadRepository {
             val durationSec = runCatching { extractor.length }.getOrDefault(0L)
 
             val stream = resolveBestAudioStream(extractor)
-                ?: throw DownloadException("No audio stream available for this video.")
+                ?: throw DownloadException(
+                    context.getString(R.string.err_no_stream)
+                )
 
             val dir = lullabiesDir(context)
             val target = uniqueFile(dir, sanitizeFileName(title))
             val streamUrl = stream.url
-                ?: throw DownloadException("Stream without file URL.")
-            downloadStream(streamUrl, target, onProgress)
+                ?: throw DownloadException(context.getString(R.string.err_no_url))
+            downloadStream(context, streamUrl, target, onProgress)
 
             Lullaby(
                 id = target.absolutePath,
@@ -243,11 +245,17 @@ object DownloadRepository {
         } catch (e: DownloadException) {
             throw e
         } catch (e: IOException) {
-            throw DownloadException("Network error during download: ${e.message}", e)
+            throw DownloadException(
+                context.getString(R.string.err_network, e.message ?: ""), e
+            )
         } catch (e: ExtractionException) {
-            throw DownloadException("Unable to parse the video: ${e.message}", e)
+            throw DownloadException(
+                context.getString(R.string.err_parse, e.message ?: ""), e
+            )
         } catch (e: Exception) {
-            throw DownloadException("Error during download: ${e.message}", e)
+            throw DownloadException(
+                context.getString(R.string.err_download, e.message ?: ""), e
+            )
         }
     }
 
@@ -288,6 +296,7 @@ object DownloadRepository {
     }
 
     private fun downloadStream(
+        context: Context,
         streamUrl: String,
         target: File,
         onProgress: (Float) -> Unit
@@ -299,9 +308,12 @@ object DownloadRepository {
 
         client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
-                throw DownloadException("HTTP response ${response.code} during download.")
+                throw DownloadException(
+                    context.getString(R.string.err_http, response.code)
+                )
             }
-            val body = response.body ?: throw DownloadException("Response without content.")
+            val body = response.body
+                ?: throw DownloadException(context.getString(R.string.err_no_body))
             val total = body.contentLength()
             val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
             var downloaded = 0L
@@ -319,7 +331,9 @@ object DownloadRepository {
                 }
             }
             if (total > 0 && downloaded < total) {
-                throw DownloadException("Incomplete download ($downloaded/${total} bytes).")
+                throw DownloadException(
+                    context.getString(R.string.err_incomplete, downloaded, total)
+                )
             }
         }
     }
@@ -371,16 +385,16 @@ object DownloadRepository {
  * - simple Title Case (first letter of each word uppercase, the rest
  *   unchanged: any acronyms are left untouched).
  */
-/** English names of the preinstalled sounds (display only). */
-private val BUNDLED_DISPLAY_NAMES_EN = mapOf(
-    "brahms_lullaby" to "Brahms' lullaby",
-    "white_noise" to "White noise",
-    "cuore_arricchito" to "Enriched heartbeat",
-    "ecografia_vera" to "Real ultrasound",
-    "cuore_marrone" to "Brown heart"
+/** Translated names of the preinstalled sounds (display only). */
+private val BUNDLED_DISPLAY_NAMES: Map<String, Int> = mapOf(
+    "brahms_lullaby" to R.string.bundled_brahms,
+    "white_noise" to R.string.bundled_white_noise,
+    "cuore_arricchito" to R.string.bundled_enriched_heart,
+    "ecografia_vera" to R.string.bundled_real_ultrasound,
+    "cuore_marrone" to R.string.bundled_brown_heart
 )
 
-fun formatDisplayName(fileName: String): String {
+fun formatDisplayName(context: Context, fileName: String): String {
     var name = fileName.trim()
     for (ext in DISPLAY_EXTENSIONS) {
         if (name.endsWith(ext, ignoreCase = true)) {
@@ -388,8 +402,10 @@ fun formatDisplayName(fileName: String): String {
             break
         }
     }
-    // English names for the preinstalled sounds.
-    BUNDLED_DISPLAY_NAMES_EN[name.lowercase()]?.let { return it }
+    // Translated names for the preinstalled sounds.
+    BUNDLED_DISPLAY_NAMES[name.lowercase()]?.let { resId ->
+        return context.getString(resId)
+    }
     val words = name
         .replace('_', ' ')
         .replace('-', ' ')

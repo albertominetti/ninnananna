@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Uložit</string>
+    <string name="cancel">Zrušit</string>
+    <string name="close">Zavřít</string>
+    <string name="stop">Zastavit</string>
+    <string name="play">Přehrát</string>
+    <string name="off">Vypnuto</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Nastavení</string>
+    <string name="content_desc_back">Zpět</string>
+    <string name="content_desc_add_from_yt">Přidat z YT</string>
+    <string name="content_desc_volume">Hlasitost</string>
+    <string name="content_desc_rename">Přejmenovat</string>
+    <string name="content_desc_delete">Smazat</string>
+    <string name="content_desc_repeat_one_on">Opakovat jeden: zapnuto</string>
+    <string name="content_desc_repeat_one_off">Opakovat jeden: vypnuto</string>
+    <string name="content_desc_sleep_timer">Časovač spánku</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Stahování (%1$d)</string>
+    <string name="empty_list">Žádné audio. Přidejte ukolébavku z YouTube, nebo se předinstalované (Brahms, bílý šum, tlukot srdce v bříšku) zkopírují při prvním spuštění.</string>
+    <string name="section_predownloaded">Předinstalované</string>
+    <string name="section_downloaded">Stažené</string>
+    <string name="add_from_youtube_title">Přidat z YouTube</string>
+    <string name="add_from_youtube_subtitle">Vložte odkaz na YouTube: audio se stáhne na pozadí s notifikací o průběhu.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Stáhnout na pozadí</string>
+    <string name="download_failed">Stahování se nezdařilo.</string>
+    <string name="download_started_background">Stahování spuštěno na pozadí: průběh v notifikaci.</string>
+    <string name="rename_dialog_title">Přejmenovat audio</string>
+    <string name="new_name_label">Nový název</string>
+    <string name="rename_failed">Přejmenování se nezdařilo: název už existuje nebo je neplatný.</string>
+    <string name="queued">Ve frontě: čeká se na připojení…</string>
+    <string name="downloading_progress">Stahování… %1$d%%</string>
+    <string name="preparing">Příprava…</string>
+    <string name="streaming_to">Streamování na %1$s</string>
+    <string name="cast_device">Zařízení pro přenos</string>
+    <string name="now_playing">Právě přehrává</string>
+    <string name="sleep_timer">Časovač spánku</string>
+    <string name="sleep_timer_active">Časovač spánku aktivní</string>
+    <string name="sleep_timer_remaining">Časovač spánku: %1$s</string>
+    <string name="sleep_15_min">15 minut</string>
+    <string name="sleep_30_min">30 minut</string>
+    <string name="sleep_1_hour">1 hodina</string>
+    <string name="sleep_2_hours">2 hodiny</string>
+    <string name="sleep_3_hours">3 hodiny</string>
+    <string name="sleep_4_hours">4 hodiny</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahmova ukolébavka</string>
+    <string name="bundled_white_noise">Bílý šum</string>
+    <string name="bundled_enriched_heart">Zesílený tlukot srdce</string>
+    <string name="bundled_real_ultrasound">Skutečný ultrazvuk</string>
+    <string name="bundled_brown_heart">Hnědý tlukot srdce</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Nastavení</string>
+    <string name="theme_section">Motiv</string>
+    <string name="theme_light">Světlý</string>
+    <string name="theme_light_desc">Světlé barvy</string>
+    <string name="theme_dark">Tmavý</string>
+    <string name="theme_dark_desc">Tmavé barvy</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Čistá černá: ideální na noc</string>
+    <string name="keep_screen_on">Ponechat obrazovku zapnutou</string>
+    <string name="keep_screen_on_desc">Zabrání vypnutí obrazovky během přehrávání</string>
+    <string name="data_section">Data</string>
+    <string name="downloaded_count">%1$d stažených audii (těch %2$d předinstalovaných je vždy zachováno)</string>
+    <string name="delete_all_downloaded">Smazat vše stažené</string>
+    <string name="reset_title">Úplný reset</string>
+    <string name="reset_message">Chcete smazat %1$d stažených audii? Předinstalované (Brahms, bílý šum, tlukot srdce) nebudou nijak dotčeny. Tato operace je nevratná.</string>
+    <string name="delete_all">Smazat vše</string>
+    <string name="reset_deleted">Smazáno %1$d stažených audii (předinstalovaná zachována).</string>
+    <string name="reset_none">Žádná stažená audia k smazání.</string>
+    <string name="language_section">Jazyk</string>
+    <string name="language_system_default">Výchozí pro systém</string>
+    <string name="language_system_default_desc">Použít jazyk zařízení</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Neplatná URL.</string>
+    <string name="starting_download">Spouštění stahování…</string>
+    <string name="download_completed">Stahování dokončeno</string>
+    <string name="download_completed_title">Stahování dokončeno: %1$s</string>
+    <string name="preparing_download">Příprava stahování…</string>
+    <string name="download_error">Chyba při stahování.</string>
+    <string name="channel_downloads">Stahování ukolébavek</string>
+    <string name="channel_downloads_desc">Průběh stahování na pozadí</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Pro toto video není dostupný žádný zvukový proud.</string>
+    <string name="err_no_url">Proud bez URL souboru.</string>
+    <string name="err_network">Chyba sítě při stahování: %1$s</string>
+    <string name="err_parse">Video nelze zpracovat: %1$s</string>
+    <string name="err_download">Chyba při stahování: %1$s</string>
+    <string name="err_http">Odpověď HTTP %1$d při stahování.</string>
+    <string name="err_no_body">Odpověď bez obsahu.</string>
+    <string name="err_incomplete">Neúplné stahování (%1$d/%2$d bajtů).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Přehrávání</string>
+    <string name="channel_playback_desc">Trvalá notifikace během přehrávání</string>
+</resources>

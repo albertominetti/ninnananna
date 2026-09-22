@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Saglabāt</string>
+    <string name="cancel">Atcelt</string>
+    <string name="close">Aizvērt</string>
+    <string name="stop">Apturēt</string>
+    <string name="play">Atskaņot</string>
+    <string name="off">Izslēgts</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Iestatījumi</string>
+    <string name="content_desc_back">Atpakaļ</string>
+    <string name="content_desc_add_from_yt">Pievienot no YT</string>
+    <string name="content_desc_volume">Skaļums</string>
+    <string name="content_desc_rename">Pārdēvēt</string>
+    <string name="content_desc_delete">Dzēst</string>
+    <string name="content_desc_repeat_one_on">Atkārtot vienu: ieslēgts</string>
+    <string name="content_desc_repeat_one_off">Atkārtot vienu: izslēgts</string>
+    <string name="content_desc_sleep_timer">Miega taimeris</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Lejupielādē (%1$d)</string>
+    <string name="empty_list">Nav audio. Pievieno šūpuļdziesmu no YouTube, vai arī iepriekš instalētās (Bramss, baltais troksnis, sirds sitieni vēderiņā) tiek nokopētas pirmajā palaišanā.</string>
+    <string name="section_predownloaded">Iepriekš instalētas</string>
+    <string name="section_downloaded">Lejupielādētas</string>
+    <string name="add_from_youtube_title">Pievienot no YouTube</string>
+    <string name="add_from_youtube_subtitle">Ielīmē YouTube saiti: audio tiks lejupielādēts fonā ar progresa paziņojumu.</string>
+    <string name="youtube_url_label">YouTube URL</string>
+    <string name="download_in_background">Lejupielādēt fonā</string>
+    <string name="download_failed">Lejupielāde neizdevās.</string>
+    <string name="download_started_background">Lejupielāde sākta fonā: progress paziņojumā.</string>
+    <string name="rename_dialog_title">Pārdēvēt audio</string>
+    <string name="new_name_label">Jauns nosaukums</string>
+    <string name="rename_failed">Pārdēvēt neizdevās: nosaukums jau pastāv vai ir nederīgs.</string>
+    <string name="queued">Rindā: gaida savienojumu…</string>
+    <string name="downloading_progress">Lejupielādē… %1$d%%</string>
+    <string name="preparing">Sagatavo…</string>
+    <string name="streaming_to">Straumē uz %1$s</string>
+    <string name="cast_device">Cast ierīce</string>
+    <string name="now_playing">Pašlaik atskaņo</string>
+    <string name="sleep_timer">Miega taimeris</string>
+    <string name="sleep_timer_active">Miega taimeris aktīvs</string>
+    <string name="sleep_timer_remaining">Miega taimeris: %1$s</string>
+    <string name="sleep_15_min">15 minūtes</string>
+    <string name="sleep_30_min">30 minūtes</string>
+    <string name="sleep_1_hour">1 stunda</string>
+    <string name="sleep_2_hours">2 stundas</string>
+    <string name="sleep_3_hours">3 stundas</string>
+    <string name="sleep_4_hours">4 stundas</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Bramsa šūpuļdziesma</string>
+    <string name="bundled_white_noise">Baltais troksnis</string>
+    <string name="bundled_enriched_heart">Pastiprināti sirds sitieni</string>
+    <string name="bundled_real_ultrasound">Īsta ehogrāfija</string>
+    <string name="bundled_brown_heart">Brūni sirds sitieni</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Iestatījumi</string>
+    <string name="theme_section">Tēma</string>
+    <string name="theme_light">Gaiša</string>
+    <string name="theme_light_desc">Gaišas krāsas</string>
+    <string name="theme_dark">Tumša</string>
+    <string name="theme_dark_desc">Tumšas krāsas</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Tīri melns: ideāli naktī</string>
+    <string name="keep_screen_on">Turēt ekrānu ieslēgtu</string>
+    <string name="keep_screen_on_desc">Novērš ekrāna izslēgšanos atskaņošanas laikā</string>
+    <string name="data_section">Dati</string>
+    <string name="downloaded_count">%1$d lejupielādētu audio (tie %2$d iepriekš instalētie vienmēr tiek saglabāti)</string>
+    <string name="delete_all_downloaded">Dzēst visu lejupielādēto</string>
+    <string name="reset_title">Pilnīga atiestatīšana</string>
+    <string name="reset_message">Vai dzēst %1$d lejupielādētos audio? Iepriekš instalētie (Bramss, baltais troksnis, sirds sitieni) netiks aiztikti. Šī darbība ir neatgriezeniska.</string>
+    <string name="delete_all">Dzēst visu</string>
+    <string name="reset_deleted">Dzēsti %1$d lejupielādēti audio (iepriekš instalētie saglabāti).</string>
+    <string name="reset_none">Nav lejupielādētu audio, ko dzēst.</string>
+    <string name="language_section">Valoda</string>
+    <string name="language_system_default">Sistēmas noklusējums</string>
+    <string name="language_system_default_desc">Izmantot ierīces valodu</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Nederīgs URL.</string>
+    <string name="starting_download">Tiek sākta lejupielāde…</string>
+    <string name="download_completed">Lejupielāde pabeigta</string>
+    <string name="download_completed_title">Lejupielāde pabeigta: %1$s</string>
+    <string name="preparing_download">Tiek sagatavota lejupielāde…</string>
+    <string name="download_error">Kļūda lejupielādes laikā.</string>
+    <string name="channel_downloads">Šūpuļdziesmu lejupielādes</string>
+    <string name="channel_downloads_desc">Fona lejupielāžu progress</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Šim videoklipam nav pieejama audio straume.</string>
+    <string name="err_no_url">Straume bez faila URL.</string>
+    <string name="err_network">Tīkla kļūda lejupielādes laikā: %1$s</string>
+    <string name="err_parse">Videoklipu nevar apstrādāt: %1$s</string>
+    <string name="err_download">Kļūda lejupielādes laikā: %1$s</string>
+    <string name="err_http">HTTP atbilde %1$d lejupielādes laikā.</string>
+    <string name="err_no_body">Atbilde bez satura.</string>
+    <string name="err_incomplete">Nepilnīga lejupielāde (%1$d/%2$d baitu).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Atskaņošana</string>
+    <string name="channel_playback_desc">Pastāvīgs paziņojums atskaņošanas laikā</string>
+</resources>

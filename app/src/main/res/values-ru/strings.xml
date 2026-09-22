@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="close">Закрыть</string>
+    <string name="stop">Стоп</string>
+    <string name="play">Играть</string>
+    <string name="off">Выкл</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Настройки</string>
+    <string name="content_desc_back">Назад</string>
+    <string name="content_desc_add_from_yt">Добавить с YT</string>
+    <string name="content_desc_volume">Громкость</string>
+    <string name="content_desc_rename">Переименовать</string>
+    <string name="content_desc_delete">Удалить</string>
+    <string name="content_desc_repeat_one_on">Повтор одного: вкл</string>
+    <string name="content_desc_repeat_one_off">Повтор одного: выкл</string>
+    <string name="content_desc_sleep_timer">Таймер сна</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Загрузка (%1$d)</string>
+    <string name="empty_list">Нет аудио. Добавьте колыбельную с YouTube, а предустановленные (Брамс, белый шум, биение сердца в животе) копируются при первом запуске.</string>
+    <string name="section_predownloaded">Предустановленные</string>
+    <string name="section_downloaded">Загруженные</string>
+    <string name="add_from_youtube_title">Добавить с YouTube</string>
+    <string name="add_from_youtube_subtitle">Вставьте ссылку YouTube: аудио будет загружено в фоне с уведомлением о ходе загрузки.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Загрузить в фоне</string>
+    <string name="download_failed">Не удалось загрузить.</string>
+    <string name="download_started_background">Загрузка началась в фоне: ход загрузки в уведомлении.</string>
+    <string name="rename_dialog_title">Переименовать аудио</string>
+    <string name="new_name_label">Новое имя</string>
+    <string name="rename_failed">Не удалось переименовать: имя уже существует или недопустимо.</string>
+    <string name="queued">В очереди: ожидание соединения…</string>
+    <string name="downloading_progress">Загрузка… %1$d%%</string>
+    <string name="preparing">Подготовка…</string>
+    <string name="streaming_to">Трансляция на %1$s</string>
+    <string name="cast_device">Устройство Cast</string>
+    <string name="now_playing">Сейчас играет</string>
+    <string name="sleep_timer">Таймер сна</string>
+    <string name="sleep_timer_active">Таймер сна активен</string>
+    <string name="sleep_timer_remaining">Таймер сна: %1$s</string>
+    <string name="sleep_15_min">15 минут</string>
+    <string name="sleep_30_min">30 минут</string>
+    <string name="sleep_1_hour">1 час</string>
+    <string name="sleep_2_hours">2 часа</string>
+    <string name="sleep_3_hours">3 часа</string>
+    <string name="sleep_4_hours">4 часа</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Колыбельная Брамса</string>
+    <string name="bundled_white_noise">Белый шум</string>
+    <string name="bundled_enriched_heart">Усиленное сердцебиение</string>
+    <string name="bundled_real_ultrasound">Настоящее УЗИ</string>
+    <string name="bundled_brown_heart">Коричневое сердцебиение</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Настройки</string>
+    <string name="theme_section">Тема</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_light_desc">Светлые цвета</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_dark_desc">Тёмные цвета</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Чистый чёрный: идеально ночью</string>
+    <string name="keep_screen_on">Не выключать экран</string>
+    <string name="keep_screen_on_desc">Предотвращает выключение экрана во время воспроизведения</string>
+    <string name="data_section">Данные</string>
+    <string name="downloaded_count">Загружено аудио: %1$d (предустановленные %2$d всегда сохраняются)</string>
+    <string name="delete_all_downloaded">Удалить всё загруженное</string>
+    <string name="reset_title">Полный сброс</string>
+    <string name="reset_message">Удалить %1$d загруженных аудио? Предустановленные (Брамс, белый шум, сердцебиение) не затрагиваются. Это действие необратимо.</string>
+    <string name="delete_all">Удалить всё</string>
+    <string name="reset_deleted">Удалено %1$d загруженных аудио (предустановленные сохранены).</string>
+    <string name="reset_none">Нет загруженных аудио для удаления.</string>
+    <string name="language_section">Язык</string>
+    <string name="language_system_default">По умолчанию системы</string>
+    <string name="language_system_default_desc">Использовать язык устройства</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Неверный URL.</string>
+    <string name="starting_download">Запуск загрузки…</string>
+    <string name="download_completed">Загрузка завершена</string>
+    <string name="download_completed_title">Загрузка завершена: %1$s</string>
+    <string name="preparing_download">Подготовка загрузки…</string>
+    <string name="download_error">Ошибка при загрузке.</string>
+    <string name="channel_downloads">Загрузки колыбельных</string>
+    <string name="channel_downloads_desc">Ход фоновых загрузок</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Для этого видео нет аудиопотока.</string>
+    <string name="err_no_url">Поток без URL файла.</string>
+    <string name="err_network">Ошибка сети при загрузке: %1$s</string>
+    <string name="err_parse">Не удалось обработать видео: %1$s</string>
+    <string name="err_download">Ошибка при загрузке: %1$s</string>
+    <string name="err_http">HTTP-ответ %1$d при загрузке.</string>
+    <string name="err_no_body">Ответ без содержимого.</string>
+    <string name="err_incomplete">Незавершённая загрузка (%1$d/%2$d байт).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Воспроизведение</string>
+    <string name="channel_playback_desc">Постоянное уведомление во время воспроизведения</string>
+</resources>

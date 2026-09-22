@@ -1,4 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="stop">Stop</string>
+    <string name="play">Play</string>
+    <string name="off">Off</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Settings</string>
+    <string name="content_desc_back">Back</string>
+    <string name="content_desc_add_from_yt">Add from YT</string>
+    <string name="content_desc_volume">Volume</string>
+    <string name="content_desc_rename">Rename</string>
+    <string name="content_desc_delete">Delete</string>
+    <string name="content_desc_repeat_one_on">Repeat one: on</string>
+    <string name="content_desc_repeat_one_off">Repeat one: off</string>
+    <string name="content_desc_sleep_timer">Sleep timer</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Downloading (%1$d)</string>
+    <string name="empty_list">No audio. Add a lullaby from YouTube, or the preinstalled ones (Brahms, white noise, womb heartbeat) are copied on first launch.</string>
+    <string name="section_predownloaded">Pre downloaded</string>
+    <string name="section_downloaded">Downloaded</string>
+    <string name="add_from_youtube_title">Add from YouTube</string>
+    <string name="add_from_youtube_subtitle">Paste a YouTube link: the audio is downloaded in the background with a progress notification.</string>
+    <string name="youtube_url_label">YouTube URL</string>
+    <string name="download_in_background">Download in background</string>
+    <string name="download_failed">Download failed.</string>
+    <string name="download_started_background">Download started in background: progress in the notification.</string>
+    <string name="rename_dialog_title">Rename audio</string>
+    <string name="new_name_label">New name</string>
+    <string name="rename_failed">Rename failed: name already exists or is invalid.</string>
+    <string name="queued">Queued: waiting for connection…</string>
+    <string name="downloading_progress">Downloading… %1$d%%</string>
+    <string name="preparing">Preparing…</string>
+    <string name="streaming_to">Streaming to %1$s</string>
+    <string name="cast_device">Cast device</string>
+    <string name="now_playing">Now playing</string>
+    <string name="sleep_timer">Sleep timer</string>
+    <string name="sleep_timer_active">Sleep timer active</string>
+    <string name="sleep_timer_remaining">Sleep timer: %1$s</string>
+    <string name="sleep_15_min">15 minutes</string>
+    <string name="sleep_30_min">30 minutes</string>
+    <string name="sleep_1_hour">1 hour</string>
+    <string name="sleep_2_hours">2 hours</string>
+    <string name="sleep_3_hours">3 hours</string>
+    <string name="sleep_4_hours">4 hours</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahms\' lullaby</string>
+    <string name="bundled_white_noise">White noise</string>
+    <string name="bundled_enriched_heart">Enriched heartbeat</string>
+    <string name="bundled_real_ultrasound">Real ultrasound</string>
+    <string name="bundled_brown_heart">Brown heart</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Settings</string>
+    <string name="theme_section">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_light_desc">Light colors</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_dark_desc">Dark colors</string>
+    <string name="theme_amoled">Amoled</string>
+    <string name="theme_amoled_desc">Pure black: ideal at night</string>
+    <string name="keep_screen_on">Keep screen on</string>
+    <string name="keep_screen_on_desc">Prevents the screen timeout during playback</string>
+    <string name="data_section">Data</string>
+    <string name="downloaded_count">%1$d downloaded audios (the %2$d preinstalled ones are always kept)</string>
+    <string name="delete_all_downloaded">Delete everything downloaded</string>
+    <string name="reset_title">Full reset</string>
+    <string name="reset_message">Do you want to delete the %1$d downloaded audios? The preinstalled ones (Brahms, white noise, heartbeat) are not touched. This operation is irreversible.</string>
+    <string name="delete_all">Delete all</string>
+    <string name="reset_deleted">Deleted %1$d downloaded audios (preinstalled ones kept).</string>
+    <string name="reset_none">No downloaded audios to delete.</string>
+    <string name="language_section">Language</string>
+    <string name="language_system_default">System default</string>
+    <string name="language_system_default_desc">Use the device\'s language</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Invalid URL.</string>
+    <string name="starting_download">Starting download…</string>
+    <string name="download_completed">Download completed</string>
+    <string name="download_completed_title">Download completed: %1$s</string>
+    <string name="preparing_download">Preparing download…</string>
+    <string name="download_error">Error during download.</string>
+    <string name="channel_downloads">Lullaby downloads</string>
+    <string name="channel_downloads_desc">Progress of the background downloads</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">No audio stream available for this video.</string>
+    <string name="err_no_url">Stream without file URL.</string>
+    <string name="err_network">Network error during download: %1$s</string>
+    <string name="err_parse">Unable to parse the video: %1$s</string>
+    <string name="err_download">Error during download: %1$s</string>
+    <string name="err_http">HTTP response %1$d during download.</string>
+    <string name="err_no_body">Response without content.</string>
+    <string name="err_incomplete">Incomplete download (%1$d/%2$d bytes).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Playback</string>
+    <string name="channel_playback_desc">Persistent notification during playback</string>
 </resources>

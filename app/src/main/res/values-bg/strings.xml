@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Запази</string>
+    <string name="cancel">Отказ</string>
+    <string name="close">Затвори</string>
+    <string name="stop">Стоп</string>
+    <string name="play">Пусни</string>
+    <string name="off">Изкл</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Настройки</string>
+    <string name="content_desc_back">Назад</string>
+    <string name="content_desc_add_from_yt">Добави от YT</string>
+    <string name="content_desc_volume">Сила на звука</string>
+    <string name="content_desc_rename">Преименувай</string>
+    <string name="content_desc_delete">Изтрий</string>
+    <string name="content_desc_repeat_one_on">Повтаряй един: включено</string>
+    <string name="content_desc_repeat_one_off">Повтаряй един: изключено</string>
+    <string name="content_desc_sleep_timer">Таймер за сън</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Изтегляне (%1$d)</string>
+    <string name="empty_list">Няма аудио. Добави приспивна песен от YouTube, а предварително инсталираните (Брамс, бял шум, сърдечен ритъм в корема) се копират при първото стартиране.</string>
+    <string name="section_predownloaded">Предварително инсталирани</string>
+    <string name="section_downloaded">Изтеглени</string>
+    <string name="add_from_youtube_title">Добави от YouTube</string>
+    <string name="add_from_youtube_subtitle">Постави линк от YouTube: аудиото се изтегля на фона с известие за напредъка.</string>
+    <string name="youtube_url_label">YouTube URL</string>
+    <string name="download_in_background">Изтегли на фона</string>
+    <string name="download_failed">Изтеглянето не успя.</string>
+    <string name="download_started_background">Изтеглянето започна на фона: напредъкът в известието.</string>
+    <string name="rename_dialog_title">Преименувай аудио</string>
+    <string name="new_name_label">Ново име</string>
+    <string name="rename_failed">Преименуването не успя: името вече съществува или е невалидно.</string>
+    <string name="queued">В опашка: чака връзка…</string>
+    <string name="downloading_progress">Изтегляне… %1$d%%</string>
+    <string name="preparing">Подготовка…</string>
+    <string name="streaming_to">Предаване към %1$s</string>
+    <string name="cast_device">Cast устройство</string>
+    <string name="now_playing">В момента се възпроизвежда</string>
+    <string name="sleep_timer">Таймер за сън</string>
+    <string name="sleep_timer_active">Таймерът за сън е активен</string>
+    <string name="sleep_timer_remaining">Таймер за сън: %1$s</string>
+    <string name="sleep_15_min">15 минути</string>
+    <string name="sleep_30_min">30 минути</string>
+    <string name="sleep_1_hour">1 час</string>
+    <string name="sleep_2_hours">2 часа</string>
+    <string name="sleep_3_hours">3 часа</string>
+    <string name="sleep_4_hours">4 часа</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Приспивната песен на Брамс</string>
+    <string name="bundled_white_noise">Бял шум</string>
+    <string name="bundled_enriched_heart">Подсилен сърдечен ритъм</string>
+    <string name="bundled_real_ultrasound">Истинска ехография</string>
+    <string name="bundled_brown_heart">Кафяв сърдечен ритъм</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Настройки</string>
+    <string name="theme_section">Тема</string>
+    <string name="theme_light">Светла</string>
+    <string name="theme_light_desc">Светли цветове</string>
+    <string name="theme_dark">Тъмна</string>
+    <string name="theme_dark_desc">Тъмни цветове</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Чисто черно: идеално през нощта</string>
+    <string name="keep_screen_on">Екранът да остане включен</string>
+    <string name="keep_screen_on_desc">Предотвратява изключването на екрана по време на възпроизвеждане</string>
+    <string name="data_section">Данни</string>
+    <string name="downloaded_count">%1$d изтеглени аудио (предварително инсталираните %2$d винаги се запазват)</string>
+    <string name="delete_all_downloaded">Изтрий всичко изтеглено</string>
+    <string name="reset_title">Пълно нулиране</string>
+    <string name="reset_message">Искаш ли да изтриеш %1$d изтеглени аудио? Предварително инсталираните (Брамс, бял шум, сърдечен ритъм) няма да бъдат засегнати. Тази операция е необратима.</string>
+    <string name="delete_all">Изтрий всичко</string>
+    <string name="reset_deleted">Изтрити %1$d изтеглени аудио (предварително инсталираните запазени).</string>
+    <string name="reset_none">Няма изтеглени аудио за изтриване.</string>
+    <string name="language_section">Език</string>
+    <string name="language_system_default">По подразбиране за системата</string>
+    <string name="language_system_default_desc">Използвай езика на устройството</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Невалиден URL.</string>
+    <string name="starting_download">Започва изтегляне…</string>
+    <string name="download_completed">Изтеглянето е завършено</string>
+    <string name="download_completed_title">Изтеглянето е завършено: %1$s</string>
+    <string name="preparing_download">Подготовка на изтеглянето…</string>
+    <string name="download_error">Грешка по време на изтегляне.</string>
+    <string name="channel_downloads">Изтегляне на приспивни песни</string>
+    <string name="channel_downloads_desc">Напредък на изтеглянията на фона</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Няма наличен аудио поток за това видео.</string>
+    <string name="err_no_url">Поток без URL на файла.</string>
+    <string name="err_network">Мрежова грешка по време на изтегляне: %1$s</string>
+    <string name="err_parse">Не може да се обработи видеото: %1$s</string>
+    <string name="err_download">Грешка по време на изтегляне: %1$s</string>
+    <string name="err_http">HTTP отговор %1$d по време на изтегляне.</string>
+    <string name="err_no_body">Отговор без съдържание.</string>
+    <string name="err_incomplete">Непълно изтегляне (%1$d/%2$d байта).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Възпроизвеждане</string>
+    <string name="channel_playback_desc">Постоянно известие по време на възпроизвеждане</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Mentés</string>
+    <string name="cancel">Mégse</string>
+    <string name="close">Bezárás</string>
+    <string name="stop">Leállítás</string>
+    <string name="play">Lejátszás</string>
+    <string name="off">Ki</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Beállítások</string>
+    <string name="content_desc_back">Vissza</string>
+    <string name="content_desc_add_from_yt">Hozzáadás a YouTube-ról</string>
+    <string name="content_desc_volume">Hangerő</string>
+    <string name="content_desc_rename">Átnevezés</string>
+    <string name="content_desc_delete">Törlés</string>
+    <string name="content_desc_repeat_one_on">Egy ismétlése: be</string>
+    <string name="content_desc_repeat_one_off">Egy ismétlése: ki</string>
+    <string name="content_desc_sleep_timer">Altató időzítő</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Letöltés (%1$d)</string>
+    <string name="empty_list">Nincs hang. Adj hozzá egy altatódalt a YouTube-ról, vagy az előre telepítettek (Brahms, fehér zaj, szívverés a hasban) az első indításkor másolódnak.</string>
+    <string name="section_predownloaded">Előre telepítettek</string>
+    <string name="section_downloaded">Letöltöttek</string>
+    <string name="add_from_youtube_title">Hozzáadás a YouTube-ról</string>
+    <string name="add_from_youtube_subtitle">Illessz be egy YouTube-linket: a hang a háttérben töltődik le, haladást mutató értesítéssel.</string>
+    <string name="youtube_url_label">YouTube URL</string>
+    <string name="download_in_background">Letöltés a háttérben</string>
+    <string name="download_failed">A letöltés sikertelen.</string>
+    <string name="download_started_background">A letöltés a háttérben elindult: a haladás az értesítésben.</string>
+    <string name="rename_dialog_title">Hang átnevezése</string>
+    <string name="new_name_label">Új név</string>
+    <string name="rename_failed">Az átnevezés nem sikerült: a név már létezik vagy érvénytelen.</string>
+    <string name="queued">Sorban: kapcsolódásra vár…</string>
+    <string name="downloading_progress">Letöltés… %1$d%%</string>
+    <string name="preparing">Előkészítés…</string>
+    <string name="streaming_to">Sugárzás ide: %1$s</string>
+    <string name="cast_device">Cast eszköz</string>
+    <string name="now_playing">Jelenleg lejátszott</string>
+    <string name="sleep_timer">Altató időzítő</string>
+    <string name="sleep_timer_active">Altató időzítő aktív</string>
+    <string name="sleep_timer_remaining">Altató időzítő: %1$s</string>
+    <string name="sleep_15_min">15 perc</string>
+    <string name="sleep_30_min">30 perc</string>
+    <string name="sleep_1_hour">1 óra</string>
+    <string name="sleep_2_hours">2 óra</string>
+    <string name="sleep_3_hours">3 óra</string>
+    <string name="sleep_4_hours">4 óra</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahms altatódal</string>
+    <string name="bundled_white_noise">Fehér zaj</string>
+    <string name="bundled_enriched_heart">Felerősített szívverés</string>
+    <string name="bundled_real_ultrasound">Valódi ultrahang</string>
+    <string name="bundled_brown_heart">Barna szívverés</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Beállítások</string>
+    <string name="theme_section">Téma</string>
+    <string name="theme_light">Világos</string>
+    <string name="theme_light_desc">Világos színek</string>
+    <string name="theme_dark">Sötét</string>
+    <string name="theme_dark_desc">Sötét színek</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Tiszta fekete: éjszaka ideális</string>
+    <string name="keep_screen_on">Képernyő bekapcsolva tartása</string>
+    <string name="keep_screen_on_desc">Megakadályozza a képernyő kikapcsolását lejátszás közben</string>
+    <string name="data_section">Adatok</string>
+    <string name="downloaded_count">%1$d letöltött hang (a %2$d előre telepítettet mindig megtartjuk)</string>
+    <string name="delete_all_downloaded">Mindent töröl, amit letöltött</string>
+    <string name="reset_title">Teljes visszaállítás</string>
+    <string name="reset_message">Töröljük a %1$d letöltött hangot? Az előre telepítetteket (Brahms, fehér zaj, szívverés) nem érintjük. Ez a művelet visszafordíthatatlan.</string>
+    <string name="delete_all">Mindent töröl</string>
+    <string name="reset_deleted">%1$d letöltött hang törölve (az előre telepítettek megmaradtak).</string>
+    <string name="reset_none">Nincs letöltött hang törlésre.</string>
+    <string name="language_section">Nyelv</string>
+    <string name="language_system_default">Rendszer alapértelmezés</string>
+    <string name="language_system_default_desc">Az eszköz nyelvének használata</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Érvénytelen URL.</string>
+    <string name="starting_download">Letöltés indítása…</string>
+    <string name="download_completed">Letöltés befejezve</string>
+    <string name="download_completed_title">Letöltés befejezve: %1$s</string>
+    <string name="preparing_download">Letöltés előkészítése…</string>
+    <string name="download_error">Hiba a letöltés során.</string>
+    <string name="channel_downloads">Altatódalok letöltése</string>
+    <string name="channel_downloads_desc">A háttérletöltések haladása</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Ehhez a videóhoz nincs elérhető hangfolyam.</string>
+    <string name="err_no_url">Fájl URL nélküli folyam.</string>
+    <string name="err_network">Hálózati hiba a letöltés során: %1$s</string>
+    <string name="err_parse">A videó nem feldolgozható: %1$s</string>
+    <string name="err_download">Hiba a letöltés során: %1$s</string>
+    <string name="err_http">HTTP válasz %1$d a letöltés során.</string>
+    <string name="err_no_body">Tartalom nélküli válasz.</string>
+    <string name="err_incomplete">Hiányos letöltés (%1$d/%2$d bájt).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Lejátszás</string>
+    <string name="channel_playback_desc">Állandó értesítés lejátszás közben</string>
+</resources>

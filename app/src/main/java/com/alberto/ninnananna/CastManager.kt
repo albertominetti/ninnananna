@@ -231,7 +231,10 @@ object CastManager {
         Log.i(TAG, "Streaming ${lullaby.fileName} from $url")
 
         val metadata = MediaMetadata(MediaMetadata.MEDIA_TYPE_MUSIC_TRACK).apply {
-            putString(MediaMetadata.KEY_TITLE, formatDisplayName(lullaby.title))
+            putString(
+                MediaMetadata.KEY_TITLE,
+                formatDisplayName(context, lullaby.title)
+            )
         }
         val mediaInfo = MediaInfo.Builder(url)
             .setContentType(LocalMediaServer.contentTypeFor(lullaby.fileName))
@@ -252,8 +255,12 @@ object CastManager {
                 val dev = _deviceName.value
                 PlaybackNotification.show(
                     context.applicationContext,
-                    formatDisplayName(lullaby.title),
-                    if (dev != null) "Streaming to $dev" else "Streaming"
+                    formatDisplayName(context, lullaby.title),
+                    if (dev != null) {
+                        context.getString(R.string.streaming_to, dev)
+                    } else {
+                        null
+                    }
                 )
                 pending.setResultCallback(
                     ResultCallback<RemoteMediaClient.MediaChannelResult> { result ->

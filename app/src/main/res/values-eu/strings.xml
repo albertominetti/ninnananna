@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Gorde</string>
+    <string name="cancel">Utzi</string>
+    <string name="close">Itxi</string>
+    <string name="stop">Gelditu</string>
+    <string name="play">Erreproduzitu</string>
+    <string name="off">Desaktibatuta</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Ezarpenak</string>
+    <string name="content_desc_back">Atzera</string>
+    <string name="content_desc_add_from_yt">Gehitu YTtik</string>
+    <string name="content_desc_volume">Bolumena</string>
+    <string name="content_desc_rename">Berrizendatu</string>
+    <string name="content_desc_delete">Ezabatu</string>
+    <string name="content_desc_repeat_one_on">Errepikatu bat: piztuta</string>
+    <string name="content_desc_repeat_one_off">Errepikatu bat: itzalita</string>
+    <string name="content_desc_sleep_timer">Loaren tenporizadorea</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Jaisten (%1$d)</string>
+    <string name="empty_list">Audioa ez dago. Gehitu sehaska-kanta bat YouTubetik, edo aurrez instalatutakoak (Brahms, zarat zuria, bihotz-taupadak sabelaldean) lehen abioan kopiatzen dira.</string>
+    <string name="section_predownloaded">Aurrez instalatuak</string>
+    <string name="section_downloaded">Jaitsitakoak</string>
+    <string name="add_from_youtube_title">Gehitu YouTubetik</string>
+    <string name="add_from_youtube_subtitle">Itsatsi YouTube-esteka bat: audioa atzeko planoan jaisten da, aurrerapenaren jakinarazpen batekin.</string>
+    <string name="youtube_url_label">YouTube URLa</string>
+    <string name="download_in_background">Jaitsi atzeko planoan</string>
+    <string name="download_failed">Deskarga huts egin du.</string>
+    <string name="download_started_background">Deskarga atzeko planoan hasi da: aurrerapena jakinarazpenean.</string>
+    <string name="rename_dialog_title">Audioa berrizendatu</string>
+    <string name="new_name_label">Izen berria</string>
+    <string name="rename_failed">Ezin da berrizendatu: izena badago edo baliogabea da.</string>
+    <string name="queued">Ilaran: konexioa itxaroten…</string>
+    <string name="downloading_progress">Jaisten… %1$d%%</string>
+    <string name="preparing">Prestatzen…</string>
+    <string name="streaming_to">%1$s-era emisioa</string>
+    <string name="cast_device">Emisio-gailua</string>
+    <string name="now_playing">Orain erreproduzitzen</string>
+    <string name="sleep_timer">Loaren tenporizadorea</string>
+    <string name="sleep_timer_active">Loaren tenporizadorea aktibo</string>
+    <string name="sleep_timer_remaining">Loaren tenporizadorea: %1$s</string>
+    <string name="sleep_15_min">15 minutu</string>
+    <string name="sleep_30_min">30 minutu</string>
+    <string name="sleep_1_hour">Ordu 1</string>
+    <string name="sleep_2_hours">2 ordu</string>
+    <string name="sleep_3_hours">3 ordu</string>
+    <string name="sleep_4_hours">4 ordu</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahmsen sehaska-kanta</string>
+    <string name="bundled_white_noise">Zarata zuria</string>
+    <string name="bundled_enriched_heart">Bihotz-taupada indartuak</string>
+    <string name="bundled_real_ultrasound">Benetako ekografia</string>
+    <string name="bundled_brown_heart">Bihotz-taupada marroiak</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Ezarpenak</string>
+    <string name="theme_section">Gaiak</string>
+    <string name="theme_light">Argia</string>
+    <string name="theme_light_desc">Kolore argiak</string>
+    <string name="theme_dark">Iluna</string>
+    <string name="theme_dark_desc">Kolore ilunak</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Huts beltza: gauerdirako aproposa</string>
+    <string name="keep_screen_on">Mantendu pantaila piztuta</string>
+    <string name="keep_screen_on_desc">Erreprodukzioan pantaila ez itzaltzea eragozten du</string>
+    <string name="data_section">Datuak</string>
+    <string name="downloaded_count">%1$d jaitsitako audio (%2$d aurrez instalatutik beti gordetzen dira)</string>
+    <string name="delete_all_downloaded">Ezabatu jaitsitako guztia</string>
+    <string name="reset_title">Berrezarri osoa</string>
+    <string name="reset_message">Jaitsitako %1$d audioak ezabatu nahi dituzu? Aurrez instalatutik (Brahms, zarata zuria, bihotz-taupadak) ez dira ukitzen. Eragiketa hau ez da itzulgarria.</string>
+    <string name="delete_all">Ezabatu dena</string>
+    <string name="reset_deleted">%1$d jaitsitako audio ezabatu dira (aurrez instalatuak gordeta).</string>
+    <string name="reset_none">Ez dago jaitsitako audiorik ezabatzeko.</string>
+    <string name="language_section">Hizkuntza</string>
+    <string name="language_system_default">Sistemaren lehenetsia</string>
+    <string name="language_system_default_desc">Erabili gailuaren hizkuntza</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">URL baliogabea.</string>
+    <string name="starting_download">Deskarga hasi…</string>
+    <string name="download_completed">Deskarga osatuta</string>
+    <string name="download_completed_title">Deskarga osatuta: %1$s</string>
+    <string name="preparing_download">Deskarga prestatzen…</string>
+    <string name="download_error">Errorea deskarga bitartean.</string>
+    <string name="channel_downloads">Sehaska-kanten deskargak</string>
+    <string name="channel_downloads_desc">Atzeko planoko deskargaren aurrerapena</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Ez dago audio-fluxurik bideo honetarako.</string>
+    <string name="err_no_url">Fitxategi-URLrik gabeko fluxua.</string>
+    <string name="err_network">Sare-errorea deskarga bitartean: %1$s</string>
+    <string name="err_parse">Ezin da bideoa analizatu: %1$s</string>
+    <string name="err_download">Errorea deskarga bitartean: %1$s</string>
+    <string name="err_http">HTTP erantzuna %1$d deskarga bitartean.</string>
+    <string name="err_no_body">Edukirik gabeko erantzuna.</string>
+    <string name="err_incomplete">Deskarga osatu gabea (%1$d/%2$d byte).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Erreprodukzioa</string>
+    <string name="channel_playback_desc">Jakinarazpen iraunkorra erreprodukzioan</string>
+</resources>

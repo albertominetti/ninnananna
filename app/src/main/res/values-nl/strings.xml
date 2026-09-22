@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Opslaan</string>
+    <string name="cancel">Annuleren</string>
+    <string name="close">Sluiten</string>
+    <string name="stop">Stoppen</string>
+    <string name="play">Afspelen</string>
+    <string name="off">Uit</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Instellingen</string>
+    <string name="content_desc_back">Terug</string>
+    <string name="content_desc_add_from_yt">Toevoegen vanaf YT</string>
+    <string name="content_desc_volume">Volume</string>
+    <string name="content_desc_rename">Hernoemen</string>
+    <string name="content_desc_delete">Verwijderen</string>
+    <string name="content_desc_repeat_one_on">Eén herhalen: aan</string>
+    <string name="content_desc_repeat_one_off">Eén herhalen: uit</string>
+    <string name="content_desc_sleep_timer">Slaaptimer</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Bezig met downloaden (%1$d)</string>
+    <string name="empty_list">Geen audio. Voeg een slaapliedje toe vanaf YouTube, of de vooraf geïnstalleerde (Brahms, witte ruis, hartslag in de buik) worden bij de eerste start gekopieerd.</string>
+    <string name="section_predownloaded">Vooraf geïnstalleerd</string>
+    <string name="section_downloaded">Gedownload</string>
+    <string name="add_from_youtube_title">Toevoegen vanaf YouTube</string>
+    <string name="add_from_youtube_subtitle">Plak een YouTube-link: de audio wordt op de achtergrond gedownload met een voortgangsmelding.</string>
+    <string name="youtube_url_label">YouTube-URL</string>
+    <string name="download_in_background">Op de achtergrond downloaden</string>
+    <string name="download_failed">Download mislukt.</string>
+    <string name="download_started_background">Download op de achtergrond gestart: voortgang in de melding.</string>
+    <string name="rename_dialog_title">Audio hernoemen</string>
+    <string name="new_name_label">Nieuwe naam</string>
+    <string name="rename_failed">Hernoemen mislukt: de naam bestaat al of is ongeldig.</string>
+    <string name="queued">In wachtrij: wachten op verbinding…</string>
+    <string name="downloading_progress">Bezig met downloaden… %1$d%%</string>
+    <string name="preparing">Voorbereiden…</string>
+    <string name="streaming_to">Streamen naar %1$s</string>
+    <string name="cast_device">Cast-apparaat</string>
+    <string name="now_playing">Nu afspelen</string>
+    <string name="sleep_timer">Slaaptimer</string>
+    <string name="sleep_timer_active">Slaaptimer actief</string>
+    <string name="sleep_timer_remaining">Slaaptimer: %1$s</string>
+    <string name="sleep_15_min">15 minuten</string>
+    <string name="sleep_30_min">30 minuten</string>
+    <string name="sleep_1_hour">1 uur</string>
+    <string name="sleep_2_hours">2 uur</string>
+    <string name="sleep_3_hours">3 uur</string>
+    <string name="sleep_4_hours">4 uur</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahms\' slaapliedje</string>
+    <string name="bundled_white_noise">Witte ruis</string>
+    <string name="bundled_enriched_heart">Versterkte hartslag</string>
+    <string name="bundled_real_ultrasound">Echte echo</string>
+    <string name="bundled_brown_heart">Bruine hartslag</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Instellingen</string>
+    <string name="theme_section">Thema</string>
+    <string name="theme_light">Licht</string>
+    <string name="theme_light_desc">Lichte kleuren</string>
+    <string name="theme_dark">Donker</string>
+    <string name="theme_dark_desc">Donkere kleuren</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Zuiver zwart: ideaal \'s nachts</string>
+    <string name="keep_screen_on">Scherm aan laten</string>
+    <string name="keep_screen_on_desc">Voorkomt dat het scherm uitschakelt tijdens het afspelen</string>
+    <string name="data_section">Gegevens</string>
+    <string name="downloaded_count">%1$d gedownloade audio\'s (de %2$d vooraf geïnstalleerde blijven altijd behouden)</string>
+    <string name="delete_all_downloaded">Verwijder alles wat gedownload is</string>
+    <string name="reset_title">Volledige reset</string>
+    <string name="reset_message">Wil je de %1$d gedownloade audio\'s verwijderen? De vooraf geïnstalleerde (Brahms, witte ruis, hartslag) worden niet aangeraakt. Deze bewerking is onomkeerbaar.</string>
+    <string name="delete_all">Alles verwijderen</string>
+    <string name="reset_deleted">%1$d gedownloade audio\'s verwijderd (vooraf geïnstalleerde behouden).</string>
+    <string name="reset_none">Geen gedownloade audio\'s om te verwijderen.</string>
+    <string name="language_section">Taal</string>
+    <string name="language_system_default">Systeemstandaard</string>
+    <string name="language_system_default_desc">Gebruik de taal van het apparaat</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Ongeldige URL.</string>
+    <string name="starting_download">Download starten…</string>
+    <string name="download_completed">Download voltooid</string>
+    <string name="download_completed_title">Download voltooid: %1$s</string>
+    <string name="preparing_download">Download voorbereiden…</string>
+    <string name="download_error">Fout tijdens het downloaden.</string>
+    <string name="channel_downloads">Downloads van slaapliedjes</string>
+    <string name="channel_downloads_desc">Voortgang van downloads op de achtergrond</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Geen audiostream beschikbaar voor deze video.</string>
+    <string name="err_no_url">Stream zonder bestands-URL.</string>
+    <string name="err_network">Netwerkfout tijdens het downloaden: %1$s</string>
+    <string name="err_parse">Video kan niet worden verwerkt: %1$s</string>
+    <string name="err_download">Fout tijdens het downloaden: %1$s</string>
+    <string name="err_http">HTTP-antwoord %1$d tijdens het downloaden.</string>
+    <string name="err_no_body">Antwoord zonder inhoud.</string>
+    <string name="err_incomplete">Onvolledige download (%1$d/%2$d bytes).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Afspelen</string>
+    <string name="channel_playback_desc">Blijvende melding tijdens het afspelen</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Späicheren</string>
+    <string name="cancel">Ofbriechen</string>
+    <string name="close">Zoumaachen</string>
+    <string name="stop">Stoppen</string>
+    <string name="play">Ofspillen</string>
+    <string name="off">Aus</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Astellungen</string>
+    <string name="content_desc_back">Zréck</string>
+    <string name="content_desc_add_from_yt">Vun YT derbäisetzen</string>
+    <string name="content_desc_volume">Tounstäerkt</string>
+    <string name="content_desc_rename">Ëmbenennen</string>
+    <string name="content_desc_delete">Läschen</string>
+    <string name="content_desc_repeat_one_on">Eent widderhuelen: un</string>
+    <string name="content_desc_repeat_one_off">Eent widderhuelen: aus</string>
+    <string name="content_desc_sleep_timer">Schlof-Timer</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Gëtt erofgelueden (%1$d)</string>
+    <string name="empty_list">Keen Audio. Füügt e Schléifchen vu YouTube derbäi, oder déi virinstalléiert (Brahms, wäisst Rauschen, Häerzschlag am Bauch) ginn beim éischte Start kopéiert.</string>
+    <string name="section_predownloaded">Virinstalléiert</string>
+    <string name="section_downloaded">Erofgelauden</string>
+    <string name="add_from_youtube_title">Vun YouTube derbäisetzen</string>
+    <string name="add_from_youtube_subtitle">Setzt e YouTube-Link an: den Audio gëtt am Hannergrond mat enger Fortschrëtts-Meldung erofgelueden.</string>
+    <string name="youtube_url_label">YouTube-URL</string>
+    <string name="download_in_background">Am Hannergrond eroflueden</string>
+    <string name="download_failed">Den Erof-luede ass feelgeschlof.</string>
+    <string name="download_started_background">Den Erof-luede huet am Hannergrond ugefaangen: Fortschrëtt an der Meldung.</string>
+    <string name="rename_dialog_title">Audio ëmbenennen</string>
+    <string name="new_name_label">Neien Numm</string>
+    <string name="rename_failed">Ëmbenennen feelgeschloen: den Numm existéiert schonn oder ass ongülteg.</string>
+    <string name="queued">An der Queue: waart op Verbindung…</string>
+    <string name="downloading_progress">Gëtt erofgelueden… %1$d%%</string>
+    <string name="preparing">Preparation…</string>
+    <string name="streaming_to">Streamt op %1$s</string>
+    <string name="cast_device">Cast-Gerät</string>
+    <string name="now_playing">Lafend elo</string>
+    <string name="sleep_timer">Schlof-Timer</string>
+    <string name="sleep_timer_active">Schlof-Timer aktiv</string>
+    <string name="sleep_timer_remaining">Schlof-Timer: %1$s</string>
+    <string name="sleep_15_min">15 Minutten</string>
+    <string name="sleep_30_min">30 Minutten</string>
+    <string name="sleep_1_hour">1 Stonn</string>
+    <string name="sleep_2_hours">2 Stonnen</string>
+    <string name="sleep_3_hours">3 Stonnen</string>
+    <string name="sleep_4_hours">4 Stonnen</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahms\' Schléifchen</string>
+    <string name="bundled_white_noise">Wäisst Rauschen</string>
+    <string name="bundled_enriched_heart">Verstäerkten Häerzschlag</string>
+    <string name="bundled_real_ultrasound">Echt Ultraschall</string>
+    <string name="bundled_brown_heart">Brongen Häerzschlag</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Astellungen</string>
+    <string name="theme_section">Design</string>
+    <string name="theme_light">Hell</string>
+    <string name="theme_light_desc">Hell Faarwen</string>
+    <string name="theme_dark">Däischter</string>
+    <string name="theme_dark_desc">Däischter Faarwen</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Reng Schwaarz: ideal an der Nuecht</string>
+    <string name="keep_screen_on">Ecran ugezunn halen</string>
+    <string name="keep_screen_on_desc">Verhënnert d\'Ausgaang vum Ecran während der Wiedergab</string>
+    <string name="data_section">Daten</string>
+    <string name="downloaded_count">%1$d erofgelueden Audios (déi %2$d virinstalléiert bleiwen ëmmer)</string>
+    <string name="delete_all_downloaded">Alles Erofgelaudenes läschen</string>
+    <string name="reset_title">Komplett Reset</string>
+    <string name="reset_message">Wëllt dir déi %1$d erofgelueden Audios läschen? Déi virinstalléiert (Brahms, wäisst Rauschen, Häerzschlag) gi net beréiert. Dës Operatioun ass net ëmkéierbar.</string>
+    <string name="delete_all">Alles läschen</string>
+    <string name="reset_deleted">%1$d erofgelueden Audios geläscht (virinstalléiert behalen).</string>
+    <string name="reset_none">Keng erofgelueden Audios fir ze läschen.</string>
+    <string name="language_section">Sprooch</string>
+    <string name="language_system_default">System-Standard</string>
+    <string name="language_system_default_desc">D\'Sprooch vum Apparat benotzen</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Ongëlteg URL.</string>
+    <string name="starting_download">Erof-luede gëtt gestart…</string>
+    <string name="download_completed">Erof-luede ofgeschloss</string>
+    <string name="download_completed_title">Erof-luede ofgeschloss: %1$s</string>
+    <string name="preparing_download">Erof-luede gëtt virbereet…</string>
+    <string name="download_error">Feeler beim Erof-luede.</string>
+    <string name="channel_downloads">Erof-luede vu Schléifcher</string>
+    <string name="channel_downloads_desc">Fortschrëtt vun den Erof-lueden am Hannergrond</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Keen Audio-Stream verfügbar fir dëst Video.</string>
+    <string name="err_no_url">Stream ouni Datei-URL.</string>
+    <string name="err_network">Netzfeeler beim Erof-lueden: %1$s</string>
+    <string name="err_parse">Video kann net analiséiert ginn: %1$s</string>
+    <string name="err_download">Feeler beim Erof-lueden: %1$s</string>
+    <string name="err_http">HTTP-Äntwert %1$d beim Erof-lueden.</string>
+    <string name="err_no_body">Äntwert ouni Inhalt.</string>
+    <string name="err_incomplete">Onvollstännegen Erof-luede (%1$d/%2$d Bytes).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Wiedergab</string>
+    <string name="channel_playback_desc">Persistent Meldung während der Wiedergab</string>
+</resources>

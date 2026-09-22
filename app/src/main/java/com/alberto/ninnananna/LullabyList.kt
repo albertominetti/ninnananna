@@ -68,6 +68,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -264,7 +265,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
             val failed = newOnes.firstOrNull { it.state == WorkInfo.State.FAILED }
             if (failed != null) {
                 val msg = failed.outputData.getString(DownloadLullabyWorker.KEY_ERROR)
-                    ?: "Download failed."
+                    ?: context.getString(R.string.download_failed)
                 scope.launch { snackbarHostState.showSnackbar(msg) }
             }
         }
@@ -294,7 +295,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
             sheetUrl = ""
             scope.launch {
                 snackbarHostState.showSnackbar(
-                    "Download started in background: progress in the notification."
+                    context.getString(R.string.download_started_background)
                 )
             }
         }
@@ -315,10 +316,10 @@ fun LullabyList(onOpenSettings: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("NinnaNanna") },
+                title = { Text(stringResource(R.string.app_name)) },
                 actions = {
                     IconButton(onClick = onOpenSettings) {
-                        Icon(Icons.Default.Settings, contentDescription = "Settings")
+                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.content_desc_settings))
                     }
                 }
             )
@@ -326,7 +327,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
         snackbarHost = { SnackbarHost(snackbarHostState) },
         floatingActionButton = {
             FloatingActionButton(onClick = { showAddSheet = true }) {
-                Icon(Icons.Default.Add, contentDescription = "Add from YT")
+                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.content_desc_add_from_yt))
             }
         },
         bottomBar = {
@@ -365,7 +366,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
             // Active downloads on top of the list (background downloads)
             if (activeDownloads.isNotEmpty()) {
                 Text(
-                    text = "Downloading (${activeDownloads.size})",
+                    text = stringResource(R.string.downloading_active, activeDownloads.size),
                     style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(Modifier.height(4.dp))
@@ -379,9 +380,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 
             if (lullabies.isEmpty() && activeDownloads.isEmpty()) {
                 Text(
-                    text = "No audio. Add a lullaby from YouTube, " +
-                        "or the preinstalled ones (Brahms, white noise, " +
-                        "womb heartbeat) are copied on first launch.",
+                    text = stringResource(R.string.empty_list),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -396,7 +395,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 
                 if (bundled.isNotEmpty()) {
                     item(key = "header-predownloaded") {
-                        SectionHeader("Pre downloaded", count = bundled.size)
+                        SectionHeader(stringResource(R.string.section_predownloaded), count = bundled.size)
                     }
                     items(bundled, key = { it.id }) { lullaby ->
                         LullabyRow(
@@ -440,7 +439,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
 
                 if (downloaded.isNotEmpty()) {
                     item(key = "header-downloaded") {
-                        SectionHeader("Downloaded", count = downloaded.size)
+                        SectionHeader(stringResource(R.string.section_downloaded), count = downloaded.size)
                     }
                     items(downloaded, key = { it.id }) { lullaby ->
                         LullabyRow(
@@ -498,13 +497,12 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                     .padding(bottom = 32.dp)
             ) {
                 Text(
-                    text = "Add from YouTube",
+                    text = stringResource(R.string.add_from_youtube_title),
                     style = MaterialTheme.typography.titleLarge
                 )
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text = "Paste a YouTube link: the audio is downloaded in " +
-                        "the background with a progress notification.",
+                    text = stringResource(R.string.add_from_youtube_subtitle),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -513,7 +511,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                     value = sheetUrl,
                     onValueChange = { sheetUrl = it },
                     modifier = Modifier.fillMaxWidth(),
-                    label = { Text("YouTube URL") },
+                    label = { Text(stringResource(R.string.youtube_url_label)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
                     keyboardActions = KeyboardActions(onGo = {
@@ -530,7 +528,7 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                     enabled = sheetUrl.isNotBlank(),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Download in background")
+                    Text(stringResource(R.string.download_in_background))
                 }
             }
         }
@@ -540,13 +538,13 @@ fun LullabyList(onOpenSettings: () -> Unit) {
     renameTarget?.let { target ->
         AlertDialog(
             onDismissRequest = { renameTarget = null },
-            title = { Text("Rename audio") },
+            title = { Text(stringResource(R.string.rename_dialog_title)) },
             text = {
                 TextField(
                     value = renameText,
                     onValueChange = { renameText = it },
                     singleLine = true,
-                    label = { Text("New name") }
+                    label = { Text(stringResource(R.string.new_name_label)) }
                 )
             },
             confirmButton = {
@@ -566,15 +564,15 @@ fun LullabyList(onOpenSettings: () -> Unit) {
                                 refresh()
                             } else {
                                 snackbarHostState.showSnackbar(
-                                    "Rename failed: name already exists or is invalid."
+                                    context.getString(R.string.rename_failed)
                                 )
                             }
                         }
                     }
-                }) { Text("Save") }
+                }) { Text(stringResource(R.string.save)) }
             },
             dismissButton = {
-                TextButton(onClick = { renameTarget = null }) { Text("Cancel") }
+                TextButton(onClick = { renameTarget = null }) { Text(stringResource(R.string.cancel)) }
             }
         )
     }
@@ -602,11 +600,14 @@ fun LullabyList(onOpenSettings: () -> Unit) {
  */
 @Composable
 private fun ActiveDownloadCard(info: WorkInfo) {
+    val context = LocalContext.current
     val progress = info.progress.getFloat(DownloadLullabyWorker.KEY_PROGRESS, 0f)
     val text = when (info.state) {
-        WorkInfo.State.ENQUEUED -> "Queued: waiting for connection…"
-        WorkInfo.State.RUNNING -> "Downloading… ${(progress * 100).toInt()}%"
-        else -> "Preparing…"
+        WorkInfo.State.ENQUEUED -> context.getString(R.string.queued)
+        WorkInfo.State.RUNNING -> context.getString(
+            R.string.downloading_progress, (progress * 100).toInt()
+        )
+        else -> context.getString(R.string.preparing)
     }
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(
@@ -665,7 +666,7 @@ private fun VolumeBar() {
         ) {
             Icon(
                 imageVector = VolumeIcon,
-                contentDescription = "Volume",
+                contentDescription = stringResource(R.string.content_desc_volume),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(22.dp)
             )
@@ -727,6 +728,7 @@ private fun LullabyRow(
     onRename: () -> Unit,
     onDelete: () -> Unit
 ) {
+    val context = LocalContext.current
     Card(modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier
@@ -737,7 +739,9 @@ private fun LullabyRow(
             IconButton(onClick = { if (isPlaying) onStop() else onPlay() }) {
                 Icon(
                     imageVector = if (isPlaying) StopIcon else Icons.Default.PlayArrow,
-                    contentDescription = if (isPlaying) "Stop" else "Play",
+                    contentDescription = stringResource(
+                        if (isPlaying) R.string.stop else R.string.play
+                    ),
                     tint = if (isCurrent) {
                         MaterialTheme.colorScheme.primary
                     } else {
@@ -748,7 +752,7 @@ private fun LullabyRow(
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = formatDisplayName(lullaby.title),
+                    text = formatDisplayName(context, lullaby.title),
                     style = MaterialTheme.typography.titleSmall,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -772,10 +776,10 @@ private fun LullabyRow(
             // The preinstalled (bundled) ones can be neither renamed nor deleted.
             if (!lullaby.isBundled) {
                 IconButton(onClick = onRename) {
-                    Icon(Icons.Default.Edit, contentDescription = "Rename")
+                    Icon(Icons.Default.Edit, contentDescription = stringResource(R.string.content_desc_rename))
                 }
                 IconButton(onClick = onDelete) {
-                    Icon(Icons.Default.Delete, contentDescription = "Delete")
+                    Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.content_desc_delete))
                 }
             }
         }
@@ -794,6 +798,7 @@ private fun MiniPlayerBar(
     onToggleLoop: () -> Unit,
     onOpenSleepTimer: () -> Unit
 ) {
+    val context = LocalContext.current
     Surface(tonalElevation = 3.dp) {
         Column(
             modifier = Modifier
@@ -816,15 +821,18 @@ private fun MiniPlayerBar(
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = if (casting) {
-                            "Streaming to ${castingDeviceName ?: "Cast device"}"
+                            stringResource(
+                                R.string.streaming_to,
+                                castingDeviceName ?: stringResource(R.string.cast_device)
+                            )
                         } else {
-                            "Now playing"
+                            stringResource(R.string.now_playing)
                         },
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
-                        text = formatDisplayName(lullaby.title),
+                        text = formatDisplayName(context, lullaby.title),
                         style = MaterialTheme.typography.titleSmall,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -835,7 +843,10 @@ private fun MiniPlayerBar(
                 IconButton(onClick = onToggleLoop) {
                     Icon(
                         imageVector = RepeatOneIcon,
-                        contentDescription = if (loopEnabled) "Repeat one: on" else "Repeat one: off",
+                        contentDescription = stringResource(
+                            if (loopEnabled) R.string.content_desc_repeat_one_on
+                            else R.string.content_desc_repeat_one_off
+                        ),
                         tint = if (loopEnabled) {
                             MaterialTheme.colorScheme.primary
                         } else {
@@ -848,7 +859,7 @@ private fun MiniPlayerBar(
                 IconButton(onClick = onOpenSleepTimer) {
                     Icon(
                         imageVector = SleepIcon,
-                        contentDescription = "Sleep timer",
+                        contentDescription = stringResource(R.string.content_desc_sleep_timer),
                         tint = if (sleepRemaining != null) {
                             MaterialTheme.colorScheme.primary
                         } else {
@@ -858,14 +869,14 @@ private fun MiniPlayerBar(
                 }
 
                 OutlinedButton(onClick = onStop) {
-                    Text("Stop")
+                    Text(stringResource(R.string.stop))
                 }
             }
 
             // Active timer row: shows the remaining time
             if (sleepRemaining != null) {
                 Text(
-                    text = "Sleep timer: ${formatRemaining(sleepRemaining)}",
+                    text = stringResource(R.string.sleep_timer_remaining, formatRemaining(sleepRemaining)),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(start = 32.dp, bottom = 4.dp)
@@ -886,17 +897,21 @@ private fun SleepTimerDialog(
     onDismiss: () -> Unit
 ) {
     val options = listOf(
-        15L * 60 * 1000 to "15 minutes",
-        30L * 60 * 1000 to "30 minutes",
-        60L * 60 * 1000 to "1 hour",
-        120L * 60 * 1000 to "2 hours",
-        180L * 60 * 1000 to "3 hours",
-        240L * 60 * 1000 to "4 hours"
+        15L * 60 * 1000 to R.string.sleep_15_min,
+        30L * 60 * 1000 to R.string.sleep_30_min,
+        60L * 60 * 1000 to R.string.sleep_1_hour,
+        120L * 60 * 1000 to R.string.sleep_2_hours,
+        180L * 60 * 1000 to R.string.sleep_3_hours,
+        240L * 60 * 1000 to R.string.sleep_4_hours
     )
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text(if (active != null) "Sleep timer active" else "Sleep timer")
+            Text(
+                stringResource(
+                    if (active != null) R.string.sleep_timer_active else R.string.sleep_timer
+                )
+            )
         },
         text = {
             Column(
@@ -904,24 +919,24 @@ private fun SleepTimerDialog(
                     .heightIn(max = 380.dp)
                     .verticalScroll(rememberScrollState())
             ) {
-                options.forEach { (ms, label) ->
+                options.forEach { (ms, labelRes) ->
                     TextButton(
                         onClick = { onSelect(ms) },
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(label, modifier = Modifier.fillMaxWidth())
+                        Text(stringResource(labelRes), modifier = Modifier.fillMaxWidth())
                     }
                 }
                 TextButton(
                     onClick = { onSelect(null) },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Off", modifier = Modifier.fillMaxWidth())
+                    Text(stringResource(R.string.off), modifier = Modifier.fillMaxWidth())
                 }
             }
         },
         confirmButton = {
-            TextButton(onClick = onDismiss) { Text("Close") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.close)) }
         }
     )
 }

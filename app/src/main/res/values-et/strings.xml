@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Salvesta</string>
+    <string name="cancel">Tühista</string>
+    <string name="close">Sulge</string>
+    <string name="stop">Peata</string>
+    <string name="play">Esita</string>
+    <string name="off">Väljas</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Seaded</string>
+    <string name="content_desc_back">Tagasi</string>
+    <string name="content_desc_add_from_yt">Lisa YT-st</string>
+    <string name="content_desc_volume">Helitugevus</string>
+    <string name="content_desc_rename">Nimeta ümber</string>
+    <string name="content_desc_delete">Kustuta</string>
+    <string name="content_desc_repeat_one_on">Korda ühte: sees</string>
+    <string name="content_desc_repeat_one_off">Korda ühte: väljas</string>
+    <string name="content_desc_sleep_timer">Uinumistaimer</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Allalaadimine (%1$d)</string>
+    <string name="empty_list">Heli puudub. Lisa hällilaul YouTubest või kopeeritakse eelinstalleeritud (Brahms, valge müra, südametukse kõhus) esimesel käivitamisel.</string>
+    <string name="section_predownloaded">Eelinstalleeritud</string>
+    <string name="section_downloaded">Alla laaditud</string>
+    <string name="add_from_youtube_title">Lisa YouTubest</string>
+    <string name="add_from_youtube_subtitle">Kleebi YouTube\'i link: heli laaditakse alla taustal koos edenemisteatega.</string>
+    <string name="youtube_url_label">YouTube\'i URL</string>
+    <string name="download_in_background">Lae alla taustal</string>
+    <string name="download_failed">Allalaadimine ebaõnnestus.</string>
+    <string name="download_started_background">Allalaadimine algas taustal: edenemine teates.</string>
+    <string name="rename_dialog_title">Heli ümbernimetamine</string>
+    <string name="new_name_label">Uus nimi</string>
+    <string name="rename_failed">Ümbernimetamine ebaõnnestus: nimi on juba olemas või kehtetu.</string>
+    <string name="queued">Järjekorras: ootab ühendust…</string>
+    <string name="downloading_progress">Allalaadimine… %1$d%%</string>
+    <string name="preparing">Ettevalmistamine…</string>
+    <string name="streaming_to">Voogedastus seadmesse %1$s</string>
+    <string name="cast_device">Voogedastusseade</string>
+    <string name="now_playing">Nüüd mängib</string>
+    <string name="sleep_timer">Uinumistaimer</string>
+    <string name="sleep_timer_active">Uinumistaimer on aktiivne</string>
+    <string name="sleep_timer_remaining">Uinumistaimer: %1$s</string>
+    <string name="sleep_15_min">15 minutit</string>
+    <string name="sleep_30_min">30 minutit</string>
+    <string name="sleep_1_hour">1 tund</string>
+    <string name="sleep_2_hours">2 tundi</string>
+    <string name="sleep_3_hours">3 tundi</string>
+    <string name="sleep_4_hours">4 tundi</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahmsi hällilaul</string>
+    <string name="bundled_white_noise">Valge müra</string>
+    <string name="bundled_enriched_heart">Võimendatud südametukse</string>
+    <string name="bundled_real_ultrasound">Päris ultraheli</string>
+    <string name="bundled_brown_heart">Pruun südametukse</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Seaded</string>
+    <string name="theme_section">Kujundus</string>
+    <string name="theme_light">Helesinine</string>
+    <string name="theme_light_desc">Heledad värvid</string>
+    <string name="theme_dark">Tume</string>
+    <string name="theme_dark_desc">Tumedad värvid</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Puhas must: ideaalne öösel</string>
+    <string name="keep_screen_on">Hoia ekraan sisselülitatuna</string>
+    <string name="keep_screen_on_desc">Hoiab ära ekraani kustumise esituse ajal</string>
+    <string name="data_section">Andmed</string>
+    <string name="downloaded_count">%1$d allalaaditud heli (%2$d eelinstalleeritut hoitakse alati alles)</string>
+    <string name="delete_all_downloaded">Kustuta kogu allalaetu</string>
+    <string name="reset_title">Täielik lähtestamine</string>
+    <string name="reset_message">Kas soovid kustutada %1$d allalaaditud heli? Eelinstalleerituid (Brahms, valge müra, südametukse) ei puudutata. See toiming on pöördumatu.</string>
+    <string name="delete_all">Kustuta kõik</string>
+    <string name="reset_deleted">Kustutati %1$d allalaaditud heli (eelinstalleeritud säilitati).</string>
+    <string name="reset_none">Kustutamiseks pole allalaaditud helisid.</string>
+    <string name="language_section">Keel</string>
+    <string name="language_system_default">Süsteemi vaike</string>
+    <string name="language_system_default_desc">Kasuta seadme keelt</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Vigane URL.</string>
+    <string name="starting_download">Allalaadimise alustamine…</string>
+    <string name="download_completed">Allalaadimine lõpetatud</string>
+    <string name="download_completed_title">Allalaadimine lõpetatud: %1$s</string>
+    <string name="preparing_download">Allalaadimise ettevalmistamine…</string>
+    <string name="download_error">Viga allalaadimisel.</string>
+    <string name="channel_downloads">Hällilaulude allalaadimised</string>
+    <string name="channel_downloads_desc">Taustaallalaadimiste edenemine</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Selle video jaoks pole audio voogu saadaval.</string>
+    <string name="err_no_url">Voog ilma faili URL-ita.</string>
+    <string name="err_network">Võrguviga allalaadimisel: %1$s</string>
+    <string name="err_parse">Videot ei saa töödelda: %1$s</string>
+    <string name="err_download">Viga allalaadimisel: %1$s</string>
+    <string name="err_http">HTTP-vastus %1$d allalaadimisel.</string>
+    <string name="err_no_body">Vastus ilma sisuta.</string>
+    <string name="err_incomplete">Mittetäielik allalaadimine (%1$d/%2$d baiti).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Esitamine</string>
+    <string name="channel_playback_desc">Püsiv teade esitamise ajal</string>
+</resources>

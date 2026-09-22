@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Vista</string>
+    <string name="cancel">Hætta við</string>
+    <string name="close">Loka</string>
+    <string name="stop">Stöðva</string>
+    <string name="play">Spila</string>
+    <string name="off">Af</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Stillingar</string>
+    <string name="content_desc_back">Til baka</string>
+    <string name="content_desc_add_from_yt">Bæta við frá YT</string>
+    <string name="content_desc_volume">Hávliti</string>
+    <string name="content_desc_rename">Endurnefna</string>
+    <string name="content_desc_delete">Eyða</string>
+    <string name="content_desc_repeat_one_on">Endurtaka eitt: á</string>
+    <string name="content_desc_repeat_one_off">Endurtaka eitt: af</string>
+    <string name="content_desc_sleep_timer">Svefntímagæsla</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Sæki (%1$d)</string>
+    <string name="empty_list">Ekkert hljóð. Bættu við vöggljóði frá YouTube, eða þau fyrirfram settu (Brahms, hvítur suð, hjartsláttur í kviði) eru afrituð við fyrsta ræsingu.</string>
+    <string name="section_predownloaded">Fyrirfram sett</string>
+    <string name="section_downloaded">Sótt</string>
+    <string name="add_from_youtube_title">Bæta við frá YouTube</string>
+    <string name="add_from_youtube_subtitle">Límdu YouTube-tengil: hljóðið er sótt í bakgrunni með framvindutilkynningu.</string>
+    <string name="youtube_url_label">YouTube-vefurfang</string>
+    <string name="download_in_background">Sækja í bakgrunni</string>
+    <string name="download_failed">Sókn mistókst.</string>
+    <string name="download_started_background">Sókn hófst í bakgrunni: framvinda í tilkynningu.</string>
+    <string name="rename_dialog_title">Endurnefna hljóð</string>
+    <string name="new_name_label">Nýtt nafn</string>
+    <string name="rename_failed">Endurnöfnun mistókst: nafn er nú þegar til eða ógilt.</string>
+    <string name="queued">Í röð: bíð eftir tengingu…</string>
+    <string name="downloading_progress">Sæki… %1$d%%</string>
+    <string name="preparing">Undirbý…</string>
+    <string name="streaming_to">Streyma til %1$s</string>
+    <string name="cast_device">Streymistæki</string>
+    <string name="now_playing">Spilar núna</string>
+    <string name="sleep_timer">Svefntímagæsla</string>
+    <string name="sleep_timer_active">Svefntímagæsla virk</string>
+    <string name="sleep_timer_remaining">Svefntímagæsla: %1$s</string>
+    <string name="sleep_15_min">15 mínútur</string>
+    <string name="sleep_30_min">30 mínútur</string>
+    <string name="sleep_1_hour">1 klukkustund</string>
+    <string name="sleep_2_hours">2 klukkustundir</string>
+    <string name="sleep_3_hours">3 klukkustundir</string>
+    <string name="sleep_4_hours">4 klukkustundir</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Vöggljóð Brahms</string>
+    <string name="bundled_white_noise">Hvítur suð</string>
+    <string name="bundled_enriched_heart">Styrktur hjartsláttur</string>
+    <string name="bundled_real_ultrasound">Raunveruleg ómskoðun</string>
+    <string name="bundled_brown_heart">Brúnur hjartsláttur</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Stillingar</string>
+    <string name="theme_section">Þema</string>
+    <string name="theme_light">Ljóst</string>
+    <string name="theme_light_desc">Ljósir litir</string>
+    <string name="theme_dark">Dökkt</string>
+    <string name="theme_dark_desc">Dökkir litir</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Hreinn svartur: kjólast á nóttunni</string>
+    <string name="keep_screen_on">Halda skjánum á</string>
+    <string name="keep_screen_on_desc">Forðar því að skjárinn slokkni við afspilun</string>
+    <string name="data_section">Gögn</string>
+    <string name="downloaded_count">%1$d sótt hljóð (%2$d fyrirfram sett eru alltaf varð)</string>
+    <string name="delete_all_downloaded">Eyða öllu sem sótt hefur verið</string>
+    <string name="reset_title">Full endurstilling</string>
+    <string name="reset_message">Viltu eyða %1$d sóttum hljóðum? Fyrirfram settu (Brahms, hvítur suð, hjartsláttur) eru ekki snert. Þessi aðgerð er óafturkræf.</string>
+    <string name="delete_all">Eyða öllu</string>
+    <string name="reset_deleted">Eytt %1$d sóttum hljóðum (fyrirfram sett varðveitt).</string>
+    <string name="reset_none">Engin sótt hljóð til að eyða.</string>
+    <string name="language_section">Tungumál</string>
+    <string name="language_system_default">Sjálfgefið kerfisins</string>
+    <string name="language_system_default_desc">Nota tungumál tækisins</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Ógilt veffang.</string>
+    <string name="starting_download">Hef sókn…</string>
+    <string name="download_completed">Sókn lokið</string>
+    <string name="download_completed_title">Sókn lokið: %1$s</string>
+    <string name="preparing_download">Undirbý sókn…</string>
+    <string name="download_error">Villa við sókn.</string>
+    <string name="channel_downloads">Sóknum vöggljóða</string>
+    <string name="channel_downloads_desc">Framvinda sókna í bakgrunni</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Ekkert hljóðstreymisforrit er fyrir þetta myndskeið.</string>
+    <string name="err_no_url">Streymur án skráarvefurfangs.</string>
+    <string name="err_network">Netvilla við sókn: %1$s</string>
+    <string name="err_parse">Tókst ekki að greina myndskeiðið: %1$s</string>
+    <string name="err_download">Villa við sókn: %1$s</string>
+    <string name="err_http">HTTP-svar %1$d við sókn.</string>
+    <string name="err_no_body">Svar án efnis.</string>
+    <string name="err_incomplete">Ófullnægjandi sókn (%1$d/%2$d bæti).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Afspilun</string>
+    <string name="channel_playback_desc">Varanleg tilkynning við afspilun</string>
+</resources>

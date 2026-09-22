@@ -38,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
@@ -56,6 +57,7 @@ fun SettingsScreen(onBack: () -> Unit) {
 
     val themeMode by SettingsStore.themeMode(context).collectAsState(initial = ThemeMode.DARK)
     val keepScreenOn by SettingsStore.keepScreenOn(context).collectAsState(initial = false)
+    val language by SettingsStore.language(context).collectAsState(initial = null)
 
     var lullabies by remember { mutableStateOf(emptyList<Lullaby>()) }
     var showResetDialog by remember { mutableStateOf(false) }
@@ -71,10 +73,10 @@ fun SettingsScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Settings") },
+                title = { Text(stringResource(R.string.settings_section)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.content_desc_back))
                     }
                 }
             )
@@ -88,29 +90,29 @@ fun SettingsScreen(onBack: () -> Unit) {
                 .padding(16.dp)
         ) {
             // ---------- Theme ----------
-            Text(text = "Theme", style = MaterialTheme.typography.titleMedium)
+            Text(text = stringResource(R.string.theme_section), style = MaterialTheme.typography.titleMedium)
             Spacer(Modifier.height(4.dp))
 
             Column(Modifier.selectableGroup()) {
-                ThemeModeOption(
-                    label = "Light",
-                    description = "Light colors",
+                OptionRow(
+                    label = stringResource(R.string.theme_light),
+                    description = stringResource(R.string.theme_light_desc),
                     selected = themeMode == ThemeMode.LIGHT,
                     onSelect = {
                         scope.launch { SettingsStore.setThemeMode(context, ThemeMode.LIGHT) }
                     }
                 )
-                ThemeModeOption(
-                    label = "Dark",
-                    description = "Dark colors",
+                OptionRow(
+                    label = stringResource(R.string.theme_dark),
+                    description = stringResource(R.string.theme_dark_desc),
                     selected = themeMode == ThemeMode.DARK,
                     onSelect = {
                         scope.launch { SettingsStore.setThemeMode(context, ThemeMode.DARK) }
                     }
                 )
-                ThemeModeOption(
-                    label = "Amoled",
-                    description = "Pure black: ideal at night",
+                OptionRow(
+                    label = stringResource(R.string.theme_amoled),
+                    description = stringResource(R.string.theme_amoled_desc),
                     selected = themeMode == ThemeMode.AMOLED,
                     onSelect = {
                         scope.launch { SettingsStore.setThemeMode(context, ThemeMode.AMOLED) }
@@ -128,9 +130,9 @@ fun SettingsScreen(onBack: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(text = "Keep screen on", style = MaterialTheme.typography.titleMedium)
+                    Text(text = stringResource(R.string.keep_screen_on), style = MaterialTheme.typography.titleMedium)
                     Text(
-                        text = "Prevents the screen timeout during playback",
+                        text = stringResource(R.string.keep_screen_on_desc),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -146,13 +148,53 @@ fun SettingsScreen(onBack: () -> Unit) {
             Spacer(Modifier.height(16.dp))
             Divider()
 
+            // ---------- Language ----------
+            Spacer(Modifier.height(16.dp))
+            Divider()
+
+            Spacer(Modifier.height(16.dp))
+            Text(text = stringResource(R.string.language_section), style = MaterialTheme.typography.titleMedium)
+            Spacer(Modifier.height(4.dp))
+
+            Column(Modifier.selectableGroup()) {
+                OptionRow(
+                    label = stringResource(R.string.language_system_default),
+                    description = stringResource(R.string.language_system_default_desc),
+                    selected = language == null,
+                    onSelect = {
+                        scope.launch {
+                            SettingsStore.setLanguage(context, null)
+                            AppLanguages.setLocale(null)
+                        }
+                    }
+                )
+                AppLanguages.SUPPORTED.forEach { (tag, nativeName) ->
+                    OptionRow(
+                        label = nativeName,
+                        description = null,
+                        selected = language == tag,
+                        onSelect = {
+                            scope.launch {
+                                SettingsStore.setLanguage(context, tag)
+                                AppLanguages.setLocale(tag)
+                            }
+                        }
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(16.dp))
+            Divider()
+
             // ---------- Reset ----------
             Spacer(Modifier.height(16.dp))
-            Text(text = "Data", style = MaterialTheme.typography.titleMedium)
+            Text(text = stringResource(R.string.data_section), style = MaterialTheme.typography.titleMedium)
             Text(
-                text = "$downloadedCount downloaded audios" +
-                    " (the ${lullabies.count { it.isBundled }} preinstalled " +
-                    "ones are always kept)",
+                text = stringResource(
+                    R.string.downloaded_count,
+                    downloadedCount,
+                    lullabies.count { it.isBundled }
+                ),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -166,7 +208,7 @@ fun SettingsScreen(onBack: () -> Unit) {
                     contentColor = MaterialTheme.colorScheme.onError
                 )
             ) {
-                Text("Delete everything downloaded")
+                Text(stringResource(R.string.delete_all_downloaded))
             }
 
             resetFeedback?.let {
@@ -183,12 +225,10 @@ fun SettingsScreen(onBack: () -> Unit) {
     if (showResetDialog) {
         AlertDialog(
             onDismissRequest = { showResetDialog = false },
-            title = { Text("Full reset") },
+            title = { Text(stringResource(R.string.reset_title)) },
             text = {
                 Text(
-                    "Do you want to delete the $downloadedCount downloaded audios? " +
-                        "The preinstalled ones (Brahms, white noise, heartbeat) " +
-                        "are not touched. This operation is irreversible."
+                    stringResource(R.string.reset_message, downloadedCount)
                 )
             },
             confirmButton = {
@@ -202,25 +242,24 @@ fun SettingsScreen(onBack: () -> Unit) {
                         }
                         lullabies = DownloadRepository.listLullabies(context)
                         resetFeedback = if (deleted > 0) {
-                            "Deleted $deleted downloaded audios " +
-                                "(preinstalled ones kept)."
+                            context.getString(R.string.reset_deleted, deleted)
                         } else {
-                            "No downloaded audios to delete."
+                            context.getString(R.string.reset_none)
                         }
                     }
-                }) { Text("Delete all") }
+                }) { Text(stringResource(R.string.delete_all)) }
             },
             dismissButton = {
-                TextButton(onClick = { showResetDialog = false }) { Text("Cancel") }
+                TextButton(onClick = { showResetDialog = false }) { Text(stringResource(R.string.cancel)) }
             }
         )
     }
 }
 
 @Composable
-private fun ThemeModeOption(
+private fun OptionRow(
     label: String,
-    description: String,
+    description: String?,
     selected: Boolean,
     onSelect: () -> Unit
 ) {
@@ -239,11 +278,13 @@ private fun ThemeModeOption(
         Spacer(Modifier.height(0.dp))
         Column {
             Text(text = label, style = MaterialTheme.typography.bodyLarge)
-            Text(
-                text = description,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            if (description != null) {
+                Text(
+                    text = description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }

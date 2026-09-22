@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Gem</string>
+    <string name="cancel">Annuller</string>
+    <string name="close">Luk</string>
+    <string name="stop">Stop</string>
+    <string name="play">Afspil</string>
+    <string name="off">Fra</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Indstillinger</string>
+    <string name="content_desc_back">Tilbage</string>
+    <string name="content_desc_add_from_yt">Tilføj fra YT</string>
+    <string name="content_desc_volume">Lydstyrke</string>
+    <string name="content_desc_rename">Omdøb</string>
+    <string name="content_desc_delete">Slet</string>
+    <string name="content_desc_repeat_one_on">Gentag én: til</string>
+    <string name="content_desc_repeat_one_off">Gentag én: fra</string>
+    <string name="content_desc_sleep_timer">Søvntimer</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Downloader (%1$d)</string>
+    <string name="empty_list">Ingen lyd. Tilføj en vuggevise fra YouTube, eller de forudinstallerede (Brahms, hvid støj, hjertebank i maven) kopieres ved første start.</string>
+    <string name="section_predownloaded">Forudinstalleret</string>
+    <string name="section_downloaded">Downloadet</string>
+    <string name="add_from_youtube_title">Tilføj fra YouTube</string>
+    <string name="add_from_youtube_subtitle">Indsæt et YouTube-link: lyden downloades i baggrunden med en statusmeddelelse.</string>
+    <string name="youtube_url_label">YouTube-URL</string>
+    <string name="download_in_background">Download i baggrunden</string>
+    <string name="download_failed">Download mislykkedes.</string>
+    <string name="download_started_background">Download startet i baggrunden: status i meddelelsen.</string>
+    <string name="rename_dialog_title">Omdøb lyd</string>
+    <string name="new_name_label">Nyt navn</string>
+    <string name="rename_failed">Omdøbning mislykkedes: navnet findes allerede eller er ugyldigt.</string>
+    <string name="queued">I kø: venter på forbindelse…</string>
+    <string name="downloading_progress">Downloader… %1$d%%</string>
+    <string name="preparing">Forbereder…</string>
+    <string name="streaming_to">Streamer til %1$s</string>
+    <string name="cast_device">Cast-enhed</string>
+    <string name="now_playing">Afspiller nu</string>
+    <string name="sleep_timer">Søvntimer</string>
+    <string name="sleep_timer_active">Søvntimer aktiv</string>
+    <string name="sleep_timer_remaining">Søvntimer: %1$s</string>
+    <string name="sleep_15_min">15 minutter</string>
+    <string name="sleep_30_min">30 minutter</string>
+    <string name="sleep_1_hour">1 time</string>
+    <string name="sleep_2_hours">2 timer</string>
+    <string name="sleep_3_hours">3 timer</string>
+    <string name="sleep_4_hours">4 timer</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahmss vuggevise</string>
+    <string name="bundled_white_noise">Hvid støj</string>
+    <string name="bundled_enriched_heart">Forstærket hjertebank</string>
+    <string name="bundled_real_ultrasound">Ægte ultralyd</string>
+    <string name="bundled_brown_heart">Brunt hjertebank</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Indstillinger</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Lyst</string>
+    <string name="theme_light_desc">Lyse farver</string>
+    <string name="theme_dark">Mørkt</string>
+    <string name="theme_dark_desc">Mørke farver</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Rent sort: ideelt om natten</string>
+    <string name="keep_screen_on">Hold skærmen tændt</string>
+    <string name="keep_screen_on_desc">Forhindrer skærmudløb under afspilning</string>
+    <string name="data_section">Data</string>
+    <string name="downloaded_count">%1$d downloadede lyd (de %2$d forudinstallerede bevares altid)</string>
+    <string name="delete_all_downloaded">Slet alt downloadet</string>
+    <string name="reset_title">Fuld nulstilling</string>
+    <string name="reset_message">Vil du slette de %1$d downloadede lyd? De forudinstallerede (Brahms, hvid støj, hjertebank) røres ikke. Denne handling er uigenkaldelig.</string>
+    <string name="delete_all">Slet alt</string>
+    <string name="reset_deleted">Slettede %1$d downloadede lyd (forudinstallerede bevaret).</string>
+    <string name="reset_none">Ingen downloadede lyd at slette.</string>
+    <string name="language_section">Sprog</string>
+    <string name="language_system_default">Systemstandard</string>
+    <string name="language_system_default_desc">Brug enhedens sprog</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Ugyldig URL.</string>
+    <string name="starting_download">Starter download…</string>
+    <string name="download_completed">Download fuldført</string>
+    <string name="download_completed_title">Download fuldført: %1$s</string>
+    <string name="preparing_download">Forbereder download…</string>
+    <string name="download_error">Fejl under download.</string>
+    <string name="channel_downloads">Downloads af vuggeviser</string>
+    <string name="channel_downloads_desc">Status for downloads i baggrunden</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Ingen lydstream tilgængelig for denne video.</string>
+    <string name="err_no_url">Stream uden fil-URL.</string>
+    <string name="err_network">Netværksfejl under download: %1$s</string>
+    <string name="err_parse">Videoen kan ikke behandles: %1$s</string>
+    <string name="err_download">Fejl under download: %1$s</string>
+    <string name="err_http">HTTP-svar %1$d under download.</string>
+    <string name="err_no_body">Svar uden indhold.</string>
+    <string name="err_incomplete">Ufuldstændig download (%1$d/%2$d bytes).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Afspilning</string>
+    <string name="channel_playback_desc">Vedvarende meddelelse under afspilning</string>
+</resources>

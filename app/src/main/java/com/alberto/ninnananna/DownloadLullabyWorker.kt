@@ -28,27 +28,41 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
     override suspend fun doWork(): Result {
         val url = inputData.getString(KEY_URL)?.trim()
         if (url.isNullOrEmpty()) {
-            return Result.failure(workDataOf(KEY_ERROR to "Invalid URL."))
+            return Result.failure(
+                workDataOf(KEY_ERROR to applicationContext.getString(R.string.invalid_url))
+            )
         }
 
         ensureNotificationChannel(applicationContext)
 
         // Starts the permanent foreground notification right away.
-        setForeground(createForegroundInfo(0f, "Starting download…"))
+        setForeground(
+            createForegroundInfo(0f, applicationContext.getString(R.string.starting_download))
+        )
 
         return try {
             val lullaby = DownloadRepository.download(applicationContext, url) { progress ->
                 val pct = (progress * 100).toInt().coerceIn(0, 100)
                 setProgressAsync(workDataOf(KEY_PROGRESS to progress))
                 setForegroundAsync(
-                    createForegroundInfo(progress, "Downloading… $pct%")
+                    createForegroundInfo(
+                        progress,
+                        applicationContext.getString(R.string.downloading_progress, pct)
+                    )
                 )
             }
-            setForegroundAsync(createForegroundInfo(1f, "Download completed"))
-            val title = lullaby?.title?.let { formatDisplayName(it) }.orEmpty()
+            setForegroundAsync(
+                createForegroundInfo(1f, applicationContext.getString(R.string.download_completed))
+            )
+            val title = lullaby?.title
+                ?.let { formatDisplayName(applicationContext, it) }
+                .orEmpty()
             if (title.isNotBlank()) {
                 setForegroundAsync(
-                    createForegroundInfo(1f, "Download completed: $title")
+                    createForegroundInfo(
+                        1f,
+                        applicationContext.getString(R.string.download_completed_title, title)
+                    )
                 )
             }
             Result.success(
@@ -56,7 +70,10 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
             )
         } catch (e: Exception) {
             Result.failure(
-                workDataOf(KEY_ERROR to (e.message ?: "Error during download."))
+                workDataOf(
+                    KEY_ERROR to (e.message
+                        ?: applicationContext.getString(R.string.download_error))
+                )
             )
         }
     }
@@ -66,13 +83,13 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
      * restarted after a process kill).
      */
     override suspend fun getForegroundInfo(): ForegroundInfo =
-        createForegroundInfo(0f, "Preparing download…")
+        createForegroundInfo(0f, applicationContext.getString(R.string.preparing_download))
 
     private fun createForegroundInfo(progress: Float, text: String): ForegroundInfo {
         val indeterminate = progress <= 0f
         val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification_download)
-            .setContentTitle("NinnaNanna")
+            .setContentTitle(applicationContext.getString(R.string.app_name))
             .setContentText(text)
             .setProgress(100, (progress * 100).toInt().coerceIn(0, 100), indeterminate)
             .setOngoing(true)
@@ -121,9 +138,9 @@ class DownloadLullabyWorker(appContext: Context, params: WorkerParameters) :
         fun ensureNotificationChannel(context: Context) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "Lullaby downloads",
+                context.getString(R.string.channel_downloads),
                 NotificationManager.IMPORTANCE_LOW
-            ).apply { description = "Progress of the background downloads" }
+            ).apply { description = context.getString(R.string.channel_downloads_desc) }
             context.getSystemService(NotificationManager::class.java)
                 .createNotificationChannel(channel)
         }

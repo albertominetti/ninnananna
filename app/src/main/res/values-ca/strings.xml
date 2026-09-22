@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Desa</string>
+    <string name="cancel">Cancel·la</string>
+    <string name="close">Tanca</string>
+    <string name="stop">Atura</string>
+    <string name="play">Reprodueix</string>
+    <string name="off">Desactivat</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Configuració</string>
+    <string name="content_desc_back">Enrere</string>
+    <string name="content_desc_add_from_yt">Afegeix des del YT</string>
+    <string name="content_desc_volume">Volum</string>
+    <string name="content_desc_rename">Reanomena</string>
+    <string name="content_desc_delete">Suprimeix</string>
+    <string name="content_desc_repeat_one_on">Repeteix un: activat</string>
+    <string name="content_desc_repeat_one_off">Repeteix un: desactivat</string>
+    <string name="content_desc_sleep_timer">Temporitzador de son</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Baixant (%1$d)</string>
+    <string name="empty_list">Sense àudio. Afegeix un bressol de YouTube, o els preinstal·lats (Brahms, soroll blanc, batec del cor a la panxa) es copien en el primer inici.</string>
+    <string name="section_predownloaded">Preinstal·lats</string>
+    <string name="section_downloaded">Baixats</string>
+    <string name="add_from_youtube_title">Afegeix des de YouTube</string>
+    <string name="add_from_youtube_subtitle">Enganxa un enllaç de YouTube: l\'àudio es baixa en segon pla amb una notificació de progrés.</string>
+    <string name="youtube_url_label">URL de YouTube</string>
+    <string name="download_in_background">Baixa en segon pla</string>
+    <string name="download_failed">La baixada ha fallat.</string>
+    <string name="download_started_background">Baixada iniciada en segon pla: progrés a la notificació.</string>
+    <string name="rename_dialog_title">Reanomena àudio</string>
+    <string name="new_name_label">Nom nou</string>
+    <string name="rename_failed">No s\'ha pogut reanomenar: el nom ja existeix o no és vàlid.</string>
+    <string name="queued">En cua: esperant la connexió…</string>
+    <string name="downloading_progress">Baixant… %1$d%%</string>
+    <string name="preparing">Preparació…</string>
+    <string name="streaming_to">Emetent a %1$s</string>
+    <string name="cast_device">Dispositiu de transmissió</string>
+    <string name="now_playing">S\'està reproduint</string>
+    <string name="sleep_timer">Temporitzador de son</string>
+    <string name="sleep_timer_active">Temporitzador de son actiu</string>
+    <string name="sleep_timer_remaining">Temporitzador de son: %1$s</string>
+    <string name="sleep_15_min">15 minuts</string>
+    <string name="sleep_30_min">30 minuts</string>
+    <string name="sleep_1_hour">1 hora</string>
+    <string name="sleep_2_hours">2 hores</string>
+    <string name="sleep_3_hours">3 hores</string>
+    <string name="sleep_4_hours">4 hores</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Bressol de Brahms</string>
+    <string name="bundled_white_noise">Soroll blanc</string>
+    <string name="bundled_enriched_heart">Batec reforçat</string>
+    <string name="bundled_real_ultrasound">Ecografia real</string>
+    <string name="bundled_brown_heart">Batec marró</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Configuració</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Clar</string>
+    <string name="theme_light_desc">Colors clars</string>
+    <string name="theme_dark">Fosc</string>
+    <string name="theme_dark_desc">Colors foscos</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Negre pur: ideal de nit</string>
+    <string name="keep_screen_on">Mantén la pantalla encesa</string>
+    <string name="keep_screen_on_desc">Evita que la pantalla s\'apagui durant la reproducció</string>
+    <string name="data_section">Dades</string>
+    <string name="downloaded_count">%1$d àudios baixats (els %2$d preinstal·lats es conserven sempre)</string>
+    <string name="delete_all_downloaded">Esborra tot el que s\'ha baixat</string>
+    <string name="reset_title">Restabliment complet</string>
+    <string name="reset_message">Vols suprimir els %1$d àudios baixats? Els preinstal·lats (Brahms, soroll blanc, batec) no es toquen. Aquesta operació és irreversible.</string>
+    <string name="delete_all">Suprimeix-ho tot</string>
+    <string name="reset_deleted">Suprimits %1$d àudios baixats (els preinstal·lats conservats).</string>
+    <string name="reset_none">No hi ha àudios baixats per suprimir.</string>
+    <string name="language_section">Idioma</string>
+    <string name="language_system_default">Predeterminat del sistema</string>
+    <string name="language_system_default_desc">Fes servir l\'idioma del dispositiu</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">URL no vàlid.</string>
+    <string name="starting_download">Inici de la baixada…</string>
+    <string name="download_completed">Baixada completada</string>
+    <string name="download_completed_title">Baixada completada: %1$s</string>
+    <string name="preparing_download">Preparant la baixada…</string>
+    <string name="download_error">Error durant la baixada.</string>
+    <string name="channel_downloads">Baixades de bressols</string>
+    <string name="channel_downloads_desc">Progrés de les baixades en segon pla</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">No hi ha cap flux d\'àudio disponible per a aquest vídeo.</string>
+    <string name="err_no_url">Flux sense URL de fitxer.</string>
+    <string name="err_network">Error de xarxa durant la baixada: %1$s</string>
+    <string name="err_parse">No s\'ha pogut analitzar el vídeo: %1$s</string>
+    <string name="err_download">Error durant la baixada: %1$s</string>
+    <string name="err_http">Resposta HTTP %1$d durant la baixada.</string>
+    <string name="err_no_body">Resposta sense contingut.</string>
+    <string name="err_incomplete">Baixada incompleta (%1$d/%2$d bytes).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Reproducció</string>
+    <string name="channel_playback_desc">Notificació persistent durant la reproducció</string>
+</resources>

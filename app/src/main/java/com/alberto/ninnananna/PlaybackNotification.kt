@@ -22,15 +22,15 @@ import androidx.core.app.NotificationManagerCompat
 object PlaybackNotification {
 
     private const val CHANNEL_ID = "playback"
-    private const val CHANNEL_NAME = "Playback"
     private const val NOTIFICATION_ID = 1001
 
     const val ACTION_STOP = "com.alberto.ninnananna.action.STOP_PLAYBACK"
 
     /** Shows (or updates) the persistent notification of the track being played. */
-    fun show(context: Context, lullabyTitle: String, statusText: String = "Now playing") {
+    fun show(context: Context, lullabyTitle: String, statusText: String? = null) {
         val appContext = context.applicationContext
         ensureChannel(appContext)
+        val status = statusText ?: appContext.getString(R.string.now_playing)
 
         // Android 13+: if POST_NOTIFICATIONS is not granted we show nothing
         // (silent fallback; also avoids the SecurityException of notify()).
@@ -63,7 +63,7 @@ object PlaybackNotification {
         val notification = NotificationCompat.Builder(appContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification_download)
             .setContentTitle(lullabyTitle)
-            .setContentText(statusText)
+            .setContentText(status)
             .setContentIntent(openAppPendingIntent)
             .setCategory(NotificationCompat.CATEGORY_TRANSPORT)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
@@ -73,7 +73,7 @@ object PlaybackNotification {
             .addAction(
                 NotificationCompat.Action(
                     R.drawable.ic_notification_download,
-                    "Stop",
+                    appContext.getString(R.string.stop),
                     stopPendingIntent
                 )
             )
@@ -94,10 +94,10 @@ object PlaybackNotification {
             nm.createNotificationChannel(
                 NotificationChannel(
                     CHANNEL_ID,
-                    CHANNEL_NAME,
+                    context.getString(R.string.channel_playback),
                     NotificationManager.IMPORTANCE_LOW
                 ).apply {
-                    description = "Persistent notification during playback"
+                    description = context.getString(R.string.channel_playback_desc)
                 }
             )
         }

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Išsaugoti</string>
+    <string name="cancel">Atšaukti</string>
+    <string name="close">Uždaryti</string>
+    <string name="stop">Stabdyti</string>
+    <string name="play">Leisti</string>
+    <string name="off">Išjungta</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Nustatymai</string>
+    <string name="content_desc_back">Atgal</string>
+    <string name="content_desc_add_from_yt">Pridėti iš YT</string>
+    <string name="content_desc_volume">Garsumas</string>
+    <string name="content_desc_rename">Pervadinti</string>
+    <string name="content_desc_delete">Ištrinti</string>
+    <string name="content_desc_repeat_one_on">Kartoti vieną: įjungta</string>
+    <string name="content_desc_repeat_one_off">Kartoti vieną: išjungta</string>
+    <string name="content_desc_sleep_timer">Miego laikmatis</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Atsisiunčiama (%1$d)</string>
+    <string name="empty_list">Nėra garso. Pridėkite lopšinę iš „YouTube“, o iš anksto įdiegtos (Bramsas, baltasis triukšmas, širdies plakimas pilvelyje) nukopijuojamos pirmą kartą paleidus.</string>
+    <string name="section_predownloaded">Iš anksto įdiegtos</string>
+    <string name="section_downloaded">Atsisiųstos</string>
+    <string name="add_from_youtube_title">Pridėti iš „YouTube“</string>
+    <string name="add_from_youtube_subtitle">Įklijuokite „YouTube“ nuorodą: garsas bus atsisiųstas fone su pažangos pranešimu.</string>
+    <string name="youtube_url_label">„YouTube“ URL</string>
+    <string name="download_in_background">Atsisiųsti fone</string>
+    <string name="download_failed">Atsisiunti nepavyko.</string>
+    <string name="download_started_background">Atsisiuntimas paleistas fone: pažanga pranešime.</string>
+    <string name="rename_dialog_title">Pervadinti garsą</string>
+    <string name="new_name_label">Naujas pavadinimas</string>
+    <string name="rename_failed">Pervadinti nepavyko: pavadinimas jau egzistuoja arba netinkamas.</string>
+    <string name="queued">Eilėje: laukiama ryšio…</string>
+    <string name="downloading_progress">Atsisiunčiama… %1$d%%</string>
+    <string name="preparing">Ruošiama…</string>
+    <string name="streaming_to">Perduodama į %1$s</string>
+    <string name="cast_device">Perdavimo įrenginys</string>
+    <string name="now_playing">Dabar leidžiama</string>
+    <string name="sleep_timer">Miego laikmatis</string>
+    <string name="sleep_timer_active">Miego laikmatis aktyvus</string>
+    <string name="sleep_timer_remaining">Miego laikmatis: %1$s</string>
+    <string name="sleep_15_min">15 minučių</string>
+    <string name="sleep_30_min">30 minučių</string>
+    <string name="sleep_1_hour">1 valanda</string>
+    <string name="sleep_2_hours">2 valandos</string>
+    <string name="sleep_3_hours">3 valandos</string>
+    <string name="sleep_4_hours">4 valandos</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Bramso lopšinė</string>
+    <string name="bundled_white_noise">Baltasis triukšmas</string>
+    <string name="bundled_enriched_heart">Sustiprintas širdies plakimas</string>
+    <string name="bundled_real_ultrasound">Tikra echoskopija</string>
+    <string name="bundled_brown_heart">Rudas širdies plakimas</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Nustatymai</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Šviesi</string>
+    <string name="theme_light_desc">Šviesios spalvos</string>
+    <string name="theme_dark">Tamsi</string>
+    <string name="theme_dark_desc">Tamsios spalvos</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Gryna juoda: idealu naktį</string>
+    <string name="keep_screen_on">Laikyti ekraną įjungtą</string>
+    <string name="keep_screen_on_desc">Neleidžia ekranui užgesinti leidimo metu</string>
+    <string name="data_section">Duomenys</string>
+    <string name="downloaded_count">%1$d atsisiųstų įrašų (tie %2$d iš anksto įdiegti visada išsaugomi)</string>
+    <string name="delete_all_downloaded">Ištrinti viską, kas atsisiųsta</string>
+    <string name="reset_title">Visiškas atstatymas</string>
+    <string name="reset_message">Ar norite ištrinti %1$d atsisiųstų įrašų? Iš anksto įdiegti (Bramsas, baltasis triukšmas, širdies plakimas) nebus paliesti. Šis veiksmas yra negrįžtamas.</string>
+    <string name="delete_all">Ištrinti viską</string>
+    <string name="reset_deleted">Ištrinta %1$d atsisiųstų įrašų (iš anksto įdiegti išsaugoti).</string>
+    <string name="reset_none">Nėra atsisiųstų įrašų, kuriuos būtų galima ištrinti.</string>
+    <string name="language_section">Kalba</string>
+    <string name="language_system_default">Sistemos numatytoji</string>
+    <string name="language_system_default_desc">Naudoti įrenginio kalbą</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Netinkamas URL.</string>
+    <string name="starting_download">Pradedamas atsisiuntimas…</string>
+    <string name="download_completed">Atsisiuntimas baigtas</string>
+    <string name="download_completed_title">Atsisiuntimas baigtas: %1$s</string>
+    <string name="preparing_download">Ruošiamas atsisiuntimas…</string>
+    <string name="download_error">Klaida atsisiunčiant.</string>
+    <string name="channel_downloads">Lopšinių atsisiuntimai</string>
+    <string name="channel_downloads_desc">Atsisiuntimų fone pažanga</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Šiam vaizdo įrašui nėra garso srauto.</string>
+    <string name="err_no_url">Srautas be failo URL.</string>
+    <string name="err_network">Tinklo klaida atsisiunčiant: %1$s</string>
+    <string name="err_parse">Vaizdo įrašo apdoroti nepavyko: %1$s</string>
+    <string name="err_download">Klaida atsisiunčiant: %1$s</string>
+    <string name="err_http">HTTP atsakymas %1$d atsisiunčiant.</string>
+    <string name="err_no_body">Atsakymas be turinio.</string>
+    <string name="err_incomplete">Nebaigtas atsisiuntimas (%1$d/%2$d baitų).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Leidimas</string>
+    <string name="channel_playback_desc">Nuolatinis pranešimas leidimo metu</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Tallenna</string>
+    <string name="cancel">Peruuta</string>
+    <string name="close">Sulje</string>
+    <string name="stop">Pysäytä</string>
+    <string name="play">Toista</string>
+    <string name="off">Pois</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Asetukset</string>
+    <string name="content_desc_back">Takaisin</string>
+    <string name="content_desc_add_from_yt">Lisää YouTubesta</string>
+    <string name="content_desc_volume">Äänenvoimakkuus</string>
+    <string name="content_desc_rename">Nimeä uudelleen</string>
+    <string name="content_desc_delete">Poista</string>
+    <string name="content_desc_repeat_one_on">Toista yksi: päällä</string>
+    <string name="content_desc_repeat_one_off">Toista yksi: pois</string>
+    <string name="content_desc_sleep_timer">Unitimeri</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Ladataan (%1$d)</string>
+    <string name="empty_list">Ei ääntä. Lisää tuutulaulu YouTubesta, tai esiasennetut (Brahms, valkoinen kohina, sydämenlyönti vatsassa) kopioidaan ensimmäisellä käynnistyksellä.</string>
+    <string name="section_predownloaded">Esiasennetut</string>
+    <string name="section_downloaded">Ladatut</string>
+    <string name="add_from_youtube_title">Lisää YouTubesta</string>
+    <string name="add_from_youtube_subtitle">Liitä YouTube-linkki: ääni ladataan taustalla edistymisilmoituksella.</string>
+    <string name="youtube_url_label">YouTuben URL</string>
+    <string name="download_in_background">Lataa taustalla</string>
+    <string name="download_failed">Lataaminen epäonnistui.</string>
+    <string name="download_started_background">Lataus alkoi taustalla: edistyminen ilmoituksessa.</string>
+    <string name="rename_dialog_title">Nimeä ääni uudelleen</string>
+    <string name="new_name_label">Uusi nimi</string>
+    <string name="rename_failed">Uudelleennimeäminen epäonnistui: nimi on jo käytössä tai virheellinen.</string>
+    <string name="queued">Jonossa: odotetaan yhteyttä…</string>
+    <string name="downloading_progress">Ladataan… %1$d%%</string>
+    <string name="preparing">Valmistellaan…</string>
+    <string name="streaming_to">Suoratoisto laitteelle %1$s</string>
+    <string name="cast_device">Cast-laite</string>
+    <string name="now_playing">Toistetaan nyt</string>
+    <string name="sleep_timer">Unitimeri</string>
+    <string name="sleep_timer_active">Unitimeri käytössä</string>
+    <string name="sleep_timer_remaining">Unitimeri: %1$s</string>
+    <string name="sleep_15_min">15 minuuttia</string>
+    <string name="sleep_30_min">30 minuuttia</string>
+    <string name="sleep_1_hour">1 tunti</string>
+    <string name="sleep_2_hours">2 tuntia</string>
+    <string name="sleep_3_hours">3 tuntia</string>
+    <string name="sleep_4_hours">4 tuntia</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahmksen tuutulaulu</string>
+    <string name="bundled_white_noise">Valkoinen kohina</string>
+    <string name="bundled_enriched_heart">Tehostettu sydämenlyönti</string>
+    <string name="bundled_real_ultrasound">Aito kaikukuvaus</string>
+    <string name="bundled_brown_heart">Ruskea sydämenlyönti</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Asetukset</string>
+    <string name="theme_section">Teema</string>
+    <string name="theme_light">Vaalea</string>
+    <string name="theme_light_desc">Vaaleat värit</string>
+    <string name="theme_dark">Tumma</string>
+    <string name="theme_dark_desc">Tummat värit</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Puhdas musta: ihanteellinen yöllä</string>
+    <string name="keep_screen_on">Pidä näyttö päällä</string>
+    <string name="keep_screen_on_desc">Estää näytön sammumisen toiston aikana</string>
+    <string name="data_section">Tiedot</string>
+    <string name="downloaded_count">%1$d ladattua ääntä (esiasennetut %2$d säilytetään aina)</string>
+    <string name="delete_all_downloaded">Poista kaikki ladattu</string>
+    <string name="reset_title">Täysi palautus</string>
+    <string name="reset_message">Haluatko poistaa %1$d ladattua ääntä? Esiasennettuja (Brahms, valkoinen kohina, sydämenlyönti) ei kosketa. Tämä toiminto on peruuttamaton.</string>
+    <string name="delete_all">Poista kaikki</string>
+    <string name="reset_deleted">Poistettiin %1$d ladattua ääntä (esiasennetut säilytetty).</string>
+    <string name="reset_none">Ei ladattuja ääniä poistettavaksi.</string>
+    <string name="language_section">Kieli</string>
+    <string name="language_system_default">Järjestelmän oletus</string>
+    <string name="language_system_default_desc">Käytä laitteen kieltä</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Virheellinen URL.</string>
+    <string name="starting_download">Aloitetaan latausta…</string>
+    <string name="download_completed">Lataus valmis</string>
+    <string name="download_completed_title">Lataus valmis: %1$s</string>
+    <string name="preparing_download">Valmistellaan latausta…</string>
+    <string name="download_error">Virhe latauksessa.</string>
+    <string name="channel_downloads">Tuutulaulujen lataukset</string>
+    <string name="channel_downloads_desc">Taustalatausten edistyminen</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Tälle videolle ei ole saatavilla äänivirtaa.</string>
+    <string name="err_no_url">Virta ilman tiedoston URL-osoitetta.</string>
+    <string name="err_network">Verkkovirhe latauksessa: %1$s</string>
+    <string name="err_parse">Videota ei voitu käsitellä: %1$s</string>
+    <string name="err_download">Virhe latauksessa: %1$s</string>
+    <string name="err_http">HTTP-vastaus %1$d latauksessa.</string>
+    <string name="err_no_body">Vastaus ilman sisältöä.</string>
+    <string name="err_incomplete">Epätäydellinen lataus (%1$d/%2$d tavua).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Toisto</string>
+    <string name="channel_playback_desc">Pysyvä ilmoitus toiston aikana</string>
+</resources>

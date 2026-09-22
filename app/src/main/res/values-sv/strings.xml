@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Spara</string>
+    <string name="cancel">Avbryt</string>
+    <string name="close">Stäng</string>
+    <string name="stop">Stoppa</string>
+    <string name="play">Spela</string>
+    <string name="off">Av</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Inställningar</string>
+    <string name="content_desc_back">Tillbaka</string>
+    <string name="content_desc_add_from_yt">Lägg till från YT</string>
+    <string name="content_desc_volume">Volym</string>
+    <string name="content_desc_rename">Byt namn</string>
+    <string name="content_desc_delete">Ta bort</string>
+    <string name="content_desc_repeat_one_on">Upprepa en: på</string>
+    <string name="content_desc_repeat_one_off">Upprepa en: av</string>
+    <string name="content_desc_sleep_timer">Sömntimer</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Laddar ner (%1$d)</string>
+    <string name="empty_list">Inget ljud. Lägg till en vaggvisa från YouTube, eller de förinstallerade (Brahms, vitt brus, hjärtslag i magen) kopieras vid första starten.</string>
+    <string name="section_predownloaded">Förinstallerade</string>
+    <string name="section_downloaded">Nedladdade</string>
+    <string name="add_from_youtube_title">Lägg till från YouTube</string>
+    <string name="add_from_youtube_subtitle">Klistra in en YouTube-länk: ljudet laddas ner i bakgrunden med en förloppsavisering.</string>
+    <string name="youtube_url_label">YouTube-URL</string>
+    <string name="download_in_background">Ladda ner i bakgrunden</string>
+    <string name="download_failed">Nedladdningen misslyckades.</string>
+    <string name="download_started_background">Nedladdning startad i bakgrunden: förlopp i aviseringen.</string>
+    <string name="rename_dialog_title">Byt namn på ljud</string>
+    <string name="new_name_label">Nytt namn</string>
+    <string name="rename_failed">Kunde inte byta namn: namnet finns redan eller är ogiltigt.</string>
+    <string name="queued">I kö: väntar på anslutning…</string>
+    <string name="downloading_progress">Laddar ner… %1$d%%</string>
+    <string name="preparing">Förbereder…</string>
+    <string name="streaming_to">Strömmar till %1$s</string>
+    <string name="cast_device">Cast-enhet</string>
+    <string name="now_playing">Spelar nu</string>
+    <string name="sleep_timer">Sömntimer</string>
+    <string name="sleep_timer_active">Sömntimer aktiv</string>
+    <string name="sleep_timer_remaining">Sömntimer: %1$s</string>
+    <string name="sleep_15_min">15 minuter</string>
+    <string name="sleep_30_min">30 minuter</string>
+    <string name="sleep_1_hour">1 timme</string>
+    <string name="sleep_2_hours">2 timmar</string>
+    <string name="sleep_3_hours">3 timmar</string>
+    <string name="sleep_4_hours">4 timmar</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Brahms vaggvisa</string>
+    <string name="bundled_white_noise">Vitt brus</string>
+    <string name="bundled_enriched_heart">Förstärkt hjärtslag</string>
+    <string name="bundled_real_ultrasound">Riktigt ultraljud</string>
+    <string name="bundled_brown_heart">Brun hjärtbank</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Inställningar</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Ljust</string>
+    <string name="theme_light_desc">Ljusa färger</string>
+    <string name="theme_dark">Mörkt</string>
+    <string name="theme_dark_desc">Mörka färger</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Rent svart: idealiskt på natten</string>
+    <string name="keep_screen_on">Håll skärmen på</string>
+    <string name="keep_screen_on_desc">Förhindrar att skärmen stängs av under uppspelning</string>
+    <string name="data_section">Data</string>
+    <string name="downloaded_count">%1$d nedladdade ljud (de %2$d förinstallerade behålls alltid)</string>
+    <string name="delete_all_downloaded">Ta bort allt som laddats ner</string>
+    <string name="reset_title">Fullständig återställning</string>
+    <string name="reset_message">Vill du ta bort de %1$d nedladdade ljuden? De förinstallerade (Brahms, vitt brus, hjärtslag) rörs inte. Den här åtgärden går inte att ångra.</string>
+    <string name="delete_all">Ta bort allt</string>
+    <string name="reset_deleted">Tog bort %1$d nedladdade ljud (förinstallerade behölls).</string>
+    <string name="reset_none">Inga nedladdade ljud att ta bort.</string>
+    <string name="language_section">Språk</string>
+    <string name="language_system_default">Systemstandard</string>
+    <string name="language_system_default_desc">Använd enhetens språk</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Ogiltig URL.</string>
+    <string name="starting_download">Startar nedladdning…</string>
+    <string name="download_completed">Nedladdningen är klar</string>
+    <string name="download_completed_title">Nedladdningen är klar: %1$s</string>
+    <string name="preparing_download">Förbereder nedladdning…</string>
+    <string name="download_error">Fel under nedladdningen.</string>
+    <string name="channel_downloads">Nedladdning av vaggvisor</string>
+    <string name="channel_downloads_desc">Förlopp för nedladdningar i bakgrunden</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Inget ljudflöde tillgängligt för den här videon.</string>
+    <string name="err_no_url">Flöde utan fil-URL.</string>
+    <string name="err_network">Nätverksfel under nedladdning: %1$s</string>
+    <string name="err_parse">Kunde inte bearbeta videon: %1$s</string>
+    <string name="err_download">Fel under nedladdningen: %1$s</string>
+    <string name="err_http">HTTP-svar %1$d under nedladdningen.</string>
+    <string name="err_no_body">Svar utan innehåll.</string>
+    <string name="err_incomplete">Ofullständig nedladdning (%1$d/%2$d byte).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Uppspelning</string>
+    <string name="channel_playback_desc">Bestående avisering under uppspelning</string>
+</resources>

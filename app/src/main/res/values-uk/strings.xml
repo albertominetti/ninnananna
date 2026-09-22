@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Зберегти</string>
+    <string name="cancel">Скасувати</string>
+    <string name="close">Закрити</string>
+    <string name="stop">Зупинити</string>
+    <string name="play">Відтворити</string>
+    <string name="off">Вимкнено</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Налаштування</string>
+    <string name="content_desc_back">Назад</string>
+    <string name="content_desc_add_from_yt">Додати з YT</string>
+    <string name="content_desc_volume">Гучність</string>
+    <string name="content_desc_rename">Перейменувати</string>
+    <string name="content_desc_delete">Видалити</string>
+    <string name="content_desc_repeat_one_on">Повторювати один: увімкнено</string>
+    <string name="content_desc_repeat_one_off">Повторювати один: вимкнено</string>
+    <string name="content_desc_sleep_timer">Таймер сну</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Завантаження (%1$d)</string>
+    <string name="empty_list">Немає аудіо. Додайте колискову з YouTube, або попередньо встановлені (Брамс, білий шум, биття серця в животику) копіюються під час першого запуску.</string>
+    <string name="section_predownloaded">Попередньо встановлені</string>
+    <string name="section_downloaded">Завантажені</string>
+    <string name="add_from_youtube_title">Додати з YouTube</string>
+    <string name="add_from_youtube_subtitle">Вставте посилання YouTube: аудіо завантажується у фоновому режимі з повідомленням про прогрес.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Завантажити у фоновому режимі</string>
+    <string name="download_failed">Не вдалося завантажити.</string>
+    <string name="download_started_background">Завантаження розпочато у фоновому режимі: прогрес у повідомленні.</string>
+    <string name="rename_dialog_title">Перейменувати аудіо</string>
+    <string name="new_name_label">Нова назва</string>
+    <string name="rename_failed">Не вдалося перейменувати: назва вже існує або недійсна.</string>
+    <string name="queued">У черзі: очікування з\'єднання…</string>
+    <string name="downloading_progress">Завантаження… %1$d%%</string>
+    <string name="preparing">Підготовка…</string>
+    <string name="streaming_to">Трансляція на %1$s</string>
+    <string name="cast_device">Пристрій трансляції</string>
+    <string name="now_playing">Зараз відтворюється</string>
+    <string name="sleep_timer">Таймер сну</string>
+    <string name="sleep_timer_active">Таймер сну активний</string>
+    <string name="sleep_timer_remaining">Таймер сну: %1$s</string>
+    <string name="sleep_15_min">15 хвилин</string>
+    <string name="sleep_30_min">30 хвилин</string>
+    <string name="sleep_1_hour">1 година</string>
+    <string name="sleep_2_hours">2 години</string>
+    <string name="sleep_3_hours">3 години</string>
+    <string name="sleep_4_hours">4 години</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Колискова Брамса</string>
+    <string name="bundled_white_noise">Білий шум</string>
+    <string name="bundled_enriched_heart">Посилене серцебиття</string>
+    <string name="bundled_real_ultrasound">Справжня ехографія</string>
+    <string name="bundled_brown_heart">Коричневе серцебиття</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Налаштування</string>
+    <string name="theme_section">Тема</string>
+    <string name="theme_light">Світла</string>
+    <string name="theme_light_desc">Світлі кольори</string>
+    <string name="theme_dark">Темна</string>
+    <string name="theme_dark_desc">Темні кольори</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Чистий чорний: ідеально вночі</string>
+    <string name="keep_screen_on">Тримати екран увімкненим</string>
+    <string name="keep_screen_on_desc">Запобігає вимкненню екрана під час відтворення</string>
+    <string name="data_section">Дані</string>
+    <string name="downloaded_count">Завантажено аудіо: %1$d (попередньо встановлені %2$d завжди зберігаються)</string>
+    <string name="delete_all_downloaded">Видалити все завантажене</string>
+    <string name="reset_title">Повне скидання</string>
+    <string name="reset_message">Видалити %1$d завантажених аудіо? Попередньо встановлені (Брамс, білий шум, серцебиття) не будуть зачеплені. Ця операція є незворотною.</string>
+    <string name="delete_all">Видалити все</string>
+    <string name="reset_deleted">Видалено %1$d завантажених аудіо (попередньо встановлені збережено).</string>
+    <string name="reset_none">Немає завантажених аудіо для видалення.</string>
+    <string name="language_section">Мова</string>
+    <string name="language_system_default">За замовчуванням для системи</string>
+    <string name="language_system_default_desc">Використовувати мову пристрою</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">Недійсний URL.</string>
+    <string name="starting_download">Запуск завантаження…</string>
+    <string name="download_completed">Завантаження завершено</string>
+    <string name="download_completed_title">Завантаження завершено: %1$s</string>
+    <string name="preparing_download">Підготовка завантаження…</string>
+    <string name="download_error">Помилка під час завантаження.</string>
+    <string name="channel_downloads">Завантаження колискових</string>
+    <string name="channel_downloads_desc">Прогрес фонового завантаження</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Для цього відео немає доступного аудіопотоку.</string>
+    <string name="err_no_url">Потік без URL файлу.</string>
+    <string name="err_network">Мережева помилка під час завантаження: %1$s</string>
+    <string name="err_parse">Не вдалося обробити відео: %1$s</string>
+    <string name="err_download">Помилка під час завантаження: %1$s</string>
+    <string name="err_http">Відповідь HTTP %1$d під час завантаження.</string>
+    <string name="err_no_body">Відповідь без вмісту.</string>
+    <string name="err_incomplete">Неповне завантаження (%1$d/%2$d байт).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Відтворення</string>
+    <string name="channel_playback_desc">Постійне повідомлення під час відтворення</string>
+</resources>

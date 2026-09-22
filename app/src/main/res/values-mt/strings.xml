@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Issejjaħ</string>
+    <string name="cancel">Ikkanċella</string>
+    <string name="close">Agħlaq</string>
+    <string name="stop">Waqqaf</string>
+    <string name="play">Aqbad iddoqq</string>
+    <string name="off">Miftuħ</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Implimentazzjonijiet</string>
+    <string name="content_desc_back">Lura</string>
+    <string name="content_desc_add_from_yt">Żid minn YT</string>
+    <string name="content_desc_volume">Volum</string>
+    <string name="content_desc_rename">Ibbidla l-isem</string>
+    <string name="content_desc_delete">Ħassar</string>
+    <string name="content_desc_repeat_one_off">Irrepeti waħda: mitfi</string>
+    <string name="content_desc_repeat_one_on">Irrepeti waħda: mixgħul</string>
+    <string name="content_desc_sleep_timer">Timer tal-raqad</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Qiegħda titniżżel (%1$d)</string>
+    <string name="empty_list">Ebda audio. Żid ninnana minn YouTube, jew dawk il-preinstallati (Brahms, white noise, qalb tgħid fil-baħar) jinkupraw mal-ewwel ħruġ.</string>
+    <string name="section_predownloaded">Preinstallati</string>
+    <string name="section_downloaded">Niżlet</string>
+    <string name="add_from_youtube_title">Żid minn YouTube</string>
+    <string name="add_from_youtube_subtitle">Waħħal link ta\' YouTube: l-audio titniżżel fl-isfond b\'notifika tal-progress.</string>
+    <string name="youtube_url_label">URL ta\' YouTube</string>
+    <string name="download_in_background">Niżlet fl-isfond</string>
+    <string name="download_failed">It-tniżżil falla.</string>
+    <string name="download_started_background">Tniżżil beda fl-isfond: fil-progress tan-notifika.</string>
+    <string name="rename_dialog_title">Ibbidla l-isem tal-audio</string>
+    <string name="new_name_label">Isem ġdid</string>
+    <string name="rename_failed">Il-biddla fallat: l-isem diġà jeżisti jew mhux validu.</string>
+    <string name="queued">F\'linja: qed jistenna konnessjoni…</string>
+    <string name="downloading_progress">Qed titniżżel… %1$d%%</string>
+    <string name="preparing">Qiegħda tippjana…</string>
+    <string name="streaming_to">Stream lejn %1$s</string>
+    <string name="cast_device">Apparat tal-istriem</string>
+    <string name="now_playing">Qed jindaqq issa</string>
+    <string name="sleep_timer">Timer tal-raqad</string>
+    <string name="sleep_timer_active">Timer tal-raqad attiv</string>
+    <string name="sleep_timer_remaining">Timer tal-raqad: %1$s</string>
+    <string name="sleep_15_min">15-il minuta</string>
+    <string name="sleep_30_min">30 minuta</string>
+    <string name="sleep_1_hour">Siegħa</string>
+    <string name="sleep_2_hours">2 sigħat</string>
+    <string name="sleep_3_hours">3 sigħat</string>
+    <string name="sleep_4_hours">4 sigħat</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Ninnana ta\' Brahms</string>
+    <string name="bundled_white_noise">White noise</string>
+    <string name="bundled_enriched_heart">Qalb imsaħħa</string>
+    <string name="bundled_real_ultrasound">Ultrasound reali</string>
+    <string name="bundled_brown_heart">Qalb kannella</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Implimentazzjonijiet</string>
+    <string name="theme_section">Tema</string>
+    <string name="theme_light">Faħħari</string>
+    <string name="theme_light_desc">Kuluri faħħari</string>
+    <string name="theme_dark">Skur</string>
+    <string name="theme_dark_desc">Kuluri skuri</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Iswed pur: ideali bil-lejl</string>
+    <string name="keep_screen_on">Żomm l-iskrin mixgħul</string>
+    <string name="keep_screen_on_desc">Ma jħallix l-iskrin jittieħed matul il-playback</string>
+    <string name="data_section">Data</string>
+    <string name="downloaded_count">%1$d audio mniżla (dawk il-%2$d preinstallati dejjem jinżammu)</string>
+    <string name="delete_all_downloaded">Ħassar kollha li tniżżlet</string>
+    <string name="reset_title">Reset sħiħ</string>
+    <string name="reset_message">Trid tħassar l-%1$d audio mniżla? Dawk il-preinstallati (Brahms, white noise, qalb) ma jiddirdux. Din l-operazzjoni ma tistax terġa lura.</string>
+    <string name="delete_all">Ħassar kollha</string>
+    <string name="reset_deleted">Ħassar %1$d audio mniżla (preinstallati żammhom).</string>
+    <string name="reset_none">Ebda audio mniżla x\'tħassar.</string>
+    <string name="language_section">Lingwa</string>
+    <string name="language_system_default">Definizzjoni tas-sistema</string>
+    <string name="language_system_default_desc">Uża l-lingwa tal-apparat</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">URL invalidu.</string>
+    <string name="starting_download">Qiegħda tibda tniżżil…</string>
+    <string name="download_completed">Tniżżil lest</string>
+    <string name="download_completed_title">Tniżżil lest: %1$s</string>
+    <string name="preparing_download">Qiegħda tippjana tniżżil…</string>
+    <string name="download_error">Żball matul it-tniżżil.</string>
+    <string name="channel_downloads">Tniżżil ta\' ninanni</string>
+    <string name="channel_downloads_desc">Progress tat-tniżżil fl-isfond</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Ebda stream tal-audio disponibbli għal din il-vidjow.</string>
+    <string name="err_no_url">Stream mingħajr URL tal-fajl.</string>
+    <string name="err_network">Żball tan-netwerk matul it-tniżżil: %1$s</string>
+    <string name="err_parse">Ma setax jiġi pproċessat il-vidjow: %1$s</string>
+    <string name="err_download">Żball matul it-tniżżil: %1$s</string>
+    <string name="err_http">Rispons HTTP %1$d matul it-tniżżil.</string>
+    <string name="err_no_body">Rispons mingħajr kontenut.</string>
+    <string name="err_incomplete">Tniżżil mhux komplut (%1$d/%2$d bytes).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Playback</string>
+    <string name="channel_playback_desc">Notifika permanenti matul il-playback</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NinnaNanna</string>
+
+    <!-- Common -->
+    <string name="save">Salvează</string>
+    <string name="cancel">Anulează</string>
+    <string name="close">Închide</string>
+    <string name="stop">Oprește</string>
+    <string name="play">Redă</string>
+    <string name="off">Oprit</string>
+
+    <!-- Content descriptions -->
+    <string name="content_desc_settings">Setări</string>
+    <string name="content_desc_back">Înapoi</string>
+    <string name="content_desc_add_from_yt">Adaugă din YT</string>
+    <string name="content_desc_volume">Volum</string>
+    <string name="content_desc_rename">Redenumește</string>
+    <string name="content_desc_delete">Șterge</string>
+    <string name="content_desc_repeat_one_on">Repetă unul: pornit</string>
+    <string name="content_desc_repeat_one_off">Repetă unul: oprit</string>
+    <string name="content_desc_sleep_timer">Temporizator de somn</string>
+
+    <!-- Home screen -->
+    <string name="downloading_active">Descărcare (%1$d)</string>
+    <string name="empty_list">Niciun audio. Adaugă un cântec de leagăn de pe YouTube, iar cele preinstalate (Brahms, zgomot alb, bătăi de inimă în burtă) sunt copiate la prima pornire.</string>
+    <string name="section_predownloaded">Preinstalate</string>
+    <string name="section_downloaded">Descărcate</string>
+    <string name="add_from_youtube_title">Adaugă de pe YouTube</string>
+    <string name="add_from_youtube_subtitle">Lipește un link YouTube: audio este descărcat în fundal cu o notificare de progres.</string>
+    <string name="youtube_url_label">URL YouTube</string>
+    <string name="download_in_background">Descarcă în fundal</string>
+    <string name="download_failed">Descărcarea a eșuat.</string>
+    <string name="download_started_background">Descărcarea a început în fundal: progresul este afișat în notificare.</string>
+    <string name="rename_dialog_title">Redenumește audio</string>
+    <string name="new_name_label">Nume nou</string>
+    <string name="rename_failed">Redenumirea a eșuat: numele există deja sau este invalid.</string>
+    <string name="queued">În coadă: se așteaptă conexiunea…</string>
+    <string name="downloading_progress">Descărcare… %1$d%%</string>
+    <string name="preparing">Pregătire…</string>
+    <string name="streaming_to">Streaming către %1$s</string>
+    <string name="cast_device">Dispozitiv de casting</string>
+    <string name="now_playing">Se redă acum</string>
+    <string name="sleep_timer">Temporizator de somn</string>
+    <string name="sleep_timer_active">Temporizator de somn activ</string>
+    <string name="sleep_timer_remaining">Temporizator de somn: %1$s</string>
+    <string name="sleep_15_min">15 minute</string>
+    <string name="sleep_30_min">30 minute</string>
+    <string name="sleep_1_hour">1 oră</string>
+    <string name="sleep_2_hours">2 ore</string>
+    <string name="sleep_3_hours">3 ore</string>
+    <string name="sleep_4_hours">4 ore</string>
+
+    <!-- Bundled lullaby display names -->
+    <string name="bundled_brahms">Cântecul de leagăn al lui Brahms</string>
+    <string name="bundled_white_noise">Zgomot alb</string>
+    <string name="bundled_enriched_heart">Bătăi amplificate</string>
+    <string name="bundled_real_ultrasound">Ecografie reală</string>
+    <string name="bundled_brown_heart">Bătăi brune</string>
+
+    <!-- Settings -->
+    <string name="settings_section">Setări</string>
+    <string name="theme_section">Temă</string>
+    <string name="theme_light">Luminoasă</string>
+    <string name="theme_light_desc">Culori luminoase</string>
+    <string name="theme_dark">Întunecată</string>
+    <string name="theme_dark_desc">Culori întunecate</string>
+    <string name="theme_amoled">AMOLED</string>
+    <string name="theme_amoled_desc">Negru pur: ideal noaptea</string>
+    <string name="keep_screen_on">Păstrează ecranul aprins</string>
+    <string name="keep_screen_on_desc">Previne oprirea ecranului în timpul redării</string>
+    <string name="data_section">Date</string>
+    <string name="downloaded_count">%1$d audio descărcate (cele %2$d preinstalate sunt întotdeauna păstrate)</string>
+    <string name="delete_all_downloaded">Șterge tot ce este descărcat</string>
+    <string name="reset_title">Resetare completă</string>
+    <string name="reset_message">Vrei să ștergi cele %1$d audio descărcate? Cele preinstalate (Brahms, zgomot alb, bătăi de inimă) nu sunt atinse. Această operație este ireversibilă.</string>
+    <string name="delete_all">Șterge tot</string>
+    <string name="reset_deleted">Șterse %1$d audio descărcate (cele preinstalate au fost păstrate).</string>
+    <string name="reset_none">Nu există audio descărcate de șters.</string>
+    <string name="language_section">Limbă</string>
+    <string name="language_system_default">Implicit de sistem</string>
+    <string name="language_system_default_desc">Folosește limba dispozitivului</string>
+
+    <!-- Background download (WorkManager) -->
+    <string name="invalid_url">URL invalid.</string>
+    <string name="starting_download">Începe descărcarea…</string>
+    <string name="download_completed">Descărcare finalizată</string>
+    <string name="download_completed_title">Descărcare finalizată: %1$s</string>
+    <string name="preparing_download">Se pregătește descărcarea…</string>
+    <string name="download_error">Eroare în timpul descărcării.</string>
+    <string name="channel_downloads">Descărcări de cântece de leagăn</string>
+    <string name="channel_downloads_desc">Progresul descărcărilor în fundal</string>
+
+    <!-- Download errors -->
+    <string name="err_no_stream">Niciun flux audio disponibil pentru acest videoclip.</string>
+    <string name="err_no_url">Flux fără URL de fișier.</string>
+    <string name="err_network">Eroare de rețea în timpul descărcării: %1$s</string>
+    <string name="err_parse">Nu s-a putut analiza videoclipul: %1$s</string>
+    <string name="err_download">Eroare în timpul descărcării: %1$s</string>
+    <string name="err_http">Răspuns HTTP %1$d în timpul descărcării.</string>
+    <string name="err_no_body">Răspuns fără conținut.</string>
+    <string name="err_incomplete">Descărcare incompletă (%1$d/%2$d octeți).</string>
+
+    <!-- Playback notification -->
+    <string name="channel_playback">Redare</string>
+    <string name="channel_playback_desc">Notificare persistentă în timpul redării</string>
+</resources>
