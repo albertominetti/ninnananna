@@ -11,8 +11,8 @@ android {
         applicationId = "com.alberto.ninnananna"
         minSdk = 26
         targetSdk = 34
-        versionCode = 13
-        versionName = "7.6"
+        versionCode = 14
+        versionName = "7.7"
     }
 
     signingConfigs {
