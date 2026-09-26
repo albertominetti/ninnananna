@@ -105,4 +105,6 @@
     <string name="channel_playback">Esitamine</string>
     <string name="channel_playback_desc">Püsiv teade esitamise ajal</string>
     <string name="version">Versioon: %1$s</string>
+    <string name="link_source_code">Lähtekood GitHubis</string>
+    <string name="link_developer">Arendaja: Alberto Minetti</string>
 </resources>

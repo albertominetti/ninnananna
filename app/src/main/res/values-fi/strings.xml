@@ -105,4 +105,6 @@
     <string name="channel_playback">Toisto</string>
     <string name="channel_playback_desc">Pysyvä ilmoitus toiston aikana</string>
     <string name="version">Versio: %1$s</string>
+    <string name="link_source_code">Lähdekoodi GitHubissa</string>
+    <string name="link_developer">Kehittänyt Alberto Minetti</string>
 </resources>

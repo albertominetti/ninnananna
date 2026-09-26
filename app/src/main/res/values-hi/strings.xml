@@ -107,4 +107,6 @@
 
     <!-- About -->
     <string name="version">संस्करण: %1$s</string>
+    <string name="link_source_code">GitHub पर स्रोत कोड</string>
+    <string name="link_developer">Alberto Minetti द्वारा विकसित</string>
 </resources>

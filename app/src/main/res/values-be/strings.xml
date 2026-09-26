@@ -105,4 +105,6 @@
     <string name="channel_playback">Прайграванне</string>
     <string name="channel_playback_desc">Пастаяннае апавяшчэнне падчас прайгравання</string>
     <string name="version">Версія: %1$s</string>
+    <string name="link_source_code">Зыходны код на GitHub</string>
+    <string name="link_developer">Распрацавана Alberto Minetti</string>
 </resources>

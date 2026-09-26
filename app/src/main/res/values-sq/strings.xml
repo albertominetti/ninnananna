@@ -105,4 +105,6 @@
     <string name="channel_playback">Riprodhim</string>
     <string name="channel_playback_desc">Njoftim i përhershëm gjatë riprodhimit</string>
     <string name="version">Versioni: %1$s</string>
+    <string name="link_source_code">Kodi burimor në GitHub</string>
+    <string name="link_developer">Zhvilluar nga Alberto Minetti</string>
 </resources>

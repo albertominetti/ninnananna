@@ -105,4 +105,6 @@
     <string name="channel_playback">Playback</string>
     <string name="channel_playback_desc">Notifika permanenti matul il-playback</string>
     <string name="version">Verżjoni: %1$s</string>
+    <string name="link_source_code">Kodiċi sors fuq GitHub</string>
+    <string name="link_developer">Żviluppat minn Alberto Minetti</string>
 </resources>

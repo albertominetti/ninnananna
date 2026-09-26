@@ -107,4 +107,6 @@
 
     <!-- About -->
     <string name="version">版本：%1$s</string>
+    <string name="link_source_code">GitHub 上的源代码</string>
+    <string name="link_developer">由 Alberto Minetti 开发</string>
 </resources>

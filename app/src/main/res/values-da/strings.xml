@@ -105,4 +105,6 @@
     <string name="channel_playback">Afspilning</string>
     <string name="channel_playback_desc">Vedvarende meddelelse under afspilning</string>
     <string name="version">Version: %1$s</string>
+    <string name="link_source_code">Kildekode på GitHub</string>
+    <string name="link_developer">Udviklet af Alberto Minetti</string>
 </resources>

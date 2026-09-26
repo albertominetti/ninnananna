@@ -105,4 +105,6 @@
     <string name="channel_playback">Wiedergabe</string>
     <string name="channel_playback_desc">Dauerhafte Benachrichtigung während der Wiedergabe</string>
     <string name="version">Version: %1$s</string>
+    <string name="link_source_code">Quellcode auf GitHub</string>
+    <string name="link_developer">Entwickelt von Alberto Minetti</string>
 </resources>

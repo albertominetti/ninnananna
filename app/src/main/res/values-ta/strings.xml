@@ -107,4 +107,6 @@
 
     <!-- About -->
     <string name="version">பதிப்பு: %1$s</string>
+    <string name="link_source_code">GitHub இல் மூலக் குறியீடு</string>
+    <string name="link_developer">Alberto Minetti உருவாக்கியது</string>
 </resources>

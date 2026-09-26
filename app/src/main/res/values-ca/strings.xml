@@ -105,4 +105,6 @@
     <string name="channel_playback">Reproducció</string>
     <string name="channel_playback_desc">Notificació persistent durant la reproducció</string>
     <string name="version">Versió: %1$s</string>
+    <string name="link_source_code">Codi font a GitHub</string>
+    <string name="link_developer">Desenvolupat per Alberto Minetti</string>
 </resources>

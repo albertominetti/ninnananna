@@ -105,4 +105,6 @@
     <string name="channel_playback">Prehrávanie</string>
     <string name="channel_playback_desc">Trvalá notifikácia počas prehrávania</string>
     <string name="version">Verzia: %1$s</string>
+    <string name="link_source_code">Zdrojový kód na GitHube</string>
+    <string name="link_developer">Vyvinul Alberto Minetti</string>
 </resources>

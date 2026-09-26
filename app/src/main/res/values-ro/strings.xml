@@ -105,4 +105,6 @@
     <string name="channel_playback">Redare</string>
     <string name="channel_playback_desc">Notificare persistentă în timpul redării</string>
     <string name="version">Versiune: %1$s</string>
+    <string name="link_source_code">Cod sursă pe GitHub</string>
+    <string name="link_developer">Dezvoltat de Alberto Minetti</string>
 </resources>

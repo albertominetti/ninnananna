@@ -105,4 +105,6 @@
     <string name="channel_playback">Erreprodukzioa</string>
     <string name="channel_playback_desc">Jakinarazpen iraunkorra erreprodukzioan</string>
     <string name="version">Bertsioa: %1$s</string>
+    <string name="link_source_code">Iturburu-kodea GitHuben</string>
+    <string name="link_developer">Alberto Minettik garatua</string>
 </resources>

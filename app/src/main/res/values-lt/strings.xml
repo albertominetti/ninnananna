@@ -105,4 +105,6 @@
     <string name="channel_playback">Leidimas</string>
     <string name="channel_playback_desc">Nuolatinis pranešimas leidimo metu</string>
     <string name="version">Versija: %1$s</string>
+    <string name="link_source_code">Išeities kodas GitHub</string>
+    <string name="link_developer">Sukurta: Alberto Minetti</string>
 </resources>

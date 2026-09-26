@@ -105,4 +105,6 @@
     <string name="channel_playback">Chwarae</string>
     <string name="channel_playback_desc">Hysbysiad parhaol yn ystod chwarae</string>
     <string name="version">Fersiwn: %1$s</string>
+    <string name="link_source_code">Cod ffynhonnell ar GitHub</string>
+    <string name="link_developer">Wedi\'i ddatblygu gan Alberto Minetti</string>
 </resources>

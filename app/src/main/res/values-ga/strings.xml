@@ -105,4 +105,6 @@
     <string name="channel_playback">Seinm</string>
     <string name="channel_playback_desc">Fógra buan le linn seinnm</string>
     <string name="version">Leagan: %1$s</string>
+    <string name="link_source_code">Cód foinse ar GitHub</string>
+    <string name="link_developer">Forbartha ag Alberto Minetti</string>
 </resources>

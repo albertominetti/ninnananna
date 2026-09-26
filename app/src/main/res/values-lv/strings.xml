@@ -105,4 +105,6 @@
     <string name="channel_playback">Atskaņošana</string>
     <string name="channel_playback_desc">Pastāvīgs paziņojums atskaņošanas laikā</string>
     <string name="version">Versija: %1$s</string>
+    <string name="link_source_code">Pirmkods GitHub</string>
+    <string name="link_developer">Izstrādāja Alberto Minetti</string>
 </resources>

@@ -105,4 +105,6 @@
     <string name="channel_playback">Predvajanje</string>
     <string name="channel_playback_desc">Trajno obvestilo med predvajanjem</string>
     <string name="version">Različica: %1$s</string>
+    <string name="link_source_code">Izvorna koda na GitHubu</string>
+    <string name="link_developer">Razvil Alberto Minetti</string>
 </resources>

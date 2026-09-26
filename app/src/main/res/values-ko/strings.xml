@@ -107,4 +107,6 @@
 
     <!-- About -->
     <string name="version">버전: %1$s</string>
+    <string name="link_source_code">GitHub 소스 코드</string>
+    <string name="link_developer">개발: Alberto Minetti</string>
 </resources>

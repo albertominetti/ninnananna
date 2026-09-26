@@ -105,4 +105,6 @@
     <string name="channel_playback">Reprodukcija</string>
     <string name="channel_playback_desc">Trajna notifikacija tokom reprodukcije</string>
     <string name="version">Verzija: %1$s</string>
+    <string name="link_source_code">Izvorni kod na GitHubu</string>
+    <string name="link_developer">Razvio Alberto Minetti</string>
 </resources>

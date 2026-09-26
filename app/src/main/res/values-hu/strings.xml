@@ -105,4 +105,6 @@
     <string name="channel_playback">Lejátszás</string>
     <string name="channel_playback_desc">Állandó értesítés lejátszás közben</string>
     <string name="version">Verzió: %1$s</string>
+    <string name="link_source_code">Forráskód a GitHubon</string>
+    <string name="link_developer">Fejlesztette: Alberto Minetti</string>
 </resources>

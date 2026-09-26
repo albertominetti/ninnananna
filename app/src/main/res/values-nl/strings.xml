@@ -105,4 +105,6 @@
     <string name="channel_playback">Afspelen</string>
     <string name="channel_playback_desc">Blijvende melding tijdens het afspelen</string>
     <string name="version">Versie: %1$s</string>
+    <string name="link_source_code">Broncode op GitHub</string>
+    <string name="link_developer">Ontwikkeld door Alberto Minetti</string>
 </resources>

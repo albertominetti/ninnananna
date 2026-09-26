@@ -107,4 +107,6 @@
 
     <!-- About -->
     <string name="version">バージョン：%1$s</string>
+    <string name="link_source_code">GitHubのソースコード</string>
+    <string name="link_developer">開発: Alberto Minetti</string>
 </resources>

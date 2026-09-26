@@ -105,4 +105,6 @@
     <string name="channel_playback">Afspilun</string>
     <string name="channel_playback_desc">Varanleg tilkynning við afspilun</string>
     <string name="version">Útgáfa: %1$s</string>
+    <string name="link_source_code">Frumkóði á GitHub</string>
+    <string name="link_developer">Þróað af Alberto Minetti</string>
 </resources>

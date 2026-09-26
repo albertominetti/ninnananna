@@ -105,4 +105,6 @@
     <string name="channel_playback">Lecture</string>
     <string name="channel_playback_desc">Notification persistante pendant la lecture</string>
     <string name="version">Version : %1$s</string>
+    <string name="link_source_code">Code source sur GitHub</string>
+    <string name="link_developer">Développé par Alberto Minetti</string>
 </resources>

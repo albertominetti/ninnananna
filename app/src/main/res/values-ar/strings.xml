@@ -107,4 +107,6 @@
 
     <!-- About -->
     <string name="version">الإصدار: %1$s</string>
+    <string name="link_source_code">الشيفرة المصدرية على GitHub</string>
+    <string name="link_developer">تم التطوير بواسطة Alberto Minetti</string>
 </resources>

@@ -105,4 +105,6 @@
     <string name="channel_playback">Αναπαραγωγή</string>
     <string name="channel_playback_desc">Μόνιμη ειδοποίηση κατά την αναπαραγωγή</string>
     <string name="version">Έκδοση: %1$s</string>
+    <string name="link_source_code">Πηγαίος κώδικας στο GitHub</string>
+    <string name="link_developer">Αναπτύχθηκε από τον Alberto Minetti</string>
 </resources>
